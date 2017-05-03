@@ -1,23 +1,24 @@
 # ----
 # Site
 
-title: Edition Template
-url: "https://long-pig.cloudvent.net"
+title: OpenPaaS Documentation
+url: "https://openpaas.github.io/openpaas-doc"
+repository: "linagora/openpaas-doc.git"
 baseurl:
 google_analytics_key:
 show_full_navigation: true
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /siteicon.png
-description: Product documentation template for Jekyll.
+description: OpenPaaS Documentation
 author:
-  name:
+  name: OpenPaaS Developers
   email:
-  twitter: # twitter username without the @ symbol
+  twitter: awesomepaas
 social:
-  name: Edition Template
+  name: OpenPaaS Developers
   links:
-    - https://github.com/CloudCannon/edition-jekyll-template
+    - https://github.com/linagora/openpaas-doc
 
 # -----
 # Build
@@ -64,10 +65,3 @@ defaults:
     values:
       _comments:
         type: Marks the impact of this release
-
-# -----------
-# CloudCannon
-
-types:
-  - minor
-  - major
