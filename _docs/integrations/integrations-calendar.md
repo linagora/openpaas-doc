@@ -73,11 +73,43 @@ _As of 170503 and reported in [CAL-670](https://ci.open-paas.org/jira/browse/CAL
 
 ### Create a calendar
 
-`TODO`
+#### Request
+
+The `{userId}` is the id of the authenticated user.
+
+```
+POST https://HOST:PORT/dav/api/calendars/{userId}.json
+```
+
+**Body**
+
+```
+{
+  "id": "ebdfe2b9-694a-4dc3-98fa-0f7acbfdc739",
+  "dav:name": "My calendar name",
+  "apple:color": "#68c289",
+  "caldav:description": "The calendar description"
+}
+```
 
 ### List events in calendar
 
-`TODO`
+#### Request
+
+```
+REPORT https://openpaas.linagora.com/dav/api/calendars/57fca675a91c8d01a36ac26b/events.json'
+```
+
+**Body**
+
+```
+{
+  "match": {
+    "start": "20170430T000000",
+    "end": "20170613T000000"
+  }
+}'
+```
 
 ### Create an event in a calendar
 
