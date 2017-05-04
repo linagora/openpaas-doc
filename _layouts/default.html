@@ -7,10 +7,25 @@
 		<meta name="generator" content="Jekyll v{{ jekyll.version }}">
 
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic|Open+Sans:400,400italic,600,600italic,700,700italic|Inconsolata:400,700">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/bootstrap.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/overrides.css">
 		<link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png">
 		<link rel="icon" type="image/png" href="{{ site.baseurl }}/touch-icon.png" sizes="192x192">
 		<link rel="icon" type="image/png" href="{{ site.baseurl }}/images/favicon.png">
+		<script src="{{ site.baseurl }}/scripts/modules/jquery-2.2.0.min.js"></script>
+		<script src="{{ site.baseurl }}/scripts/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="{{ '/scripts/modules/swagger-ui/angular-swagger-ui.min.js' | prepend: site.baseurl }}"></script>
+		<script src="{{ '/scripts/modules/swagger-ui/swagger-external-references.min.js' | prepend: site.baseurl }}"></script>
+		<script src="{{ '/scripts/modules/swagger-ui/swagger1-to-swagger2-converter.min.js' | prepend: site.baseurl }}"></script>
+		<script src="{{ '/scripts/swagger-authentication.js' | prepend: site.baseurl }}"></script>
+		<script src="{{ '/scripts/app.js' | prepend: site.baseurl }}"></script>
 
 		{% feed_meta %}
 
@@ -27,7 +42,7 @@
 		{% endif %}
 	</head>
 
-	<body>
+	<body ng-app="openpaas.doc">
 		<header>
 			<h1>
 				<a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/emblem.svg" width="40" height="40" alt="{{ site.title }} logo"></a>
