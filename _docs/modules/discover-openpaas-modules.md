@@ -33,6 +33,7 @@ const esnModule = new AwesomeModule('com.example.module', {
       });
 
       webserver.addApp('example', router);
+      callback();
     }
   }
 });
