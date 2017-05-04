@@ -3,12 +3,16 @@ title: Integrations - Authentication
 category: OpenPaaS Integrations
 order: 2
 ---
+### How to authenticate a given user to the OpenPaaS platform?
 
-Login into the application by issuing a `POST` request.
-The response will contain a cookie which you will be able to use in next request as long as the session is open. <br/>
-Here it is the URL: `/login`
+From his credentials, you'll authenticate a user and then get this user's object containing domains ids to which he belongs to.
 
-Parameters:
+### Let's see details:
+
+Log your user into the application by issuing a `POST` request to `/login` URL.
+The response will contain a cookie which you will be able to use in next requests as long as the session is open. <br/>
+
+#### Parameters:
 
 `Name: credentials (body)`
 >
@@ -25,7 +29,7 @@ The credentials for authentication. For example:
 }
 ```
 
-Responses:
+#### Responses:
 
 `Code: 200`
 >
