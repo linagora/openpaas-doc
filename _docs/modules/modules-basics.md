@@ -35,7 +35,7 @@ During the startup of the [NodeJS](https://nodejs.org/) server, the modules are 
     * the JavaScript client files and [Angular](https://angularjs.org/) Modules
     * the pub/sub events you register and subscribe to
 
-3. run
+3. start
 
     In this last step, your module starts actually doing its stuff. For example, if your module should publish a message in the message queue, or if it should send an email on startup, that should be done in that step. Usually, that step is empty.
 
