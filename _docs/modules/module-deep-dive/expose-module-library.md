@@ -104,3 +104,27 @@ module.exports = esnModule;
 {% endhighlight %}
 
 On **line 18**, we use our library "get()" method. As said before, our library is exposed as the _this_ variable in the _deploy_ function.
+
+**Q.** I did what you told me, but _this_ is an empty object and not my exported _lib_. Why is that ?
+
+**A.** We guess you used the new ES6 arrow functions to declare your deploy state. With arrow functions, the "this" object is lexically bound to the function. So, in your code, replace:
+
+{% highlight javascript %}
+{
+  deploy: (dependencies, callback) => {
+    this.get();
+  }
+}
+{% endhighlight %}
+
+with:
+
+{% highlight javascript %}
+{
+  deploy: function (dependencies, callback) {
+    this.get();
+  }
+}
+{% endhighlight %}
+
+and it should work as expected.
