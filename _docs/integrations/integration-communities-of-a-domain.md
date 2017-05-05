@@ -1,5 +1,5 @@
 ---
-title: Integrations - Communities of a Domain
+title: Communities of a Domain
 category: OpenPaaS Integrations
 order: 3
 ---

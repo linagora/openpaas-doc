@@ -1,7 +1,7 @@
 ---
 title: Calendar
 category: OpenPaaS Integrations
-order: 2
+order: 4
 ---
 
 ## Introduction

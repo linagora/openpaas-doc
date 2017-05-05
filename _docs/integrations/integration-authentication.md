@@ -1,5 +1,5 @@
 ---
-title: Integrations - Authentication
+title: Authentication
 category: OpenPaaS Integrations
 order: 2
 ---

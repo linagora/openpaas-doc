@@ -1,5 +1,5 @@
 ---
-title: Integrations - Overview
+title: Overview
 category: OpenPaaS Integrations
 order: 1
 ---
