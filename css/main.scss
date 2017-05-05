@@ -9,7 +9,8 @@ $content-max-width: 800px;
 $content-color: #222;
 $content-background-color: #fff;
 
-$brand-colour: #3583d6;
+$primary-color: #4285F4;
+$brand-colour: $primary-color;
 $brand-colour-light: mix($brand-colour, $content-background-color, 10%);
 
 $nav-header-background-color: $brand-colour;
@@ -21,7 +22,6 @@ $space: 20px;
 
 $mobile-break: 700px;
 $full-width-break: $nav-width + ($space * 4) + $content-max-width;
-$primary-color: #01579B;
 
 @import "mixins";
 @import "normalize";
