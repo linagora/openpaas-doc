@@ -21,6 +21,7 @@ $space: 20px;
 
 $mobile-break: 700px;
 $full-width-break: $nav-width + ($space * 4) + $content-max-width;
+$primary-color: #01579B;
 
 @import "mixins";
 @import "normalize";

@@ -463,3 +463,25 @@ img {
 .cms-editor-active .editor-link {
 	display: block;
 }
+
+.hp-im {
+	display: flex;
+	justify-content: space-around;
+	.modules {
+		flex-basis: 45%;
+	}
+
+	.integrations {
+		flex-basis: 45%;
+	}
+
+	.hp-im-inner {
+		display: flex;
+		align-items: center;
+		.title-container {
+			padding-left: 2em;
+			font-size: 1.4em;
+			color: $primary-color;
+		}
+	}
+}
