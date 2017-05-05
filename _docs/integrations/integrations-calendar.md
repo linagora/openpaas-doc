@@ -38,7 +38,7 @@ _As of 170503 and reported in [CAL-670](https://ci.open-paas.org/jira/browse/CAL
 
 **Body**
 
-``` json
+{% highlight json linenos %}
 {
   "_links":{
     "self":{
@@ -69,7 +69,7 @@ _As of 170503 and reported in [CAL-670](https://ci.open-paas.org/jira/browse/CAL
     ]
   }
 }
-```
+{% endhighlight %}
 
 ### Create a calendar
 
@@ -83,14 +83,14 @@ POST https://HOST:PORT/dav/api/calendars/{userId}.json
 
 **Body**
 
-```
+{% highlight json linenos %}
 {
   "id": "ebdfe2b9-694a-4dc3-98fa-0f7acbfdc739",
   "dav:name": "My calendar name",
   "apple:color": "#68c289",
   "caldav:description": "The calendar description"
 }
-```
+{% endhighlight %}
 
 ### List events in calendar
 
@@ -102,14 +102,14 @@ REPORT https://openpaas.linagora.com/dav/api/calendars/57fca675a91c8d01a36ac26b/
 
 **Body**
 
-```
+{% highlight json linenos %}
 {
   "match": {
     "start": "20170430T000000",
     "end": "20170613T000000"
   }
 }'
-```
+{% endhighlight %}
 
 ### Create an event in a calendar
 
@@ -125,7 +125,7 @@ PUT https://HOST:PORT/dav/api/calendars/{userId}/{calendarId}/{eventId}.ics
 
 **Body**
 
-``` json
+{% highlight json linenos %}
 [
   "vcalendar",
   [],
@@ -218,7 +218,7 @@ PUT https://HOST:PORT/dav/api/calendars/{userId}/{calendarId}/{eventId}.ics
     ]
   ]
 ]
-```
+{% endhighlight %}
 
 #### Response
 
@@ -238,6 +238,6 @@ DELETE https://HOST:PORT/dav/api/calendars/{userId}/{calendarId}/{eventId}.ics
 
 **Body**
 
-``` json
+{% highlight json %}
 {"id":"491cd007-3646-4fe2-93a5-7a8281e9e36d"}
-```
+{% endhighlight %}

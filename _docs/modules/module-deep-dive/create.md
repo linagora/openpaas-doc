@@ -19,11 +19,10 @@ Example of a minimal OpenPaaS module :
 
 _com.example.module/index.js_:
 
-```javascript
+{% highlight javascript linenos %}
 const AwesomeModule = require('awesome-module');
-
 const esnModule = new AwesomeModule('com.example.module', {});
 
 module.exports = esnModule;
-```
+{% endhighlight %}
 Needless to say that this module does absolutely nothing.

@@ -41,7 +41,7 @@ You will have as response an array of communities for the given domain. The list
 `type`: Could be an open or a private community.
 >
 For example the following array contains two community objects:
-```
+{% highlight json linenos %}
 [{
   _id: "581b4ff3357d835512ad9703"
   activity_stream: {uuid: "9ccd94a8-9a8c-476f-b67a-9886af5afd31"}
@@ -67,7 +67,7 @@ For example the following array contains two community objects:
   type: "open"
 }
 ]
-```
+{% endhighlight %}
 
 `Code: 400`
 >

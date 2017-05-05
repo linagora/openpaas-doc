@@ -14,7 +14,7 @@ The OpenPaaS modules are the most powerfull way to add features into the OpenPaa
 
 In the _modules_ folder of your OpenPaaS ESN installation, create a new folder **com.example.module**. Inside this folder, create a new file index.js, containing:
 
-```javascript
+{% highlight javascript linenos %}
 const express = require('express');
 const AwesomeModule = require('awesome-module');
 const Dependency = AwesomeModule.AwesomeModuleDependency;
@@ -39,10 +39,10 @@ const esnModule = new AwesomeModule('com.example.module', {
 });
 
 module.exports = esnModule;
-```
+{% endhighlight %}
 Now, open the configuration file *config/default.dev.json*, and add the new modules at the end of your modules list:
 
-```json
+{% highlight json linenos %}
 {
   ...
   "modules": [
@@ -50,7 +50,7 @@ Now, open the configuration file *config/default.dev.json*, and add the new modu
     "com.example.module"
   ]
 }
-```
+{% endhighlight %}
 Restart your ESN server, using the **grunt dev** command. You can now query your new endpoint :
 
 ```bash

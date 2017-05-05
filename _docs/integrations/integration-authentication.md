@@ -17,7 +17,7 @@ The response will contain a cookie which you will be able to use in next request
 `Name: credentials (body)`
 >
 The credentials for authentication. For example:
-```
+{% highlight json linenos %}
 {
   "username": "string",
   "password": "string",
@@ -27,7 +27,7 @@ The credentials for authentication. For example:
     "needed": true
   }
 }
-```
+{% endhighlight %}
 
 #### Responses:
 

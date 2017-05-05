@@ -20,4 +20,4 @@ Request that return multiple items can be _paginated_. You can specify an offset
 curl 'https://HOST:PORT/api/RESOURCE?limit=50&offset=20'
 ```
 
-This request will return `50` items starting at the `20`th one i.e. from `20` to `70`.
+This request will return `50` items starting at the `20`th one i.e. from `20` to `69`.
