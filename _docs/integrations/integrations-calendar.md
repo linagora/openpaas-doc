@@ -4,6 +4,33 @@ category: OpenPaaS Integrations
 order: 4
 ---
 
+# Table of contents
+<!-- TOC -->
+
+- [Table of contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [Prerequisites](#prerequisites)
+    - [Shared Calendars](#shared-calendars)
+      - [The difference between both types of shared calendars](#the-difference-between-both-types-of-shared-calendars)
+        - [Functionally](#functionally)
+        - [Technically](#technically)
+      - [How an OpenPaaS user should deal with these types of shared calendars?](#how-an-openpaas-user-should-deal-with-these-types-of-shared-calendars)
+  - [CRUD operations](#crud-operations)
+    - [Get available calendars](#get-available-calendars)
+      - [Request](#request)
+      - [Response](#response)
+    - [Create a calendar](#create-a-calendar)
+      - [Request](#request-1)
+    - [List events in calendar](#list-events-in-calendar)
+      - [Request](#request-2)
+    - [Create an event in a calendar](#create-an-event-in-a-calendar)
+      - [Request](#request-3)
+      - [Response](#response-1)
+    - [Delete an event](#delete-an-event)
+      - [Request](#request-4)
+      - [Response](#response-2)
+
+<!-- /TOC -->
 ## Introduction
 
 The OpenPaaS calendar API uses jCal specification as defined in the [jCal RFC](https://tools.ietf.org/html/rfc7265) which defines a JSON format for iCalendar.
@@ -13,6 +40,32 @@ The OpenPaaS calendar API uses jCal specification as defined in the [jCal RFC](h
 - The following samples assumes that you followed the steps to get the cookies used to authenticate user as defined in [Authentication documentation](./integrations-authentication.html)
 - In several places in the following REST API samples, parameters will be defined by using `{mustache}`. Developers will have to replace values by valid ones
 - Standard errors are not listed which does not means that they will not occur (HTTP 4XX and 5XX ones)
+
+### Shared Calendars
+The calendar module supports two kinds of external calendars:
+
+* Delegated calendars: when an owner delegates his own calendars to other users. For example, a manager can delegate his calendars to his secretary.
+
+* Public calendars: an owner can set his calendars to public, so as it can be seen by any other user, who can add them if he wants.
+
+#### The difference between both types of shared calendars
+
+##### Functionally
+
+* Delegated calendars represent a privileged access for a given calendar to a specific user
+
+* Public calendars can be seen by everyone, and any user can add it.
+
+##### Technically
+
+* When a user has a delegated calendar, a new instance of the given calendar is created for him.
+
+* When a user add a public calendars, the user creates a subscription for this calendar. A subscription is an object owned by the user and stored in sabre. This object has a reference towards the public calendar along with its own properties
+
+#### How an OpenPaaS user should deal with these types of shared calendars?
+
+Both types of shared calendars are presented the same way for OpenPaaS users. Indeed, an OpenPaaS user has only to deal with external calendars. This is, they are all presented the same way for users.
+
 
 ## CRUD operations
 
