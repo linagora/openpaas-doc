@@ -4,6 +4,8 @@ category: OpenPaaS Calendar Module
 order: 1
 ---
 
+![The calendar module]({{ site.url }}/images/modules/calendar/calendar.png)
+
 ## Shared Calendars
 
 The calendar module supports two kinds of external calendars:
