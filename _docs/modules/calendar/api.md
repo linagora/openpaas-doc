@@ -1,8 +1,30 @@
 ---
-title: Calendar
-category: OpenPaaS Integrations
-order: 4
+title: REST API
+category: OpenPaaS Calendar Module
+order: 2
 ---
+
+## Table of contents
+
+<!-- TOC -->
+- [Table of contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [Prerequisites](#prerequisites)
+  - [CRUD operations](#crud-operations)
+    - [Get available calendars](#get-available-calendars)
+      - [Request](#request)
+      - [Response](#response)
+    - [Create a calendar](#create-a-calendar)
+      - [Request](#request-1)
+    - [List events in calendar](#list-events-in-calendar)
+      - [Request](#request-2)
+    - [Create an event in a calendar](#create-an-event-in-a-calendar)
+      - [Request](#request-3)
+      - [Response](#response-1)
+    - [Delete an event](#delete-an-event)
+      - [Request](#request-4)
+      - [Response](#response-2)
+<!-- /TOC -->
 
 ## Introduction
 
