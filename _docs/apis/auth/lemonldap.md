@@ -5,14 +5,14 @@ order: 1
 ---
 
 OpenPaaS supports LemonLDAP authentication, if this is the first time you hear
-about LemonLDAP, check their [documentation](https://lemonldap-ng.org/documentation)
+about LemonLDAP, check their [website](https://lemonldap-ng.org)
 to explore that awesome software.
 
 # How it works
 
 LemonLDAP protects OpenPaaS behind a proxy, OpenPaaS then authenticates users by
 reading HTTP trusted-headers forwarded from LemonLDAP. See more about it
-[here](https://lemonldap-ng.org/documentation/latest/configvhost).
+[here](https://lemonldap-ng.org/documentation/presentation).
 
 When the user logs in to OpenPaaS, the following steps happen:
 
@@ -47,8 +47,6 @@ Go into the module directory and install module dependencies
 npm install --production
 ```
 
-## Enable single sign-on for OpenPaaS
-
 Next, you need to enable LemonLDAP awesome module for OpenPaaS. To do it, create a symbol
 link of this module in `modules` directory of OpenPaaS ESN then enable it in
 local configuration:
@@ -64,7 +62,7 @@ local configuration:
 Once enabled, this module will be loaded with OpenPaaS and ready to work.
 The next step is to configure LemonLDAP virtualhost to protect OpenPaaS.
 
-## Configuration LemonLDAP
+## Configure LemonLDAP
 
 To configure LemonLDAP, you must login to LemonLDAP manager page.
 
