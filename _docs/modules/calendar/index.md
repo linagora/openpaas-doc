@@ -4,7 +4,7 @@ category: OpenPaaS Calendar Module
 order: 1
 ---
 
-![The calendar module]({{ site.url }}/images/modules/calendar/calendar.png)
+![The calendar module](/images/modules/calendar/calendar.png)
 
 The calendar module brings powerful and realtime calendar support into the OpenPaaS platform.
 It is composed of several components:
@@ -67,13 +67,13 @@ Shared calendars come with **rights**: Rights are applied to users who are looki
 
 In order make a calendar public, the user has to change the _Public right_ to _Free/Busy_, _Read_ or _Write_ during the calendar creation, or on the calendar settings page as shown below.
 
-![The calendar settings page, change public level]({{ site.url }}/images/modules/calendar/calendar-public-change-settings.png)
+![The calendar settings page, change public level](/images/modules/calendar/calendar-public-change-settings.png)
 
 Once a calendar is public, other users can _subscribe_ to it by going to the _Shared Calendars_ page and by doing a search. Public calendars are linked to their creator, so in order to find them, the user has to search for the creator to find all his public calendars.
 
 In the screenshot below, one public calendar is displayed. In order to subscribe to this public calendar, the user has to click on the _Add_ toggle button then on _Save_.
 
-![The shared calendars page, searching a public calendar]({{ site.url }}/images/modules/calendar/calendar-public-search.png)
+![The shared calendars page, searching a public calendar](/images/modules/calendar/calendar-public-search.png)
 
 The calendar is now displayed as a _Shared calendar_. The user can see events and create some if _Write_ rights are set on the public calendar.
 
@@ -86,17 +86,17 @@ A user can delegate his calendar by adding users in the delegation section in th
 3. Click on _Add_
 4. The user is added to the list of _Sharee_
 
-![The calendar delegation, adding user step 0]({{ site.url }}/images/modules/calendar/calendar-delegate-add-user-0.png)
+![The calendar delegation, adding user step 0](/images/modules/calendar/calendar-delegate-add-user-0.png)
 
-![The calendar delegation, adding user step 1]({{ site.url }}/images/modules/calendar/calendar-delegate-add-user-1.png)
+![The calendar delegation, adding user step 1](/images/modules/calendar/calendar-delegate-add-user-1.png)
 
-![The calendar delegation, adding user step 2]({{ site.url }}/images/modules/calendar/calendar-delegate-add-user-2.png)
+![The calendar delegation, adding user step 2](/images/modules/calendar/calendar-delegate-add-user-2.png)
 
 Once the calendar is saved, it is "ready to be delegated": The _sharee_ can not do anything until he adds the delegated calendar to his calendars. This is possible by going to the _Shared calendars_ page and by doing a search just like for public calendars.
 
 In the screenshot below, one delegated calendar is displayed. In order to add this delegated calendar, the _sharee_ has to click on the _Add_ toggle button then on _Save_.
 
-![The shared calendars page, searching a delegated calendar]({{ site.url }}/images/modules/calendar/calendar-delegated-search.png)
+![The shared calendars page, searching a delegated calendar](/images/modules/calendar/calendar-delegated-search.png)
 
 The calendar is now displayed as a _Shared calendar_. The _sharee_ can see events and create some if _Write_ or _Administration_ rights are set on the calendar.
 
