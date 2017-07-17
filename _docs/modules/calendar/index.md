@@ -46,7 +46,7 @@ The following sections will go deep into details of some of the above mentioned 
 
 ### Shared Calendars
 
-The calendar module supports two kinds of external calendars:
+The calendar module supports two kinds of shared calendars:
 
 * Delegated calendars: when an owner delegates his own calendars to other users. For example, a manager can delegate his calendars to his secretary.
 * Public calendars: an owner can set his calendars to public. Other users, or external ones, can subscribe to such calendars and see events.
@@ -54,7 +54,7 @@ The calendar module supports two kinds of external calendars:
 There are some differences between these types of shared calendars, the main ones are:
 
 * Delegated calendars represent a privileged access for a given calendar to a specific user.
-* Public calendars can be seen by everyone, and any user can add it. In some cases, any users are also abe to create events in public calendars.
+* Public calendars can be seen by everyone, and any user can add them. In some cases, any users are also abe to create events in public calendars.
 
 ### Technical considerations
 
