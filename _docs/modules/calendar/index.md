@@ -44,7 +44,7 @@ and more advanced ones:
 
 The following sections will go deep into details of some of the above mentioned features.
 
-### Shared Calendars
+## Shared Calendars
 
 The calendar module supports two kinds of shared calendars:
 
@@ -56,7 +56,7 @@ There are some differences between these types of shared calendars, the main one
 * Delegated calendars represent a privileged access for a given calendar to a specific user.
 * Public calendars can be seen by everyone, and any user can add them. In some cases, any users are also abe to create events in public calendars.
 
-#### Public calendars
+### Public calendars
 
 In order make a calendar public, the user has to change the _Public right_ to _Free/Busy_, _Read_ or _Write_ during the calendar creation, or on the calendar settings page as shown below.
 
@@ -70,7 +70,7 @@ In the screenshot below, one public calendar is displayed. In order to subscribe
 
 The calendar is now displayed as a _Shared calendar_. The user can see events and create some if _Write_ rights are set on the public calendar.
 
-#### Delegated calendars
+### Delegated calendars
 
 A user can delegate his calendar by adding users in the delegation section in the calendar settings pages. A user which is added is called a _Sharee_. In order to add a user as _sharee_:
 
