@@ -26,7 +26,7 @@ And the content of your controller.js :
   angular.module('com.example.module.angular')
   .controller('exampleModuleController', ExampleModuleController);
 
-  function exampleModuleController() {
+  function ExampleModuleController() {
     this.sayHello = function() {
       console.log('Hello');
     };
