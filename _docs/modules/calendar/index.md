@@ -48,13 +48,20 @@ The following sections will go deep into details of some of the above mentioned 
 
 The calendar module supports two kinds of shared calendars:
 
-* Delegated calendars: when an owner delegates his own calendars to other users. For example, a manager can delegate his calendars to his secretary.
-* Public calendars: an owner can set his calendars to public. Other users, or external ones, can subscribe to such calendars and see events.
+* **Delegated calendars**: when an owner delegates his own calendars to other users. For example, a manager can delegate his calendars to his secretary.
+* **Public calendars**: an owner can set his calendars to public. Other users, or external ones, can subscribe to such calendars and see events.
 
 There are some differences between these types of shared calendars, the main ones are:
 
 * Delegated calendars represent a privileged access for a given calendar to a specific user.
 * Public calendars can be seen by everyone, and any user can add them. In some cases, any users are also abe to create events in public calendars.
+
+Shared calendars come with **rights**: Rights are applied to users who are looking at other users calendars.
+
+- **Free/Busy**: User can only see that the calendar owner is free or busy in a timeperiod. The details of the events are not available.
+- **Read**: User has access to all the event informations but can not change anything.
+- **Write**: User has access to all the event informations and can change anything.
+- **Administration**: User can do anything on the calendar (edit, delete, etc) as well as on the calendar events.
 
 ### Public calendars
 
@@ -62,7 +69,7 @@ In order make a calendar public, the user has to change the _Public right_ to _F
 
 ![The calendar settings page, change public level]({{ site.url }}/images/modules/calendar/calendar-public-change-settings.png)
 
-Once a calendar is public, other users can subscribe to it by going to the _Shared Calendars_ page and by doing a search. Public calendars are linked to their creator, so in order to find them, the user has to search for the creator to find all his public calendars.
+Once a calendar is public, other users can _subscribe_ to it by going to the _Shared Calendars_ page and by doing a search. Public calendars are linked to their creator, so in order to find them, the user has to search for the creator to find all his public calendars.
 
 In the screenshot below, one public calendar is displayed. In order to subscribe to this public calendar, the user has to click on the _Add_ toggle button then on _Save_.
 
