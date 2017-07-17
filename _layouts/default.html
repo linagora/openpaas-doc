@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/bootstrap.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/viewer.min.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/overrides.css">
 
 		<link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/apple-touch-icon.png">
@@ -28,6 +29,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="{{ '/scripts/modules/viewer.min.js' | prepend: site.baseurl }}"></script>
 		<script src="{{ '/scripts/modules/swagger-ui/angular-swagger-ui.min.js' | prepend: site.baseurl }}"></script>
 		<script src="{{ '/scripts/modules/swagger-ui/swagger-external-references.min.js' | prepend: site.baseurl }}"></script>
 		<script src="{{ '/scripts/modules/swagger-ui/swagger1-to-swagger2-converter.min.js' | prepend: site.baseurl }}"></script>
@@ -124,6 +126,20 @@
 		</section>
 
 		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
 			document.getElementById("open-nav").addEventListener("click", function () {
 				document.body.classList.toggle("nav-open");
 			});
