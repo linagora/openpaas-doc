@@ -4,6 +4,14 @@ category: OpenPaaS Modules
 order: 2
 ---
 
+## Table of contents
+{:.no_toc}
+
+* Here is the ToC, this line is needed to generate... 
+{:toc}
+
+## Overview
+
 The OpenPaaS modules are the most powerfull way to add features into the OpenPaaS Enterprise Social Network. With modules, you can:
 
 * add pages, or widgets, into the ESN web interface

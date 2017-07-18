@@ -4,6 +4,12 @@ category: OpenPaaS Modules - Calendar
 order: 2
 ---
 
+## Table of contents
+{:.no_toc}
+
+* Here is the ToC, this line is needed to generate... 
+{:toc}
+
 ## Introduction
 
 The OpenPaaS calendar API uses jCal specification as defined in the [jCal RFC](https://tools.ietf.org/html/rfc7265) which defines a JSON format for iCalendar.

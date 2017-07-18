@@ -4,6 +4,14 @@ category: OpenPaaS Modules
 order: 1
 ---
 
+## Table of contents
+{:.no_toc}
+
+* Here is the ToC, this line is needed to generate... 
+{:toc}
+
+## Overview
+
 OpenPaaS modules (also called [AwesomeModules](https://ci.open-paas.org/stash/projects/AM/repos/awesome-module-manager/browse)) come on top of classic NPM modules, to provide an enterprise grade module system. The main improvements over the classic Node NPM system are:
 
 * OpenPaaS modules brings dependencies, either by name, or by ability

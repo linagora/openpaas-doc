@@ -6,6 +6,14 @@ order: 1
 
 ![The calendar module](/images/modules/calendar/calendar.png)
 
+## Table of contents
+{:.no_toc}
+
+* Here is the ToC, this line is needed to generate... 
+{:toc}
+
+## Overview
+
 The calendar module brings powerful and realtime calendar support into the OpenPaaS platform.
 It is composed of several components:
 
