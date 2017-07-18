@@ -34,6 +34,16 @@ Thanks to [kramdown](https://github.com/gettalong/kramdown), which is the defaul
 
 Note that the first line is required, it will not be displayed in the page, but ToC will not be generated if not set. For all the ToC options, have a look [here](https://kramdown.gettalong.org/converter/html.html#toc).
 
+### Testing on github
+
+Even if the running locally should be the same as the website rendered on docs.open-paas.org, you can check that all is OK by deploying the website on your own github pages.
+
+1. Create a openpaas-doc repository on your github account
+2. Add it as remote `git remote add github https://github.com/YOU/openpaas-doc.git`
+3. Create a new branch from where you are working on `git checkout -b test-gh`. Remove the CNAME file and commit this change (`rm CNAME; git commit -am 'Remove CNAME'`)
+4. Push your local branch to your gh-pages branch on github repository `git push github test-gh:gh-pages`
+5. Go to the generated website `https://YOU.github.io/openpaas-doc`
+
 ### Commits
 
 Please send your changes as pull-requests following the OP coding rules.
