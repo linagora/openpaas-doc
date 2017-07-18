@@ -1,8 +1,9 @@
 ---
-title: Authentication
-category: OpenPaaS Integrations
+title: Cookies
+category: Auth
 order: 2
 ---
+
 ### How to authenticate a given user to the OpenPaaS platform?
 
 From his credentials, you'll authenticate a user and then get this user's object containing domains ids to which he belongs to.
