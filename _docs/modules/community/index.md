@@ -1,6 +1,6 @@
 ---
 title: Overview
-category: OpenPaaS Community Module
+category: OpenPaaS Modules - Community
 order: 1
 ---
 

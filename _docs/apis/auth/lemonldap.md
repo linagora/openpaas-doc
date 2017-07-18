@@ -1,6 +1,6 @@
 ---
 title: SSO - LemonLDAP
-category: Auth
+category: APIs - Auth
 order: 4
 ---
 

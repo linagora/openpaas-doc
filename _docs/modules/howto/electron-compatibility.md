@@ -1,7 +1,7 @@
 ---
-title: Make your module compatible with Eletron builds
+title: How to be Electron compatible
 category: OpenPaaS Modules
-order: 4
+order: 10
 ---
 
 OpenPaaS uses [ElectronJS](https://electron.atom.io/) to provide the users a desktop client.

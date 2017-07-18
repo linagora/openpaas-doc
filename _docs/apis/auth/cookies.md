@@ -1,6 +1,6 @@
 ---
 title: Cookies
-category: Auth
+category: APIs - Auth
 order: 2
 ---
 

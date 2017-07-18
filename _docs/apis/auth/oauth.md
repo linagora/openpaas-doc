@@ -1,5 +1,5 @@
 ---
 title: OAuth
-category: Auth
+category: APIs - Auth
 order: 3
 ---

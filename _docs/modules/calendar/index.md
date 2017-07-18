@@ -1,6 +1,6 @@
 ---
 title: Overview
-category: OpenPaaS Calendar Module
+category: OpenPaaS Modules - Calendar
 order: 1
 ---
 
