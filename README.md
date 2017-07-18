@@ -21,6 +21,19 @@ docker run --rm --label=jekyll --volume=$(pwd):/srv/jekyll -it -p 4000:4000 jeky
 
 Open the browser on http://localhost:4000. Once some changes on the sources are detected, Jekyll will rebuild the Web site, you will just have to refresh your browser to get the new page.
 
+### Tips and Tricks
+
+#### Adding a ToC to a page
+
+Thanks to [kramdown](https://github.com/gettalong/kramdown), which is the default markdown converter in latest Jekyll version, one can add a ToC to any page just with the following block
+
+```
+* Here is the ToC, this line is needed to generate... 
+{:toc}
+```
+
+Note that the first line is required, it will not be displayed in the page, but ToC will not be generated if not set. For all the ToC options, have a look [here](https://kramdown.gettalong.org/converter/html.html#toc).
+
 ### Commits
 
 Please send your changes as pull-requests following the OP coding rules.

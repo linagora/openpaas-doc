@@ -4,8 +4,10 @@ category: OpenPaaS Modules
 order: 3
 ---
 
-# TOC
+## Table of contents
+{:.no_toc}
 
+* Here is the ToC, this line is needed to generate... 
 {:toc}
 
 ## Minimal Module
