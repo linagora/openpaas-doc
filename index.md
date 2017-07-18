@@ -5,17 +5,17 @@ This is the developer documentation of [**OpenPaaS**](http://open-paas.org/), yo
 
 <div class="hp-im">
   <div class="integrations">
-    <a href="{{ site.baseurl }}/integrations/integrations-intro/">
+    <a href="{{ site.baseurl }}/apis/web">
       <div class="hp-im-inner">
         <div class="image-container">
           <img src="images/integrations.png">
         </div>
         <div class="title-container sans">
-          Integrations
+          Web API
         </div>
       </div>
       <div>
-        Allow third party applications to interact with OpenPaaS using its REST and real-time API. OpenPaaS also supports OAuth authentication.
+        Check how third-party applications to interact with OpenPaaS using its REST and real-time API.
       </div>
     </a>
   </div>

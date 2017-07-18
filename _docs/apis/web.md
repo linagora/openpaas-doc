@@ -10,7 +10,7 @@ The OpenPaaS Web API allows you to build applications that interact with OpenPaa
 
 ### Authentication
 
-There are several ways to authenticate through OpenPaaS API: [Basic](/apis/authentication/#basic), [Cookies](/apis/authentication/#cookies), [OAuth](/apis/authentication/#oauth).
+There are several ways to authenticate users through OpenPaaS API as described in the [Auth section](/apis/auth/index).
 
 ### Pagination
 

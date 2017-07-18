@@ -1,7 +1,7 @@
 ---
-title: LemonLDAP
+title: SSO - LemonLDAP
 category: Auth
-order: 1
+order: 4
 ---
 
 OpenPaaS supports LemonLDAP authentication, if this is the first time you hear
