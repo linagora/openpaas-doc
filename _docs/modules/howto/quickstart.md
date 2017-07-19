@@ -1,8 +1,16 @@
 ---
-title: Discover OpenPaaS modules
+title: Quickstart
 category: OpenPaaS Modules
-order: 1
+order: 2
 ---
+
+## Table of contents
+{:.no_toc}
+
+* Here is the ToC, this line is needed to generate... 
+{:toc}
+
+## Overview
 
 The OpenPaaS modules are the most powerfull way to add features into the OpenPaaS Enterprise Social Network. With modules, you can:
 
@@ -10,7 +18,7 @@ The OpenPaaS modules are the most powerfull way to add features into the OpenPaa
 * add REST endpoints, that thid party applications will be able to query
 * expose objects and functions to other modules
 
-**Modules quickstart**
+## Let's code
 
 In the _modules_ folder of your OpenPaaS ESN installation, create a new folder **com.example.module**. Inside this folder, create a new file index.js, containing:
 

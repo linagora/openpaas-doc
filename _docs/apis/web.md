@@ -1,8 +1,17 @@
 ---
 title: Web API
 category: APIs
+sub_category: web
 order: 1
 ---
+
+## Table of contents
+{:.no_toc}
+
+* Here is the ToC, this line is needed to generate... 
+{:toc}
+
+## Overview
 
 The OpenPaaS Web API allows you to build applications that interact with OpenPaaS in more complex ways than the integrations we provide out of the box.
 

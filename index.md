@@ -20,7 +20,7 @@ This is the developer documentation of [**OpenPaaS**](http://open-paas.org/), yo
     </a>
   </div>
   <div class="modules">
-    <a href="{{ site.baseurl }}/modules/discover-openpaas-modules/">
+    <a href="{{ site.baseurl }}/modules/howto/index">
       <div class="hp-im-inner">
         <div class="image-container">
           <img src="images/modules.png">

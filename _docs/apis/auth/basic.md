@@ -1,6 +1,6 @@
 ---
 title: Basic Access
-category: Auth
+category: APIs - Auth
 order: 1
 ---
 

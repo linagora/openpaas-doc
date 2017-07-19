@@ -1,6 +1,6 @@
 ---
 title: Overview
-category: Auth
+category: APIs - Auth
 order: 0
 ---
 

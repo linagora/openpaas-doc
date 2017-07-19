@@ -52,7 +52,7 @@
 		{% endif %}
 	</head>
 
-	<body ng-app="openpaas.doc">
+	<body>
 		<header>
 			<h1>
 				<a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/white-logo.png" width="40" height="40" alt="{{ site.title }} logo"></a>
@@ -74,7 +74,7 @@
 				</ul>
 
 				<ul>
-					{% assign grouped = site.docs | group_by: 'category' %}
+					{% assign grouped = site.docs | group_by: 'category' | sort: 'name' %}
 					{% for group in grouped %}
 						<li class="nav-item top-level {% if group.name == page.category %}current{% endif %}">
 							{% assign items = group.items | sort: 'order' %}
