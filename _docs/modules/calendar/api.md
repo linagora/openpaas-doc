@@ -1,13 +1,13 @@
 ---
 title: REST API
 category: OpenPaaS Modules - Calendar
-order: 2
+order: 9
 ---
 
 ## Table of contents
 {:.no_toc}
 
-* Here is the ToC, this line is needed to generate... 
+* Here is the ToC, this line is needed to generate...
 {:toc}
 
 ## Introduction
