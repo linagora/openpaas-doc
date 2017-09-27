@@ -64,6 +64,6 @@ OpenPaaS user will be found using the given `userEmail`.
 ``` json
 {
   "userEmail": "admin@open-paas.org",
-  "emails": ["user1@open-paas.org", "User2 user2@open-paas.org", "John Doe john.doe@open-paas.org", "user3@open-paas.org"]
+  "emails": ["user1@open-paas.org", "User2 <user2@open-paas.org>", "John Doe <john.doe@open-paas.org>", "user3@open-paas.org"]
 }
 ```
