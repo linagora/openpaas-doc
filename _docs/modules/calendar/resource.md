@@ -81,7 +81,7 @@ ATTENDEE;CN="Meeting Room 1";CUTYPE=RESOURCE;PARTSTAT=ACCEPTED;MAILTO:id@openpaa
 
 Where
 
-- ***CN** (Common Name) is generated from the resource name
+- **CN** (Common Name) is generated from the resource name
 - **CUTYPE** (Calendar User Type) is set to `RESOURCE`
 - **PARTSTAT** is automatically set as `ACCEPTED`
 - **MAILTO** is set to a generated email address with the resource._id as email local-part and the domain name the resource belongs to as email domain
