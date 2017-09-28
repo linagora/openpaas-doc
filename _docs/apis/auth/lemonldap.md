@@ -16,16 +16,10 @@ reading HTTP trusted-headers forwarded from LemonLDAP. See more about it
 
 When the user logs in to OpenPaaS, the following steps happen:
 
-1/ The user goes to OpenPaaS and is redirected to login page of LemonLDAP
-
-2/ The user enters credentials to log in and is redirected back to OpenPaaS
-
-3/ OpenPaaS reads the trusted-headers forwarded from LemonLDAP, converts it to
-OpenPaaS user
-
-4/ If the user is found in trusted-headers, OpenPaaS makes the user authenticated.
-It then stores the user object in database on first login or updates the existing
-user in database on next logins
+1. The user goes to OpenPaaS and is redirected to login page of LemonLDAP
+2. The user enters credentials to log in and is redirected back to OpenPaaS
+3. OpenPaaS reads the trusted-headers forwarded from LemonLDAP, converts it to OpenPaaS user
+4. If the user is found in trusted-headers, OpenPaaS makes the user authenticated. It then stores the user object in database on first login or updates the existing user in database on next logins
 
 # Getting started
 
