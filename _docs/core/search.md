@@ -22,27 +22,25 @@ The core `elasticsearch` [module](https://ci.linagora.com/linagora/lgs/openpaas/
 Registering a listener in the search module is as easy as giving a valid object. As an example, let's say that we want to index `messages` coming from a chat module:
 
 {% highlight javascript linenos %}
-const listeners = dependencies('elasticsearch').listeners
+const listeners = dependencies('elasticsearch').listeners;
 
 listeners.addListener({
-  {
-    events: {
-      add: 'message:create',
-      update: 'message:update',
-      remove: 'message:delete'
-    },
-    denormalize: (message) => {
-      // do something with input data (coming from topic defined above)
-      // then return the data to be indexed
-      return {
-        text: message.message,
-        date: message.timestamps.created_at
-      };
-    },
-    getId: (message) => message._id.toString(),
-    type: 'message',
-    index: 'message.idx'
-  }
+  events: {
+    add: 'message:create',
+    update: 'message:update',
+    remove: 'message:delete'
+  },
+  denormalize: (message) => {
+    // do something with input data (coming from topic defined above)
+    // then return the data to be indexed
+    return {
+      text: message.message,
+      date: message.timestamps.created_at
+    };
+  },
+  getId: (message) => message._id.toString(),
+  type: 'message',
+  index: 'message.idx'
 });
 {% endhighlight %}
 
