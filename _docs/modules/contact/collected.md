@@ -24,13 +24,13 @@ Current collector sources are:
 
 ### Collector engine
 
-The engine in charge of listening to collector sources and of creating contacts is provided by the [linagora.esn.contact.collect](https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.contact.collect) module. It can be installed as any other module as described in [the module installation guide](/modules/howto/install/).
+The engine in charge of listening to collector sources and of creating contacts is provided by the [linagora.esn.contact.collect](https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.contact.collect) module. It is installed by default in the OpenPaaS distribution.
 
 **Repository:** [https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.contact.collect.git](https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.contact.collect.git)
 
 ### Calendar collector source
 
-The source in charge of listening to calendar events create/update and publishing into the collector engine is provided by the [linagora.esn.calendar.collect.email](https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.calendar.collect.email). It can be installed as any other module as described in [the module installation guide](/modules/howto/install/).
+The source in charge of listening to calendar events create/update and publishing into the collector engine is provided by the [linagora.esn.calendar.collect.email](https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.calendar.collect.email). It is installed by default in the OpenPaaS distribution.
 
 **Repository:** [https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.calendar.collect.email.git](https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.calendar.collect.email.git)
 
