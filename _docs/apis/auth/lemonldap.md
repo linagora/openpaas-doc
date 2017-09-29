@@ -4,36 +4,33 @@ category: APIs - Auth
 order: 4
 ---
 
-OpenPaaS supports LemonLDAP authentication, if this is the first time you hear
-about LemonLDAP, check their [website](https://lemonldap-ng.org)
-to explore that awesome software.
+## Table of contents
+{:.no_toc}
 
-# How it works
+* Here is the ToC, this line is needed to generate...
+{:toc}
 
-LemonLDAP protects OpenPaaS behind a proxy, OpenPaaS then authenticates users by
-reading HTTP trusted-headers forwarded from LemonLDAP. See more about it
-[here](https://lemonldap-ng.org/documentation/presentation).
+## Overview
+
+OpenPaaS supports LemonLDAP authentication.
+If this is the first time you hear about LemonLDAP, check their [website](https://lemonldap-ng.org) to explore that awesome software.
+
+LemonLDAP protects OpenPaaS behind a proxy. OpenPaaS then authenticates users by reading HTTP trusted-headers forwarded from LemonLDAP. See more about it [here](https://lemonldap-ng.org/documentation/presentation).
 
 When the user logs in to OpenPaaS, the following steps happen:
 
-1/ The user goes to OpenPaaS and is redirected to login page of LemonLDAP
+1. The user goes to OpenPaaS and is redirected to login page of LemonLDAP
+2. The user enters credentials to log in and is redirected back to OpenPaaS
+3. OpenPaaS reads the trusted-headers forwarded from LemonLDAP, converts it to OpenPaaS user
+4. If the user is found in trusted-headers, OpenPaaS makes the user authenticated. It then stores the user object in database on first login or updates the existing user in database on next logins
 
-2/ The user enters credentials to log in and is redirected back to OpenPaaS
+## Getting started
 
-3/ OpenPaaS reads the trusted-headers forwarded from LemonLDAP, converts it to
-OpenPaaS user
-
-4/ If the user is found in trusted-headers, OpenPaaS makes the user authenticated.
-It then stores the user object in database on first login or updates the existing
-user in database on next logins
-
-# Getting started
-
-## Install LemonLDAP::NG software
+### Install LemonLDAP::NG software
 
 First, you need to install LemonLDAP::NG software. Have a look [here](https://lemonldap-ng.org/documentation).
 
-## Install LemonLDAP awesome module
+### Install LemonLDAP awesome module
 
 Clone the repository:
 
@@ -62,7 +59,7 @@ local configuration:
 Once enabled, this module will be loaded with OpenPaaS and ready to work.
 The next step is to configure LemonLDAP virtualhost to protect OpenPaaS.
 
-## Configure LemonLDAP
+### Configure LemonLDAP
 
 To configure LemonLDAP, you must login to LemonLDAP manager page.
 
@@ -91,7 +88,7 @@ Rules: accept
 In the same page, change the `Default rule` to `unprotect` to allow other resources
 of OpenPaaS to be accessible normaly from outside.
 
-## User provision
+### User provision
 
 This module provisions users automatically on their first login. It converts the
 authenticated user information in trusted-headers to OpenPaaS user and creates
@@ -126,13 +123,13 @@ configuration:
 }]
 ```
 
-# Logout
+## Logout
 
 When the user logs out from OpenPaaS, he should be logged out from LemonLDAP and
 vice versa, when the user logs out from LemonLDAP, he should be logged out from
 OpenPaaS.
 
-## Logout from OpenPaaS then LemonLDAP
+### Logout from OpenPaaS then LemonLDAP
 
 To achieve this behaviour, OpenPaaS redirects the user to a logout endpoint of LemonLDAP
 after his logout from OpenPaaS, hence the user is fully logged out from both services.
@@ -158,7 +155,7 @@ You can configure the logout endpoint in platform-wide configuration, it looks l
 That logout endpoint is something like `http://auth.yoursite.com/?logout=1` depending
 on your LemonLDAP setup.
 
-## Logout from LemonLDAP then OpenPaaS
+### Logout from LemonLDAP then OpenPaaS
 
 Once the user logs out from LemonLDAP, it then forwards the logout to other applications
 to close their sessions. LemonLDAP has a logout forward mechanism, that will add
