@@ -63,4 +63,4 @@ If you are a platform administrator, you will see the configuration pages at pla
 - **James**: Configure James server URL.
 - **JWT**: Define the algorithm, public-key and private-key that will be used to encode/decode JSON web tokens in the ESN instances.
 - **Social connections**: Configure social connections (Google, Facebook, Github and Twitter).
-- **Domain**: Manage the domains.
+- **[Domain](/modules/admin/domains/)**: Manage the domains.
