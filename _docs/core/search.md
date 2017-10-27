@@ -1,7 +1,7 @@
 ---
 title: Search
 category: OpenPaaS Core
-order: 2
+order: 3
 ---
 
 ## Table of contents
