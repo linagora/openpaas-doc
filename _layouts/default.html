@@ -8,11 +8,11 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/swagger-ui.min.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/viewer.min.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/overrides.css">
-
 		<link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/images/favicon-16x16.png">
@@ -114,11 +114,15 @@
 
 			</nav>
 		</header>
-
 		<section class="main">
 			<div class="page-header">
 				<h2>{% if page.category %}{{ page.category }}{% else %}{{ site.title }}{% endif %}</h2>
-				<h3>{{ page.title }}</h3>
+				<div class="page-title">
+					<h3>{{ page.title }}</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs{% assign size = page.url | size | minus: 1 %}{{ page.url | slice: 0, size}}.md" title="Edit this doc on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
 			</div>
 			<article class="content">
 				{{ content }}
