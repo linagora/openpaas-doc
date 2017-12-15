@@ -119,7 +119,7 @@
 				<h2>{% if page.category %}{{ page.category }}{% else %}{{ site.title }}{% endif %}</h2>
 				<div class="page-title">
 					<h3>{{ page.title }}</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs{% assign size = page.url | size | minus: 1 %}{{ page.url | slice: 0, size}}.md" title="Edit this doc on Github">
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/{{ page.path }}" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
