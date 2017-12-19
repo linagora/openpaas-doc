@@ -16,7 +16,7 @@ The OpenPaaS calendar API uses jCal specification as defined in the [jCal RFC](h
 
 ### Prerequisites
 
-- The following samples assumes that you followed the steps to get the cookies used to authenticate user as defined in [Authentication documentation](./integrations-authentication.html)
+- The following samples assumes that you followed the steps to get the cookies used to authenticate user as defined in Authentication documentation
 - In several places in the following REST API samples, parameters will be defined by using `{mustache}`. Developers will have to replace values by valid ones
 - Standard errors are not listed which does not means that they will not occur (HTTP 4XX and 5XX ones)
 

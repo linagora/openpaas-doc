@@ -8,7 +8,7 @@ This is the developer documentation of [**OpenPaaS**](http://open-paas.org/), yo
     <a href="{{ site.baseurl }}/apis/web">
       <div class="hp-im-inner">
         <div class="image-container">
-          <img src="images/integrations.png">
+          <img src="images/integrations.png" alt="integrations">
         </div>
         <div class="title-container sans">
           Web API
@@ -23,7 +23,7 @@ This is the developer documentation of [**OpenPaaS**](http://open-paas.org/), yo
     <a href="{{ site.baseurl }}/modules/howto/index">
       <div class="hp-im-inner">
         <div class="image-container">
-          <img src="images/modules.png">
+          <img src="images/modules.png" alt="modules">
         </div>
         <div class="title-container sans">
           Modules
