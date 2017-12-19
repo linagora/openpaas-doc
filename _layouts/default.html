@@ -78,7 +78,7 @@
 					{% for group in grouped %}
 						<li class="nav-item top-level {% if group.name == page.category %}current{% endif %}">
 							{% assign items = group.items | sort: 'order' %}
-							<a href="{{ site.baseurl }}{{ items.first.url }}">{{ group.name }}</a>
+							<a href="{{ site.baseurl }}{{ items.first.url }}">{{ group.name | replace_regex: '^[0-9]+\. ', '' }}</a>
 							<ul>
 								{% for item in items %}
 									<li class="nav-item {% if item.url == page.url %}current{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
@@ -116,7 +116,7 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>{% if page.category %}{{ page.category }}{% else %}{{ site.title }}{% endif %}</h2>
+				<h2>{% if page.category %}{{ page.category | replace_regex: '^[0-9]+\. ', '' }}{% else %}{{ site.title }}{% endif %}</h2>
 				<div class="page-title">
 					<h3>{{ page.title }}</h3>
 					<a href="https://github.com/linagora/openpaas-doc/edit/master/{{ page.path }}" title="Edit this page on Github">
