@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title>OpenPaaS developer documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/kibana/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item current"><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>OpenPaaS Core</h2>
+				<div class="page-title">
+					<h3>I18n</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/core/i18n.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#where-are-the-locale-files" id="markdown-toc-where-are-the-locale-files">Where are the locale files?</a></li>
+  <li><a href="#backend-translation" id="markdown-toc-backend-translation">Backend translation</a>    <ul>
+      <li><a href="#translate-static-string-in-pug-files" id="markdown-toc-translate-static-string-in-pug-files">Translate static string in .pug files</a></li>
+      <li><a href="#translate-string-in-nodejs-files" id="markdown-toc-translate-string-in-nodejs-files">Translate string in Node.js files</a></li>
+    </ul>
+  </li>
+  <li><a href="#frontend-translation" id="markdown-toc-frontend-translation">Frontend translation</a>    <ul>
+      <li><a href="#translate-angular-variable-in-pug-files" id="markdown-toc-translate-angular-variable-in-pug-files">Translate Angular variable in .pug files</a></li>
+      <li><a href="#translate-string-in-javascript-files" id="markdown-toc-translate-string-in-javascript-files">Translate string in Javascript files</a></li>
+    </ul>
+  </li>
+  <li><a href="#translation-validator" id="markdown-toc-translation-validator">Translation validator</a></li>
+</ul>
+
+<p>Internationalization (i18n) is the process of developing products in such a way
+that they can be localized for languages and cultures easily. OpenPaaS supports
+i18n completely in both backend and frontend sides:</p>
+<ul>
+  <li>In backend, we use <a href="https://github.com/linagora/i18n-node">i18n-node</a></li>
+  <li>In frontend, we use <a href="https://angular-translate.github.io/">angular-translate</a></li>
+</ul>
+
+<h2 id="where-are-the-locale-files">Where are the locale files?</h2>
+
+<p>Locale files of the core module can be found in <code class="highlighter-rouge">backend/i18n/locales</code> directory.
+Each module can have its own locale files, usually placed in <code class="highlighter-rouge">backend/lib/i18n/locales</code>
+directory as in <a href="https://github.com/linagora/linagora.esn.calendar/tree/master/backend/lib/i18n/locales">Calendar</a>
+module for example.</p>
+
+<p>Currently, supported languages are English, French and Vietnamese.</p>
+
+<h2 id="backend-translation">Backend translation</h2>
+
+<p>When to use:</p>
+<ul>
+  <li>Translate <em>static</em> string in .pug files</li>
+  <li>Translate string in Node.js files, for example: translate an email before sending
+it to recipients.</li>
+</ul>
+
+<h3 id="translate-static-string-in-pug-files">Translate static string in .pug files</h3>
+
+<p>It is pretty easy to translate phrases in .pug files:</p>
+
+<pre><code class="language-pug">h2 #{__('Good morning!')}
+</code></pre>
+
+<p>Simple string interpolation:</p>
+
+<pre><code class="language-pug">h2 #{__('Hello %s, good morning!', 'John')}
+</code></pre>
+
+<p>Angular expression string interpolation:</p>
+
+<pre><code class="language-pug">
+h2 #{__('Hello %s, good morning!', '{{user.name}}')}
+
+</code></pre>
+
+<p>HTML string interpolation:</p>
+
+<pre><code class="language-pug">p.empty-text !{__('No application, click %s to add a new one', '&lt;span class="mdi mdi-plus"&gt;&lt;/span&gt;')}
+</code></pre>
+
+<h3 id="translate-string-in-nodejs-files">Translate string in Node.js files</h3>
+
+<p>Simply require the module in <code class="highlighter-rouge">backend/core/i18n</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">i18n</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'...'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">subject</span> <span class="o">=</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">__</span><span class="p">(</span><span class="s1">'Your password has been changed!'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Check the documentation of <a href="https://github.com/linagora/i18n-node">i18n-node</a> for more examples.</p>
+
+<h2 id="frontend-translation">Frontend translation</h2>
+
+<p>When to use:</p>
+<ul>
+  <li>Translate Angular variable in .pug files</li>
+  <li>Translate string in Javascript files</li>
+</ul>
+
+<p>You can either use <code class="highlighter-rouge">esnI18n</code> filter or <code class="highlighter-rouge">esnI18nService</code> of <code class="highlighter-rouge">esn.i18n</code> module to
+translate your phrases.</p>
+
+<h3 id="translate-angular-variable-in-pug-files">Translate Angular variable in .pug files</h3>
+
+<pre><code class="language-pug">
+span {{mailbox.name | esnI18n}}
+
+</code></pre>
+
+<h3 id="translate-string-in-javascript-files">Translate string in Javascript files</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// inject the esnI18nService service</span>
+<span class="kd">var</span> <span class="nx">subject</span> <span class="o">=</span> <span class="nx">esnI18nService</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="s1">'Email sent to %s'</span><span class="p">,</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">recipient</span><span class="p">.</span><span class="nx">email</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">esnI18nService.translate</code> function returns an instance of <code class="highlighter-rouge">EsnI18nString</code>, which
+will be useful when you want to know whether the string is translated or not:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">notify</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">message</span> <span class="o">=</span> <span class="nx">esnI18nService</span><span class="p">.</span><span class="nx">isI18nString</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">?</span> <span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="p">:</span> <span class="nx">esnI18nService</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="nx">message</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// Usage</span>
+<span class="nx">notify</span><span class="p">(</span><span class="s1">'Hello world!'</span><span class="p">);</span>
+<span class="c1">// OR</span>
+<span class="nx">notify</span><span class="p">(</span><span class="nx">esnI18nService</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="s1">'Hello %s!'</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h2 id="translation-validator">Translation validator</h2>
+
+<p>OpenPaaS uses a built-in validator based on <a href="https://github.com/linagora/i18n-checker">i18n-checker</a> package
+to ensure the quality of internationalization in product.</p>
+
+<p>To use the validator, simply run: <code class="highlighter-rouge">grunt i18n</code></p>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

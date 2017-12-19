@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title>OpenPaaS developer documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/kibana/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item current"><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>OpenPaaS Modules - Calendar</h2>
+				<div class="page-title">
+					<h3>Calendar Resources</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/calendar/resource.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a>    <ul>
+      <li><a href="#requirements" id="markdown-toc-requirements">Requirements</a></li>
+    </ul>
+  </li>
+  <li><a href="#creating-a-calendar-resource" id="markdown-toc-creating-a-calendar-resource">Creating a calendar resource</a></li>
+  <li><a href="#booking-a-resource-from-an-event" id="markdown-toc-booking-a-resource-from-an-event">Booking a resource from an event</a></li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>OpenPaaS users can book physical resources from the Calendar module: Meeting room, car, projector or any other resource people might schedule a time to use.
+This chapter describes the steps used to implement resource support in the calendar module.</p>
+
+<p><strong>Note:</strong> Resource is a general concept provided and managed in the <a href="https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.resource">linagora.esn.resource module</a>.</p>
+
+<h3 id="requirements">Requirements</h3>
+
+<ul>
+  <li>A resource can be booked by adding it as attendee in an event</li>
+  <li>Adding a resource as attendee to an event follows the same process as adding an user as attendee to an event</li>
+  <li>There is are managers to accept or decline the event in the resource calendar: The event is automatically accepted ie the resource is booked</li>
+  <li>Calendar resources have their own calendar in the CalDAV server. When a resource is booked, an event is added to the resource calendar.</li>
+</ul>
+
+<h2 id="creating-a-calendar-resource">Creating a calendar resource</h2>
+
+<p>Until a page is provided to create resources, they can be created from the resource REST API:</p>
+
+<p><strong>Request</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /linagora.esn.resource/api/resources
+
+{
+  name: 'Meeting Room 1'
+  description: 'The big meeting room at the first floor',
+  type: 'calendar'
+}
+</code></pre></div></div>
+
+<p><strong>Response</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP 201 - Created
+
+{
+    "__v": 0,
+    "_id": "59cba12b35cb3e03c3148dac",
+    "name": "Meeting Room 1",
+    "description": "The big meeting room at the first floor",
+    "type": "calendar",
+    "creator": "599da2a9b7cd7d161eaad48d",
+    "domain": "599da2a5b7cd7d161eaad487",
+    "timestamps": {
+        "creation": "2017-09-27T13:01:31.732Z"
+    }
+}
+</code></pre></div></div>
+
+<p>Where:</p>
+
+<ul>
+  <li><strong>_id</strong> is the resource id</li>
+  <li><strong>creator</strong> is the id of the user who created the resource</li>
+  <li><strong>domain</strong> is the domain the resource belongs to. By default, it is set to the domain the user was connected when he created the resource</li>
+</ul>
+
+<p>The calendar module will then create the related resource calendar like this:</p>
+
+<ol>
+  <li>Once a resource is created, it is published on the <code class="highlighter-rouge">resource:created</code> local topic.</li>
+  <li>The calendar module listens to the <code class="highlighter-rouge">resource:created</code> topic. If the resource received has a valid type value (<code class="highlighter-rouge">calendar</code>), it creates a new calendar for the resource by calling the CalDAV server</li>
+  <li>Calendar is available in the CalDAV server under the <code class="highlighter-rouge">/resources/${_id}/calendars/events.json</code> path.</li>
+</ol>
+
+<h2 id="booking-a-resource-from-an-event">Booking a resource from an event</h2>
+
+<p>For now, in oder to book a resource, it has to be added as attendee to an event as other users. From the UI point of view, this is exactly the same as adding any other user to the event: Searching for the resource in the attendee search field and add it by clicking on the suggestion.</p>
+
+<p>On the ICS point of view, a resource is translated as an attendee with specific values:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ATTENDEE;CN="Meeting Room 1";CUTYPE=RESOURCE;PARTSTAT=ACCEPTED;MAILTO:id@openpaas-domain.org
+</code></pre></div></div>
+
+<p>Where</p>
+
+<ul>
+  <li><strong>CN</strong> (Common Name) is generated from the resource name</li>
+  <li><strong>CUTYPE</strong> (Calendar User Type) is set to <code class="highlighter-rouge">RESOURCE</code></li>
+  <li><strong>PARTSTAT</strong> is automatically set as <code class="highlighter-rouge">ACCEPTED</code></li>
+  <li><strong>MAILTO</strong> is set to a generated email address with the resource._id as email local-part and the domain name the resource belongs to as email domain</li>
+</ul>
+
+<p>When the CalDAV backend will receive the event ICS, it will extract attendees, and for the ones with <code class="highlighter-rouge">CUTYPE=RESOURCE</code>, it will retrieve the resource calendar from the <code class="highlighter-rouge">mailto</code>local-part, then create the event.</p>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

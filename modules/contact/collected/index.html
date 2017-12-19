@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title>OpenPaaS developer documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/kibana/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item current"><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>OpenPaaS Modules - Contact</h2>
+				<div class="page-title">
+					<h3>Collected contacts</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/contact/collected.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#install" id="markdown-toc-install">Install</a>    <ul>
+      <li><a href="#collector-engine" id="markdown-toc-collector-engine">Collector engine</a></li>
+      <li><a href="#calendar-collector-source" id="markdown-toc-calendar-collector-source">Calendar collector source</a></li>
+    </ul>
+  </li>
+  <li><a href="#api" id="markdown-toc-api">API</a>    <ul>
+      <li><a href="#messages" id="markdown-toc-messages">Messages</a>        <ul>
+          <li><a href="#message-with-userid" id="markdown-toc-message-with-userid">Message with userId</a></li>
+          <li><a href="#message-with-useremail" id="markdown-toc-message-with-useremail">Message with userEmail</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>OpenPaaS provides a contact collector feature which goal is to automatically create contacts from several sources without any user interaction.
+These collected contacts are then available in a specific user addressbook called <code class="highlighter-rouge">collected</code> and available in the contact module as other contacts.</p>
+
+<p>Current collector sources are:</p>
+
+<ul>
+  <li><a href="/modules/calendar/index/">Calendar module</a>: When an event is created in a calendar, the event attendees are collected.</li>
+  <li>James Mail Server (Under development): When an email is sent, recipients are collected.</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<h3 id="collector-engine">Collector engine</h3>
+
+<p>The engine in charge of listening to collector sources and of creating contacts is provided by the <a href="https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.contact.collect">linagora.esn.contact.collect</a> module. It is installed by default in the OpenPaaS distribution.</p>
+
+<p><strong>Repository:</strong> <a href="https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.contact.collect.git">https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.contact.collect.git</a></p>
+
+<h3 id="calendar-collector-source">Calendar collector source</h3>
+
+<p>The source in charge of listening to calendar events create/update and publishing into the collector engine is provided by the <a href="https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.calendar.collect.email">linagora.esn.calendar.collect.email</a>. It is installed by default in the OpenPaaS distribution.</p>
+
+<p><strong>Repository:</strong> <a href="https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.calendar.collect.email.git">https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.calendar.collect.email.git</a></p>
+
+<h2 id="api">API</h2>
+
+<p>The contact collector module listens to events on the <code class="highlighter-rouge">collector:email</code> exchanges on the OpenPaaS AMQP provider (RabbitMQ). Once a message is received, it is processed to add new emails as contacts in a specific CardDAV addressbook (<code class="highlighter-rouge">collected</code> address book) of the current user.</p>
+
+<h3 id="messages">Messages</h3>
+
+<p>Message content to be published on <code class="highlighter-rouge">collector:email</code> AMQP exchange must follow the following rules:</p>
+
+<ul>
+  <li>Message payload is a JSON as String.</li>
+  <li>Message must contain the userId or the userEmail which will be used to identify the OpenPaaS user to collect contacts for.</li>
+  <li>Message must contain an array of emails.</li>
+</ul>
+
+<h4 id="message-with-userid">Message with userId</h4>
+
+<p>OpenPaaS user will be found using the given <code class="highlighter-rouge">userId</code>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fca675a91c8d01a36ac26b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user1@open-paas.org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"User2 &lt;user2@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"John Doe &lt;john.doe@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user3@open-paas.org"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="message-with-useremail">Message with userEmail</h4>
+
+<p>OpenPaaS user will be found using the given <code class="highlighter-rouge">userEmail</code>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"userEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@open-paas.org"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user1@open-paas.org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"User2 &lt;user2@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"John Doe &lt;john.doe@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user3@open-paas.org"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

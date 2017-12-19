@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title>OpenPaaS developer documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/kibana/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item current"><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>OpenPaaS Modules</h2>
+				<div class="page-title">
+					<h3>Install</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/howto/install.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#manual-installation" id="markdown-toc-manual-installation">Manual installation</a>    <ul>
+      <li><a href="#from-source" id="markdown-toc-from-source">From source</a></li>
+      <li><a href="#from-npm-registry" id="markdown-toc-from-npm-registry">From npm registry</a></li>
+      <li><a href="#configure" id="markdown-toc-configure">Configure</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>As described in the previous sections, OpenPaaS modules can be developed independently from the OpenPaaS platform. Once done, they have to be installed in the platform. While waiting for a runtime deployment, you will have to do some manual operations to add modules in the platform as listed below.</p>
+
+<p><strong>Note: We assume that you already have a valid Node.JS version and NPM installed on your host</strong></p>
+
+<h2 id="manual-installation">Manual installation</h2>
+
+<p>Modules can not be hot deployed in the OpenPaaS platform. Once installed following the instructions below, you will have to restart the platform (or start it if it was not started…).</p>
+
+<h3 id="from-source">From source</h3>
+
+<ol>
+  <li>Get the sources from your SCM client, or download them from the repository manager and put them in the <code class="highlighter-rouge">modules</code> directory in the OpenPaaS one. For example, if your module is <code class="highlighter-rouge">my.awesome.module</code>, it should go in <code class="highlighter-rouge">modules/my.awesome.module</code> (note that if you put the module source somewhere else, you can use symbolic links).</li>
+  <li>In the module folder (<code class="highlighter-rouge">modules/my.awesome.module/</code>), install the dependencies. A simple <code class="highlighter-rouge">npm install</code> should be enough. If not, check the module <code class="highlighter-rouge">README.md</code> to be sure.</li>
+</ol>
+
+<h3 id="from-npm-registry">From npm registry</h3>
+
+<p>If the module you want to use is available in the NPM registry, you can follow the following instructions.</p>
+
+<ol>
+  <li>Change working directory to the OpenPaaS one</li>
+  <li>Install the module from npm <code class="highlighter-rouge">npm install my.awesome.module</code></li>
+</ol>
+
+<h3 id="configure">Configure</h3>
+
+<p>In all the cases, a manual installation is not enough. You have to configure OpenPaaS to take the module into account by enabling it. This is achieved by modifying the <code class="highlighter-rouge">config/default.json</code> by adding the module in the <code class="highlighter-rouge">modules</code> array:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"linagora.esn.account"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"linagora.esn.appstore"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"linagora.esn.calendar"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"linagora.esn.contact"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"my.awesome.module"</span><span class="w">
+ </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title>OpenPaaS developer documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item current"><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/kibana/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>APIs - Auth</h2>
+				<div class="page-title">
+					<h3>SSO - LemonLDAP</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/apis/auth/lemonldap.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#getting-started" id="markdown-toc-getting-started">Getting started</a>    <ul>
+      <li><a href="#install-lemonldapng-software" id="markdown-toc-install-lemonldapng-software">Install LemonLDAP::NG software</a></li>
+      <li><a href="#install-lemonldap-awesome-module" id="markdown-toc-install-lemonldap-awesome-module">Install LemonLDAP awesome module</a></li>
+      <li><a href="#configure-lemonldap" id="markdown-toc-configure-lemonldap">Configure LemonLDAP</a></li>
+      <li><a href="#user-provision" id="markdown-toc-user-provision">User provision</a></li>
+    </ul>
+  </li>
+  <li><a href="#logout" id="markdown-toc-logout">Logout</a>    <ul>
+      <li><a href="#logout-from-openpaas-then-lemonldap" id="markdown-toc-logout-from-openpaas-then-lemonldap">Logout from OpenPaaS then LemonLDAP</a></li>
+      <li><a href="#logout-from-lemonldap-then-openpaas" id="markdown-toc-logout-from-lemonldap-then-openpaas">Logout from LemonLDAP then OpenPaaS</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>OpenPaaS supports LemonLDAP authentication.
+If this is the first time you hear about LemonLDAP, check their <a href="https://lemonldap-ng.org">website</a> to explore that awesome software.</p>
+
+<p>LemonLDAP protects OpenPaaS behind a proxy. OpenPaaS then authenticates users by reading HTTP trusted-headers forwarded from LemonLDAP. See more about it <a href="https://lemonldap-ng.org/documentation/presentation">here</a>.</p>
+
+<p>When the user logs in to OpenPaaS, the following steps happen:</p>
+
+<ol>
+  <li>The user goes to OpenPaaS and is redirected to login page of LemonLDAP</li>
+  <li>The user enters credentials to log in and is redirected back to OpenPaaS</li>
+  <li>OpenPaaS reads the trusted-headers forwarded from LemonLDAP, converts it to OpenPaaS user</li>
+  <li>If the user is found in trusted-headers, OpenPaaS makes the user authenticated. It then stores the user object in database on first login or updates the existing user in database on next logins</li>
+</ol>
+
+<h2 id="getting-started">Getting started</h2>
+
+<h3 id="install-lemonldapng-software">Install LemonLDAP::NG software</h3>
+
+<p>First, you need to install LemonLDAP::NG software. Have a look <a href="https://lemonldap-ng.org/documentation">here</a>.</p>
+
+<h3 id="install-lemonldap-awesome-module">Install LemonLDAP awesome module</h3>
+
+<p>Clone the repository:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.lemonldap.git
+</code></pre></div></div>
+
+<p>Go into the module directory and install module dependencies</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">--production</span>
+</code></pre></div></div>
+
+<p>Next, you need to enable LemonLDAP awesome module for OpenPaaS. To do it, create a symbol
+link of this module in <code class="highlighter-rouge">modules</code> directory of OpenPaaS ESN then enable it in
+local configuration:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"linagora.esn.account"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+  </span><span class="s2">"linagora.esn.lemonldap"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">add</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">line</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Once enabled, this module will be loaded with OpenPaaS and ready to work.
+The next step is to configure LemonLDAP virtualhost to protect OpenPaaS.</p>
+
+<h3 id="configure-lemonldap">Configure LemonLDAP</h3>
+
+<p>To configure LemonLDAP, you must login to LemonLDAP manager page.</p>
+
+<p><strong>Add virtual host</strong></p>
+
+<p>LemonLDAP::NG configuration is built around Apache or Nginx virtual hosts. Each virtual
+host is a protected resource, with access rules, headers, POST data and options.</p>
+
+<ul>
+  <li>
+    <p>Have a look <a href="https://lemonldap-ng.org/documentation/latest/configvhost">here</a> to create
+virtual host in Apache/Nginx</p>
+  </li>
+  <li>
+    <p>In LemonLDAP <em>Manager</em> page, go to <code class="highlighter-rouge">Virtual Hosts</code>, click on <strong>Add virtualhost</strong>, then
+fill your <em>Virtual host hostname</em>.</p>
+  </li>
+</ul>
+
+<p><strong>Access Rule</strong></p>
+
+<p>In LemonLDAP <em>Manager</em> page, go to <code class="highlighter-rouge">Virtual Hosts » &lt;your virtualhost&gt; » Access Rule</code>,
+click on <strong>New rule</strong>, then fill:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Commments: Protect home page
+Regular expressions: ^/$
+Rules: accept
+</code></pre></div></div>
+
+<p>In the same page, change the <code class="highlighter-rouge">Default rule</code> to <code class="highlighter-rouge">unprotect</code> to allow other resources
+of OpenPaaS to be accessible normaly from outside.</p>
+
+<h3 id="user-provision">User provision</h3>
+
+<p>This module provisions users automatically on their first login. It converts the
+authenticated user information in trusted-headers to OpenPaaS user and creates
+a user instance on the storage layer (MongoDB).</p>
+
+<p>The converter needs a <em>mapping</em> to know which field in headers is corresponding
+to the user attribute in OpenPaaS. You can configure this <em>mapping</em> in global
+configuration.</p>
+
+<p>The configuration is applied for the whole application so it must be platform-wide
+configuration:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"domain_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linagora.esn.lemonldap"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mapping"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"ll-auth-user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-user"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">required</span><span class="p">,</span><span class="w"> </span><span class="err">mapping</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">unique</span><span class="w"> </span><span class="err">username</span><span class="w"> </span><span class="err">(usually</span><span class="w"> </span><span class="err">email)</span><span class="w">
+      </span><span class="s2">"ll-auth-domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-domain"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">required</span><span class="p">,</span><span class="w"> </span><span class="err">mapping</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="err">domain</span><span class="w">
+      </span><span class="s2">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"main_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-phone"</span><span class="p">,</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="logout">Logout</h2>
+
+<p>When the user logs out from OpenPaaS, he should be logged out from LemonLDAP and
+vice versa, when the user logs out from LemonLDAP, he should be logged out from
+OpenPaaS.</p>
+
+<h3 id="logout-from-openpaas-then-lemonldap">Logout from OpenPaaS then LemonLDAP</h3>
+
+<p>To achieve this behaviour, OpenPaaS redirects the user to a logout endpoint of LemonLDAP
+after his logout from OpenPaaS, hence the user is fully logged out from both services.</p>
+
+<p>You can configure the logout endpoint in platform-wide configuration, it looks like:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"domain_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linagora.esn.lemonldap"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logoutUrl"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://auth.yoursite.com/?logout=1"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>That logout endpoint is something like <code class="highlighter-rouge">http://auth.yoursite.com/?logout=1</code> depending
+on your LemonLDAP setup.</p>
+
+<h3 id="logout-from-lemonldap-then-openpaas">Logout from LemonLDAP then OpenPaaS</h3>
+
+<p>Once the user logs out from LemonLDAP, it then forwards the logout to other applications
+to close their sessions. LemonLDAP has a logout forward mechanism, that will add
+a step in logout process, to send logout requests (indeed, GET requests
+on application logout URL) inside hidden iframes.</p>
+
+<p>In LemonLDAP <em>Manager</em> page, go to <code class="highlighter-rouge">General parameters » Advanced parameters » Logout forward</code> and
+click on <strong>Add a key</strong>, then fill:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Key: application name, e.g. OpenPaaS
+Value: OpenPaaS logout URL, e.g. http://openpaas.yoursite.com/logout
+</code></pre></div></div>
+
+<p>Note that the request on logout URL will be sent after user is disconnected,
+so you should <code class="highlighter-rouge">unprotect</code> this URL if it is protected by a LemonLDAP Handler.
+Forturnately, this is done above by setting the <code class="highlighter-rouge">Default rule</code> to <code class="highlighter-rouge">unprotect</code>.</p>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

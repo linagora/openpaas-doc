@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title>OpenPaaS developer documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/kibana/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item current"><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>OpenPaaS Modules</h2>
+				<div class="page-title">
+					<h3>Deep dive</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/howto/deep-dive.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#minimal-module" id="markdown-toc-minimal-module">Minimal Module</a></li>
+  <li><a href="#add-backend-api" id="markdown-toc-add-backend-api">Add backend API</a></li>
+  <li><a href="#expose-a-library" id="markdown-toc-expose-a-library">Expose a library</a></li>
+  <li><a href="#expose-angular-module" id="markdown-toc-expose-angular-module">Expose Angular module</a></li>
+  <li><a href="#add-css-rules" id="markdown-toc-add-css-rules">Add CSS Rules</a></li>
+</ul>
+
+<h2 id="minimal-module">Minimal Module</h2>
+
+<p>The most simple OpenPaaS module got a name, and returns an instance of the AwesomeModule object.</p>
+
+<p>The module name is free, although, by convention, we use the dot separator, going to generic to specific. For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linagora.esn.unifiedinbox.twitter
+</code></pre></div></div>
+
+<p>The <strong>linagora.esn</strong> prefix is used by the core team, so please don’t use it, or ask us ! (we’re gentlemen, don’t worry).</p>
+
+<p>The module files should be in a folder that have the exact name of the module. That is how the module loader finds the modules.</p>
+
+<p>Example of a minimal OpenPaaS module :</p>
+
+<p><em>com.example.module/index.js</em>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">AwesomeModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'awesome-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModule</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeModule</span><span class="p">(</span><span class="s1">'com.example.module'</span><span class="p">,</span> <span class="p">{});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Needless to say that this module does absolutely nothing.</p>
+
+<h2 id="add-backend-api">Add backend API</h2>
+
+<p>One thing you’ll certainly have to do when developing on the OpenPaaS platform, is to add some backend endpoint. To achieve that, we use the <a href="https://expressjs.com/">Express</a> framework, and more precisely the <a href="http://expressjs.com/en/4x/api.html#router">Router</a>. You then use the WebServer Wrapper module to add your routes into the platform web server.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">AwesomeModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'awesome-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">Dependency</span> <span class="o">=</span> <span class="nx">AwesomeModule</span><span class="p">.</span><span class="nx">AwesomeModuleDependency</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModuleRouter</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./backend/router'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModule</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeModule</span><span class="p">(</span><span class="s1">'com.example.module'</span><span class="p">,</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">dependencies</span><span class="p">:</span> <span class="p">[</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">new</span> <span class="nx">Dependency</span><span class="p">(</span><span class="nx">Dependency</span><span class="p">.</span><span class="nx">TYPE_NAME</span><span class="p">,</span> <span class="s1">'linagora.esn.core.webserver.wrapper'</span><span class="p">,</span> <span class="s1">'webserver-wrapper'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">],</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">states</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">deploy</span><span class="p">:</span> <span class="nx">deploy</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">function</span> <span class="nx">deploy</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">webserver</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'webserver-wrapper'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />  <span class="nx">webserver</span><span class="p">.</span><span class="nx">addApp</span><span class="p">(</span><span class="s1">'example'</span><span class="p">,</span> <span class="nx">esnModuleRouter</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" />  <span class="nx">callback</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Now let’s dig into that piece of code, we’ll comment the most important lines.</p>
+
+<p>On <strong>line 7</strong>, we ask the OpenPaaS module system to inject the webserver wrapper module (whose full name is “linagora.esn.core.webserver.wrapper”). We also tell it to expose it with the label “webserver-wrapper”, which means that, when we need to acces that module, we use the <code class="highlighter-rouge">dependencies('webserver-wrapper')</code> call.</p>
+
+<p>We add on <strong>line 10</strong> the declaration of the <strong>deploy state</strong> for our module. All OpenPaaS modules states are declared using functions, taking two arguments, the <em>dependencies</em> function allowing your module to access the dependencies it previously asked for, and a <em>callback</em> function, which is a node-style callback, meaning that the first argument of that function should be an error (if any).</p>
+
+<p>Now let’s see what we do in the deploy state. We get the webserver wrapper module library on <strong>line 15</strong>, and assign it to the <em>webserver</em> variable.</p>
+
+<p>Now, and it’s the important part of the stuff, we call on <strong>line 16</strong> the <em>addApp</em> method exposed by the webserver module library. This method takes two arguments: a string representing the URI namespace of your module, and an express Router.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">addApp</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nx">Router</span><span class="p">)</span></code></pre></figure>
+
+<p>That basically means, that our module API will expose all its endpoints after the “/example/” URL path. We’ll get back at it just after having described a first API route.</p>
+
+<p>Finally, on line 17, we launch the <em>callback</em> method, telling the OpenPaaS module framework that our module has finished transitioning to the <strong>deploy</strong> state, without any trouble. Should we have encountered a problem, we’d have called the callback with an error as the first argument, for example:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">callback</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'Something wrong happened here'</span><span class="p">));</span></code></pre></figure>
+
+<p>On line 3, we include a local file <em>./backend/router</em>, here is an example content of that file:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModuleRouter</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">function</span> <span class="nx">esnModuleRouter</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/api'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="na">ok</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="k">return</span> <span class="nx">router</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Meaning, we declare a endpoint on the <em>/api</em> URI. But, if you remember well, we used the OpenPaaS <strong>addApp(‘example’, ourRouter)</strong> method to include our routes in the global OpenPaaS web server. Provided that our root URL is <em>https://localhost/</em>, then our module endpoint will be reachable at the URL <em>https://localhost/example/api</em>.</p>
+
+<h2 id="expose-a-library">Expose a library</h2>
+
+<p>OpenPaaS modules can expose libraries to other modules. Libraries allow other modules to use the features you provide. For example, a <em>user</em> module may expose a <em>get()</em> and a <em>create()</em> method.</p>
+
+<p>Let’s expose some dumb library for the sake of the tutorial. First of all, we’ll create the library that we’ll return. We create the file <em>backend/lib.js</em> file in our module folder, with the following content:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">exampleLib</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">library</span> <span class="o">=</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">get</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />      <span class="k">return</span> <span class="s1">'Hey, I am an example'</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" />    <span class="p">}</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">};</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="k">return</span> <span class="nx">library</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">exampleLib</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Our library exposes a <em>get()</em> method, that returns an example, which is, for now, a String. Now, we’ll instruct the OpenPaaS module framework that we export this library.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">AwesomeModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'awesome-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">exampleLib</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./backend/lib'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModule</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeModule</span><span class="p">(</span><span class="s1">'com.example.module'</span><span class="p">,</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">states</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">lib</span><span class="p">:</span> <span class="nx">lib</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">function</span> <span class="nx">lib</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">library</span> <span class="o">=</span> <span class="nx">exampleLib</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">library</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>On <strong>line 2</strong>, we include our local library file.</p>
+
+<p>On <strong>line 6</strong>, we tell the OpenPaaS module system that we are now using the lib state to declare a library for other modules to use.</p>
+
+<p>On <strong>line 10</strong>, we create the said lib function, in which we instanciate our library (<strong>line 11</strong>).</p>
+
+<p>Finally, on <strong>line 13</strong>, we launch the module system’s callback, passing it the library (as the second argument, the first one being an error if any).</p>
+
+<p>Now, any module that injects our module will benefit our awesome library. Example:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">AwesomeModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'awesome-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">Dependency</span> <span class="o">=</span> <span class="nx">AwesomeModule</span><span class="p">.</span><span class="nx">AwesomeModuleDependency</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModule</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeModule</span><span class="p">(</span><span class="s1">'com.example.module2'</span><span class="p">,</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">dependencies</span><span class="p">:</span> <span class="p">[</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">new</span> <span class="nx">Dependency</span><span class="p">(</span><span class="nx">Dependency</span><span class="p">.</span><span class="nx">TYPE_NAME</span><span class="p">,</span> <span class="s1">'com.example.module'</span><span class="p">,</span> <span class="s1">'example-module'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">],</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">states</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">lib</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />      <span class="kd">const</span> <span class="nx">exampleModule</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'example-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">exampleModule</span><span class="p">.</span><span class="kd">get</span><span class="p">());</span> <span class="c1">// Hey, I am an example</span><br data-jekyll-commonmark-ghpages="" />    <span class="p">}</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<hr />
+
+<p><strong>Q.</strong> How can I access my own library in the other states of my module ?</p>
+
+<p><strong>A.</strong> The library is exposed as the <em>this</em> variable in the other state declaration functions. Let’s take back our module to get an example:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" />21<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">AwesomeModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'awesome-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">exampleLib</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./backend/lib'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModule</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeModule</span><span class="p">(</span><span class="s1">'com.example.module'</span><span class="p">,</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">states</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">lib</span><span class="p">:</span> <span class="nx">lib</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">deploy</span><span class="p">:</span> <span class="nx">deploy</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">function</span> <span class="nx">lib</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">library</span> <span class="o">=</span> <span class="nx">exampleLib</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">library</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">function</span> <span class="nx">deploy</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">get</span><span class="p">());</span> <span class="c1">// Hey, I am an example</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>On <strong>line 18</strong>, we use our library “get()” method. As said before, our library is exposed as the <em>this</em> variable in the <em>deploy</em> function.</p>
+
+<p><strong>Q.</strong> I did what you told me, but <em>this</em> is an empty object and not my exported <em>lib</em>. Why is that ?</p>
+
+<p><strong>A.</strong> We guess you used the new ES6 arrow functions to declare your deploy state. With arrow functions, the “this” object is lexically bound to the function. So, in your code, replace:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="nl">deploy</span><span class="p">:</span> <span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">this</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span></code></pre></figure>
+
+<p>with:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="nl">deploy</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">this</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span></code></pre></figure>
+
+<p>and it should work as expected.</p>
+
+<h2 id="expose-angular-module">Expose Angular module</h2>
+
+<p>The OpenPaaS frontend relies heavily on <a href="https://angularjs.org/">AngularJS</a>. The OpenPaaS module framework provides a way to let you add your JavaScript files in the frontend page (so it will add the &lt;script&gt; tags for you). Moreover, it will also add into the main OpenPaaS Angular module the dependencies to your provided modules.</p>
+
+<p>This is a two-steps process. First, you should add to your Express router the ability to serve your JavaScript files. Second, you should tell OpenPaaS, the files that should be included, for a specific OpenPaaS application.</p>
+
+<p><strong>Serve your JavaScript files</strong></p>
+
+<p>Let’s say that your Angular code is composed of two files. An app.js file, and a controller.js file.</p>
+
+<p>Here is the content of your app.js file:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'com.example.module.angular'</span><span class="p">,</span> <span class="p">[]);</span><br data-jekyll-commonmark-ghpages="" /><span class="p">})();</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>And the content of your controller.js :</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'com.example.module.angular'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'exampleModuleController'</span><span class="p">,</span> <span class="nx">ExampleModuleController</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="kd">function</span> <span class="nx">ExampleModuleController</span><span class="p">()</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">this</span><span class="p">.</span><span class="nx">sayHello</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hello'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />    <span class="p">};</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">})();</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Now, put those two files in the frontend/app folder of your module.</p>
+
+<p>Open the file <em>backend/router.js</em> and put the following:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">resolve</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">).</span><span class="nx">resolve</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">FRONTEND_PATH</span> <span class="o">=</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'../frontend'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModuleRouter</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">function</span> <span class="nx">esnModuleRouter</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">router</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">FRONTEND_PATH</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="k">return</span> <span class="nx">router</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>What we just did here is to create a new router just like we did in the backend API chapter.
+Next, in the deploy state, we register our router :</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">AwesomeModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'awesome-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">Dependency</span> <span class="o">=</span> <span class="nx">AwesomeModule</span><span class="p">.</span><span class="nx">AwesomeModuleDependency</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModuleRouter</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./backend/router'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModule</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeModule</span><span class="p">(</span><span class="s1">'com.example.module'</span><span class="p">,</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">dependencies</span><span class="p">:</span> <span class="p">[</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">new</span> <span class="nx">Dependency</span><span class="p">(</span><span class="nx">Dependency</span><span class="p">.</span><span class="nx">TYPE_NAME</span><span class="p">,</span> <span class="s1">'linagora.esn.core.webserver.wrapper'</span><span class="p">,</span> <span class="s1">'webserver-wrapper'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">],</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">states</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">deploy</span><span class="p">:</span> <span class="nx">deploy</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">function</span> <span class="nx">deploy</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">webserver</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'webserver-wrapper'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />  <span class="nx">webserver</span><span class="p">.</span><span class="nx">addApp</span><span class="p">(</span><span class="s1">'example'</span><span class="p">,</span> <span class="nx">esnModuleRouter</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" />  <span class="nx">callback</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Now you can check that when pointing your browser to https://localhost:8080/example/app/app.js , you got your JavaScript file served.</p>
+
+<p>We’ll now tell the OpenPaaS system that it should add those JavaScript files and the Angular module dependency in the frontend file. To be able to do this, we have to know on what OpenPaaS application we want our Angular files to be injected. Right now, there are two OpenPaaS applications available:</p>
+
+<ol>
+  <li>
+    <p>welcome</p>
+
+    <p>This is the login page</p>
+  </li>
+  <li>
+    <p>esn</p>
+
+    <p>This is the main application, that you access to when you are logged in</p>
+  </li>
+</ol>
+
+<p>Let’s say our Angular files should be in the <em>esn</em> application. We’ll update our deploy state:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" />21<br data-jekyll-commonmark-ghpages="" />22<br data-jekyll-commonmark-ghpages="" />23<br data-jekyll-commonmark-ghpages="" />24<br data-jekyll-commonmark-ghpages="" />25<br data-jekyll-commonmark-ghpages="" />26<br data-jekyll-commonmark-ghpages="" />27<br data-jekyll-commonmark-ghpages="" />28<br data-jekyll-commonmark-ghpages="" />29<br data-jekyll-commonmark-ghpages="" />30<br data-jekyll-commonmark-ghpages="" />31<br data-jekyll-commonmark-ghpages="" />32<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">glob</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'glob-all'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">resolve</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">).</span><span class="nx">resolve</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">AwesomeModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'awesome-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">Dependency</span> <span class="o">=</span> <span class="nx">AwesomeModule</span><span class="p">.</span><span class="nx">AwesomeModuleDependency</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModuleRouter</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./backend/router'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">FRONTEND_PATH</span> <span class="o">=</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'frontend'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModule</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeModule</span><span class="p">(</span><span class="s1">'com.example.module'</span><span class="p">,</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">dependencies</span><span class="p">:</span> <span class="p">[</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">new</span> <span class="nx">Dependency</span><span class="p">(</span><span class="nx">Dependency</span><span class="p">.</span><span class="nx">TYPE_NAME</span><span class="p">,</span> <span class="s1">'linagora.esn.core.webserver.wrapper'</span><span class="p">,</span> <span class="s1">'webserver-wrapper'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">],</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">states</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">deploy</span><span class="p">:</span> <span class="nx">deploy</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">function</span> <span class="nx">deploy</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">webserver</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'webserver-wrapper'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />  <span class="nx">webserver</span><span class="p">.</span><span class="nx">addApp</span><span class="p">(</span><span class="s1">'example'</span><span class="p">,</span> <span class="nx">esnModuleRouter</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">frontendModulesFiles</span> <span class="o">=</span> <span class="nx">glob</span><span class="p">.</span><span class="nx">sync</span><span class="p">([</span><br data-jekyll-commonmark-ghpages="" />    <span class="nx">FRONTEND_PATH</span> <span class="o">+</span> <span class="s1">'/**/*.js'</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">]);</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">frontendRelPathFiles</span> <span class="o">=</span> <span class="nx">frontendModulesFiles</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">f</span> <span class="o">=&gt;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">FRONTEND_PATH</span><span class="p">,</span> <span class="s1">''</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">webserver</span><span class="p">.</span><span class="nx">injectAngularAppModules</span><span class="p">(</span><span class="s1">'example'</span><span class="p">,</span> <span class="nx">frontendRelPathFiles</span><span class="p">,</span> <span class="p">[</span><span class="s1">'com.example.module.angular'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'esn'</span><span class="p">]);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">callback</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Let’s detail what we just did here.</p>
+
+<p>On <strong>lines 22 to 25</strong>, we extract the list of JavaScript files that we put in the frontend folder. We use the awesome <a href="https://www.npmjs.com/package/glob-all">glob-all</a> library for this, but you can as well list files manually in an array.</p>
+
+<p>Then, on <strong>line 27</strong> we call the <em>injectAngularAppModules()</em> function, that takes the following arguments:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">webserver</span><span class="p">.</span><span class="nx">injectAngularAppModules</span><span class="p">(</span><span class="nb">String</span> <span class="nx">namespace</span><span class="p">,</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="nx">javascript</span> <span class="nx">files</span> <span class="nx">URI</span><span class="p">,</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="nx">Angular</span> <span class="nx">module</span> <span class="nx">names</span><span class="p">,</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="nx">OpenPaaS</span> <span class="nx">application</span><span class="p">);</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p>String namespace</p>
+
+    <p>The namespace under which you files are served. It should be the same as the namespace that you set in the <em>addApp()</em> method.</p>
+  </li>
+  <li>
+    <p>[String] javascript files URI</p>
+
+    <p>An array of the list of all files that are being included by the browser in the Rich Internet Application</p>
+  </li>
+  <li>
+    <p>[String] Angular module names</p>
+
+    <p>An array of the names of Angular modules that our OpenPaaS modules is exposing</p>
+  </li>
+  <li>
+    <p>[String] OpenPaaS application</p>
+
+    <p>An array of the OpenPaaS applications that should include your module files and Angular modules.</p>
+  </li>
+</ul>
+
+<hr />
+<p><strong>Optimization</strong></p>
+
+<p>You can have the OpenPaaS platform optimize for you your JavaScript files, by concatening them and serving one big file instead of several little files. To do that, you have to tell the framework the whole path to your JavaScript files. Here is the updated deploy function:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">deploy</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">webserver</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'webserver-wrapper'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />  <span class="nx">webserver</span><span class="p">.</span><span class="nx">addApp</span><span class="p">(</span><span class="s1">'example'</span><span class="p">,</span> <span class="nx">esnModuleRouter</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">frontendModulesFiles</span> <span class="o">=</span> <span class="nx">glob</span><span class="p">.</span><span class="nx">sync</span><span class="p">([</span><br data-jekyll-commonmark-ghpages="" />    <span class="nx">FRONTEND_PATH</span> <span class="o">+</span> <span class="s1">'/**/*.js'</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">]);</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">frontendRelPathFiles</span> <span class="o">=</span> <span class="nx">frontendModulesFiles</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">f</span> <span class="o">=&gt;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">FRONTEND_PATH</span><span class="p">,</span> <span class="s1">''</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">webserver</span><span class="p">.</span><span class="nx">injectAngularAppModules</span><span class="p">(</span><span class="s1">'example'</span><span class="p">,</span> <span class="nx">frontendRelPathFiles</span><span class="p">,</span> <span class="p">[</span><span class="s1">'com.example.module.angular'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'esn'</span><span class="p">],</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">localJsFiles</span><span class="p">:</span> <span class="nx">frontendModulesFiles</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">callback</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>We added an options hash to the <em>injectAngularAppModules()</em> method. It contains a <em>localJsFiles</em> property, whose value is the list of JavaScript file for your application.</p>
+
+<h2 id="add-css-rules">Add CSS Rules</h2>
+
+<p>The OpenPaaS framework comes bundled with a lot of CSS classes already defined, thanks to our underlying <a href="http://byrushan.com/projects/ma/1-5-2/angular/#/home">Material Admin framework</a>. However, you’ll maybe have to add your own CSS rules alongisde your JavaScript files and HTML templates. We use <a href="http://lesscss.org/">LESS</a> CSS pre-processor. All you have to do is to create a less file, it will inherit all the already defined less rules. Moreover, you’ll be able to override less variables, if you need to.</p>
+
+<p>Here is how to append your less rules to the framework:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" />21<br data-jekyll-commonmark-ghpages="" />22<br data-jekyll-commonmark-ghpages="" />23<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">resolve</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">).</span><span class="nx">resolve</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">AwesomeModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'awesome-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">Dependency</span> <span class="o">=</span> <span class="nx">AwesomeModule</span><span class="p">.</span><span class="nx">AwesomeModuleDependency</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModule</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeModule</span><span class="p">(</span><span class="s1">'com.example.module'</span><span class="p">,</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">dependencies</span><span class="p">:</span> <span class="p">[</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">new</span> <span class="nx">Dependency</span><span class="p">(</span><span class="nx">Dependency</span><span class="p">.</span><span class="nx">TYPE_NAME</span><span class="p">,</span> <span class="s1">'linagora.esn.core.webserver.wrapper'</span><span class="p">,</span> <span class="s1">'webserver-wrapper'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">],</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">states</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">deploy</span><span class="p">:</span> <span class="nx">deploy</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">function</span> <span class="nx">deploy</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">webserver</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'webserver-wrapper'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />  <span class="kd">const</span> <span class="nx">myLessFile</span> <span class="o">=</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'frontend/style.less'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">webserver</span><span class="p">.</span><span class="nx">injectLess</span><span class="p">(</span><span class="s1">'example'</span><span class="p">,</span> <span class="p">[</span><span class="nx">myLessFile</span><span class="p">],</span> <span class="p">[</span><span class="s1">'esn'</span><span class="p">]);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">callback</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>On <strong>line 16</strong>, we find the absolute path to our less file.</p>
+
+<p>On <strong>line 18</strong>, we use the framework’s <em>injectLess()</em> method to register our less file to the list of files that should be compiled and then served to the browser. The injectLess method got the following signature:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">webserver</span><span class="p">.</span><span class="nx">injectLess</span><span class="p">(</span><span class="nb">String</span> <span class="nx">namespace</span><span class="p">,</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="nx">less</span> <span class="nx">files</span> <span class="nx">absolute</span> <span class="nx">path</span><span class="p">,</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="nx">OpenPaaS</span> <span class="nx">application</span><span class="p">);</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p>String namespace</p>
+
+    <p>The namespace under which you files are served. It should be the same as the namespace that you set in the <em>addApp()</em> method.</p>
+  </li>
+  <li>
+    <p>[String] less files absolute path</p>
+
+    <p>An array of the list of all less files that we want to include into the compiled CSS file that will be sent to the server.</p>
+  </li>
+  <li>
+    <p>[String] OpenPaaS application</p>
+
+    <p>An array of the OpenPaaS applications that should include your module files and Angular modules.</p>
+  </li>
+</ul>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

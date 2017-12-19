@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title>OpenPaaS developer documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/kibana/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>OpenPaaS Documentation</h2>
+				<div class="page-title">
+					<h3>Search</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/search.html" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<p><span id="search-process">Loading</span> results <span id="search-query-container" style="display: none;">for "<strong id="search-query"></strong>"</span></p>
+<ul id="search-results"></ul>
+
+<script>
+	window.data = {
+		
+			
+				
+					
+					
+
+					"apis-auth-basic": {
+						"id": "apis-auth-basic",
+						"title": "Basic Access",
+						"category": "",
+						"url": " /apis/auth/basic/",
+						"content": "Basic Access Authentication is a method for a HTTP client to provide username and password when making a HTTP request to the server as described in the RFC2617. curl sample We assume that the a user is registered in OpenPaaS with username admin@open-paas.org and password secret. To illustrate the API response, we are calling the api user endpoint which returns the current authenticated user. Request curl --user admin@open-paas.org:secret http: localhost:8080 api user Response 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879{ \"_id\":\"592294b7666cdc5db24b3e31\", \"firstname\":\"admin\", \"lastname\":\"admin\", \"preferredEmail\":\"admin@open-paas.org\", \"emails\":[ \"admin@open-paas.org\" ], \"domains\":[ { \"domain_id\":\"592294b7666cdc5db24b3e32\", \"joined_at\":\"2017-05-22T07:35:20.228Z\" } ], \"avatars\":[ ], \"accounts\":[ { \"type\":\"email\", \"timestamps\":{ \"creation\":\"2017-05-22T07:35:19.562Z\" }, \"preferredEmailIndex\":0, \"emails\":[ \"admin@open-paas.org\" ], \"hosted\":false } ], \"followers\":0, \"followings\":0, \"isPlatformAdmin\":false, \"disabled\":false, \"configurations\":{ \"modules\":[ { \"name\":\"core\", \"configurations\":[ { \"name\":\"application-menu.profile\", \"value\":true }, { \"name\":\"homePage\", \"value\":\"calendar.main\" }, { \"name\":\"businessHours\", \"value\":[ { \"daysOfWeek\":[ 1, 2, 3, 4, 5 ], \"start\":\"09:00\", \"end\":\"18:00\" } ] }, { \"name\":\"datetime\", \"value\":{ \"use24hourFormat\":false } } ] }, { \"name\":\"linagora.esn.unifiedinbox\", \"configurations\":[ ] } ] }}"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"apis-auth-cookies": {
+						"id": "apis-auth-cookies",
+						"title": "Cookies",
+						"category": "",
+						"url": " /apis/auth/cookies/",
+						"content": "How to authenticate a given user to the OpenPaaS platform? From his credentials, you’ll authenticate a user and then get this user’s object containing domains ids to which he belongs to. Let’s see details: Log your user into the application by issuing a POST request to login URL. The response will contain a cookie which you will be able to use in next requests as long as the session is open. Parameters: Name: credentials (body) The credentials for authentication. For example: 123456789{ \"username\": \"string\", \"password\": \"string\", \"rememberme\": true, \"recaptcha\": { \"data\": {}, \"needed\": true }} Responses: Code: 200 We will have as response the user object which contains the user’s domain ids. Code: 400 Bad request. Invalid request body or parameters. Code: 403 Forbidden. The user does not have enough rights. Code: 500 Internal server error - Something went bad on the server side."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"apis-auth-index": {
+						"id": "apis-auth-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /apis/auth/index/",
+						"content": "There are several ways to authenticate authorize users in OpenPaaS: Basic Access Authentication. Cookies. OAuth. Even if OAuth is not an authentication protocol, this section shows how to use OAuth in OpenPaaS. Single sign-on (SSO). SSO is a property of access control of multiple related, yet independent, software systems. With this property, a user logs in with a single ID and password to gain access to a connected system or systems without using different usernames or passwords, or in some configurations seamlessly sign on at each system. OpenPaaS supports single sign-on(SSO) by external modules: LemonLDAP: provided by the linagora.esn.lemonldap module."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"apis-auth-lemonldap": {
+						"id": "apis-auth-lemonldap",
+						"title": "SSO - LemonLDAP",
+						"category": "",
+						"url": " /apis/auth/lemonldap/",
+						"content": "Table of contents Overview Getting started Install LemonLDAP::NG software Install LemonLDAP awesome module Configure LemonLDAP User provision Logout Logout from OpenPaaS then LemonLDAP Logout from LemonLDAP then OpenPaaS Overview OpenPaaS supports LemonLDAP authentication. If this is the first time you hear about LemonLDAP, check their website to explore that awesome software. LemonLDAP protects OpenPaaS behind a proxy. OpenPaaS then authenticates users by reading HTTP trusted-headers forwarded from LemonLDAP. See more about it here. When the user logs in to OpenPaaS, the following steps happen: The user goes to OpenPaaS and is redirected to login page of LemonLDAP The user enters credentials to log in and is redirected back to OpenPaaS OpenPaaS reads the trusted-headers forwarded from LemonLDAP, converts it to OpenPaaS user If the user is found in trusted-headers, OpenPaaS makes the user authenticated. It then stores the user object in database on first login or updates the existing user in database on next logins Getting started Install LemonLDAP::NG software First, you need to install LemonLDAP::NG software. Have a look here. Install LemonLDAP awesome module Clone the repository: git clone https: ci.linagora.com linagora lgs openpaas linagora.esn.lemonldap.git Go into the module directory and install module dependencies npm install --production Next, you need to enable LemonLDAP awesome module for OpenPaaS. To do it, create a symbol link of this module in modules directory of OpenPaaS ESN then enable it in local configuration: \"modules\": [ \"linagora.esn.account\", ... \"linagora.esn.lemonldap\" add this line ], Once enabled, this module will be loaded with OpenPaaS and ready to work. The next step is to configure LemonLDAP virtualhost to protect OpenPaaS. Configure LemonLDAP To configure LemonLDAP, you must login to LemonLDAP manager page. Add virtual host LemonLDAP::NG configuration is built around Apache or Nginx virtual hosts. Each virtual host is a protected resource, with access rules, headers, POST data and options. Have a look here to create virtual host in Apache Nginx In LemonLDAP Manager page, go to Virtual Hosts, click on Add virtualhost, then fill your Virtual host hostname. Access Rule In LemonLDAP Manager page, go to Virtual Hosts » &lt;your virtualhost&gt; » Access Rule, click on New rule, then fill: Commments: Protect home page Regular expressions: ^ $ Rules: accept In the same page, change the Default rule to unprotect to allow other resources of OpenPaaS to be accessible normaly from outside. User provision This module provisions users automatically on their first login. It converts the authenticated user information in trusted-headers to OpenPaaS user and creates a user instance on the storage layer (MongoDB). The converter needs a mapping to know which field in headers is corresponding to the user attribute in OpenPaaS. You can configure this mapping in global configuration. The configuration is applied for the whole application so it must be platform-wide configuration: \"domain_id\" : null, \"modules\": [{ \"name\": \"core\", \"configurations\": [...] }, { \"name\": \"linagora.esn.lemonldap\", \"configurations\": [{ \"name\": \"mapping\", \"value\": { \"ll-auth-user\": \"auth-user\", required, mapping for unique username (usually email) \"ll-auth-domain\": \"auth-domain\", required, mapping for user domain \"lastname\": \"auth-name\", \"main_phone\": \"auth-phone\", ... } }, { ... }] }] Logout When the user logs out from OpenPaaS, he should be logged out from LemonLDAP and vice versa, when the user logs out from LemonLDAP, he should be logged out from OpenPaaS. Logout from OpenPaaS then LemonLDAP To achieve this behaviour, OpenPaaS redirects the user to a logout endpoint of LemonLDAP after his logout from OpenPaaS, hence the user is fully logged out from both services. You can configure the logout endpoint in platform-wide configuration, it looks like: \"domain_id\" : null, \"modules\": [{ \"name\": \"core\", \"configurations\": [...] }, { \"name\": \"linagora.esn.lemonldap\", \"configurations\": [{ \"name\": \"logoutUrl\", \"value\": \"http: auth.yoursite.com ?logout=1\" }, { ... }] }] That logout endpoint is something like http: auth.yoursite.com ?logout=1 depending on your LemonLDAP setup. Logout from LemonLDAP then OpenPaaS Once the user logs out from LemonLDAP, it then forwards the logout to other applications to close their sessions. LemonLDAP has a logout forward mechanism, that will add a step in logout process, to send logout requests (indeed, GET requests on application logout URL) inside hidden iframes. In LemonLDAP Manager page, go to General parameters » Advanced parameters » Logout forward and click on Add a key, then fill: Key: application name, e.g. OpenPaaS Value: OpenPaaS logout URL, e.g. http: openpaas.yoursite.com logout Note that the request on logout URL will be sent after user is disconnected, so you should unprotect this URL if it is protected by a LemonLDAP Handler. Forturnately, this is done above by setting the Default rule to unprotect."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"apis-swagger": {
+						"id": "apis-swagger",
+						"title": "Swagger",
+						"category": "",
+						"url": " /apis/swagger/",
+						"content": "Loading API documentation ..."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"apis-web": {
+						"id": "apis-web",
+						"title": "Web API",
+						"category": "",
+						"url": " /apis/web/",
+						"content": "Table of contents Overview Basics Authentication Pagination Overview The OpenPaaS Web API allows you to build applications that interact with OpenPaaS in more complex ways than the integrations we provide out of the box. Basics Authentication There are several ways to authenticate users through OpenPaaS API as described in the Auth section. Pagination Request that return multiple items can be paginated. You can specify an offset with the offset query parameter and the number of elements can be defined by using the limit one. curl 'https: HOST:PORT api RESOURCE?limit=50&amp;offset=20' This request will return 50 items starting at the 20th one i.e. from 20 to 69."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"core-configuration": {
+						"id": "core-configuration",
+						"title": "Configuration",
+						"category": "",
+						"url": " /core/configuration/",
+						"content": "Table of contents Local configuration Overview Usage Global configuration Overview Configuration scope Configuration inheritance Usage OpenPaaS has two types of configuration: Local: Defines the local configurations of the current instance Global: Defines the configuration which is shared between on all the OpenPaaS instances Local configuration Overview Local configuration of the application is stored in the config default.json file. You should not modify this file directly but instead define the environment-based configuration file, e.g. config default.dev.json for development and config default.production.json for production deployment. The application relies on NODE_ENV environment variable to know which configuration file to be loaded. For example, if NODE_ENV=test, it will load config default.test.json file. Note that the configuration defined in . config default.json will not be overridden by the environment-based configuration file but instead inherited from it. The only exception is the array propertices, which will be overridden. Usage The local configurations are stored in JSON structure so it is pretty easy to read and write this type of configuration. To read configurations, simply require the module in backend core config: const config = require('...')('default'); console.log(config.auth.strategies); Since it is stored in file system, you simply modify the file to modify the configurations. Global configuration Overview The global configuration is stored in MongoDB under the configurations collection in order to be shared over nodes. A configurations document has the following structure: { \"domain_id\" : ObjectId(\"domain_id\"), \"user_id\" : ObjectId(\"user_id\"), \"modules\" : [ { \"name\" : \"module name\", \"configurations\" : [ { \"name\" : \"config_name\", \"value\" : Any }, { ... } ] }, { other modules } ] } Configuration scope Each document has its scope, base on the values of domain_id and user_id: User-wide: configurations belong to a specific user in a specific domain, the document must contain both domain_id and user_id Domain-wide: configurations belong to a specific domain, the document must contain domain_id and no user_id System-wide (AKA platform-wide): configurations which will be applied to the whole system, the document must not contain neither domain_id or user_id Configuration inheritance The global configuration has a concept of inheritance, which means if there is no configuration in a scope, the configuration in wider scope will be used. For example, if the user does not specify any configuration, the configuration of his current domain will be used. And so on, if the configuration of a domain is not specified, the system-wide configuration will be used. Usage In both frontend and backend, the global configurations can be read by esn-config module. In backend, the code is placed in backend core esn-config: const esnConfig = require('..'); get system-wide configuration esnConfig('mail') .inModule('core') .get() .then((config) =&gt; { console.log(config); }); get domain-wide configuration esnConfig('mail') .inModule('core') .forUser(user) .get() .then((config) =&gt; { console.log(config); }); get user-wide configuration const userWide = true; esnConfig('mail') .inModule('core') .forUser(user, userWide) .get() .then((config) =&gt; { console.log(config); }); In frontend, you simply inject the esnConfig service to get the configuration, the API is a bit different: esnConfig('core.datetime').then(function(config) { console.log(config); });"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"core-eventsourcing": {
+						"id": "core-eventsourcing",
+						"title": "EventSourcing",
+						"category": "",
+						"url": " /core/eventsourcing/",
+						"content": "Table of contents Events Events Almost all actions in the OpenPaaS platform produce events, most of them are published in the local pubsub channel to allow extensibility and reactivity. A first implementation stores every event published in any pubsub topic in the Elasticsearch platform instance in the core.events.idx index (Data can then be visualized using Kibana)."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"core-i18n": {
+						"id": "core-i18n",
+						"title": "I18n",
+						"category": "",
+						"url": " /core/i18n/",
+						"content": "Table of contents Where are the locale files? Backend translation Translate static string in .pug files Translate string in Node.js files Frontend translation Translate Angular variable in .pug files Translate string in Javascript files Translation validator Internationalization (i18n) is the process of developing products in such a way that they can be localized for languages and cultures easily. OpenPaaS supports i18n completely in both backend and frontend sides: In backend, we use i18n-node In frontend, we use angular-translate Where are the locale files? Locale files of the core module can be found in backend i18n locales directory. Each module can have its own locale files, usually placed in backend lib i18n locales directory as in Calendar module for example. Currently, supported languages are English, French and Vietnamese. Backend translation When to use: Translate static string in .pug files Translate string in Node.js files, for example: translate an email before sending it to recipients. Translate static string in .pug files It is pretty easy to translate phrases in .pug files: h2 #{__('Good morning!')} Simple string interpolation: h2 #{__('Hello %s, good morning!', 'John')} Angular expression string interpolation: h2 #{__('Hello %s, good morning!', '{{user.name}}')} HTML string interpolation: p.empty-text !{__('No application, click %s to add a new one', '&lt;span class=\"mdi mdi-plus\"&gt;&lt; span&gt;')} Translate string in Node.js files Simply require the module in backend core i18n: const i18n = require('...'); const subject = i18n.__('Your password has been changed!'); Check the documentation of i18n-node for more examples. Frontend translation When to use: Translate Angular variable in .pug files Translate string in Javascript files You can either use esnI18n filter or esnI18nService of esn.i18n module to translate your phrases. Translate Angular variable in .pug files span {{mailbox.name | esnI18n}} Translate string in Javascript files inject the esnI18nService service var subject = esnI18nService.translate('Email sent to %s', $scope.recipient.email).toString(); The esnI18nService.translate function returns an instance of EsnI18nString, which will be useful when you want to know whether the string is translated or not: function notify(message) { message = esnI18nService.isI18nString(message) ? message.toString() : esnI18nService.translate(message).toString(); window.alert(message); } Usage notify('Hello world!'); OR notify(esnI18nService.translate('Hello %s!', user.name)); Translation validator OpenPaaS uses a built-in validator based on i18n-checker package to ensure the quality of internationalization in product. To use the validator, simply run: grunt i18n"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"core-pubsub": {
+						"id": "core-pubsub",
+						"title": "Pubsub",
+						"category": "",
+						"url": " /core/pubsub/",
+						"content": "Table of contents Overview API Subscribe Publish Local pubsub Global pubsub Overview The OpenPaaS Core provides several publish subscribe components: local: Events published in this pubsub component will only be delivered to the same local OpenPaaS instance listeners global: Events published in this pubsub component will be delivered to all the OpenPaaS instance listeners API Both local and global pubsub are providing the same API. Getting a pubsub instance is as easy as getting it from the OpenPaaS dependencies manager: const {local, global} = dependencies('pubsub'); Once you have the instance, you can subsribe and publish events. Subscribe const pubsub = dependencies('pubsub').local; pubsub.topic('my:topic').subscribe(event =&gt; { console.log('This will be called when event is published in topic', event); }); Publish const pubsub = dependencies('pubsub').local; const event = {id: 1, data: {}}; pubsub.topic('my:topic').publish(event); Local pubsub The local pubsub is built using the Node.js EventEmitter. This means that any object can be published in this pubsub component but it is highly encouraged to publish Event instances: const pubsub = dependencies('pubsub').local; const { Event } = dependencies('models'); https: github.com linagora openpaas-esn blob master backend core models event.js const e = new Event( * Check the doc for args * ) pubsub.topic('my:topic').publish(e); Global pubsub The global pubsub is built using RabbitMQ as message broker. This allows OpenPaaS to use and rely on all the mechanisms provided by RabbitMQ and so have some high warranty level delivering messages. Note: It is recommended to push only JSON data in the global pubsub."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"core-search": {
+						"id": "core-search",
+						"title": "Search",
+						"category": "",
+						"url": " /core/search/",
+						"content": "Table of contents Overview Indexing data Search data Frontend representation Prepare the services Prepare the provider Overview The OpenPaaS Core provides a search module which relies on Elasticsearch. This page will provides all the informations for a developer to use the core module in order to index and search data. Indexing data The core elasticsearch module provides a listeners module which must be used to register a listener. This listener will be in charge of handling everything needed to transform data from OpenPaaS to Elasticsearch, indexing data to the right place, etc… Registering a listener in the search module is as easy as giving a valid object. As an example, let’s say that we want to index messages coming from a chat module: 1234567891011121314151617181920const listeners = dependencies('elasticsearch').listeners;listeners.addListener({ events: { add: 'message:create', update: 'message:update', remove: 'message:delete' }, denormalize: (message) =&gt; { do something with input data (coming from topic defined above) then return the data to be indexed return { text: message.message, date: message.timestamps.created_at }; }, getId: (message) =&gt; message._id.toString(), type: 'message', index: 'message.idx'}); events: The listener will listen on several events coming from the pubsub module as defined in lines 5 to 9. The listener automatically subscribe to the topics defined (message:create, message:update and message:remove) and will do whatever needed: Index data on a create event, update indexed data on an update event, delete indexed data on a remove event. The only thing needed for the developer here is to publish data on the right topic. denormalize: This function is called each time a data is created or updated to transform data into a JSON object which will be indexed in Elasticsearch. getId: This function is called on create, update, remove to determine the identifier of the document in Elasticsearch based on input data type: The type of data defined in Elasticsearch index: The Elasticsearch index where data is indexed Note that calling addListener will return a set of functions you can also use to make calls to Elasticsearch yourself: 123456const { listeners } = dependencies('elasticsearch');const searchHandler = listeners.addListener(x); searchHandler.indexData(data, callback) searchHandler.removeFromIndex(data, callback) Once the listener is registered, indexing data is as easy as: 123456789const { local } = dependencies('pubsub');const message = { message: 'This is a wonderful message', timestamps: { created_at: new Date() }};local('message:create').publish(message); The listener will be called automatically, and message will be indexed into Elasticsearch. Search data Making calls to Elasticsearch must be achieved from the elasticsearch module with the searchDocuments function: 12345678910111213141516const elasticsearch = dependencies('elasticsearch');const query = {}; some ES query https: www.elastic.co guide en elasticsearch reference current search.htmlelasticsearch.searchDocuments({ index: 'message.idx', type: 'message', from: 0, size: 10, body: query}, (err, result) =&gt; { if (err) { return console.log('I failed to search messages', err); } console.log('Search results', result.hits.hits);}); This will search messages in the message.idx index in the Elasticsearch service and return the search results. Frontend representation With a search function as above, we can provide an API endpoint for searching documents. In front-end side, for a document can be search via OpenPaaS header, there must be a registration to provide the search service or document name, types, search result templates,… Prepare the services First, we need an Angular service to handle request sending. We continue with message searching example, now with an API as GET api messages?search=term, our search service would look like this: 1234567891011121314151617181920angular.module('your.module') configure restangular .factory('messageRestangular', function(Restangular) { return Restangular.withConfig(function(RestangularConfigurer) { RestangularConfigurer.setBaseUrl(' api'); RestangularConfigurer.setFullResponse(true); }); }) send request to search API .factory('searchMessageService', function(messageRestangular) { return { searchMessages }; function searchMessages(term) { return messageRestangular.all('messages').getList({search: term}); } }); Prepare the provider For every types of documents, OpenPaaS has an Angular service called searchProviders to contain documents search registration. We define our messageSearchProvider as following: 12345678910111213141516angular.module('your.module') .factory('messageSearchProvider', function($q, newProvider, searchMessageService) { return newProvider({ name: 'Messages', fetch: function(term) { return searchMessageService(term) .then(function(response) { return response.data; }) }, buildFetchContext: function(options) { return $q.when(options.query); }, templateUrl: ' path to your search result template.html' }); }); name: the document name that is displayed in search header fetch: a function that will fetch the search result from API response buildFetchContext: build the context before fetching results templateUrl: the template for search results display Then, we register the messageSearchProvider to searchProviders by: 1234angular('my.module') .run(function(searchProviders, messageSearchProvider) { searchProviders.add(messageSearchProvider); }); As a result, the document can be selected and searched respectively via the search header."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"dev-debug": {
+						"id": "dev-debug",
+						"title": "Debug",
+						"category": "",
+						"url": " /dev/debug/",
+						"content": "Table of contents ESN Backend ESN Backend Thanks to Node.js debugging tools, it is possible to debug the ESN backend by adding the --inspect flag on start: ENV=dev node --inspect server.js The process will start and will first print debugger information like: Debugger listening on ws: 127.0.0.1:9229 dd36b398-43ce-419b-8c0f-207c07365672 For help see https: nodejs.org en docs inspector debug: local SUBSCRIBE to mongodb:connectionAvailable On recent version of Google Chrome, you will be able to open the Node.js debugger from: chrome: inspect #devices then click on inspect under server.js From the Developer Tools by clicking on the DevTools for Node.js green icon When done, you are able to go to the sources tab, add breakpoints, and debug as you can do when debugging frontend code."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"devops-kibana": {
+						"id": "devops-kibana",
+						"title": "Kibana",
+						"category": "",
+						"url": " /devops/kibana/",
+						"content": "Table of contents Overview Run with Docker Overview Kibana is a tool we use to visualize and navigate into Elasticsearch data. Run with Docker The Elasticsearch version used in OpenPaaS does not allow to use the latest Docker image for Kibana. Here are the instruction to run a valid Kibana version with Docker: docker run -d -e \"ELASTICSEARCH_URL=http: HOST:POST\" -p 5601:5601 kibana:4.5 Where ELASTICSEARCH_URL is the URL of the Elasticsearch instance you want Kibana to connect to (i.e. the URL the Kibana container can reach). Once started, you can open the Kibana Web UI from http: localhost:5601 :"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-admin-configuration-page": {
+						"id": "modules-admin-configuration-page",
+						"title": "Add a configuration page",
+						"category": "",
+						"url": " /modules/admin/configuration-page/",
+						"content": "Table of contents Overview Build configuration page Register your page Start building your page Template Controller Overview Let’s say you have a configuration used somewhere around OpenPaaS and you want to allow administrator to configure it. Then the best place for having it configurable is a page in Administration module. Build configuration page Register your page First step, you need to define a router state for your page in frontend\\app\\app.routes.js. For example: .state('admin.domain.configpage', { url: ' configpage', views: { 'root@admin': { template: '&lt;admin-configpage &gt;' } } }); Note that, the template must match your corresponding angular component of the page. In order to have an entry of your configuration page displayed in module sidebar, add an object to ADMIN_PAGES constant in frontend\\app\\app.constants.js. For example: { id: 'configpage', name: 'Config Page', icon: 'mdi-library-books', displayIn: { domain: false, platform: true } } id: your page’s id, it needs to match the url linked to your page as you specified in router state name: your configuration page name which is displayed in sidebar icon: a mdi icon that will be shown next to the page name displayIn: decides whether your configuration page is displayed in domain level, platform level or both. Start building your page Create a directory for your own configuration in frontend\\app. Here is where you put all front-end files for your page (component, controller, service, template,…). Template A page in Admin module often composed of two components: subheader, it contains the title and optionally a save button for your configuration form. A component for your entire page, it handles the main logic, configuration form. Depends on the properties of the configuration, there could be more smaller sub-component needed for your page. You are advised to utilize both dumb and smart components. Controller In Admin module, there are already a set of helper services for retrieving and saving configurations. Check frontend app common config admin-domain-config.service.js for the source code. To get your configuration from back-end side: adminDomainConfigService.get(domainId, configName) .then(function(data) { Handle retrieved configuration }); domainId specifies the target domain of your configuration, use as platform for getting platform configuration. configName is the configuration you want to retrieve. To save your configuration: asyncAction({ progressing: 'Saving configuration...', success: 'Configuration saved', failure: 'Failed to save configuration' }, function() { adminDomainConfigService.set(domainId, configName, data); }); Since adminDomainConfigService.set returns a promise. You can use a helper function for this process called asyncAction, where it tracks the status of the promise and pop out a message upon the status, whether the set function failed, succeeded or still running."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-admin-domains": {
+						"id": "modules-admin-domains",
+						"title": "Domains",
+						"category": "",
+						"url": " /modules/admin/domains/",
+						"content": "Table of contents Overview Creating a domain Editing a domain Fixing error when creating the corresponding domain in James server Overview Domains page is used to manage domains in OpenPaaS. It supports creating and editing domains. Only platform admin can use this feature. Creating a domain Creating a domain also creates its first administrator and corresponding domain in James server. Here are the steps to create a domain: Click floating adding button to show “New domain” form Fill domain name, company name and administrator email password Click on Create or press Enter If success, the domain is added to the list of domains. Editing a domain After creating a domain, platform admin can change its company name. Here are the steps to edit a domain: Click “more actions” button on the domain item to show contextual menu Click on Edit to show “Edit domain” form Change the company name Click on Save or press Enter If success, the domain is updated in the list of domains. Fixing error when creating the corresponding domain in James server There are maybe error when creating the corresponding domain in James server. In that case, domain item has an error indicator at the right side. Platform admin can open contextual menu to see detail of error and try to fix it. Here are the steps to fix error: Click “more actions” button on the domain item to show contextual menu Click on error line (in red) to show fixing error dialog Click on AUTO FIX to try to re-create the domain in James server or click on SETTINGS to see if James settings is correct If error is fixed, the error indicator will be removed."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-admin-index": {
+						"id": "modules-admin-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /modules/admin/index/",
+						"content": "Table of contents Overview Install Features Domain mode Platform mode Overview The linagora.esn.admin module allows domain and platform administrator to configure manage the configuration at the corresponding level. Install You can install admin module by following the OpenPaaS Module installation. Features The module provides configuration interfaces in two modes: domain and platform which corresponding domain and platform permissions. You need have at least one of those permissions to access the module. Once you logged in the OpenPaaS, you can see the Administration item in Application menu And if you have both permissions, you can switch between modes Domain mode If you are a domain administrator, you will see the configuration pages at domain mode. General: Configure the system stuffs like business hours, time format. Features: Enable disable the features in OpenPaaS modules. Mail: Configure mail configuration which will be used to OpenPaaS platform send receive the email with the users. Users: Manage domain members. Roles: Manage domain roles. DAV: Configure DAV server which is required by Calendar and Contact modules LDAP: Configure LDAP configurations which can be used for authentication and attendee provider. Web: Configure the address you want people to type in their browser to reach your OpenPaaS instance. Modules: Each module in OpenPaaS can have its own configuration form allows domain administrator to configure the configuration of those modules. Autoconf: Define the configuration file template used by the autoconfiguration mechanism (for Thunderbird). Platform mode If you are a platform administrator, you will see the configuration pages at platform mode General: Same as the General page in domain mode, plus the ability to change the max login retries. Features: Same as in domain mode. Mail: Same as in domain mode. DAV: Same as in domain mode. Modules: Same as in domain mode. James: Configure James server URL. JWT: Define the algorithm, public-key and private-key that will be used to encode decode JSON web tokens in the ESN instances. Social connections: Configure social connections (Google, Facebook, Github and Twitter). Domain: Manage the domains."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-calendar-api": {
+						"id": "modules-calendar-api",
+						"title": "REST API",
+						"category": "",
+						"url": " /modules/calendar/api/",
+						"content": "Table of contents Introduction Prerequisites CRUD operations Get available calendars Request Response Create a calendar Request List events in calendar Request Create an event in a calendar Request Response Delete an event Request Response Introduction The OpenPaaS calendar API uses jCal specification as defined in the jCal RFC which defines a JSON format for iCalendar. Prerequisites The following samples assumes that you followed the steps to get the cookies used to authenticate user as defined in Authentication documentation In several places in the following REST API samples, parameters will be defined by using {mustache}. Developers will have to replace values by valid ones Standard errors are not listed which does not means that they will not occur (HTTP 4XX and 5XX ones) CRUD operations Get available calendars Request GET https: HOST:PORT dav api calendars {userId}.json Headers accept: application calendar+json Response The response is formatted using Hypertext application Language. Calendar list is available in the _embedded element as dav:calendar array. The href value is the calendar URL which can be used to do operations on the calendar. As of 170503 and reported in CAL-670, the href links are not well formatted. Body 123456789101112131415161718192021222324252627282930{ \"_links\":{ \"self\":{ \"href\":\" sdav calendars 57fca675a91c8d01a36ac26b.json\" } }, \"_embedded\":{ \"dav:calendar\":[ { \"_links\":{ \"self\":{ \"href\":\" sdav calendars 57fca675a91c8d01a36ac26b events.json\" } }, \"calendarserver:ctag\":\"http: sabre.io ns sync 101\" }, { \"_links\":{ \"self\":{ \"href\":\" sdav calendars 57fca675a91c8d01a36ac26b aee302d8-12dc-4c8d-94cf-991da9b453ab.json\" } }, \"dav:name\":\"My public calendar\", \"caldav:description\":\"\", \"calendarserver:ctag\":\"http: sabre.io ns sync 7\", \"apple:color\":\"#f7e511\" } ] }} Create a calendar Request The {userId} is the id of the authenticated user. POST https: HOST:PORT dav api calendars {userId}.json Body 123456{ \"id\": \"ebdfe2b9-694a-4dc3-98fa-0f7acbfdc739\", \"dav:name\": \"My calendar name\", \"apple:color\": \"#68c289\", \"caldav:description\": \"The calendar description\"} List events in calendar Request REPORT https: openpaas.linagora.com dav api calendars 57fca675a91c8d01a36ac26b events.json' Body 123456{ \"match\": { \"start\": \"20170430T000000\", \"end\": \"20170613T000000\" }}' Create an event in a calendar In order to create an event, the user must send the new event as jCal in an existing calendar (the list of calendars and their URL can be found as described above). Request The {eventId} is defined by the developer. We suggest to use an uuid generator to have unique ids. PUT https: HOST:PORT dav api calendars {userId} {calendarId} {eventId}.ics Body 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192[ \"vcalendar\", [], [ [ \"vevent\", [ [ \"uid\", {}, \"text\", \"0d52de98-127c-4625-8583-57ec07e9bfd9\" ], [ \"transp\", {}, \"text\", \"OPAQUE\" ], [ \"dtstart\", { \"tzid\":\"Europe Berlin\" }, \"date-time\", \"2017-05-03T16:00:00\" ], [ \"dtend\", { \"tzid\":\"Europe Berlin\" }, \"date-time\", \"2017-05-03T17:00:00\" ], [ \"organizer\", { \"cn\":\"Christophe HAMERLING\" }, \"cal-address\", \"mailto:chamerling@linagora.com\" ], [ \"class\", {}, \"text\", \"PUBLIC\" ], [ \"summary\", {}, \"text\", \"Barcamp doc test\" ], [ \"location\", {}, \"text\", \"Paris\" ], [ \"description\", {}, \"text\", \"Blahblah\" ], [ \"attendee\", { \"partstat\":\"NEEDS-ACTION\", \"rsvp\":\"TRUE\", \"role\":\"REQ-PARTICIPANT\", \"cn\":\"Michael BAILLY\" }, \"cal-address\", \"mailto:mbailly@linagora.com\" ], [ \"attendee\", { \"partstat\":\"ACCEPTED\", \"rsvp\":\"FALSE\", \"role\":\"CHAIR\" }, \"cal-address\", \"mailto:chamerling@linagora.com\" ] ] ] ]] Response {\"id\":\"491cd007-3646-4fe2-93a5-7a8281e9e36d\"} Delete an event Request DELETE https: HOST:PORT dav api calendars {userId} {calendarId} {eventId}.ics Response Body {\"id\":\"491cd007-3646-4fe2-93a5-7a8281e9e36d\"}"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-calendar-index": {
+						"id": "modules-calendar-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /modules/calendar/index/",
+						"content": "Table of contents Overview Install OpenPaaS Module Sabre Server Features Overview The calendar module brings powerful and realtime calendar support into the OpenPaaS platform. It is composed of several components: A frontend component. Built using Angular. A backend component which can be split into two parts: A DAV compliant backend built on top of Sabre A specific backend, built using Node.js, which mainly listen to specific technical events and so provides realtime support and data indexing. Install OpenPaaS Module If the calendar module is not provided with the OpenPaaS distribution, you can install it by following the installation instructions in the calendar repository. Sabre Server The calendar module needs a Sabre server to run. Thanks to its plugin system, the default Sabre distribution has been extended to provide more advanced features. Installation instructions can be found in the esn-sabre repository. Features The calendar module provides standard calendar features: CalDAV support Event creation edition deletion Attendees with accept decline … Recurrent events Alarms email notifications Calendar delegation Public calendars and subscriptions and more advanced ones: Calendar resources Full text search Realtime synchronization between browsers"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-calendar-resource": {
+						"id": "modules-calendar-resource",
+						"title": "Calendar Resources",
+						"category": "",
+						"url": " /modules/calendar/resource/",
+						"content": "Table of contents Overview Requirements Creating a calendar resource Booking a resource from an event Overview OpenPaaS users can book physical resources from the Calendar module: Meeting room, car, projector or any other resource people might schedule a time to use. This chapter describes the steps used to implement resource support in the calendar module. Note: Resource is a general concept provided and managed in the linagora.esn.resource module. Requirements A resource can be booked by adding it as attendee in an event Adding a resource as attendee to an event follows the same process as adding an user as attendee to an event There is are managers to accept or decline the event in the resource calendar: The event is automatically accepted ie the resource is booked Calendar resources have their own calendar in the CalDAV server. When a resource is booked, an event is added to the resource calendar. Creating a calendar resource Until a page is provided to create resources, they can be created from the resource REST API: Request POST linagora.esn.resource api resources { name: 'Meeting Room 1' description: 'The big meeting room at the first floor', type: 'calendar' } Response HTTP 201 - Created { \"__v\": 0, \"_id\": \"59cba12b35cb3e03c3148dac\", \"name\": \"Meeting Room 1\", \"description\": \"The big meeting room at the first floor\", \"type\": \"calendar\", \"creator\": \"599da2a9b7cd7d161eaad48d\", \"domain\": \"599da2a5b7cd7d161eaad487\", \"timestamps\": { \"creation\": \"2017-09-27T13:01:31.732Z\" } } Where: _id is the resource id creator is the id of the user who created the resource domain is the domain the resource belongs to. By default, it is set to the domain the user was connected when he created the resource The calendar module will then create the related resource calendar like this: Once a resource is created, it is published on the resource:created local topic. The calendar module listens to the resource:created topic. If the resource received has a valid type value (calendar), it creates a new calendar for the resource by calling the CalDAV server Calendar is available in the CalDAV server under the resources ${_id} calendars events.json path. Booking a resource from an event For now, in oder to book a resource, it has to be added as attendee to an event as other users. From the UI point of view, this is exactly the same as adding any other user to the event: Searching for the resource in the attendee search field and add it by clicking on the suggestion. On the ICS point of view, a resource is translated as an attendee with specific values: ATTENDEE;CN=\"Meeting Room 1\";CUTYPE=RESOURCE;PARTSTAT=ACCEPTED;MAILTO:id@openpaas-domain.org Where CN (Common Name) is generated from the resource name CUTYPE (Calendar User Type) is set to RESOURCE PARTSTAT is automatically set as ACCEPTED MAILTO is set to a generated email address with the resource._id as email local-part and the domain name the resource belongs to as email domain When the CalDAV backend will receive the event ICS, it will extract attendees, and for the ones with CUTYPE=RESOURCE, it will retrieve the resource calendar from the mailtolocal-part, then create the event."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-calendar-shared": {
+						"id": "modules-calendar-shared",
+						"title": "Shared Calendars",
+						"category": "",
+						"url": " /modules/calendar/shared/",
+						"content": "Table of contents Overview Public calendars Delegated calendars Technical considerations Overview The calendar module supports two kinds of shared calendars: Delegated calendars: when an owner delegates his own calendars to other users. For example, a manager can delegate his calendars to his secretary. Public calendars: an owner can set his calendars to public. Other users, or external ones, can subscribe to such calendars and see events. There are some differences between these types of shared calendars, the main ones are: Delegated calendars represent a privileged access for a given calendar to a specific user. Public calendars can be seen by everyone, and any user can add them. In some cases, any users are also abe to create events in public calendars. Shared calendars come with rights: Rights are applied to users who are looking at other users calendars. Free Busy: User can only see that the calendar owner is free or busy in a timeperiod. The details of the events are not available. Read: User has access to all the event informations but can not change anything. Write: User has access to all the event informations and can change anything. Administration: User can do anything on the calendar (edit, delete, etc) as well as on the calendar events. Public calendars In order make a calendar public, the user has to change the Public right to Free Busy, Read or Write during the calendar creation, or on the calendar settings page as shown below. Once a calendar is public, other users can subscribe to it by going to the Shared Calendars page and by doing a search. Public calendars are linked to their creator, so in order to find them, the user has to search for the creator to find all his public calendars. In the screenshot below, one public calendar is displayed. In order to subscribe to this public calendar, the user has to click on the Add toggle button then on Save. The calendar is now displayed as a Shared calendar. The user can see events and create some if Write rights are set on the public calendar. Delegated calendars A user can delegate his calendar by adding users in the delegation section in the calendar settings pages. A user which is added is called a Sharee. In order to add a user as sharee: Search for user, once found, click on it Set the right level Click on Add The user is added to the list of Sharee Once the calendar is saved, it is “ready to be delegated”: The sharee can not do anything until he adds the delegated calendar to his calendars. This is possible by going to the Shared calendars page and by doing a search just like for public calendars. In the screenshot below, one delegated calendar is displayed. In order to add this delegated calendar, the sharee has to click on the Add toggle button then on Save. The calendar is now displayed as a Shared calendar. The sharee can see events and create some if Write or Administration rights are set on the calendar. Technical considerations When a user has a delegated calendar, a new instance of the given calendar is created for him on the backend side. When a user add a public calendar, the backend will create a subscription for this calendar. A subscription is an object owned by the user and stored in the backend. This object has a reference towards the public calendar along with its own properties."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-community-index": {
+						"id": "modules-community-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /modules/community/index/",
+						"content": "The community module allows to create groups of interests and to launch discussions, share documents, like, etc. Features The community module provides the following features: Create public private restricted communities with the capability to invite users to join or to add them as member. Create rich messages, rich replies: A message can be composed of a text, several attachments (photos, videos, any file), user location, etc… Create polls Like messages resources Share messages in other communities Reply to messages by email API The API is described in Community API documentation."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-contact-collected": {
+						"id": "modules-contact-collected",
+						"title": "Collected contacts",
+						"category": "",
+						"url": " /modules/contact/collected/",
+						"content": "Table of contents Overview Install Collector engine Calendar collector source API Messages Message with userId Message with userEmail Overview OpenPaaS provides a contact collector feature which goal is to automatically create contacts from several sources without any user interaction. These collected contacts are then available in a specific user addressbook called collected and available in the contact module as other contacts. Current collector sources are: Calendar module: When an event is created in a calendar, the event attendees are collected. James Mail Server (Under development): When an email is sent, recipients are collected. Install Collector engine The engine in charge of listening to collector sources and of creating contacts is provided by the linagora.esn.contact.collect module. It is installed by default in the OpenPaaS distribution. Repository: https: ci.linagora.com linagora lgs openpaas linagora.esn.contact.collect.git Calendar collector source The source in charge of listening to calendar events create update and publishing into the collector engine is provided by the linagora.esn.calendar.collect.email. It is installed by default in the OpenPaaS distribution. Repository: https: ci.linagora.com linagora lgs openpaas linagora.esn.calendar.collect.email.git API The contact collector module listens to events on the collector:email exchanges on the OpenPaaS AMQP provider (RabbitMQ). Once a message is received, it is processed to add new emails as contacts in a specific CardDAV addressbook (collected address book) of the current user. Messages Message content to be published on collector:email AMQP exchange must follow the following rules: Message payload is a JSON as String. Message must contain the userId or the userEmail which will be used to identify the OpenPaaS user to collect contacts for. Message must contain an array of emails. Message with userId OpenPaaS user will be found using the given userId. { \"userId\": \"57fca675a91c8d01a36ac26b\", \"emails\": [\"user1@open-paas.org\", \"User2 &lt;user2@open-paas.org&gt;\", \"John Doe &lt;john.doe@open-paas.org&gt;\", \"user3@open-paas.org\"] } Message with userEmail OpenPaaS user will be found using the given userEmail. { \"userEmail\": \"admin@open-paas.org\", \"emails\": [\"user1@open-paas.org\", \"User2 &lt;user2@open-paas.org&gt;\", \"John Doe &lt;john.doe@open-paas.org&gt;\", \"user3@open-paas.org\"] }"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-contact-index": {
+						"id": "modules-contact-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /modules/contact/index/",
+						"content": "Table of contents Overview Install OpenPaaS Module Sabre Server Features Overview The contact module brings powerful and realtime contact support into the OpenPaaS platform. It is composed of several components: A frontend component. Built using Angular. A backend component which can be split into two parts: A DAV compliant backend built on top of Sabre A specific backend, built using Node.js, which mainly listen to specific technical events and so provides realtime support and data indexing. Install OpenPaaS Module The contact module is provided in the OpenPaaS modules directory and enabled by default. Sabre Server The calendar module needs a Sabre server to run. Thanks to its plugin system, the default Sabre distribution has been extended to provide more advanced features. Installation instructions can be found in the esn-sabre repository. Features The contact module provides standard features: CardDAV support Contact creation edition deletion and more advanced ones: Full text search Realtime synchronization between browsers Social networks contact import and synchronization Collected contacts"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-howto-deep-dive": {
+						"id": "modules-howto-deep-dive",
+						"title": "Deep dive",
+						"category": "",
+						"url": " /modules/howto/deep-dive/",
+						"content": "Table of contents Minimal Module Add backend API Expose a library Expose Angular module Add CSS Rules Minimal Module The most simple OpenPaaS module got a name, and returns an instance of the AwesomeModule object. The module name is free, although, by convention, we use the dot separator, going to generic to specific. For example: linagora.esn.unifiedinbox.twitter The linagora.esn prefix is used by the core team, so please don’t use it, or ask us ! (we’re gentlemen, don’t worry). The module files should be in a folder that have the exact name of the module. That is how the module loader finds the modules. Example of a minimal OpenPaaS module : com.example.module index.js: 1234const AwesomeModule = require('awesome-module');const esnModule = new AwesomeModule('com.example.module', {});module.exports = esnModule; Needless to say that this module does absolutely nothing. Add backend API One thing you’ll certainly have to do when developing on the OpenPaaS platform, is to add some backend endpoint. To achieve that, we use the Express framework, and more precisely the Router. You then use the WebServer Wrapper module to add your routes into the platform web server. 1234567891011121314151617181920const AwesomeModule = require('awesome-module');const Dependency = AwesomeModule.AwesomeModuleDependency;const esnModuleRouter = require('. backend router');const esnModule = new AwesomeModule('com.example.module', { dependencies: [ new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper') ], states: { deploy: deploy }});function deploy(dependencies, callback) { const webserver = dependencies('webserver-wrapper'); webserver.addApp('example', esnModuleRouter(dependencies)); callback();}module.exports = esnModule; Now let’s dig into that piece of code, we’ll comment the most important lines. On line 7, we ask the OpenPaaS module system to inject the webserver wrapper module (whose full name is “linagora.esn.core.webserver.wrapper”). We also tell it to expose it with the label “webserver-wrapper”, which means that, when we need to acces that module, we use the dependencies('webserver-wrapper') call. We add on line 10 the declaration of the deploy state for our module. All OpenPaaS modules states are declared using functions, taking two arguments, the dependencies function allowing your module to access the dependencies it previously asked for, and a callback function, which is a node-style callback, meaning that the first argument of that function should be an error (if any). Now let’s see what we do in the deploy state. We get the webserver wrapper module library on line 15, and assign it to the webserver variable. Now, and it’s the important part of the stuff, we call on line 16 the addApp method exposed by the webserver module library. This method takes two arguments: a string representing the URI namespace of your module, and an express Router. addApp(String, Router) That basically means, that our module API will expose all its endpoints after the “ example ” URL path. We’ll get back at it just after having described a first API route. Finally, on line 17, we launch the callback method, telling the OpenPaaS module framework that our module has finished transitioning to the deploy state, without any trouble. Should we have encountered a problem, we’d have called the callback with an error as the first argument, for example: callback(new Error('Something wrong happened here')); On line 3, we include a local file . backend router, here is an example content of that file: 12345678910111213const express = require('express');module.exports = esnModuleRouter;function esnModuleRouter(dependencies) { const router = express.Router(); router.get(' api', function(req, res) { res.status(200).json({ok: true}); }); return router;} Meaning, we declare a endpoint on the api URI. But, if you remember well, we used the OpenPaaS addApp(‘example’, ourRouter) method to include our routes in the global OpenPaaS web server. Provided that our root URL is https: localhost , then our module endpoint will be reachable at the URL https: localhost example api. Expose a library OpenPaaS modules can expose libraries to other modules. Libraries allow other modules to use the features you provide. For example, a user module may expose a get() and a create() method. Let’s expose some dumb library for the sake of the tutorial. First of all, we’ll create the library that we’ll return. We create the file backend lib.js file in our module folder, with the following content: 1234567891011function exampleLib(dependencies) { const library = { get: function() { return 'Hey, I am an example'; } }; return library;}module.exports = exampleLib; Our library exposes a get() method, that returns an example, which is, for now, a String. Now, we’ll instruct the OpenPaaS module framework that we export this library. 12345678910111213141516const AwesomeModule = require('awesome-module');const exampleLib = require('. backend lib');const esnModule = new AwesomeModule('com.example.module', { states: { lib: lib }});function lib(dependencies, callback) { const library = exampleLib(dependencies); callback(null, library);}module.exports = esnModule; On line 2, we include our local library file. On line 6, we tell the OpenPaaS module system that we are now using the lib state to declare a library for other modules to use. On line 10, we create the said lib function, in which we instanciate our library (line 11). Finally, on line 13, we launch the module system’s callback, passing it the library (as the second argument, the first one being an error if any). Now, any module that injects our module will benefit our awesome library. Example: 1234567891011121314151617const AwesomeModule = require('awesome-module');const Dependency = AwesomeModule.AwesomeModuleDependency;const esnModule = new AwesomeModule('com.example.module2', { dependencies: [ new Dependency(Dependency.TYPE_NAME, 'com.example.module', 'example-module') ], states: { lib: function(dependencies, callback) { const exampleModule = dependencies('example-module'); console.log(exampleModule.get()); Hey, I am an example } }});module.exports = esnModule; Q. How can I access my own library in the other states of my module ? A. The library is exposed as the this variable in the other state declaration functions. Let’s take back our module to get an example: 123456789101112131415161718192021const AwesomeModule = require('awesome-module');const exampleLib = require('. backend lib');const esnModule = new AwesomeModule('com.example.module', { states: { lib: lib, deploy: deploy }});function lib(dependencies, callback) { const library = exampleLib(dependencies); callback(null, library);}function deploy(dependencies, callback) { console.log(this.get()); Hey, I am an example}module.exports = esnModule; On line 18, we use our library “get()” method. As said before, our library is exposed as the this variable in the deploy function. Q. I did what you told me, but this is an empty object and not my exported lib. Why is that ? A. We guess you used the new ES6 arrow functions to declare your deploy state. With arrow functions, the “this” object is lexically bound to the function. So, in your code, replace: { deploy: (dependencies, callback) =&gt; { this.get(); }} with: { deploy: function (dependencies, callback) { this.get(); }} and it should work as expected. Expose Angular module The OpenPaaS frontend relies heavily on AngularJS. The OpenPaaS module framework provides a way to let you add your JavaScript files in the frontend page (so it will add the &lt;script&gt; tags for you). Moreover, it will also add into the main OpenPaaS Angular module the dependencies to your provided modules. This is a two-steps process. First, you should add to your Express router the ability to serve your JavaScript files. Second, you should tell OpenPaaS, the files that should be included, for a specific OpenPaaS application. Serve your JavaScript files Let’s say that your Angular code is composed of two files. An app.js file, and a controller.js file. Here is the content of your app.js file: 123(function() { angular.module('com.example.module.angular', []);})(); And the content of your controller.js : 12345678910(function() { angular.module('com.example.module.angular') .controller('exampleModuleController', ExampleModuleController); function ExampleModuleController() { this.sayHello = function() { console.log('Hello'); }; }})(); Now, put those two files in the frontend app folder of your module. Open the file backend router.js and put the following: 12345678910111213const express = require('express');const resolve = require('path').resolve;const FRONTEND_PATH = resolve(__dirname, '.. frontend');module.exports = esnModuleRouter;function esnModuleRouter(dependencies) { const router = express.Router(); router.use(express.static(FRONTEND_PATH)); return router;} What we just did here is to create a new router just like we did in the backend API chapter. Next, in the deploy state, we register our router : 1234567891011121314151617181920const AwesomeModule = require('awesome-module');const Dependency = AwesomeModule.AwesomeModuleDependency;const esnModuleRouter = require('. backend router');const esnModule = new AwesomeModule('com.example.module', { dependencies: [ new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper') ], states: { deploy: deploy }});function deploy(dependencies, callback) { const webserver = dependencies('webserver-wrapper'); webserver.addApp('example', esnModuleRouter(dependencies)); callback();}module.exports = esnModule; Now you can check that when pointing your browser to https: localhost:8080 example app app.js , you got your JavaScript file served. We’ll now tell the OpenPaaS system that it should add those JavaScript files and the Angular module dependency in the frontend file. To be able to do this, we have to know on what OpenPaaS application we want our Angular files to be injected. Right now, there are two OpenPaaS applications available: welcome This is the login page esn This is the main application, that you access to when you are logged in Let’s say our Angular files should be in the esn application. We’ll update our deploy state: 1234567891011121314151617181920212223242526272829303132const glob = require('glob-all');const resolve = require('path').resolve;const AwesomeModule = require('awesome-module');const Dependency = AwesomeModule.AwesomeModuleDependency;const esnModuleRouter = require('. backend router');const FRONTEND_PATH = resolve(__dirname, 'frontend');const esnModule = new AwesomeModule('com.example.module', { dependencies: [ new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper') ], states: { deploy: deploy }});function deploy(dependencies, callback) { const webserver = dependencies('webserver-wrapper'); webserver.addApp('example', esnModuleRouter(dependencies)); const frontendModulesFiles = glob.sync([ FRONTEND_PATH + ' ** *.js' ]); const frontendRelPathFiles = frontendModulesFiles.map(f =&gt; f.replace(FRONTEND_PATH, '')); webserver.injectAngularAppModules('example', frontendRelPathFiles, ['com.example.module.angular'], ['esn']); callback();}module.exports = esnModule; Let’s detail what we just did here. On lines 22 to 25, we extract the list of JavaScript files that we put in the frontend folder. We use the awesome glob-all library for this, but you can as well list files manually in an array. Then, on line 27 we call the injectAngularAppModules() function, that takes the following arguments: webserver.injectAngularAppModules(String namespace, [String] javascript files URI, [String] Angular module names, [String] OpenPaaS application); String namespace The namespace under which you files are served. It should be the same as the namespace that you set in the addApp() method. [String] javascript files URI An array of the list of all files that are being included by the browser in the Rich Internet Application [String] Angular module names An array of the names of Angular modules that our OpenPaaS modules is exposing [String] OpenPaaS application An array of the OpenPaaS applications that should include your module files and Angular modules. Optimization You can have the OpenPaaS platform optimize for you your JavaScript files, by concatening them and serving one big file instead of several little files. To do that, you have to tell the framework the whole path to your JavaScript files. Here is the updated deploy function: 1234567891011121314151617function deploy(dependencies, callback) { const webserver = dependencies('webserver-wrapper'); webserver.addApp('example', esnModuleRouter(dependencies)); const frontendModulesFiles = glob.sync([ FRONTEND_PATH + ' ** *.js' ]); const frontendRelPathFiles = frontendModulesFiles.map(f =&gt; f.replace(FRONTEND_PATH, '')); webserver.injectAngularAppModules('example', frontendRelPathFiles, ['com.example.module.angular'], ['esn'], { localJsFiles: frontendModulesFiles }); callback();}module.exports = esnModule; We added an options hash to the injectAngularAppModules() method. It contains a localJsFiles property, whose value is the list of JavaScript file for your application. Add CSS Rules The OpenPaaS framework comes bundled with a lot of CSS classes already defined, thanks to our underlying Material Admin framework. However, you’ll maybe have to add your own CSS rules alongisde your JavaScript files and HTML templates. We use LESS CSS pre-processor. All you have to do is to create a less file, it will inherit all the already defined less rules. Moreover, you’ll be able to override less variables, if you need to. Here is how to append your less rules to the framework: 1234567891011121314151617181920212223const resolve = require('path').resolve;const AwesomeModule = require('awesome-module');const Dependency = AwesomeModule.AwesomeModuleDependency;const esnModule = new AwesomeModule('com.example.module', { dependencies: [ new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper') ], states: { deploy: deploy }});function deploy(dependencies, callback) { const webserver = dependencies('webserver-wrapper'); const myLessFile = resolve(__dirname, 'frontend style.less'); webserver.injectLess('example', [myLessFile], ['esn']); callback();}module.exports = esnModule; On line 16, we find the absolute path to our less file. On line 18, we use the framework’s injectLess() method to register our less file to the list of files that should be compiled and then served to the browser. The injectLess method got the following signature: webserver.injectLess(String namespace, [String] less files absolute path, [String] OpenPaaS application); String namespace The namespace under which you files are served. It should be the same as the namespace that you set in the addApp() method. [String] less files absolute path An array of the list of all less files that we want to include into the compiled CSS file that will be sent to the server. [String] OpenPaaS application An array of the OpenPaaS applications that should include your module files and Angular modules."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-howto-electron-compatibility": {
+						"id": "modules-howto-electron-compatibility",
+						"title": "How to be Electron compatible",
+						"category": "",
+						"url": " /modules/howto/electron-compatibility/",
+						"content": "OpenPaaS uses ElectronJS to provide the users a desktop client. Modules should follow some rules to be able to work using Electron. URL prefixing When serving the application from a server, there is obviously real problem on what is the server… On the contrary, on a desktop application, the application should know the URL of the server. OpenPaaS supports different ways of doing so. Make your Restangular instances managed Most of the server calls are run through Restangular. We provide a system to make a module’s restangular instance aware of the server URL. Here is the code before : angular.module('great.module') .factory('greatModuleAPI', function(Restangular) { return Restangular.withConfig(function(RestangularConfigurer) { RestangularConfigurer.setBaseUrl(' great api'); RestangularConfigurer.setFullResponse(true); }); }); The module have to use the manageRestangular method of the httpConfigurer service. Here is the Electron compatible code: angular.module('great.module') .factory('greatModuleAPI', function(Restangular, httpConfigurer) { var restangularInstance = Restangular.withConfig(function(RestangularConfigurer) { RestangularConfigurer.setFullResponse(true); }); I tell httpConfigurer to manage the base URL of my restangular instance httpConfigurer.manageRestangular(restangularInstance, ' great api'); return restangularInstance; }); We can see two main differences between the code before and after: we don’t use the native restangular.setBaseUrl() method anymore we call httpConfigurer.manageRestangular() with the module’s restangular instance, and the base URI of the module (which is the same we used to set using RestangularConfigurer.setBaseUrl(…)). Fix your $http (and other) calls For a vast variety of reasons, modules may not use Restangular. In that case, the httpConfigurer service provides a nifty getUrl() method to help the developer setting the right final URL. Here is the code before: angular.module('great.module') .factory('generateJwtToken', function($http) { return function() { return $http.post(' api jwt generate'); }; }); and the code after: angular.module('great.module') .factory('generateJwtToken', function($http, httpConfigurer) { return function() { return $http.post(httpConfigurer.getUrl(' api jwt generate')); }; }); Here, we only return the result of httpConfigurer.getUrl() instead of directly setting the URI."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-howto-index": {
+						"id": "modules-howto-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /modules/howto/index/",
+						"content": "Table of contents Overview Modules dependencies Modules lifecycle lib deploy start Overview OpenPaaS modules (also called AwesomeModules) come on top of classic NPM modules, to provide an enterprise grade module system. The main improvements over the classic Node NPM system are: OpenPaaS modules brings dependencies, either by name, or by ability OpenPaaS modules supports asynchronous loading OpenPaaS modules got a lifecycle, and go through states during their initialization Modules dependencies OpenPaaS modules dependencies express, as we can expect, dependencies between modules. This dependency can be either by name, just like NPM, where you say “I’m dependant of the module example-logger version 2.0.0”, and also by ability : so you can say “I’m dependant of the logger ability”, and any module exposing this ability can be used. OpenPaaS modules use the well known dependency injection pattern, usefull to build extensible, and testable, systems. Modules lifecycle During the startup of the NodeJS server, the modules are loaded. OpenPaaS provides three states. All states are optional: you don’t have to code them if you don’t need them. lib This is the first step. Upon this step, your module should send back its library, that dependant modules (the modules that requires yours) will receive when they inject it. For example, a “user” module library will certainly expose a get() method, a create() method… In this state, you can’t expect any of the underlying microservices to be ready. In particular, the MongoDB datastore, and pubsub systems, will not be ready at this point deploy The second step is deploy, which means that you should call here all the registration points that your module will use. This includes: the Express applications you add to the platform the LESS files the JavaScript client files and Angular Modules the pub sub events you register and subscribe to start In this last step, your module starts actually doing its stuff. For example, if your module should publish a message in the message queue, or if it should send an email on startup, that should be done in that step. Usually, that step is empty."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-howto-install": {
+						"id": "modules-howto-install",
+						"title": "Install",
+						"category": "",
+						"url": " /modules/howto/install/",
+						"content": "Table of contents Overview Manual installation From source From npm registry Configure Overview As described in the previous sections, OpenPaaS modules can be developed independently from the OpenPaaS platform. Once done, they have to be installed in the platform. While waiting for a runtime deployment, you will have to do some manual operations to add modules in the platform as listed below. Note: We assume that you already have a valid Node.JS version and NPM installed on your host Manual installation Modules can not be hot deployed in the OpenPaaS platform. Once installed following the instructions below, you will have to restart the platform (or start it if it was not started…). From source Get the sources from your SCM client, or download them from the repository manager and put them in the modules directory in the OpenPaaS one. For example, if your module is my.awesome.module, it should go in modules my.awesome.module (note that if you put the module source somewhere else, you can use symbolic links). In the module folder (modules my.awesome.module ), install the dependencies. A simple npm install should be enough. If not, check the module README.md to be sure. From npm registry If the module you want to use is available in the NPM registry, you can follow the following instructions. Change working directory to the OpenPaaS one Install the module from npm npm install my.awesome.module Configure In all the cases, a manual installation is not enough. You have to configure OpenPaaS to take the module into account by enabling it. This is achieved by modifying the config default.json by adding the module in the modules array: \"modules\": [ \"linagora.esn.account\", \"linagora.esn.appstore\", \"linagora.esn.calendar\", \"linagora.esn.contact\", \"...\", \"my.awesome.module\" ]"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-howto-quickstart": {
+						"id": "modules-howto-quickstart",
+						"title": "Quickstart",
+						"category": "",
+						"url": " /modules/howto/quickstart/",
+						"content": "Table of contents Overview Let’s code Overview The OpenPaaS modules are the most powerfull way to add features into the OpenPaaS Enterprise Social Network. With modules, you can: add pages, or widgets, into the ESN web interface add REST endpoints, that thid party applications will be able to query expose objects and functions to other modules Let’s code In the modules folder of your OpenPaaS ESN installation, create a new folder com.example.module. Inside this folder, create a new file index.js, containing: 123456789101112131415161718192021222324const express = require('express');const AwesomeModule = require('awesome-module');const Dependency = AwesomeModule.AwesomeModuleDependency;const esnModule = new AwesomeModule('com.example.module', { dependencies: [ new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper') ], states: { deploy: function(dependencies, callback) { const webserver = dependencies('webserver-wrapper'); const router = express.Router(); router.get(' ', (req,res) =&gt; { res.status(200).json({ok: true}); }); webserver.addApp('example', router); callback(); } }});module.exports = esnModule; Now, open the configuration file config default.dev.json, and add the new modules at the end of your modules list: 1234567{ ... \"modules\": [ ..., \"com.example.module\" ]} Restart your ESN server, using the grunt dev command. You can now query your new endpoint : $ curl http: localhost:8080 example {\"ok\": true} Let’s now dig deeper in the OpenPaaS modules features."
+					}
+
+					
+				
+			
+		
+	};
+</script>
+<script src="/js/modules/lunr.min.js"></script>
+<script src="/js/search.js"></script>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

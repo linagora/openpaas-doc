@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title>OpenPaaS developer documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item current"><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/kibana/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>APIs - Auth</h2>
+				<div class="page-title">
+					<h3>Basic Access</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/apis/auth/basic.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<p>Basic Access Authentication is a method for a HTTP client to provide username and password when making a HTTP request to the server as described in the <a href="https://tools.ietf.org/html/rfc2617">RFC2617</a>.</p>
+
+<h2 id="curl-sample">curl sample</h2>
+
+<p>We assume that the a user is registered in OpenPaaS with username <code class="highlighter-rouge">admin@open-paas.org</code> and password <code class="highlighter-rouge">secret</code>. To illustrate the API response, we are calling the <code class="highlighter-rouge">/api/user</code> endpoint which returns the current authenticated user.</p>
+
+<p><strong>Request</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl --user admin@open-paas.org:secret http://localhost:8080/api/user
+</code></pre></div></div>
+
+<p><strong>Response</strong></p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" />21<br data-jekyll-commonmark-ghpages="" />22<br data-jekyll-commonmark-ghpages="" />23<br data-jekyll-commonmark-ghpages="" />24<br data-jekyll-commonmark-ghpages="" />25<br data-jekyll-commonmark-ghpages="" />26<br data-jekyll-commonmark-ghpages="" />27<br data-jekyll-commonmark-ghpages="" />28<br data-jekyll-commonmark-ghpages="" />29<br data-jekyll-commonmark-ghpages="" />30<br data-jekyll-commonmark-ghpages="" />31<br data-jekyll-commonmark-ghpages="" />32<br data-jekyll-commonmark-ghpages="" />33<br data-jekyll-commonmark-ghpages="" />34<br data-jekyll-commonmark-ghpages="" />35<br data-jekyll-commonmark-ghpages="" />36<br data-jekyll-commonmark-ghpages="" />37<br data-jekyll-commonmark-ghpages="" />38<br data-jekyll-commonmark-ghpages="" />39<br data-jekyll-commonmark-ghpages="" />40<br data-jekyll-commonmark-ghpages="" />41<br data-jekyll-commonmark-ghpages="" />42<br data-jekyll-commonmark-ghpages="" />43<br data-jekyll-commonmark-ghpages="" />44<br data-jekyll-commonmark-ghpages="" />45<br data-jekyll-commonmark-ghpages="" />46<br data-jekyll-commonmark-ghpages="" />47<br data-jekyll-commonmark-ghpages="" />48<br data-jekyll-commonmark-ghpages="" />49<br data-jekyll-commonmark-ghpages="" />50<br data-jekyll-commonmark-ghpages="" />51<br data-jekyll-commonmark-ghpages="" />52<br data-jekyll-commonmark-ghpages="" />53<br data-jekyll-commonmark-ghpages="" />54<br data-jekyll-commonmark-ghpages="" />55<br data-jekyll-commonmark-ghpages="" />56<br data-jekyll-commonmark-ghpages="" />57<br data-jekyll-commonmark-ghpages="" />58<br data-jekyll-commonmark-ghpages="" />59<br data-jekyll-commonmark-ghpages="" />60<br data-jekyll-commonmark-ghpages="" />61<br data-jekyll-commonmark-ghpages="" />62<br data-jekyll-commonmark-ghpages="" />63<br data-jekyll-commonmark-ghpages="" />64<br data-jekyll-commonmark-ghpages="" />65<br data-jekyll-commonmark-ghpages="" />66<br data-jekyll-commonmark-ghpages="" />67<br data-jekyll-commonmark-ghpages="" />68<br data-jekyll-commonmark-ghpages="" />69<br data-jekyll-commonmark-ghpages="" />70<br data-jekyll-commonmark-ghpages="" />71<br data-jekyll-commonmark-ghpages="" />72<br data-jekyll-commonmark-ghpages="" />73<br data-jekyll-commonmark-ghpages="" />74<br data-jekyll-commonmark-ghpages="" />75<br data-jekyll-commonmark-ghpages="" />76<br data-jekyll-commonmark-ghpages="" />77<br data-jekyll-commonmark-ghpages="" />78<br data-jekyll-commonmark-ghpages="" />79<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"592294b7666cdc5db24b3e31"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"firstname"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"lastname"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"preferredEmail"</span><span class="p">:</span><span class="s2">"admin@open-paas.org"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"emails"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="s2">"admin@open-paas.org"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"domains"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="s2">"domain_id"</span><span class="p">:</span><span class="s2">"592294b7666cdc5db24b3e32"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="s2">"joined_at"</span><span class="p">:</span><span class="s2">"2017-05-22T07:35:20.228Z"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"avatars"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"accounts"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"email"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="s2">"timestamps"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"creation"</span><span class="p">:</span><span class="s2">"2017-05-22T07:35:19.562Z"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="s2">"preferredEmailIndex"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="s2">"emails"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"admin@open-paas.org"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="s2">"hosted"</span><span class="p">:</span><span class="kc">false</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"followers"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"followings"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"isPlatformAdmin"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"disabled"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"configurations"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="s2">"modules"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"core"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"configurations"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"application-menu.profile"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"value"</span><span class="p">:</span><span class="kc">true</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"homePage"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"calendar.main"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"businessHours"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"value"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />              </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />                </span><span class="s2">"daysOfWeek"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />                  </span><span class="mi">1</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />                  </span><span class="mi">2</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />                  </span><span class="mi">3</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />                  </span><span class="mi">4</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />                  </span><span class="mi">5</span><span class="w"><br data-jekyll-commonmark-ghpages="" />                </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />                </span><span class="s2">"start"</span><span class="p">:</span><span class="s2">"09:00"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />                </span><span class="s2">"end"</span><span class="p">:</span><span class="s2">"18:00"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />              </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"datetime"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"value"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />              </span><span class="s2">"use24hourFormat"</span><span class="p">:</span><span class="kc">false</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"linagora.esn.unifiedinbox"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"configurations"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" /></span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

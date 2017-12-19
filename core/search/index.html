@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title>OpenPaaS developer documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/kibana/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item current"><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>OpenPaaS Core</h2>
+				<div class="page-title">
+					<h3>Search</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/core/search.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#indexing-data" id="markdown-toc-indexing-data">Indexing data</a></li>
+  <li><a href="#search-data" id="markdown-toc-search-data">Search data</a></li>
+  <li><a href="#frontend-representation" id="markdown-toc-frontend-representation">Frontend representation</a>    <ul>
+      <li><a href="#prepare-the-services" id="markdown-toc-prepare-the-services">Prepare the services</a></li>
+      <li><a href="#prepare-the-provider" id="markdown-toc-prepare-the-provider">Prepare the provider</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>The OpenPaaS Core provides a <code class="highlighter-rouge">search</code> module which relies on <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>.
+This page will provides all the informations for a developer to use the core module in order to index and search data.</p>
+
+<h2 id="indexing-data">Indexing data</h2>
+
+<p>The core <code class="highlighter-rouge">elasticsearch</code> <a href="https://ci.linagora.com/linagora/lgs/openpaas/esn/tree/master/backend/core/elasticsearch">module</a> provides a <code class="highlighter-rouge">listeners</code> module which must be used to register a listener. This listener will be in charge of handling everything needed to transform data from OpenPaaS to Elasticsearch, indexing data to the right place, etc…</p>
+
+<p>Registering a listener in the search module is as easy as giving a valid object. As an example, let’s say that we want to index <code class="highlighter-rouge">messages</code> coming from a chat module:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">listeners</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'elasticsearch'</span><span class="p">).</span><span class="nx">listeners</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">listeners</span><span class="p">.</span><span class="nx">addListener</span><span class="p">({</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">events</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">add</span><span class="p">:</span> <span class="s1">'message:create'</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">update</span><span class="p">:</span> <span class="s1">'message:update'</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">remove</span><span class="p">:</span> <span class="s1">'message:delete'</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">},</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">denormalize</span><span class="p">:</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="c1">// do something with input data (coming from topic defined above)</span><br data-jekyll-commonmark-ghpages="" />    <span class="c1">// then return the data to be indexed</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">return</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />      <span class="na">text</span><span class="p">:</span> <span class="nx">message</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />      <span class="na">date</span><span class="p">:</span> <span class="nx">message</span><span class="p">.</span><span class="nx">timestamps</span><span class="p">.</span><span class="nx">created_at</span><br data-jekyll-commonmark-ghpages="" />    <span class="p">};</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">},</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">getId</span><span class="p">:</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">message</span><span class="p">.</span><span class="nx">_id</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">type</span><span class="p">:</span> <span class="s1">'message'</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">index</span><span class="p">:</span> <span class="s1">'message.idx'</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li><code class="highlighter-rouge">events</code>: The listener will listen on several events coming from the <code class="highlighter-rouge">pubsub</code> module as defined in lines 5 to 9. The listener automatically subscribe to the topics defined (<code class="highlighter-rouge">message:create</code>, <code class="highlighter-rouge">message:update</code> and <code class="highlighter-rouge">message:remove</code>) and will do whatever needed: Index data on a <code class="highlighter-rouge">create</code> event, update indexed data on an <code class="highlighter-rouge">update</code> event, delete indexed data on a <code class="highlighter-rouge">remove event</code>. <strong>The only thing needed for the developer here is to publish data on the right topic</strong>.</li>
+  <li><code class="highlighter-rouge">denormalize</code>: This function is called each time a data is created or updated to transform data into a JSON object which will be indexed in Elasticsearch.</li>
+  <li><code class="highlighter-rouge">getId</code>: This function is called on <code class="highlighter-rouge">create</code>, <code class="highlighter-rouge">update</code>, <code class="highlighter-rouge">remove</code> to determine the identifier of the document in Elasticsearch based on input data</li>
+  <li><code class="highlighter-rouge">type</code>: The type of data defined in Elasticsearch</li>
+  <li><code class="highlighter-rouge">index</code>: The Elasticsearch index where data is indexed</li>
+</ul>
+
+<p>Note that calling <code class="highlighter-rouge">addListener</code> will return a set of functions you can also use to make calls to Elasticsearch yourself:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="p">{</span> <span class="nx">listeners</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'elasticsearch'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">searchHandler</span> <span class="o">=</span> <span class="nx">listeners</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="c1">//searchHandler.indexData(data, callback)</span><br data-jekyll-commonmark-ghpages="" /><span class="c1">//searchHandler.removeFromIndex(data, callback)</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Once the listener is registered, indexing data is as easy as:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="p">{</span> <span class="nx">local</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'pubsub'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">message</span><span class="p">:</span> <span class="s1">'This is a wonderful message'</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">timestamps</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">created_at</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">};</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">local</span><span class="p">(</span><span class="s1">'message:create'</span><span class="p">).</span><span class="nx">publish</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>The listener will be called automatically, and message will be indexed into Elasticsearch.</p>
+
+<h2 id="search-data">Search data</h2>
+
+<p>Making calls to Elasticsearch must be achieved from the <code class="highlighter-rouge">elasticsearch</code> module with the <code class="highlighter-rouge">searchDocuments</code> function:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">elasticsearch</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'elasticsearch'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">// some ES query https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">elasticsearch</span><span class="p">.</span><span class="nx">searchDocuments</span><span class="p">({</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">index</span><span class="p">:</span> <span class="s1">'message.idx'</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">type</span><span class="p">:</span> <span class="s1">'message'</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">from</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">size</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">body</span><span class="p">:</span> <span class="nx">query</span><br data-jekyll-commonmark-ghpages="" /><span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'I failed to search messages'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Search results'</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">hits</span><span class="p">.</span><span class="nx">hits</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>This will search messages in the <code class="highlighter-rouge">message.idx</code> index in the Elasticsearch service and return the search results.</p>
+
+<h2 id="frontend-representation">Frontend representation</h2>
+
+<p>With a search function as above, we can provide an API endpoint for searching documents. In front-end side, for a document can be search via OpenPaaS header, there must be a registration to provide the search service or document name, types, search result templates,…</p>
+
+<h3 id="prepare-the-services">Prepare the services</h3>
+<p>First, we need an Angular service to handle request sending. We continue with message searching example, now with an API as <code class="highlighter-rouge">GET /api/messages?search=term</code>, our search service would look like this:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'your.module'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="c1">//configure restangular</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'messageRestangular'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Restangular</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">return</span> <span class="nx">Restangular</span><span class="p">.</span><span class="nx">withConfig</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">RestangularConfigurer</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />      <span class="nx">RestangularConfigurer</span><span class="p">.</span><span class="nx">setBaseUrl</span><span class="p">(</span><span class="s1">'/api'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />      <span class="nx">RestangularConfigurer</span><span class="p">.</span><span class="nx">setFullResponse</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />    <span class="p">});</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">})</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />  <span class="c1">//send request to search API</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'searchMessageService'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">messageRestangular</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">return</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />      <span class="nx">searchMessages</span><br data-jekyll-commonmark-ghpages="" />    <span class="p">};</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />    <span class="kd">function</span> <span class="nx">searchMessages</span><span class="p">(</span><span class="nx">term</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />      <span class="k">return</span> <span class="nx">messageRestangular</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="s1">'messages'</span><span class="p">).</span><span class="nx">getList</span><span class="p">({</span><span class="na">search</span><span class="p">:</span> <span class="nx">term</span><span class="p">});</span><br data-jekyll-commonmark-ghpages="" />    <span class="p">}</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">});</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h3 id="prepare-the-provider">Prepare the provider</h3>
+<p>For every types of documents, OpenPaaS has an Angular service called <code class="highlighter-rouge">searchProviders</code> to contain documents search registration.</p>
+
+<p>We define our <code class="highlighter-rouge">messageSearchProvider</code> as following:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'your.module'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'messageSearchProvider'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$q</span><span class="p">,</span> <span class="nx">newProvider</span><span class="p">,</span> <span class="nx">searchMessageService</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">return</span> <span class="nx">newProvider</span><span class="p">({</span><br data-jekyll-commonmark-ghpages="" />      <span class="na">name</span><span class="p">:</span> <span class="s1">'Messages'</span><span class="p">,</span><br data-jekyll-commonmark-ghpages="" />      <span class="na">fetch</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">term</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />        <span class="k">return</span> <span class="nx">searchMessageService</span><span class="p">(</span><span class="nx">term</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />            <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" />          <span class="p">})</span><br data-jekyll-commonmark-ghpages="" />      <span class="p">},</span><br data-jekyll-commonmark-ghpages="" />      <span class="na">buildFetchContext</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />        <span class="k">return</span> <span class="nx">$q</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">query</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />      <span class="p">},</span><br data-jekyll-commonmark-ghpages="" />      <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'/path/to/your/search/result/template.html'</span><br data-jekyll-commonmark-ghpages="" />    <span class="p">});</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">});</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li><strong>name</strong>: the document name that is displayed in search header</li>
+  <li><strong>fetch</strong>: a function that will fetch the search result from API response</li>
+  <li><strong>buildFetchContext</strong>: build the context before fetching results</li>
+  <li><strong>templateUrl</strong>: the template for search results display</li>
+</ul>
+
+<p>Then, we register the <code class="highlighter-rouge">messageSearchProvider</code> to <code class="highlighter-rouge">searchProviders</code> by:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="nx">angular</span><span class="p">(</span><span class="s1">'my.module'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">searchProviders</span><span class="p">,</span> <span class="nx">messageSearchProvider</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="nx">searchProviders</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">messageSearchProvider</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">});</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>As a result, the document can be selected and searched respectively via the search header.</p>
+
+<p><img src="/images/modules/core/search-header.png" alt="Search header" /></p>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>
