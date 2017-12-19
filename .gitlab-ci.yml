@@ -1,0 +1,31 @@
+image: jekyll/jekyll
+
+stages:
+  - build_only
+  - build_then_deploy
+
+build_only:
+  stage: build_only
+  except:
+    - master
+  tags:
+    - docker
+  script:
+    - bundle install
+    - bundle exec jekyll build
+    - bundle exec htmlproofer ./_site --disable-external # lint the output
+
+build_then_deploy:
+  stage: build_then_deploy
+  tags:
+    - docker
+  environment:
+    name: docs
+    url: http://docs.open-paas.org
+  only:
+    - master
+  script:
+    - bundle install
+    - bundle exec jekyll build
+    - bundle exec htmlproofer ./_site --disable-external # lint the output
+    - ./scripts/deploy.sh
