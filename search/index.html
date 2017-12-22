@@ -68,6 +68,20 @@
 					
 						<li class="nav-item top-level ">
 							
+							<a href="/getting-started/docker/">Getting started</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/getting-started/docker/">Get started with Docker</a></li>
+								
+									<li class="nav-item "><a href="/getting-started/linux/">Get started with Linux</a></li>
+								
+									<li class="nav-item "><a href="/getting-started/supported-platforms/">Supported platforms</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
 							<a href="/apis/web/">APIs</a>
 							<ul>
 								
@@ -462,6 +476,57 @@
 						"category": "",
 						"url": " /devops/kibana/",
 						"content": "Table of contents Overview Run with Docker Overview Kibana is a tool we use to visualize and navigate into Elasticsearch data. Run with Docker The Elasticsearch version used in OpenPaaS does not allow to use the latest Docker image for Kibana. Here are the instruction to run a valid Kibana version with Docker: docker run -d -e \"ELASTICSEARCH_URL=http: HOST:POST\" -p 5601:5601 kibana:4.5 Where ELASTICSEARCH_URL is the URL of the Elasticsearch instance you want Kibana to connect to (i.e. the URL the Kibana container can reach). Once started, you can open the Kibana Web UI from http: localhost:5601 :"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"getting-started-docker": {
+						"id": "getting-started-docker",
+						"title": "Get started with Docker",
+						"category": "",
+						"url": " /getting-started/docker/",
+						"content": "The easiest way to try OpenPaaS from your local machine is to use Docker Compose. We assume that you already have Git, and Docker Compose, installed on your machine. Run the following commands: # get the code git clone https: github.com linagora openpaas-esn.git # Go in the project root folder cd openpaas-esn # launch it PROVISION=true DOCKER_IP=localhost ESN_PATH=$PWD docker-compose -f . docker dockerfiles platform docker-compose-images.yml up We set PROVISION=true to create some sample data. You only need it the first time you launch Docker Compose. Launching the platform may take some time (1-2 minutes), grab a coffee and when it is ready you can access the application at http: localhost:8080 with username admin@open-paas.org and password secret List of other (non admin) users created: user email address password user1@open-paas.org secret user2@open-paas.org secret user3@open-paas.org secret user4@open-paas.org secret user5@open-paas.org secret user6@open-paas.org secret user7@open-paas.org secret user8@open-paas.org secret user9@open-paas.org secret Discover Some videos to help discover the product: Global presentation (EN) Unified Inbox introduction (FR) Calendar introduction (FR)"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"getting-started-linux": {
+						"id": "getting-started-linux",
+						"title": "Get started with Linux",
+						"category": "",
+						"url": " /getting-started/linux/",
+						"content": "Table of contents Setup the target machine Hostname Bootstrap the installation Install packages On Debian On RHEL or CentOS Initialize OpenPaaS Enjoy Discover Global presentation (EN) Unified Inbox introduction (FR) Calendar introduction (FR) Installing OpenPaas on a Linux server is very easy using provided system packages. This installation method is currently only supported on Debian Jessie and RHEL 7 (or its community companion CentOS 7). For both distributions, start from a minimal installation. Setup the target machine Hostname Make sure the target machine has a fully-qualified hostname defined by running this command as root: hostnamectl If the hostname field is not fully qualified, update your hostname using the following command: hostnamectl set-hostname openpaas.local Bootstrap the installation We provide a small bootstrap script to quickly setup the required repositories on the machine you will install OpenPaas on. To use it, simply run, as root: wget -qO - get.open-paas.org | bash or curl -s get.open-paas.org | bash depending on the availability of either wget or curl on your system. Install packages Once the bootstrap script has run, you can install the required packages. On Debian As root, run: apt-get remove -y ^exim* apt-get install -t jessie-backports openjdk-8-jdk apt-get install -y openpaas openpaas-davserver openpaas-james Removing the default mail transfer agent (exim) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA. To make sure services are started and enabled on boot, run the following commands as root: systemctl enable {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas} systemctl start {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas} On RHEL or CentOS As root, run: yum erase -y postfix yum install -y openpaas openpaas-davserver openpaas-james Removing the default mail transfer agent (postfix) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA. To make sure services are started and enabled on boot, run the following commands as root: systemctl enable {mongod,elasticsearch,cassandra,redis,rabbitmq-server,nginx,james,openpaas} systemctl start {mongod,elasticsearch,cassandra,redis,rabbitmq-server,nginx,james,openpaas} You will also need to configure the firewall to access the different needed ports. For a simple test you can deactivate it: systemctl stop firewalld Initialize OpenPaaS To create a domain and your first administrator, run the following command as the openpaas user or as root: opctl init --email admin@openpaas.local Enjoy OpenPaas is installed using the openpaas.local hostname by default, meaning you must access it using this hostname. To do this, add the following line to your etc hosts file (unless you can make openpaas.local resolve to the machine’s IP address using a DNS server): x.x.x.x openpaas.local davserver.openpaas.local james.openpaas.local You can then open a compatible browser to http: openpaas.local and login using admin@openpaas.local with password admin. Discover Some videos to help discover the product: Global presentation (EN) Unified Inbox introduction (FR) Calendar introduction (FR)"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"getting-started-supported-platforms": {
+						"id": "getting-started-supported-platforms",
+						"title": "Supported platforms",
+						"category": "",
+						"url": " /getting-started/supported-platforms/",
+						"content": "Supported servers We currently support package installation for the following Linux distributions: CentOS RHEL 7 Debian 8 Jessie Supported browsers Mozilla Firefox (Desktop) Mozilla Firefox (Mobile) Google Chrome (Desktop) Google Chrome (Mobile) Apple Safari (Desktop) Apple Safari (Mobile) Microsoft Edge Core modules 52 and up latest 57 and up 57 and up 11 iOS 10 latest * Unified Inbox module 52 and up latest 57 and up 57 and up 11 iOS 10 latest Calendar module 52 and up latest 57 and up 57 and up 11 iOS 10 latest Contact module 52 and up latest 57 and up 57 and up 11 iOS 10 latest Chat module 52 and up latest 57 and up 57 and up No No No Admin module 52 and up latest 57 and up 57 and up 11 iOS 10 latest * The initial page load on Microsoft Edge can take up to one minute."
 					}
 
 					

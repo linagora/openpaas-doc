@@ -66,12 +66,12 @@
 				<ul>
 					
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/getting-started/docker/">Getting started</a>
 							<ul>
 								
-									<li class="nav-item "><a href="/getting-started/docker/">Get started with Docker</a></li>
+									<li class="nav-item current"><a href="/getting-started/docker/">Get started with Docker</a></li>
 								
 									<li class="nav-item "><a href="/getting-started/linux/">Get started with Linux</a></li>
 								
@@ -246,31 +246,98 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Documentation</h2>
+				<h2>Getting started</h2>
 				<div class="page-title">
-					<h3>Media support</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_posts/2016-01-12-media-support.md" title="Edit this page on Github">
+					<h3>Get started with Docker</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/getting-started/docker.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<p>ChatApp introduces media support! Send images, videos and documents to your contacts.</p>
+				<p>The easiest way to try OpenPaaS from your local machine is to use <a href="https://docs.docker.com/compose/">Docker Compose</a>.
+We assume that you already have Git, and Docker Compose, installed on your machine. Run the
+following commands:</p>
 
-<p><strong>Features:</strong></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># get the code</span>
+git clone https://github.com/linagora/openpaas-esn.git
+<span class="c"># Go in the project root folder</span>
+<span class="nb">cd </span>openpaas-esn
+<span class="c"># launch it</span>
+<span class="nv">PROVISION</span><span class="o">=</span><span class="nb">true </span><span class="nv">DOCKER_IP</span><span class="o">=</span>localhost <span class="nv">ESN_PATH</span><span class="o">=</span><span class="nv">$PWD</span> docker-compose <span class="nt">-f</span> ./docker/dockerfiles/platform/docker-compose-images.yml up
+</code></pre></div></div>
 
-<ul>
-  <li>Image support</li>
-  <li>Video support</li>
-  <li>Document support</li>
-</ul>
+<p><em>We set <code class="highlighter-rouge">PROVISION=true</code> to create some sample data. You only need it the first
+time you launch Docker Compose.</em></p>
 
-<p><strong>Fixes:</strong></p>
+<p>Launching the platform may take some time (1-2 minutes), grab a coffee and when
+it is ready you can access the application at <strong>http://localhost:8080</strong> with
+username <strong>admin@open-paas.org</strong> and password <strong>secret</strong></p>
 
-<ul>
-  <li>Edge case contact syncing issue</li>
-  <li>All memory leaks obliterated</li>
-</ul>
+<p>List of other (non admin) users created:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>user email address</th>
+      <th>password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>user1@open-paas.org</td>
+      <td>secret</td>
+    </tr>
+    <tr>
+      <td>user2@open-paas.org</td>
+      <td>secret</td>
+    </tr>
+    <tr>
+      <td>user3@open-paas.org</td>
+      <td>secret</td>
+    </tr>
+    <tr>
+      <td>user4@open-paas.org</td>
+      <td>secret</td>
+    </tr>
+    <tr>
+      <td>user5@open-paas.org</td>
+      <td>secret</td>
+    </tr>
+    <tr>
+      <td>user6@open-paas.org</td>
+      <td>secret</td>
+    </tr>
+    <tr>
+      <td>user7@open-paas.org</td>
+      <td>secret</td>
+    </tr>
+    <tr>
+      <td>user8@open-paas.org</td>
+      <td>secret</td>
+    </tr>
+    <tr>
+      <td>user9@open-paas.org</td>
+      <td>secret</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="discover">Discover</h1>
+
+<p>Some videos to help discover the product:</p>
+
+<h2 id="global-presentation-en">Global presentation (EN)</h2>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7d7ZlD8u82s" frameborder="0" allowfullscreen=""></iframe>
+
+<h2 id="unified-inbox-introduction-fr">Unified Inbox introduction (FR)</h2>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OaR-i9cKYbo" frameborder="0" allowfullscreen=""></iframe>
+
+<h2 id="calendar-introduction-fr">Calendar introduction (FR)</h2>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5HevB9W5tPE" frameborder="0" allowfullscreen=""></iframe>
 
 			</article>
 		</section>

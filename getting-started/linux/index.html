@@ -66,14 +66,14 @@
 				<ul>
 					
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/getting-started/docker/">Getting started</a>
 							<ul>
 								
 									<li class="nav-item "><a href="/getting-started/docker/">Get started with Docker</a></li>
 								
-									<li class="nav-item "><a href="/getting-started/linux/">Get started with Linux</a></li>
+									<li class="nav-item current"><a href="/getting-started/linux/">Get started with Linux</a></li>
 								
 									<li class="nav-item "><a href="/getting-started/supported-platforms/">Supported platforms</a></li>
 								
@@ -246,31 +246,142 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Documentation</h2>
+				<h2>Getting started</h2>
 				<div class="page-title">
-					<h3>Media support</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_posts/2016-01-12-media-support.md" title="Edit this page on Github">
+					<h3>Get started with Linux</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/getting-started/linux.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<p>ChatApp introduces media support! Send images, videos and documents to your contacts.</p>
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
 
-<p><strong>Features:</strong></p>
-
-<ul>
-  <li>Image support</li>
-  <li>Video support</li>
-  <li>Document support</li>
+<ul id="markdown-toc">
+  <li><a href="#setup-the-target-machine" id="markdown-toc-setup-the-target-machine">Setup the target machine</a>    <ul>
+      <li><a href="#hostname" id="markdown-toc-hostname">Hostname</a></li>
+      <li><a href="#bootstrap-the-installation" id="markdown-toc-bootstrap-the-installation">Bootstrap the installation</a></li>
+    </ul>
+  </li>
+  <li><a href="#install-packages" id="markdown-toc-install-packages">Install packages</a>    <ul>
+      <li><a href="#on-debian" id="markdown-toc-on-debian">On Debian</a></li>
+      <li><a href="#on-rhel-or-centos" id="markdown-toc-on-rhel-or-centos">On RHEL or CentOS</a></li>
+    </ul>
+  </li>
+  <li><a href="#initialize-openpaas" id="markdown-toc-initialize-openpaas">Initialize OpenPaaS</a></li>
+  <li><a href="#enjoy" id="markdown-toc-enjoy">Enjoy</a></li>
+  <li><a href="#discover" id="markdown-toc-discover">Discover</a>    <ul>
+      <li><a href="#global-presentation-en" id="markdown-toc-global-presentation-en">Global presentation (EN)</a></li>
+      <li><a href="#unified-inbox-introduction-fr" id="markdown-toc-unified-inbox-introduction-fr">Unified Inbox introduction (FR)</a></li>
+      <li><a href="#calendar-introduction-fr" id="markdown-toc-calendar-introduction-fr">Calendar introduction (FR)</a></li>
+    </ul>
+  </li>
 </ul>
 
-<p><strong>Fixes:</strong></p>
+<p>Installing OpenPaas on a Linux server is very easy using provided system packages.
+This installation method is currently only supported on <em>Debian Jessie</em> and <em>RHEL 7</em> (or its community companion <em>CentOS 7</em>). For both distributions, start from a <em>minimal</em> installation.</p>
 
-<ul>
-  <li>Edge case contact syncing issue</li>
-  <li>All memory leaks obliterated</li>
-</ul>
+<h1 id="setup-the-target-machine">Setup the target machine</h1>
+
+<h2 id="hostname">Hostname</h2>
+
+<p>Make sure the target machine has a fully-qualified hostname defined by running this command as <em>root</em>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hostnamectl
+</code></pre></div></div>
+
+<p>If the <em>hostname</em> field is not fully qualified, update your hostname using the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hostnamectl set-hostname openpaas.local
+</code></pre></div></div>
+
+<h2 id="bootstrap-the-installation">Bootstrap the installation</h2>
+
+<p>We provide a small bootstrap script to quickly setup the required repositories on the machine you will install OpenPaas on. To use it, simply run, as <em>root</em>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-qO</span> - get.open-paas.org | bash
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> get.open-paas.org | bash
+</code></pre></div></div>
+
+<p>depending on the availability of either <code class="highlighter-rouge">wget</code> or <code class="highlighter-rouge">curl</code> on your system.</p>
+
+<h1 id="install-packages">Install packages</h1>
+
+<p>Once the bootstrap script has run, you can install the required packages.</p>
+
+<h2 id="on-debian">On Debian</h2>
+
+<p>As <em>root</em>, run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get remove <span class="nt">-y</span> ^exim<span class="k">*</span>
+apt-get install <span class="nt">-t</span> jessie-backports openjdk-8-jdk
+apt-get install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
+</code></pre></div></div>
+
+<p>Removing the default mail transfer agent (<em>exim</em>) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA.</p>
+
+<p>To make sure services are started and enabled on boot, run the following commands as <em>root</em>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="o">{</span>mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
+systemctl start <span class="o">{</span>mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="on-rhel-or-centos">On RHEL or CentOS</h2>
+
+<p>As <em>root</em>, run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum erase <span class="nt">-y</span> postfix
+yum install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
+</code></pre></div></div>
+
+<p>Removing the default mail transfer agent (<em>postfix</em>) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA.</p>
+
+<p>To make sure services are started and enabled on boot, run the following commands as <em>root</em>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
+systemctl start <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
+</code></pre></div></div>
+
+<p>You will also need to configure the firewall to access the different needed ports. For a simple test you can deactivate it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl stop firewalld
+</code></pre></div></div>
+
+<h1 id="initialize-openpaas">Initialize OpenPaaS</h1>
+
+<p>To create a domain and your first administrator, run the following command as the <em>openpaas</em> user or as <em>root</em>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opctl init <span class="nt">--email</span> admin@openpaas.local
+</code></pre></div></div>
+
+<h1 id="enjoy">Enjoy</h1>
+
+<p>OpenPaas is installed using the <code class="highlighter-rouge">openpaas.local</code> hostname by default, meaning you must access it using this hostname. To do this, add the following line to your <code class="highlighter-rouge">/etc/hosts</code> file (unless you can make openpaas.local resolve to the machine’s IP address using a DNS server):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x.x.x.x openpaas.local davserver.openpaas.local james.openpaas.local
+</code></pre></div></div>
+
+<p>You can then open a compatible browser to <code class="highlighter-rouge">http://openpaas.local</code> and login using <em>admin@openpaas.local</em> with password <em>admin</em>.</p>
+
+<h1 id="discover">Discover</h1>
+
+<p>Some videos to help discover the product:</p>
+
+<h2 id="global-presentation-en">Global presentation (EN)</h2>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7d7ZlD8u82s" frameborder="0" allowfullscreen=""></iframe>
+
+<h2 id="unified-inbox-introduction-fr">Unified Inbox introduction (FR)</h2>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OaR-i9cKYbo" frameborder="0" allowfullscreen=""></iframe>
+
+<h2 id="calendar-introduction-fr">Calendar introduction (FR)</h2>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5HevB9W5tPE" frameborder="0" allowfullscreen=""></iframe>
 
 			</article>
 		</section>
