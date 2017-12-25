@@ -9,12 +9,10 @@ We assume that you already have Git, and Docker Compose, installed on your machi
 following commands:
 
 ```shell
-# get the code
-git clone https://github.com/linagora/openpaas-esn.git
-# Go in the project root folder
-cd openpaas-esn
+# grab the docker-compose file
+wget https://raw.githubusercontent.com/linagora/openpaas-esn/master/docker-compose.yml
 # launch it
-PROVISION=true DOCKER_IP=localhost ESN_PATH=$PWD docker-compose -f ./docker/dockerfiles/platform/docker-compose-images.yml up
+PROVISION=true docker-compose up
 ```
 
 _We set `PROVISION=true` to create some sample data. You only need it the first
