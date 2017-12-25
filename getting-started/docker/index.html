@@ -259,12 +259,10 @@
 We assume that you already have Git, and Docker Compose, installed on your machine. Run the
 following commands:</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># get the code</span>
-git clone https://github.com/linagora/openpaas-esn.git
-<span class="c"># Go in the project root folder</span>
-<span class="nb">cd </span>openpaas-esn
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># grab the docker-compose file</span>
+wget https://raw.githubusercontent.com/linagora/openpaas-esn/master/docker-compose.yml
 <span class="c"># launch it</span>
-<span class="nv">PROVISION</span><span class="o">=</span><span class="nb">true </span><span class="nv">DOCKER_IP</span><span class="o">=</span>localhost <span class="nv">ESN_PATH</span><span class="o">=</span><span class="nv">$PWD</span> docker-compose <span class="nt">-f</span> ./docker/dockerfiles/platform/docker-compose-images.yml up
+<span class="nv">PROVISION</span><span class="o">=</span><span class="nb">true </span>docker-compose up
 </code></pre></div></div>
 
 <p><em>We set <code class="highlighter-rouge">PROVISION=true</code> to create some sample data. You only need it the first
