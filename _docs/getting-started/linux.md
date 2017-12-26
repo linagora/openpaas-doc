@@ -100,6 +100,13 @@ To create a domain and your first administrator, run the following command as th
 opctl init --email admin@openpaas.local
 ```
 
+The command also provision configurations, hence you need to restart OpenPaaS and
+James to make these services work properly with the new configurations:
+
+```bash
+systemctl restart {james,openpaas}
+```
+
 # Enjoy
 
 OpenPaas is installed using the `openpaas.local` hostname by default, meaning you must access it using this hostname. To do this, add the following line to your `/etc/hosts` file (unless you can make openpaas.local resolve to the machine's IP address using a DNS server):
