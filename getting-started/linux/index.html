@@ -358,6 +358,12 @@ systemctl start <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rab
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opctl init <span class="nt">--email</span> admin@openpaas.local
 </code></pre></div></div>
 
+<p>The command also provision configurations, hence you need to restart OpenPaaS and
+James to make these services work properly with the new configurations:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart <span class="o">{</span>james,openpaas<span class="o">}</span>
+</code></pre></div></div>
+
 <h1 id="enjoy">Enjoy</h1>
 
 <p>OpenPaas is installed using the <code class="highlighter-rouge">openpaas.local</code> hostname by default, meaning you must access it using this hostname. To do this, add the following line to your <code class="highlighter-rouge">/etc/hosts</code> file (unless you can make openpaas.local resolve to the machine’s IP address using a DNS server):</p>
