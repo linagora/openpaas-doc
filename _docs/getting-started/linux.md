@@ -56,6 +56,7 @@ As _root_, run:
 ```bash
 apt-get remove -y ^exim*
 apt-get install -t jessie-backports openjdk-8-jdk
+update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 apt-get install -y openpaas openpaas-davserver openpaas-james
 ```
 
@@ -82,8 +83,8 @@ Removing the default mail transfer agent (_postfix_) is required because OpenPaa
 To make sure services are started and enabled on boot, run the following commands as _root_:
 
 ```bash
-systemctl enable {mongod,elasticsearch,cassandra,redis,rabbitmq-server,nginx,james,openpaas}
-systemctl start {mongod,elasticsearch,cassandra,redis,rabbitmq-server,nginx,james,openpaas}
+systemctl enable {mongod,elasticsearch,cassandra,redis,rabbitmq-server,php-fpm,nginx,james,openpaas}
+systemctl start {mongod,elasticsearch,cassandra,redis,rabbitmq-server,php-fpm,nginx,james,openpaas}
 ```
 
 You will also need to configure the firewall to access the different needed ports. For a simple test you can deactivate it:
