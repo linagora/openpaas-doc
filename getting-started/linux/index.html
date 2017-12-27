@@ -319,6 +319,7 @@ This installation method is currently only supported on <em>Debian Jessie</em> a
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get remove <span class="nt">-y</span> ^exim<span class="k">*</span>
 apt-get install <span class="nt">-t</span> jessie-backports openjdk-8-jdk
+update-alternatives <span class="nt">--set</span> java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 apt-get install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
 </code></pre></div></div>
 
@@ -342,8 +343,8 @@ yum install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-jame
 
 <p>To make sure services are started and enabled on boot, run the following commands as <em>root</em>:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
-systemctl start <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rabbitmq-server,php-fpm,nginx,james,openpaas<span class="o">}</span>
+systemctl start <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rabbitmq-server,php-fpm,nginx,james,openpaas<span class="o">}</span>
 </code></pre></div></div>
 
 <p>You will also need to configure the firewall to access the different needed ports. For a simple test you can deactivate it:</p>
