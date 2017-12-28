@@ -36,7 +36,7 @@
 		<script src="{{ '/js/swagger-authentication.js' | prepend: site.baseurl }}"></script>
 		<script src="{{ '/js/app.js' | prepend: site.baseurl }}"></script>
 
-		<title>OpenPaaS developer documentation</title>
+		<title>{% if page.title %} {{ page.title }} | {% endif %} OpenPaaS documentation</title>
 		{% feed_meta %}
 
 		{% if jekyll.environment == 'production' and site.google_analytics_key != '' %}
