@@ -1,37 +1,47 @@
 ---
 title: Welcome
 ---
-This is the developer documentation of [**OpenPaaS**](http://open-paas.org/), your **open collaborative platform**.
+
+OpenPaaS is an open collaboration platform for the business. With OpenPaas, the digital collaboration between business partners is simple and efficient.
+
+### Try OpenPaaS
+
+Check out the [Get started](/getting-started/docker/) guide to try OpenPaaS platform features on your machine.
+
+### Install OpenPaaS
+
+Check out the [installation](/getting-started/linux/) guide to install OpenPaaS on
+a Linux machine and start using OpenPaaS for your business.
+
+### Get involved in development
 
 <div class="hp-im">
   <div class="integrations">
-    <a href="{{ site.baseurl }}/apis/web">
-      <div class="hp-im-inner">
-        <div class="image-container">
-          <img src="images/integrations.png" alt="integrations">
-        </div>
-        <div class="title-container sans">
-          Web API
-        </div>
+
+    <div class="hp-im-inner">
+      <div class="image-container">
+        <a href="{{ site.baseurl }}/apis/web"><img src="images/integrations.png" alt="integrations"></a>
       </div>
-      <div>
-        Check how third-party applications to interact with OpenPaaS using its REST and real-time API.
+      <div class="title-container sans">
+        <a href="{{ site.baseurl }}/apis/web">Web API</a>
       </div>
-    </a>
+    </div>
+    <div>
+      Check how third-party applications to interact with OpenPaaS using its REST and real-time API.
+    </div>
+
   </div>
   <div class="modules">
-    <a href="{{ site.baseurl }}/modules/howto/index">
-      <div class="hp-im-inner">
-        <div class="image-container">
-          <img src="images/modules.png" alt="modules">
-        </div>
-        <div class="title-container sans">
-          Modules
-        </div>
+    <div class="hp-im-inner">
+      <div class="image-container">
+        <a href="{{ site.baseurl }}/modules/howto/index"><img src="images/modules.png" alt="modules"></a>
       </div>
-      <div>
-        Create OpenPaaS modules to add REST endpoints to the platform, react to the other modules changes, add pages and widgets to the web interface.
+      <div class="title-container sans">
+        <a href="{{ site.baseurl }}/modules/howto/index">Modules</a>
       </div>
-    </a>
+    </div>
+    <div>
+      Create OpenPaaS modules to add REST endpoints to the platform, react to the other modules changes, add pages and widgets to the web interface.
+    </div>
   </div>
 </div>
