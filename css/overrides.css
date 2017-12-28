@@ -23,3 +23,9 @@
 .highlight pre code {
   white-space: pre;
 }
+
+header {
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+}
