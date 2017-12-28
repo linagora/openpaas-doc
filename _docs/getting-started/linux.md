@@ -60,7 +60,7 @@ update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 apt-get install -y openpaas openpaas-davserver openpaas-james
 ```
 
-Removing the default mail transfer agent (_exim_) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA.
+> Removing the default mail transfer agent (_exim_) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA.
 
 To make sure services are started and enabled on boot, run the following commands as _root_:
 
@@ -78,7 +78,7 @@ yum erase -y postfix
 yum install -y openpaas openpaas-davserver openpaas-james
 ```
 
-Removing the default mail transfer agent (_postfix_) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA.
+> Removing the default mail transfer agent (_postfix_) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA.
 
 To make sure services are started and enabled on boot, run the following commands as _root_:
 
