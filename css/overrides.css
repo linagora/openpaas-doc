@@ -1,3 +1,25 @@
 .swagger-ui .operation .content pre {
   background-color: #404145;
 }
+
+.content iframe {
+  display: block;
+  margin: 0 auto;
+}
+
+.content, .page-header {
+  max-width: 800px;
+}
+
+/* for vertical scrollbar */
+.highlight pre code * {
+  white-space: nowrap;
+}
+
+.highlight pre {
+  overflow-x: auto;
+}
+
+.highlight pre code {
+  white-space: pre;
+}
