@@ -15,8 +15,8 @@ wget https://raw.githubusercontent.com/linagora/openpaas-esn/master/docker-compo
 PROVISION=true docker-compose up
 ```
 
-_We set `PROVISION=true` to create some sample data. You only need it the first
-time you launch Docker Compose._
+> We set `PROVISION=true` to create some sample data. You only need it the first
+time you launch Docker Compose
 
 Launching the platform may take some time (1-2 minutes), grab a coffee and when
 it is ready you can access the application at __http://localhost:8080__ with
