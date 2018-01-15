@@ -130,6 +130,12 @@ To create a domain and your first administrator, run the following command as th
 opctl init --email admin@openpaas.local
 ```
 
+User is created by default as Domain admin.  
+If needed, set your user as Platform Admin (see <a target="_blank" href="/modules/admin/index/#platform-mode">Platform mode</a>) with the following command:
+```bash
+opctl platformadmin init --email admin@openpaas.local
+```
+
 The command also provision configurations, hence you need to restart OpenPaaS and
 James to make these services work properly with the new configurations:
 
