@@ -10,10 +10,12 @@ order: 2
 * Here is the ToC, this line is needed to generate...
 {:toc}
 
-Installing OpenPaas on a Linux server is very easy using provided system packages.
+Installing OpenPaaS on a Linux server is very easy using provided system packages.
 This installation method is currently only supported on _Debian Jessie_ and _RHEL 7_ (or its community companion _CentOS 7_).
 
-> Make sure you are starting from a minimal installation for both distributions; the machine should only have standard system utilities (and ssh service).
+> Make sure you are starting from a minimal installation for both distributions. The machine should only have standard system utilities (and ssh service).
+
+> If you just want to try OpenPaaS, check out the [Docker guide](/getting-started/docker/)
 
 # Setup the target machine
 
@@ -30,7 +32,7 @@ echo "127.0.0.1 openpaas.local openpaas james.openpaas.local dav.openpaas.local"
 ```
 ## Bootstrap the installation
 
-We provide a small bootstrap script to quickly setup the required repositories on the machine you will install OpenPaas on. To use it, simply run, as _root_:
+We provide a small bootstrap script to quickly setup the required repositories on the machine you will install OpenPaaS on. To use it, simply run, as _root_:
 
 ```bash
 wget -qO - get.open-paas.org | bash
@@ -56,7 +58,7 @@ As _root_:
 ```bash
 apt-get remove -y ^exim*
 ```
-> Removing the default mail transfer agent (_exim_) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA.
+> Removing the default mail transfer agent (_exim_) is required because OpenPaaS comes with a full-featured mail server that also serves as a MTA.
 
 - Install openjdk-8
 ```bash

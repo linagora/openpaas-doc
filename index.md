@@ -2,7 +2,7 @@
 title: Welcome
 ---
 
-OpenPaaS is an open collaboration platform for the business. With OpenPaas, the digital collaboration between business partners is simple and efficient.
+OpenPaaS is an open collaboration platform for the business. With OpenPaaS, the digital collaboration between business partners is simple and efficient.
 
 ### Try OpenPaaS
 
