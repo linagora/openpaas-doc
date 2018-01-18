@@ -10,28 +10,29 @@ order: 2
 * Here is the ToC, this line is needed to generate...
 {:toc}
 
-Installing OpenPaas on a Linux server is very easy using provided system packages.
-This installation method is currently only supported on _Debian Jessie_ and _RHEL 7_ (or its community companion _CentOS 7_). For both distributions, start from a _minimal_ installation.
+Installing OpenPaaS on a Linux server is very easy using provided system packages.
+This installation method is currently only supported on _Debian Jessie_ and _RHEL 7_ (or its community companion _CentOS 7_).
+
+> Make sure you are starting from a minimal installation for both distributions. The machine should only have standard system utilities (and ssh service).
+
+> If you just want to try OpenPaaS, check out the [Docker guide](/getting-started/docker/)
 
 # Setup the target machine
 
 ## Hostname
 
-Make sure the target machine has a fully-qualified hostname defined by running this command as _root_:
-
-```bash
-hostnamectl
-```
-
-If the _hostname_ field is not fully qualified, update your hostname using the following command:
-
+Set the target machine's hostname using the following command:
 ```bash
 hostnamectl set-hostname openpaas.local
 ```
 
+Make sure the hostname is correctly resolved locally using this command:
+```bash
+echo "127.0.0.1 openpaas.local openpaas james.openpaas.local dav.openpaas.local" | tee -a /etc/hosts
+```
 ## Bootstrap the installation
 
-We provide a small bootstrap script to quickly setup the required repositories on the machine you will install OpenPaas on. To use it, simply run, as _root_:
+We provide a small bootstrap script to quickly setup the required repositories on the machine you will install OpenPaaS on. To use it, simply run, as _root_:
 
 ```bash
 wget -qO - get.open-paas.org | bash
@@ -49,18 +50,26 @@ depending on the availability of either `wget` or `curl` on your system.
 
 Once the bootstrap script has run, you can install the required packages.
 
-## On Debian
+### On Debian Jessie
 
-As _root_, run:
+As _root_:
 
+- Remove exim
 ```bash
 apt-get remove -y ^exim*
+```
+> Removing the default mail transfer agent (_exim_) is required because OpenPaaS comes with a full-featured mail server that also serves as a MTA.
+
+- Install openjdk-8
+```bash
 apt-get install -t jessie-backports openjdk-8-jdk
 update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
-apt-get install -y openpaas openpaas-davserver openpaas-james
 ```
 
-> Removing the default mail transfer agent (_exim_) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA.
+- Install OpenPaaS packages
+```bash
+apt-get install -y openpaas openpaas-davserver openpaas-james
+```
 
 To make sure services are started and enabled on boot, run the following commands as _root_:
 
@@ -69,7 +78,29 @@ systemctl enable {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,ng
 systemctl start {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
 ```
 
-## On RHEL or CentOS
+### On Debian Stretch
+
+As _root_:
+
+- Install openjdk-8
+```bash
+apt-get install openjdk-8-jdk
+update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+```
+
+- Install OpenPaaS packages
+```bash
+apt-get install -y openpaas openpaas-davserver openpaas-james
+```
+
+To make sure services are started and enabled on boot, run the following commands as _root_:
+
+```bash
+systemctl enable {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
+systemctl start {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
+```
+
+### On RHEL or CentOS
 
 As _root_, run:
 
@@ -78,7 +109,7 @@ yum erase -y postfix
 yum install -y openpaas openpaas-davserver openpaas-james
 ```
 
-> Removing the default mail transfer agent (_postfix_) is required because OpenPaas comes with a full-featured mail server that also serves as a MTA.
+> Removing the default mail transfer agent (_postfix_) is required because OpenPaaS comes with a full-featured mail server that also serves as a MTA.
 
 To make sure services are started and enabled on boot, run the following commands as _root_:
 
@@ -101,6 +132,12 @@ To create a domain and your first administrator, run the following command as th
 opctl init --email admin@openpaas.local
 ```
 
+User is created by default as Domain admin.  
+If needed, set your user as Platform Admin (see <a target="_blank" href="/modules/admin/index/#platform-mode">Platform mode</a>) with the following command:
+```bash
+opctl platformadmin init --email admin@openpaas.local
+```
+
 The command also provision configurations, hence you need to restart OpenPaaS and
 James to make these services work properly with the new configurations:
 
@@ -110,7 +147,7 @@ systemctl restart {james,openpaas}
 
 # Enjoy
 
-OpenPaas is installed using the `openpaas.local` hostname by default, meaning you must access it using this hostname. To do this, add the following line to your `/etc/hosts` file (unless you can make openpaas.local resolve to the machine's IP address using a DNS server):
+OpenPaaS is installed using the `openpaas.local` hostname by default, meaning you must access it using this hostname. To do this, add the following line to your `/etc/hosts` file (unless you can make openpaas.local resolve to the machine's IP address using a DNS server):
 
 ```bash
 x.x.x.x openpaas.local davserver.openpaas.local james.openpaas.local
