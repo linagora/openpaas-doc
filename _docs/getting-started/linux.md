@@ -74,18 +74,18 @@ apt-get install -y openpaas openpaas-davserver openpaas-james
 To make sure services are started and enabled on boot, run the following commands as _root_:
 
 ```bash
-systemctl enable {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
-systemctl start {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
+systemctl enable {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
+systemctl start {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
 ```
 
 ### On Debian Stretch
 
 As _root_:
 
-- Install openjdk-8
+- Stop and Disable Apache2
 ```bash
-apt-get install openjdk-8-jdk
-update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+apachectl stop
+systemctl disable apache2
 ```
 
 - Install OpenPaaS packages
@@ -96,9 +96,16 @@ apt-get install -y openpaas openpaas-davserver openpaas-james
 To make sure services are started and enabled on boot, run the following commands as _root_:
 
 ```bash
-systemctl enable {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
-systemctl start {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
+systemctl status {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
 ```
+
+If any service don't work enable it/them with the following commands as _root_:
+
+```bash
+systemctl enable {svc1,svc2,svcEtc...}
+systemctl start {svc1,svc2,svcEtc...}
+```
+
 
 ### On RHEL or CentOS
 
