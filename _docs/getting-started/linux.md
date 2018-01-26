@@ -82,7 +82,13 @@ systemctl start {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,ng
 
 As _root_:
 
-- Stop and Disable Apache2
+- There is Apache enable?
+```bash
+systemctl status apache2
+```
+
+
+- If the apache2's state is started and enable : stop and disable it!
 ```bash
 apachectl stop
 systemctl disable apache2
