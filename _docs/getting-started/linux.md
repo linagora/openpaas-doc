@@ -99,19 +99,11 @@ systemctl disable apache2
 apt-get install -y openpaas openpaas-davserver openpaas-james
 ```
 
-To make sure services are started and enabled on boot, run the following commands as _root_:
+To make sure all services are started and enabled on boot, run the following commands as _root_:
 
 ```bash
 systemctl status {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
 ```
-
-If any service don't work enable it/them with the following commands as _root_:
-
-```bash
-systemctl enable {svc1,svc2,svcEtc...}
-systemctl start {svc1,svc2,svcEtc...}
-```
-
 
 ### On RHEL or CentOS
 
