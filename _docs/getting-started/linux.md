@@ -71,7 +71,7 @@ update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 apt-get install -y openpaas openpaas-davserver openpaas-james
 ```
 
-To make sure services are started and enabled on boot, run the following commands as _root_:
+To make sure all services are started and enabled on boot, run the following commands as _root_:
 
 ```bash
 systemctl status {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
