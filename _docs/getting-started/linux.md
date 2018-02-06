@@ -1,3 +1,4 @@
+
 ---
 title: Get started with Linux
 category: 1. Getting started
@@ -69,6 +70,12 @@ update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 - Install OpenPaaS packages
 ```bash
 apt-get install -y openpaas openpaas-davserver openpaas-james
+```
+
+- Enable mongodb service, not enable by default on Jessie :
+```bash
+systemctl enable mongod
+systemctl start mongod
 ```
 
 To make sure all services are started and enabled on boot, run the following commands as _root_:
