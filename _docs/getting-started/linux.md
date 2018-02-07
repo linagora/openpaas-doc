@@ -1,4 +1,3 @@
-
 ---
 title: Get started with Linux
 category: 1. Getting started
