@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> Media support |  OpenPaaS documentation</title>
+		<title> REST API |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -166,7 +166,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
 							<ul>
@@ -177,7 +177,7 @@
 								
 									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
 								
-									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
+									<li class="nav-item current"><a href="/modules/admin/rest-api/">REST API</a></li>
 								
 							</ul>
 						</li>
@@ -250,31 +250,19 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Documentation</h2>
+				<h2>OpenPaaS Modules - Admin</h2>
 				<div class="page-title">
-					<h3>Media support</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_posts/2016-01-12-media-support.md" title="Edit this page on Github">
+					<h3>REST API</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/admin/rest-api.html" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<p>ChatApp introduces media support! Send images, videos and documents to your contacts.</p>
-
-<p><strong>Features:</strong></p>
-
-<ul>
-  <li>Image support</li>
-  <li>Video support</li>
-  <li>Document support</li>
-</ul>
-
-<p><strong>Fixes:</strong></p>
-
-<ul>
-  <li>Edge case contact syncing issue</li>
-  <li>All memory leaks obliterated</li>
-</ul>
+				<div class="page" ng-app="openpaas.doc">
+	<h3 ng-show="isLoading">Loading API documentation ...</h3>
+	<div swagger-ui url="'http://api.open-paas.org/admin-swagger.json'" loading="isLoading" parser="json" api-explorer="true" permalink="true"></div>
+</div>
 
 			</article>
 		</section>
