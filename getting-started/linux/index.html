@@ -336,7 +336,7 @@ This installation method is currently only supported on <em>Debian Jessie</em> a
     </blockquote>
   </li>
   <li>Install openjdk-8
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install <span class="nt">-t</span> jessie-backports openjdk-8-jdk
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install <span class="nt">-t</span> jessie-backports <span class="nt">-y</span> openjdk-8-jdk
 update-alternatives <span class="nt">--set</span> java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 </code></pre></div>    </div>
   </li>
@@ -344,12 +344,16 @@ update-alternatives <span class="nt">--set</span> java /usr/lib/jvm/java-8-openj
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
 </code></pre></div>    </div>
   </li>
+  <li>Enable mongodb service, not enable by default on Jessie :
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable </span>mongod
+systemctl start mongod
+</code></pre></div>    </div>
+  </li>
 </ul>
 
-<p>To make sure services are started and enabled on boot, run the following commands as <em>root</em>:</p>
+<p>To make sure all services are started and enabled on boot, run the following commands as <em>root</em>:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="o">{</span>mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
-systemctl start <span class="o">{</span>mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl status <span class="o">{</span>mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
 </code></pre></div></div>
 
 <h3 id="on-debian-stretch">On Debian Stretch</h3>
@@ -357,21 +361,15 @@ systemctl start <span class="o">{</span>mongod,elasticsearch,cassandra,redis-ser
 <p>As <em>root</em>:</p>
 
 <ul>
-  <li>Install openjdk-8
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install openjdk-8-jdk
-update-alternatives <span class="nt">--set</span> java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
-</code></pre></div>    </div>
-  </li>
   <li>Install OpenPaaS packages
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
 </code></pre></div>    </div>
   </li>
 </ul>
 
-<p>To make sure services are started and enabled on boot, run the following commands as <em>root</em>:</p>
+<p>To make sure all services are started and enabled on boot, run the following commands as <em>root</em>:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="o">{</span>mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
-systemctl start <span class="o">{</span>mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl status <span class="o">{</span>mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas<span class="o">}</span>
 </code></pre></div></div>
 
 <h3 id="on-rhel-or-centos">On RHEL or CentOS</h3>
@@ -386,7 +384,7 @@ yum install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-jame
   <p>Removing the default mail transfer agent (<em>postfix</em>) is required because OpenPaaS comes with a full-featured mail server that also serves as a MTA.</p>
 </blockquote>
 
-<p>To make sure services are started and enabled on boot, run the following commands as <em>root</em>:</p>
+<p>To make sure all services are started and enabled on boot, run the following commands as <em>root</em>:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rabbitmq-server,php-fpm,nginx,james,openpaas<span class="o">}</span>
 systemctl start <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rabbitmq-server,php-fpm,nginx,james,openpaas<span class="o">}</span>
