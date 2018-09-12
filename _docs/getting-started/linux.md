@@ -62,7 +62,7 @@ apt-get remove -y ^exim*
 
 - Install openjdk-8
 ```bash
-apt-get install -t jessie-backports openjdk-8-jdk
+apt-get install -t jessie-backports -y openjdk-8-jdk
 update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 ```
 
@@ -71,33 +71,31 @@ update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 apt-get install -y openpaas openpaas-davserver openpaas-james
 ```
 
-To make sure services are started and enabled on boot, run the following commands as _root_:
+- Enable mongodb service, not enable by default on Jessie :
+```bash
+systemctl enable mongod
+systemctl start mongod
+```
+
+To make sure all services are started and enabled on boot, run the following commands as _root_:
 
 ```bash
-systemctl enable {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
-systemctl start {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
+systemctl status {mongod,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
 ```
 
 ### On Debian Stretch
 
 As _root_:
 
-- Install openjdk-8
-```bash
-apt-get install openjdk-8-jdk
-update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
-```
-
 - Install OpenPaaS packages
 ```bash
 apt-get install -y openpaas openpaas-davserver openpaas-james
 ```
 
-To make sure services are started and enabled on boot, run the following commands as _root_:
+To make sure all services are started and enabled on boot, run the following commands as _root_:
 
 ```bash
-systemctl enable {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
-systemctl start {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
+systemctl status {mongodb,elasticsearch,cassandra,redis-server,rabbitmq-server,nginx,james,openpaas}
 ```
 
 ### On RHEL or CentOS
@@ -111,7 +109,7 @@ yum install -y openpaas openpaas-davserver openpaas-james
 
 > Removing the default mail transfer agent (_postfix_) is required because OpenPaaS comes with a full-featured mail server that also serves as a MTA.
 
-To make sure services are started and enabled on boot, run the following commands as _root_:
+To make sure all services are started and enabled on boot, run the following commands as _root_:
 
 ```bash
 systemctl enable {mongod,elasticsearch,cassandra,redis,rabbitmq-server,php-fpm,nginx,james,openpaas}
