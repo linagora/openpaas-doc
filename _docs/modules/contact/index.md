@@ -45,3 +45,4 @@ and more advanced ones:
 - Realtime synchronization between browsers
 - Social networks contact import and synchronization
 - [Collected contacts](/modules/contact/collected/)
+- [Shared address books](/modules/contact/shared/)
