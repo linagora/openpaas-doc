@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> Install |  OpenPaaS documentation</title>
+		<title> Shared Address Books |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -148,7 +148,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level current">
+						<li class="nav-item top-level ">
 							
 							<a href="/modules/howto/index/">OpenPaaS Modules</a>
 							<ul>
@@ -159,7 +159,7 @@
 								
 									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
 								
-									<li class="nav-item current"><a href="/modules/howto/install/">Install</a></li>
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
 								
 									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
 								
@@ -208,7 +208,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
 							<ul>
@@ -217,7 +217,7 @@
 								
 									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
 								
-									<li class="nav-item "><a href="/modules/contact/shared/">Shared Address Books</a></li>
+									<li class="nav-item current"><a href="/modules/contact/shared/">Shared Address Books</a></li>
 								
 							</ul>
 						</li>
@@ -252,10 +252,10 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Modules</h2>
+				<h2>OpenPaaS Modules - Contact</h2>
 				<div class="page-title">
-					<h3>Install</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/howto/install.md" title="Edit this page on Github">
+					<h3>Shared Address Books</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/contact/shared.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
@@ -265,53 +265,83 @@
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-  <li><a href="#manual-installation" id="markdown-toc-manual-installation">Manual installation</a>    <ul>
-      <li><a href="#from-source" id="markdown-toc-from-source">From source</a></li>
-      <li><a href="#from-npm-registry" id="markdown-toc-from-npm-registry">From npm registry</a></li>
-      <li><a href="#configure" id="markdown-toc-configure">Configure</a></li>
-    </ul>
-  </li>
+  <li><a href="#public-address-books" id="markdown-toc-public-address-books">Public address books</a></li>
+  <li><a href="#delegated-address-books" id="markdown-toc-delegated-address-books">Delegated address books</a></li>
+  <li><a href="#technical-considerations" id="markdown-toc-technical-considerations">Technical considerations</a></li>
 </ul>
 
-<h2 id="overview">Overview</h2>
+<h3 id="overview">Overview</h3>
 
-<p>As described in the previous sections, OpenPaaS modules can be developed independently from the OpenPaaS platform. Once done, they have to be installed in the platform. While waiting for a runtime deployment, you will have to do some manual operations to add modules in the platform as listed below.</p>
+<p>The Contact module supports two kinds of shared address books:</p>
 
-<p><strong>Note: We assume that you already have a valid Node.JS version and NPM installed on your host</strong></p>
+<ul>
+  <li><strong>Public address books</strong>: an owner can set his address books to public. Other users in the same domain can subscribe to such address books.</li>
+  <li><strong>Delegated address books</strong>: an owner can delegate his own address books to other users in the same domain.</li>
+</ul>
 
-<h2 id="manual-installation">Manual installation</h2>
+<p>There are some differences between these types of shared address books, the main ones are:</p>
 
-<p>Modules can not be hot deployed in the OpenPaaS platform. Once installed following the instructions below, you will have to restart the platform (or start it if it was not started…).</p>
+<ul>
+  <li>Public address books can be seen by everyone, and any user can subscribe to them.</li>
+  <li>Delegated address books represent a privileged access for a given address book to a specific users.</li>
+</ul>
 
-<h3 id="from-source">From source</h3>
+<p>Shared address books come with <strong>rights</strong>: Rights are applied to users who are looking at other users address books.</p>
+
+<ul>
+  <li><strong>Read</strong>: User has access to all the contact information but can not change anything.</li>
+  <li><strong>Write</strong>: User has access to all the contact information and can update/delete contacts.</li>
+  <li><strong>Administration</strong>: User not only has read/write rights but also can share (public and delegate) address books.</li>
+</ul>
+
+<h3 id="public-address-books">Public address books</h3>
+
+<p>In order to make an address book public, the user has to change the <em>Public right</em> to <em>Read</em> or <em>Write</em> on the address book settings page as shown below.</p>
+
+<p><img src="/images/modules/contact/addressbook-public-change-settings.png" alt="The address book settings page, change public level" /></p>
+
+<p>Once an address book is public, other users can <em>subscribe</em> to it by searching for owners’ name in <em>Shared address book</em> dialog.</p>
+
+<p><img src="/images/modules/contact/addressbook-add-sharing.png" alt="Add shared address book button" /></p>
+
+<p>Public address books are linked to their creator, so in order to find them, the user has to search for the creator to find all his public address books. In order to subscribe to this public address book, the user has to click on the <em>Add</em> toggle button then on <em>Save</em>.</p>
+
+<p><img src="/images/modules/contact/addressbook-public-search.png" alt="The shared address book dialog, searching a public address book" /></p>
+
+<p>The address books is now displayed as a <em>Shared address book</em>. The user can see contacts and create some if <em>Write</em> rights are set on the public address book.</p>
+
+<h3 id="delegated-address-books">Delegated address books</h3>
+
+<p>A user can delegate his address books to others by adding them to <em>Delegation</em> list. A user who is added called a sharee. In order to add a sharee:</p>
 
 <ol>
-  <li>Get the sources from your SCM client, or download them from the repository manager and put them in the <code class="highlighter-rouge">modules</code> directory in the OpenPaaS one. For example, if your module is <code class="highlighter-rouge">my.awesome.module</code>, it should go in <code class="highlighter-rouge">modules/my.awesome.module</code> (note that if you put the module source somewhere else, you can use symbolic links).</li>
-  <li>In the module folder (<code class="highlighter-rouge">modules/my.awesome.module/</code>), install the dependencies. A simple <code class="highlighter-rouge">npm install</code> should be enough. If not, check the module <code class="highlighter-rouge">README.md</code> to be sure.</li>
+  <li>Go to address book Setting page, switch to Delegation tab</li>
+  <li>Search for user</li>
+  <li>Set the right level for selected user</li>
+  <li>Click <em>Add</em> to add the user in to delegation list</li>
+  <li>Click <em>Save</em> in sub header to save the delegation list</li>
 </ol>
 
-<h3 id="from-npm-registry">From npm registry</h3>
+<p><img src="/images/modules/contact/addressbook-delegate-add-user-0.png" alt="The address book delegation, adding user step 0" /></p>
 
-<p>If the module you want to use is available in the NPM registry, you can follow the following instructions.</p>
+<p><img src="/images/modules/contact/addressbook-delegate-add-user-1.png" alt="The address book delegation, adding user step 1" /></p>
 
-<ol>
-  <li>Change working directory to the OpenPaaS one</li>
-  <li>Install the module from npm <code class="highlighter-rouge">npm install my.awesome.module</code></li>
-</ol>
+<p><img src="/images/modules/contact/addressbook-delegate-add-user-2.png" alt="The address book delegation, adding user step 2" /></p>
 
-<h3 id="configure">Configure</h3>
+<p>Once the address book is saved, it is “ready to be delegated”: The <em>sharee</em> can not do anything until he subscribes the delegated address book. This is possible by going to the <em>Shared address books</em> page then do a search just like for public address books.</p>
 
-<p>In all the cases, a manual installation is not enough. You have to configure OpenPaaS to take the module into account by enabling it. This is achieved by modifying the <code class="highlighter-rouge">config/default.json</code> by adding the module in the <code class="highlighter-rouge">modules</code> array:</p>
+<p>In the screenshot below, one delegated address book is displayed. In order to add this delegated address book, the <em>sharee</em> has to click on the <em>Add</em> toggle button then on <em>Save</em>.</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"linagora.esn.account"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"linagora.esn.appstore"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"linagora.esn.calendar"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"linagora.esn.contact"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"my.awesome.module"</span><span class="w">
- </span><span class="p">]</span><span class="w">
-</span></code></pre></div></div>
+<p><img src="/images/modules/contact/addressbook-delegated-search.png" alt="The shared address books page, searching a delegated address book" /></p>
+
+<p>The address book is now displayed as a <em>Shared address book</em>, the <em>sharee</em> can see contacts as default. He can create, edit or remove contacts if <em>Write</em> or <em>Administration</em> rights are set to him. If <em>Administration</em> rights is set, the <em>sharee</em> can delegate the address book.</p>
+
+<h3 id="technical-considerations">Technical considerations</h3>
+
+<ul>
+  <li>When a user add a public address book, the backend will create a subscription for this address book. A subscription is an object owned by the user and stored in the backend. This object has a reference towards the public address book along with its own properties.</li>
+  <li>When a user has a delegated address book, a new instance of the given address book is created for him on the backend side.</li>
+</ul>
 
 			</article>
 		</section>
