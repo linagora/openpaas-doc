@@ -222,6 +222,16 @@
 							</ul>
 						</li>
 					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/videoconference/index/">OpenPaaS Modules - VideoConference</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/videoconference/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
 				</ul>
 
 				<ul>
@@ -839,6 +849,23 @@
 						"category": "",
 						"url": " /modules/howto/quickstart/",
 						"content": "Table of contents Overview Let’s code Overview The OpenPaaS modules are the most powerfull way to add features into the OpenPaaS Enterprise Social Network. With modules, you can: add pages, or widgets, into the ESN web interface add REST endpoints, that thid party applications will be able to query expose objects and functions to other modules Let’s code In the modules folder of your OpenPaaS ESN installation, create a new folder com.example.module. Inside this folder, create a new file index.js, containing: 123456789101112131415161718192021222324const express = require('express');const AwesomeModule = require('awesome-module');const Dependency = AwesomeModule.AwesomeModuleDependency;const esnModule = new AwesomeModule('com.example.module', { dependencies: [ new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper') ], states: { deploy: function(dependencies, callback) { const webserver = dependencies('webserver-wrapper'); const router = express.Router(); router.get(' ', (req,res) =&gt; { res.status(200).json({ok: true}); }); webserver.addApp('example', router); callback(); } }});module.exports = esnModule; Now, open the configuration file config default.dev.json, and add the new modules at the end of your modules list: 1234567{ ... \"modules\": [ ..., \"com.example.module\" ]} Restart your ESN server, using the grunt dev command. You can now query your new endpoint : $ curl http: localhost:8080 example {\"ok\": true} Let’s now dig deeper in the OpenPaaS modules features."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-videoconference-index": {
+						"id": "modules-videoconference-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /modules/videoconference/index/",
+						"content": "Table of contents Overview Develop 1. Install Jitsi 2. Install the core module 3. Install the videoconference application Configure Overview The videoconference module brings videoconference support into the OpenPaaS platform. It is composed of several components: A frontend application. Built using Vue. An OpenPaaS core component. Built using angularjs and nodeJS. A ‘backend’ component: Jitsi Develop This guide provides you all the steps required to develop the videoconference feature correctly. 1. Install Jitsi We use a modified version of the Jitsi docker-compose project to run jitsi locally: Clone https: ci.linagora.com linagora lgs openpaas docker-jitsi-meet Switch to openpaas-dev branch Start jitsi: docker-compose up -d Jitsi is now up and running, you can join conference on http: localhost:8000 2. Install the core module As any other core module, clone it from https: ci.linagora.com linagora lgs openpaas linagora.esn.videoconference and install it in OpenPaaS npm link 3. Install the videoconference application Follow the instructions from https: ci.linagora.com linagora lgs openpaas openpaas-videoconference-app Configure TODO: This has to be filled once working on configuration"
 					}
 
 					
