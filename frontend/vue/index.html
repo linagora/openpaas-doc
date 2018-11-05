@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.6.2">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title> Vue.js |  OpenPaaS documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/getting-started/docker/">Getting started</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/getting-started/docker/">Get started with Docker</a></li>
+								
+									<li class="nav-item "><a href="/getting-started/linux/">Get started with Linux</a></li>
+								
+									<li class="nav-item "><a href="/getting-started/supported-platforms/">Supported platforms</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/james/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/james/">James</a></li>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/frontend/vue/">Frontend</a>
+							<ul>
+								
+									<li class="nav-item current"><a href="/frontend/vue/">Vue.js</a></li>
+								
+									<li class="nav-item "><a href="/frontend/vue-components/">Vue Components</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/shared/">Shared Address Books</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/videoconference/index/">OpenPaaS Modules - VideoConference</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/videoconference/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>Frontend</h2>
+				<div class="page-title">
+					<h3>Vue.js</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/frontend/vue.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#dependencies" id="markdown-toc-dependencies">Dependencies</a></li>
+  <li><a href="#environment" id="markdown-toc-environment">Environment</a></li>
+  <li><a href="#bootstrap-a-new-application" id="markdown-toc-bootstrap-a-new-application">Bootstrap a new application</a>    <ul>
+      <li><a href="#1-clone-the-seed" id="markdown-toc-1-clone-the-seed">1. Clone the seed</a></li>
+      <li><a href="#2-install-dependencies" id="markdown-toc-2-install-dependencies">2. Install dependencies</a></li>
+      <li><a href="#3-configure" id="markdown-toc-3-configure">3. Configure</a></li>
+      <li><a href="#4-develop" id="markdown-toc-4-develop">4. Develop</a></li>
+    </ul>
+  </li>
+  <li><a href="#best-practices" id="markdown-toc-best-practices">Best practices</a>    <ul>
+      <li><a href="#project-files-layout" id="markdown-toc-project-files-layout">Project files layout</a></li>
+      <li><a href="#state-management" id="markdown-toc-state-management">State Management</a></li>
+      <li><a href="#routing" id="markdown-toc-routing">Routing</a></li>
+      <li><a href="#authentication" id="markdown-toc-authentication">Authentication</a>        <ul>
+          <li><a href="#esn-hosted-application" id="markdown-toc-esn-hosted-application">ESN-hosted application</a></li>
+          <li><a href="#paas-hosted-application" id="markdown-toc-paas-hosted-application">PaaS-hosted application</a>            <ul>
+              <li><a href="#jwt" id="markdown-toc-jwt">JWT</a></li>
+              <li><a href="#cookies" id="markdown-toc-cookies">Cookies</a></li>
+              <li><a href="#lemonldap" id="markdown-toc-lemonldap">LemonLDAP</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#reusing-components" id="markdown-toc-reusing-components">Reusing components</a></li>
+      <li><a href="#using-openpaas-core-api" id="markdown-toc-using-openpaas-core-api">Using OpenPaaS Core API</a></li>
+    </ul>
+  </li>
+  <li><a href="#build" id="markdown-toc-build">Build</a></li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>We choose <a href="https://vuejs.org">Vue.js</a> as the framework to develop new Web applications within OpenPaaS. This page describes architecture, best practices and explain choices we made.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>Here is the (uncomplete) list of dependencies used to build a Vue app:</p>
+
+<ul>
+  <li><a href="https://vuejs.org/">Vue</a>, <a href="https://router.vuejs.org/">vue-router</a>, <a href="https://vuex.vuejs.org/">vuex</a></li>
+  <li>HTTP Client: <a href="https://github.com/axios/axios">axios</a>, <a href="https://github.com/imcvampire/vue-axios">vue-axios</a></li>
+  <li>Material design: <a href="https://vuetifyjs.com/">Vuetify</a> and so <a href="http://stylus-lang.com/">Stylus</a></li>
+  <li>Templates: HTML, <a href="https://pugjs.org">PUG</a> with the help of the right loaders</li>
+  <li>Auth: <a href="https://pugjs.org">@websanova/vue-auth</a></li>
+  <li>Tests: <a href="https://jestjs.io/">Jest</a></li>
+</ul>
+
+<h2 id="environment">Environment</h2>
+
+<p>We use latest Vue version, <a href="https://cli.vuejs.org/">Vue CLI 3</a> and Node 10.x:</p>
+
+<ul>
+  <li>You will need Node and we recommend using <a href="https://github.com/creationix/nvm">nvm</a> to manage your Node version, so install it first if you do not already use it.</li>
+  <li>Install Node 10 with nvm <code class="highlighter-rouge">nvm install 10</code>, then switch if needed <code class="highlighter-rouge">nvm use 10</code></li>
+  <li>Install Vue CLI <code class="highlighter-rouge">npm install -g @vue/cli</code></li>
+</ul>
+
+<h2 id="bootstrap-a-new-application">Bootstrap a new application</h2>
+
+<p>A “seed” is available at <a href="https://github.com/linagora/vue-openpaas-seed">https://github.com/linagora/vue-openpaas-seed</a>. It uses all the dependencies listed above and provides an OpenPaaS compatible layout. By using this seed as basis for other apps, you will be sure to be compliant with all the good practices defined in this guide.</p>
+
+<h3 id="1-clone-the-seed">1. Clone the seed</h3>
+
+<p>(Replace <code class="highlighter-rouge">my-app</code> by your app name)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:linagora/vue-openpaas-seed.git my-app
+</code></pre></div></div>
+
+<p>You will have to change several things in the files, expecially the application name and description in <code class="highlighter-rouge">package.json</code>.</p>
+
+<h3 id="2-install-dependencies">2. Install dependencies</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd my-app
+npm install
+</code></pre></div></div>
+
+<h3 id="3-configure">3. Configure</h3>
+
+<p>The application can be configured by updating the <code class="highlighter-rouge">.env</code> files as described in the <a href="https://cli.vuejs.org/guide/mode-and-env.html#example-staging-mode">Vue CLI documentation</a>. Values defined in the <code class="highlighter-rouge">.env</code> file are used at several places in the app (from the store), and can be adapted to your environment. For example, while in development, you can redefine your OpenPaaS instance URL in a <code class="highlighter-rouge">.env.development.local</code> file which will never be commited (so you can also push secrets in it).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VUE_APP_SUPER_SECRET=A super secret thing
+VUE_APP_OPENPAAS_URL=http://localhost:8080
+</code></pre></div></div>
+
+<h3 id="4-develop">4. Develop</h3>
+
+<p>Once done, you can start developping:</p>
+
+<ul>
+  <li>You can start the app in dev mode with <code class="highlighter-rouge">npm run serve</code></li>
+  <li>Or, use the Vue CLI UI <code class="highlighter-rouge">vue ui</code> and browse to your application.</li>
+</ul>
+
+<p><img src="/images/frontend/vuejs-cli-ui.png" alt="The Vue CLI UI" /></p>
+
+<h2 id="best-practices">Best practices</h2>
+
+<h3 id="project-files-layout">Project files layout</h3>
+
+<p>We use the default layout provided by vue-cli:</p>
+
+<ul>
+  <li>All the configuration files are at the root of the repository</li>
+  <li>Application code is under <code class="highlighter-rouge">src</code></li>
+  <li><code class="highlighter-rouge">src/App.vue</code> and <code class="highlighter-rouge">src/main.js</code> are the application entry point</li>
+  <li><code class="highlighter-rouge">src/*.*</code> files are used to configure the application</li>
+  <li><code class="highlighter-rouge">src/components</code> is used for ‘reusable components’</li>
+  <li><code class="highlighter-rouge">src/services</code> are business services: auth, API clients, everything which is not related to Vue</li>
+  <li><code class="highlighter-rouge">src/store</code> is where the vuex store lives in. As defined in the Store section, we use modules in the store, so each module has its own folder like <code class="highlighter-rouge">src/store/moduleA</code> and <code class="highlighter-rouge">src/store/moduleB</code></li>
+  <li><code class="highlighter-rouge">src/views</code> is used for application ‘pages’. These views are the one which are used by the router. The views are using the components from <code class="highlighter-rouge">src/components</code></li>
+</ul>
+
+<h3 id="state-management">State Management</h3>
+
+<p>There are tons of articles around the Web to understand why managing state the <a href="https://facebook.github.io/flux/">Flux-way</a> is easy and powerful.
+The choice was not hard, just because Vue is simple and provides just the right tools, <a href="https://vuex.vuejs.org/">Vuex</a> is used as state manager, and we rely on the <a href="https://vuex.vuejs.org/guide/modules.html">modular approach</a> so that we can scale our app.</p>
+
+<p>As shown in <code class="highlighter-rouge">src/store/</code>:</p>
+
+<p><img src="/images/frontend/vuejs-store.png" alt="The Vue State" /></p>
+
+<h3 id="routing">Routing</h3>
+
+<p><a href="https://router.vuejs.org/">vue-router</a> is used as the application router.</p>
+
+<ul>
+  <li>We use name-based routing as defined in <a href="https://router.vuejs.org/guide/essentials/named-routes.html">https://router.vuejs.org/guide/essentials/named-routes.html</a></li>
+  <li>By using <code class="highlighter-rouge">vue-auth</code>, routes can be protected and so user will be redirected to the login page until he is authenticated. For example (from <code class="highlighter-rouge">src/router.js</code>):</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">({</span>
+  <span class="na">routes</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">path</span><span class="p">:</span> <span class="s1">'/'</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s1">'Home'</span><span class="p">,</span>
+      <span class="na">component</span><span class="p">:</span> <span class="nx">Home</span><span class="p">,</span>
+      <span class="na">meta</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">auth</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">path</span><span class="p">:</span> <span class="s1">'/login'</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s1">'Login'</span><span class="p">,</span>
+      <span class="na">component</span><span class="p">:</span> <span class="nx">Login</span><span class="p">,</span>
+      <span class="na">meta</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">auth</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The user will be redirected to the <code class="highlighter-rouge">Login</code> page if he is not authenticated when opening the <code class="highlighter-rouge">Home</code> page.</p>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>The authentication is a complex subject and depends on the way application are hosted in OpenPaaS. Basically, they can be hosted as any other traditional AngularJS application, i.e. in an OpenPaaS module which is served by the OpenPaaS ESN, or they can be hosted in their own ‘runtime’, for example, in a distinct container, or as static assets.</p>
+
+<h4 id="esn-hosted-application">ESN-hosted application</h4>
+
+<p>As described in the ESN authentication documentation, AngularJS application relies on cookies to authenticate user: A session cookie is sent with each request. This will be the same if the Vue application is hosted on a module, if not, new authentication mechanisms have to be implemented in the Vue application.</p>
+
+<h4 id="paas-hosted-application">PaaS-hosted application</h4>
+
+<p>By ‘PaaS-hosted’, it means that the application is not hosted in an OpenPaaS ESN NodeJS module. It is hosted somewhere else, in a Docker container, served by an Apache server, etc…</p>
+
+<h5 id="jwt">JWT</h5>
+
+<p><a href="https://github.com/websanova/vue-auth">websanova@vue-auth</a> is used to implement JWT based authentication: When a user fills his login/password on the login page, a single <code class="highlighter-rouge">POST /api/jwt/generate</code> request is sent to the OpenPaaS backend, to get a JWT token for the given user. The token is then pushed in the application state and reused in all HTTP calls to OpenPaaS.</p>
+
+<h5 id="cookies">Cookies</h5>
+
+<p>This is not available right now and it hardly depends on how application are deployed in OpenPaaS:</p>
+
+<p>If a user who is authenticated within OpenPaaS opens a Vue powered application running somewhere else in the PaaS, we should be able to not ask the password again and again. There are several ways to do this, one will be to push a JWT token in the cookie and extract this JWT token when the Vue application is launched.</p>
+
+<p><strong>T O D O: This needs to be checked</strong></p>
+
+<h5 id="lemonldap">LemonLDAP</h5>
+
+<p><strong>T O D O: Check how Lemon can be used, (and is already used)</strong></p>
+
+<h3 id="reusing-components">Reusing components</h3>
+
+<p>Some frontend components are available as described in <a href="/frontend/vue-components/">Vue Components</a>. If for some reason, you need a component which is not provided by this module but you think it will be useful to share, please consider adding it to the module.</p>
+
+<h3 id="using-openpaas-core-api">Using OpenPaaS Core API</h3>
+
+<p><strong>T O D O: We need a dedicated module.</strong></p>
+
+<h2 id="build">Build</h2>
+
+<p>Building the application can be done from npm <code class="highlighter-rouge">npm run build</code> or from Vue UI. It will generate the application in the <code class="highlighter-rouge">dist</code> folder.</p>
+
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>
