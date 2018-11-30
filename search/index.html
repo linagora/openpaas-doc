@@ -139,6 +139,8 @@
 								
 									<li class="nav-item "><a href="/frontend/vue-components/">Vue Components</a></li>
 								
+									<li class="nav-item "><a href="/frontend/i18n/">I18n</a></li>
+								
 							</ul>
 						</li>
 					
@@ -521,6 +523,23 @@
 						"category": "",
 						"url": " /devops/kibana/",
 						"content": "Table of contents Overview Run with Docker Overview Kibana is a tool we use to visualize and navigate into Elasticsearch data. Run with Docker The Elasticsearch version used in OpenPaaS does not allow to use the latest Docker image for Kibana. Here are the instruction to run a valid Kibana version with Docker: docker run -d -e \"ELASTICSEARCH_URL=http: HOST:POST\" -p 5601:5601 kibana:4.5 Where ELASTICSEARCH_URL is the URL of the Elasticsearch instance you want Kibana to connect to (i.e. the URL the Kibana container can reach). Once started, you can open the Kibana Web UI from http: localhost:5601 :"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"frontend-i18n": {
+						"id": "frontend-i18n",
+						"title": "I18n",
+						"category": "",
+						"url": " /frontend/i18n/",
+						"content": "Table of contents Where are the locale files? How it Work Js files Vue files Internationalization (i18n) is the process of developing products in such a way that they can be localized for languages and cultures easily. We use vue-i18n Where are the locale files? Locale files can be found in src i18n lang directory. Currently, supported languages are English, French and Vietnamese. How it Work Js files Import your language file into src i18n index.js. import en from \"@ i18n lang en.json\"; Add it to the messages object. export const i18n = new VueI18n({ locale: 'en', messages: { en } }); Vue files It is pretty easy to translate phrases in .vue files: &lt;h1&gt;{{ $t('OpenPaaS Login') }}&lt; h1&gt; Atribute syntax: Use v-bind or the : shortcut with $t('some text') &lt;v-text-field name=\"login\" :label=\"$t('Login')\" type=\"text\" &gt;&lt; v-text-field&gt; Check the documentation of vue-I18n and vue-I18n starter for more examples."
 					}
 
 					

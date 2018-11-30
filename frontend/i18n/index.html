@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> Configuration |  OpenPaaS documentation</title>
+		<title> I18n |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -130,7 +130,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/frontend/vue/">Frontend</a>
 							<ul>
@@ -139,17 +139,17 @@
 								
 									<li class="nav-item "><a href="/frontend/vue-components/">Vue Components</a></li>
 								
-									<li class="nav-item "><a href="/frontend/i18n/">I18n</a></li>
+									<li class="nav-item current"><a href="/frontend/i18n/">I18n</a></li>
 								
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level current">
+						<li class="nav-item top-level ">
 							
 							<a href="/core/configuration/">OpenPaaS Core</a>
 							<ul>
 								
-									<li class="nav-item current"><a href="/core/configuration/">Configuration</a></li>
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
 								
 									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
 								
@@ -276,10 +276,10 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Core</h2>
+				<h2>Frontend</h2>
 				<div class="page-title">
-					<h3>Configuration</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/core/configuration.md" title="Edit this page on Github">
+					<h3>I18n</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/frontend/i18n.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
@@ -288,148 +288,66 @@
 				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
 
 <ul id="markdown-toc">
-  <li><a href="#local-configuration" id="markdown-toc-local-configuration">Local configuration</a>    <ul>
-      <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-      <li><a href="#usage" id="markdown-toc-usage">Usage</a></li>
-    </ul>
-  </li>
-  <li><a href="#global-configuration" id="markdown-toc-global-configuration">Global configuration</a>    <ul>
-      <li><a href="#overview-1" id="markdown-toc-overview-1">Overview</a>        <ul>
-          <li><a href="#configuration-scope" id="markdown-toc-configuration-scope">Configuration scope</a></li>
-          <li><a href="#configuration-inheritance" id="markdown-toc-configuration-inheritance">Configuration inheritance</a></li>
-        </ul>
-      </li>
-      <li><a href="#usage-1" id="markdown-toc-usage-1">Usage</a></li>
+  <li><a href="#where-are-the-locale-files" id="markdown-toc-where-are-the-locale-files">Where are the locale files?</a></li>
+  <li><a href="#how-it-work" id="markdown-toc-how-it-work">How it Work</a>    <ul>
+      <li><a href="#js-files" id="markdown-toc-js-files">Js files</a></li>
+      <li><a href="#vue-files" id="markdown-toc-vue-files">Vue files</a></li>
     </ul>
   </li>
 </ul>
 
-<p>OpenPaaS has two types of configuration:</p>
+<p>Internationalization (i18n) is the process of developing products in such a way
+that they can be localized for languages and cultures easily.</p>
+
 <ul>
-  <li>Local: Defines the local configurations of the current instance</li>
-  <li>Global: Defines the configuration which is shared between on all the OpenPaaS instances</li>
+  <li>We use <a href="https://kazupon.github.io/vue-i18n/">vue-i18n</a></li>
 </ul>
 
-<h2 id="local-configuration">Local configuration</h2>
+<h2 id="where-are-the-locale-files">Where are the locale files?</h2>
 
-<h3 id="overview">Overview</h3>
+<p>Locale files can be found in <code class="highlighter-rouge">src/i18n/lang</code> directory.
+Currently, supported languages are English, French and Vietnamese.</p>
 
-<p>Local configuration of the application is stored in the <code class="highlighter-rouge">config/default.json</code> file.
-You should not modify this file directly but instead define the <em>environment-based</em>
-configuration file, e.g. <code class="highlighter-rouge">config/default.dev.json</code> for development and
-<code class="highlighter-rouge">config/default.production.json</code> for production deployment.</p>
+<h2 id="how-it-work">How it Work</h2>
 
-<p>The application relies on <code class="highlighter-rouge">NODE_ENV</code> environment variable to know which configuration
-file to be loaded. For example, if <code class="highlighter-rouge">NODE_ENV=test</code>, it will load <code class="highlighter-rouge">config/default.test.json</code> file.</p>
+<h3 id="js-files">Js files</h3>
 
-<p>Note that the configuration defined in <code class="highlighter-rouge">./config/default.json</code> will not be overridden by the environment-based configuration file but instead inherited from it. The only exception is the array propertices, which will be overridden.</p>
+<p>Import your language file into <code class="highlighter-rouge">src/i18n/index.js</code>.</p>
 
-<h3 id="usage">Usage</h3>
-
-<p>The local configurations are stored in JSON structure so it is pretty easy to
-read and write this type of configuration.</p>
-
-<p>To read configurations, simply require the module in <code class="highlighter-rouge">backend/core/config</code>:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'...'</span><span class="p">)(</span><span class="s1">'default'</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">strategies</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">en</span> <span class="k">from</span> <span class="s2">"@/i18n/lang/en.json"</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>Since it is stored in file system, you simply modify the file to modify the configurations.</p>
+<p>Add it to the <code class="highlighter-rouge">messages</code> object.</p>
 
-<h2 id="global-configuration">Global configuration</h2>
-
-<h3 id="overview-1">Overview</h3>
-
-<p>The global configuration is stored in MongoDB under the <code class="highlighter-rouge">configurations</code> collection
-in order to be shared over nodes.</p>
-
-<p>A configurations document has the following structure:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  "domain_id" : ObjectId("domain_id"),
-  "user_id" : ObjectId("user_id"),
-  "modules" : [
-    {
-      "name" : "module name",
-      "configurations" : [
-        {
-          "name" : "config_name",
-          "value" : Any
-        }, {
-          ...
-        }
-      ]
-    }, {
-      // other modules
-    }
-  ]
-}
-</code></pre></div></div>
-
-<h4 id="configuration-scope">Configuration scope</h4>
-
-<p>Each document has its scope, base on the values of <code class="highlighter-rouge">domain_id</code> and <code class="highlighter-rouge">user_id</code>:</p>
-<ul>
-  <li><strong>User-wide</strong>: configurations belong to a specific user in a specific domain, the document must contain both <code class="highlighter-rouge">domain_id</code> and <code class="highlighter-rouge">user_id</code></li>
-  <li><strong>Domain-wide</strong>: configurations belong to a specific domain, the document must contain <code class="highlighter-rouge">domain_id</code> and no <code class="highlighter-rouge">user_id</code></li>
-  <li><strong>System-wide</strong> (AKA platform-wide): configurations which will be applied to the whole system, the document must not contain neither <code class="highlighter-rouge">domain_id</code> or <code class="highlighter-rouge">user_id</code></li>
-</ul>
-
-<h4 id="configuration-inheritance">Configuration inheritance</h4>
-
-<p>The global configuration has a concept of inheritance, which means if there is
-no configuration in a scope, the configuration in wider scope will be used. For
-example, if the user does not specify any configuration, the configuration of
-his current domain will be used. And so on, if the configuration of a domain is
-not specified, the system-wide configuration will be used.</p>
-
-<h3 id="usage-1">Usage</h3>
-
-<p>In both frontend and backend, the global configurations can be read by <code class="highlighter-rouge">esn-config</code>
-module.</p>
-
-<p>In backend, the code is placed in <code class="highlighter-rouge">backend/core/esn-config</code>:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">esnConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'..'</span><span class="p">);</span>
-
-<span class="c1">// get system-wide configuration</span>
-<span class="nx">esnConfig</span><span class="p">(</span><span class="s1">'mail'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">inModule</span><span class="p">(</span><span class="s1">'core'</span><span class="p">)</span>
-  <span class="p">.</span><span class="kd">get</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">config</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
-  <span class="p">});</span>
-
-<span class="c1">// get domain-wide configuration</span>
-<span class="nx">esnConfig</span><span class="p">(</span><span class="s1">'mail'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">inModule</span><span class="p">(</span><span class="s1">'core'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">forUser</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
-  <span class="p">.</span><span class="kd">get</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">config</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
-  <span class="p">});</span>
-
-<span class="c1">// get user-wide configuration</span>
-<span class="kd">const</span> <span class="nx">userWide</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-
-<span class="nx">esnConfig</span><span class="p">(</span><span class="s1">'mail'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">inModule</span><span class="p">(</span><span class="s1">'core'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">forUser</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">userWide</span><span class="p">)</span>
-  <span class="p">.</span><span class="kd">get</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">config</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
-  <span class="p">});</span>
-</code></pre></div></div>
-
-<p>In frontend, you simply inject the <code class="highlighter-rouge">esnConfig</code> service to get the configuration,
-the API is a bit different:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">esnConfig</span><span class="p">(</span><span class="s1">'core.datetime'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">i18n</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueI18n</span><span class="p">({</span>
+  <span class="na">locale</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+  <span class="na">messages</span><span class="p">:</span> <span class="p">{</span> <span class="nx">en</span> <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div></div>
+
+<h3 id="vue-files">Vue files</h3>
+
+<p>It is pretty easy to translate phrases in .vue files:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="nt">&lt;h1&gt;</span>{{ $t('OpenPaaS Login') }}<span class="nt">&lt;/h1&gt;</span>  
+
+</code></pre></div></div>
+
+<p>Atribute syntax:</p>
+<ul>
+  <li>Use <code class="highlighter-rouge">v-bind</code> or the <code class="highlighter-rouge">:</code> shortcut with <code class="highlighter-rouge">$t('some text')</code></li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;v-text-field</span>
+        <span class="na">name=</span><span class="s">"login"</span>
+        <span class="na">:label=</span><span class="s">"$t('Login')"</span>
+        <span class="na">type=</span><span class="s">"text"</span>
+<span class="nt">&gt;&lt;/v-text-field&gt;</span>
+</code></pre></div></div>
+
+<p>Check the documentation of <a href="https://kazupon.github.io/vue-i18n/guide/started.html">vue-I18n</a> and 
+<a href="https://github.com/dobromir-hristov/vue-i18n-starter">vue-I18n starter</a> for more examples.</p>
 
 			</article>
 		</section>
