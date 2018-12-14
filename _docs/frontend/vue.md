@@ -168,3 +168,39 @@ Some frontend components are available as described in [Vue Components](/fronten
 
 Building the application can be done from npm `npm run build` or from Vue UI. It will generate the application in the `dist` folder.
 
+## Deploy
+
+Vue applications such as [openpaas-videoconference-app](https://github.com/linagora/openpaas-videoconference-app) which need to be deployed in Docker environment must follow some rules:
+
+1. The Docker image must contain the generated assets (from `npm run build`)
+2. The application must not be configured at build time but at run time. This means that we can not use `vue-cli` resources like `.env` files in this case
+3. The Vue application assets must be served by an HTTP server like nginx and exposed correctly by the container
+
+### Build & Run
+
+```
+# Multistage build
+
+FROM node:10.13.0-alpine as build-stage
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Then to run
+
+FROM nginx:1.13.12-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+VOLUME ["/usr/share/nginx/html/env"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+The important point here is the Docker volume used to put files into the container at runtime. The files in `/usr/share/nginx/html/env` folder is then used by the application to get all the variables needed to run. For a concrete example, check code in [https://ci.linagora.com/linagora/lgs/openpaas/openpaas-videoconference-app/merge_requests/32](https://ci.linagora.com/linagora/lgs/openpaas/openpaas-videoconference-app/merge_requests/32).
+
+This is then possible to configure the running app from the Docker run command, or any compatible Docker environment like:
+
+```sh
+docker run -it -p 8888:80 --rm --name openpaas-videoconference-app -v $PWD/.config/env:/usr/share/nginx/html/env linagora/openpaas-videoconference-app
+```
