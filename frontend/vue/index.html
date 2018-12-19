@@ -317,6 +317,10 @@
     </ul>
   </li>
   <li><a href="#build" id="markdown-toc-build">Build</a></li>
+  <li><a href="#deploy" id="markdown-toc-deploy">Deploy</a>    <ul>
+      <li><a href="#build--run" id="markdown-toc-build--run">Build &amp; Run</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="overview">Overview</h2>
@@ -483,6 +487,42 @@ The choice was not hard, just because Vue is simple and provides just the right 
 
 <p>Building the application can be done from npm <code class="highlighter-rouge">npm run build</code> or from Vue UI. It will generate the application in the <code class="highlighter-rouge">dist</code> folder.</p>
 
+<h2 id="deploy">Deploy</h2>
+
+<p>Vue applications such as <a href="https://github.com/linagora/openpaas-videoconference-app">openpaas-videoconference-app</a> which need to be deployed in Docker environment must follow some rules:</p>
+
+<ol>
+  <li>The Docker image must contain the generated assets (from <code class="highlighter-rouge">npm run build</code>)</li>
+  <li>The application must not be configured at build time but at run time. This means that we can not use <code class="highlighter-rouge">vue-cli</code> resources like <code class="highlighter-rouge">.env</code> files in this case</li>
+  <li>The Vue application assets must be served by an HTTP server like nginx and exposed correctly by the container</li>
+</ol>
+
+<h3 id="build--run">Build &amp; Run</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Multistage build
+
+FROM node:10.13.0-alpine as build-stage
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Then to run
+
+FROM nginx:1.13.12-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+VOLUME ["/usr/share/nginx/html/env"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+</code></pre></div></div>
+
+<p>The important point here is the Docker volume used to put files into the container at runtime. The files in <code class="highlighter-rouge">/usr/share/nginx/html/env</code> folder is then used by the application to get all the variables needed to run. For a concrete example, check code in <a href="https://ci.linagora.com/linagora/lgs/openpaas/openpaas-videoconference-app/merge_requests/32">https://ci.linagora.com/linagora/lgs/openpaas/openpaas-videoconference-app/merge_requests/32</a>.</p>
+
+<p>This is then possible to configure the running app from the Docker run command, or any compatible Docker environment like:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">-p</span> 8888:80 <span class="nt">--rm</span> <span class="nt">--name</span> openpaas-videoconference-app <span class="nt">-v</span> <span class="nv">$PWD</span>/.config/env:/usr/share/nginx/html/env linagora/openpaas-videoconference-app
+</code></pre></div></div>
 
 			</article>
 		</section>
