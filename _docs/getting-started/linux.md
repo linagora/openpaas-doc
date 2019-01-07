@@ -35,13 +35,13 @@ echo "127.0.0.1 openpaas.local openpaas james.openpaas.local dav.openpaas.local"
 We provide a small bootstrap script to quickly setup the required repositories on the machine you will install OpenPaaS on. To use it, simply run, as _root_:
 
 ```bash
-wget -qO - get.open-paas.org | bash
+wget -qO - https://raw.githubusercontent.com/linagora/openpaas-esn/master/packaging/setup-v1.2.sh | bash
 ```
 
 or
 
 ```bash
-curl -s get.open-paas.org | bash
+curl -s https://raw.githubusercontent.com/linagora/openpaas-esn/master/packaging/setup-v1.2.sh | bash
 ```
 
 depending on the availability of either `wget` or `curl` on your system.
