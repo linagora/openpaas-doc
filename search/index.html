@@ -243,6 +243,8 @@
 								
 									<li class="nav-item "><a href="/modules/videoconference/index/">Overview</a></li>
 								
+									<li class="nav-item "><a href="/modules/videoconference/screensharing/">Screensharing</a></li>
+								
 							</ul>
 						</li>
 					
@@ -931,6 +933,23 @@
 						"category": "",
 						"url": " /modules/videoconference/index/",
 						"content": "Table of contents Overview Develop 1. Install Jitsi 2. Install the core module 3. Install the videoconference application Configure Overview The videoconference module brings videoconference support into the OpenPaaS platform. It is composed of several components: A frontend application. Built using Vue. An OpenPaaS core component. Built using angularjs and nodeJS. A ‘backend’ component: Jitsi Develop This guide provides you all the steps required to develop the videoconference feature correctly. 1. Install Jitsi We use a modified version of the Jitsi docker-compose project to run jitsi locally: Clone https: ci.linagora.com linagora lgs openpaas docker-jitsi-meet Switch to openpaas-dev branch Start jitsi: docker-compose up -d Jitsi is now up and running, you can join conference on http: localhost:8000 2. Install the core module As any other core module, clone it from https: ci.linagora.com linagora lgs openpaas linagora.esn.videoconference and install it in OpenPaaS npm link 3. Install the videoconference application Follow the instructions from https: ci.linagora.com linagora lgs openpaas openpaas-videoconference-app Configure TODO: This has to be filled once working on configuration"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-videoconference-screensharing": {
+						"id": "modules-videoconference-screensharing",
+						"title": "Screensharing",
+						"category": "",
+						"url": " /modules/videoconference/screensharing/",
+						"content": "Table of contents Browser Server configuration Browser Screensharing is supported natively in Firefox while it needs a browser extension on Chrome. The Chrome extension sources are available at https: ci.linagora.com linagora lgs openpaas jidesha (Fork of https: github.com jitsi jidesha). The extension has to be configured to allow Chrome to access to Jitsi instances defined in its manifest file. For example, if the Jitsi instance is running on jitsi.open-paas.org, then the manifest.json file has to be updated accordingly: \"matches\": [ \"*: jitsi.open-paas.org *\" ] To package the extension and distribute it, follow the instruction on the repository README. Server configuration The Jitsi server needs to be configured to allow screensharing as described https: ci.linagora.com linagora lgs openpaas jidesha blob master README.md#enter-your-extensions-hash-id-into-your-jitsi-meet-installation. On the Docker based jitsi deployment, the extension id has to be defined in the this config.js file."
 					}
 
 					
