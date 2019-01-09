@@ -291,9 +291,9 @@
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-  <li><a href="#develop" id="markdown-toc-develop">Develop</a>    <ul>
+  <li><a href="#installation" id="markdown-toc-installation">Installation</a>    <ul>
       <li><a href="#1-install-jitsi" id="markdown-toc-1-install-jitsi">1. Install Jitsi</a></li>
-      <li><a href="#2-install-the-core-module" id="markdown-toc-2-install-the-core-module">2. Install the core module</a></li>
+      <li><a href="#2-install-the-required-modules" id="markdown-toc-2-install-the-required-modules">2. Install the required modules</a></li>
       <li><a href="#3-install-the-videoconference-application" id="markdown-toc-3-install-the-videoconference-application">3. Install the videoconference application</a></li>
     </ul>
   </li>
@@ -307,13 +307,13 @@ It is composed of several components:</p>
 
 <ul>
   <li>A frontend application. Built using Vue.</li>
-  <li>An OpenPaaS core component. Built using angularjs and nodeJS.</li>
+  <li>2 OpenPaaS core components. Built using angularjs and nodeJS.</li>
   <li>A ‘backend’ component: <a href="https://jitsi.org">Jitsi</a></li>
 </ul>
 
-<h2 id="develop">Develop</h2>
+<h2 id="installation">Installation</h2>
 
-<p>This guide provides you all the steps required to develop the videoconference feature correctly.</p>
+<p>This guide provides you all the steps required to intall the videoconference application.</p>
 
 <h3 id="1-install-jitsi">1. Install Jitsi</h3>
 
@@ -326,9 +326,35 @@ It is composed of several components:</p>
   <li>Jitsi is now up and running, you can join conference on <a href="http://localhost:8000">http://localhost:8000</a></li>
 </ul>
 
-<h3 id="2-install-the-core-module">2. Install the core module</h3>
+<h3 id="2-install-the-required-modules">2. Install the required modules</h3>
 
-<p>As any other core module, clone it from <a href="https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.videoconference">https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.videoconference</a> and install it in OpenPaaS <code class="highlighter-rouge">npm link</code></p>
+<p>The videoconference application comes with 2 core modules:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">linagora.esn.videoconference</code> provides core videoconference integration within OpenPaaS</li>
+  <li><code class="highlighter-rouge">linagora.esn.videoconference.calendar</code> provides calendar module integration</li>
+</ol>
+
+<p>As any other modules, clone them from git and use <code class="highlighter-rouge">npm link</code> to install them in OpenPaaS:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.videoconference.git
+git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.videoconference.calendar.git
+
+cd linagora.esn.videoconference
+npm install
+npm link
+
+cd ../
+cd linagora.esn.videoconference.calendar
+npm install
+npm link
+
+cd $ESN_PATH # your ESN folder
+npm link linagora.esn.videoconference
+npm link linagora.esn.videoconference.calendar
+</code></pre></div></div>
+
+<p>Finally, add <code class="highlighter-rouge">linagora.esn.videoconference</code> and <code class="highlighter-rouge">linagora.esn.videoconference.calendar</code> in the <code class="highlighter-rouge">modules</code> array of <code class="highlighter-rouge">$ESN_PATH/config/default.json</code>.</p>
 
 <h3 id="3-install-the-videoconference-application">3. Install the videoconference application</h3>
 
@@ -336,7 +362,16 @@ It is composed of several components:</p>
 
 <h2 id="configure">Configure</h2>
 
-<p><strong>TODO: This has to be filled once working on configuration</strong></p>
+<p>In order to work, the ESN must be configured with several URLs:</p>
+
+<ol>
+  <li>the Jitsi instance URL</li>
+  <li>the Videoconference Web application.</li>
+</ol>
+
+<p>As an administrator, log in into OpenPaaS, go to the <code class="highlighter-rouge">administration/modules/videoconference</code>, then fill URLs:</p>
+
+<p><img src="/images/modules/videoconference/configuration.png" alt="Configure module header" /></p>
 
 			</article>
 		</section>
