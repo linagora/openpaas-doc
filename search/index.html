@@ -159,6 +159,8 @@
 								
 									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
 								
+									<li class="nav-item "><a href="/core/people/">People API</a></li>
+								
 							</ul>
 						</li>
 					
@@ -440,6 +442,23 @@
 						"category": "",
 						"url": " /core/i18n/",
 						"content": "Table of contents Where are the locale files? Backend translation Translate static string in .pug files Translate string in Node.js files Frontend translation Translate Angular variable in .pug files Translate string in Javascript files Translation validator Internationalization (i18n) is the process of developing products in such a way that they can be localized for languages and cultures easily. OpenPaaS supports i18n completely in both backend and frontend sides: In backend, we use i18n-node In frontend, we use angular-translate Where are the locale files? Locale files of the core module can be found in backend i18n locales directory. Each module can have its own locale files, usually placed in backend lib i18n locales directory as in Calendar module for example. Currently, supported languages are English, French and Vietnamese. Backend translation When to use: Translate static string in .pug files Translate string in Node.js files, for example: translate an email before sending it to recipients. Translate static string in .pug files It is pretty easy to translate phrases in .pug files: h2 #{__('Good morning!')} Simple string interpolation: h2 #{__('Hello %s, good morning!', 'John')} Angular expression string interpolation: h2 #{__('Hello %s, good morning!', '{{user.name}}')} HTML string interpolation: p.empty-text !{__('No application, click %s to add a new one', '&lt;span class=\"mdi mdi-plus\"&gt;&lt; span&gt;')} Translate string in Node.js files Simply require the module in backend core i18n: const i18n = require('...'); const subject = i18n.__('Your password has been changed!'); Check the documentation of i18n-node for more examples. Frontend translation When to use: Translate Angular variable in .pug files Translate string in Javascript files You can either use esnI18n filter or esnI18nService of esn.i18n module to translate your phrases. Translate Angular variable in .pug files span {{mailbox.name | esnI18n}} Translate string in Javascript files inject the esnI18nService service var subject = esnI18nService.translate('Email sent to %s', $scope.recipient.email).toString(); The esnI18nService.translate function returns an instance of EsnI18nString, which will be useful when you want to know whether the string is translated or not: function notify(message) { message = esnI18nService.isI18nString(message) ? message.toString() : esnI18nService.translate(message).toString(); window.alert(message); } Usage notify('Hello world!'); OR notify(esnI18nService.translate('Hello %s!', user.name)); Translation validator OpenPaaS uses a built-in validator based on i18n-checker package to ensure the quality of internationalization in product. To use the validator, simply run: grunt i18n"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"core-people": {
+						"id": "core-people",
+						"title": "People API",
+						"category": "",
+						"url": " /core/people/",
+						"content": "Table of contents Overview API Register provider Backend side REST API Search people Overview The OpenPaaS Core provides the people API which is used to: Search accross several people-related sources: members, contacts, resources, groups, … API The people API is used to retrieve persons. A person is a resource which can be defined like this: { \"id\": \"5bf7d8ccb4177e001c8a1efe\", \"objectType\": \"user\", \"emailAddresses\": [ { \"type\": \"work\", \"value\": \"brucewillis@open-paas.org\" } ], \"names\": [ { \"type\": \"principal\", \"displayName\": \"Bruce Willis\" } ], \"photos\": [ { \"type\": \"main\", \"url\": \" users api 123 avatar\" } ] } Register provider Backend side The people module is available at backend core people. The people module uses ‘resolvers’ to lookup to persons and send them back in the right format. Resolvers can be registered like this: const { service, Model, PeopleResolver } = dependencies('people'); const userResolver = new PeopleResolver('user', resolver, denormalizer, priority); service.addResolver(userResolver); Where resolver is a function which returns a Promise which resolves with an Array of resources: function resolver({ term, context, pagination }) { const options = { search: term, domains: [context.domain], limit: pagination.limit }; return new Promise((resolve, reject) =&gt; { search(options, (err, result) =&gt; { if (err) { return reject(err); } result &amp;&amp; result.list ? resolve(result.list) : resolve([]); }); }); } Where denormalizer is a function which returns a Promise which resolves with a Model.Person from an element coming from the resolver result: function denormalizer({ source }) { const denormalized = denormalize(source); const email = new Model.EmailAddress({ value: source.email, type: 'default' }); const name = new Model.Name({ displayName: `${source.firstName} ${source.lastName}` }); const photo = new Model.Photo({ url: ` api avatars ${source._id} avatars` }); return Promise.resolve( new Model.Person({ id: denormalized._id, objectType: 'user', emailAddresses: [email], names: [name], photos: [photo] }) ); } and where priority is the resolver priority. Higher priority means sending back these resolver results first in the list. REST API Search people URL POST api people search Request { \"q\": \"bruce\", \"objectTypes\": [\"user\", \"contact\", \"ldap\"] \"limit\": 10, } q is the text to search in persons objectTypes are the types of person to look for limit is the max number of resources to send back per objectType Response [ { \"id\": \"5bf7d8ccb4177e001c8a1efe\", \"objectType\": \"user\", \"emailAddresses\": [ { \"type\": \"work\", \"value\": \"brucewillis@open-paas.org\" } ], \"names\": [ { \"type\": \"principal\", \"displayName\": \"Bruce Willis\" } ], \"photos\": [ { \"type\": \"avatar\", \"url\": \"https: open-paas.org api users 5bf7d8ccb4177e001c8a1efe avatar\" } ] }, { \"id\": \"5bf7d8ccb4177e001c8a1eff\", \"objectType\": \"contact\", \"emailAddresses\": [ { \"type\": \"home\", \"value\": \"brucelee@open-paas.org\" } ], \"names\": [ { \"type\": \"principal\", \"displayName\": \"Bruce Lee\" } ], \"photos\": [ { \"type\": \"avatar\", \"url\": \"https: open-paas.org api users 5bf7d8ccb4177e001c8a1eff avatar\" } ] } ]"
 					}
 
 					
