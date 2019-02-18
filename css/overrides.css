@@ -11,11 +11,6 @@
   max-width: 800px;
 }
 
-/* for vertical scrollbar */
-.highlight pre code * {
-  white-space: nowrap;
-}
-
 .highlight pre {
   overflow-x: auto;
 }
