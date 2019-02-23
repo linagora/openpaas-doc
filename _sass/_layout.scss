@@ -68,11 +68,7 @@ body {
 }
 
 .main {
-	margin-top: $space + $nav-header-height;
-
-	@media (min-width: $mobile-break) {
-		margin-top: 0;
-	}
+	margin-top: 0;
 }
 
 header {
@@ -145,6 +141,7 @@ header {
 		width: $nav-width;
 		right: auto;
 		bottom: auto;
+		height: 100%;
 
 		.open-nav {
 			display: none;
