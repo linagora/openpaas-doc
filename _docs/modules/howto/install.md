@@ -39,7 +39,6 @@ In all the cases, a manual installation is not enough. You have to configure Ope
 ``` json
  "modules": [
     "linagora.esn.account",
-    "linagora.esn.appstore",
     "linagora.esn.calendar",
     "linagora.esn.contact",
     "...",
