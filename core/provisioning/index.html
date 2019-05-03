@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> How to be Electron compatible |  OpenPaaS documentation</title>
+		<title> Provisioning |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -144,7 +144,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/core/configuration/">OpenPaaS Core</a>
 							<ul>
@@ -155,7 +155,7 @@
 								
 									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
 								
-									<li class="nav-item "><a href="/core/provisioning/">Provisioning</a></li>
+									<li class="nav-item current"><a href="/core/provisioning/">Provisioning</a></li>
 								
 									<li class="nav-item "><a href="/core/search/">Search</a></li>
 								
@@ -166,7 +166,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level current">
+						<li class="nav-item top-level ">
 							
 							<a href="/modules/howto/index/">OpenPaaS Modules</a>
 							<ul>
@@ -179,7 +179,7 @@
 								
 									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
 								
-									<li class="nav-item current"><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
 								
 							</ul>
 						</li>
@@ -282,87 +282,36 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Modules</h2>
+				<h2>OpenPaaS Core</h2>
 				<div class="page-title">
-					<h3>How to be Electron compatible</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/howto/electron-compatibility.md" title="Edit this page on Github">
+					<h3>Provisioning</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/core/provisioning.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<p>OpenPaaS uses <a href="https://electron.atom.io/">ElectronJS</a> to provide the users a desktop client.</p>
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
 
-<p>Modules should follow some rules to be able to work using Electron.</p>
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#platform-administrator" id="markdown-toc-platform-administrator">Platform Administrator</a></li>
+</ul>
 
-<p><strong>URL prefixing</strong></p>
+<h2 id="overview">Overview</h2>
 
-<p>When serving the application from a server, there is obviously real problem on what is the server… On the contrary, on a desktop application, the application should know the URL of the server. OpenPaaS supports different ways of doing so.</p>
+<p>OpenPaaS resources can be provisioned from several sources. This chapter details them.</p>
 
-<p><strong><em>Make your Restangular instances managed</em></strong></p>
+<h2 id="platform-administrator">Platform Administrator</h2>
 
-<p>Most of the server calls are run through Restangular. We provide a system to make a module’s restangular instance aware of the server URL.</p>
+<p>In order to be able to do management operations, a platform administrator is needed. A platform administrator can be provisioned from environment variables:</p>
 
-<p>Here is the code before :</p>
+<ul>
+  <li><code class="highlighter-rouge">INIT_PLATFORMADMIN_USERNAME</code>: The email to be used for the platform administrator account</li>
+  <li><code class="highlighter-rouge">INIT_PLATFORMADMIN_PASSWORD</code>: The password to be used for the platform administrator account</li>
+</ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'great.module'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'greatModuleAPI'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Restangular</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">Restangular</span><span class="p">.</span><span class="nx">withConfig</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">RestangularConfigurer</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">RestangularConfigurer</span><span class="p">.</span><span class="nx">setBaseUrl</span><span class="p">(</span><span class="s1">'/great/api'</span><span class="p">);</span>
-      <span class="nx">RestangularConfigurer</span><span class="p">.</span><span class="nx">setFullResponse</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">});</span>
-</code></pre></div></div>
-
-<p>The module have to use the <strong>manageRestangular</strong> method of the <strong>httpConfigurer</strong> service.</p>
-
-<p>Here is the Electron compatible code:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'great.module'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'greatModuleAPI'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Restangular</span><span class="p">,</span> <span class="nx">httpConfigurer</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">restangularInstance</span> <span class="o">=</span> <span class="nx">Restangular</span><span class="p">.</span><span class="nx">withConfig</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">RestangularConfigurer</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">RestangularConfigurer</span><span class="p">.</span><span class="nx">setFullResponse</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="p">});</span>
-
-    <span class="c1">// I tell httpConfigurer to manage the base URL of my restangular instance</span>
-    <span class="nx">httpConfigurer</span><span class="p">.</span><span class="nx">manageRestangular</span><span class="p">(</span><span class="nx">restangularInstance</span><span class="p">,</span> <span class="s1">'/great/api'</span><span class="p">);</span>
-
-    <span class="k">return</span> <span class="nx">restangularInstance</span><span class="p">;</span>
-  <span class="p">});</span>
-</code></pre></div></div>
-
-<p>We can see two main differences between the code before and after:</p>
-
-<ol>
-  <li>we don’t use the native <strong>restangular.setBaseUrl()</strong> method anymore</li>
-  <li>we call <strong>httpConfigurer.manageRestangular()</strong> with the module’s restangular instance, and the base URI of the module (which is the same we used to set using <strong>RestangularConfigurer.setBaseUrl(…)</strong>).</li>
-</ol>
-
-<p><strong><em>Fix your $http (and other) calls</em></strong></p>
-
-<p>For a vast variety of reasons, modules may not use Restangular. In that case, the <strong>httpConfigurer</strong> service provides a nifty <strong>getUrl()</strong> method to help the developer setting the right final URL.</p>
-
-<p>Here is the code before:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'great.module'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'generateJwtToken'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/jwt/generate'</span><span class="p">);</span>
-    <span class="p">};</span>
-  <span class="p">});</span>
-</code></pre></div></div>
-
-<p>and the code after:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'great.module'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'generateJwtToken'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">httpConfigurer</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">httpConfigurer</span><span class="p">.</span><span class="nx">getUrl</span><span class="p">(</span><span class="s1">'/api/jwt/generate'</span><span class="p">));</span>
-    <span class="p">};</span>
-  <span class="p">});</span>
-</code></pre></div></div>
-
-<p>Here, we only return the result of <strong>httpConfigurer.getUrl()</strong> instead of directly setting the URI.</p>
+<p>If, <strong>and only if</strong>, there are no platform administators defined in OpenPaaS, a new platform administrator will be created at startup from these environment variables.</p>
 
 			</article>
 		</section>
