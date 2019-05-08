@@ -242,6 +242,18 @@
 					
 						<li class="nav-item top-level ">
 							
+							<a href="/modules/group/index/">OpenPaaS Modules - Group</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/group/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/group/rest-api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
 							<a href="/modules/videoconference/index/">OpenPaaS Modules - VideoConference</a>
 							<ul>
 								
@@ -869,6 +881,40 @@
 						"category": "",
 						"url": " /modules/contact/shared/",
 						"content": "Table of contents Overview Public address books Delegated address books Technical considerations Overview The Contact module supports two kinds of shared address books: Public address books: an owner can set his address books to public. Other users in the same domain can subscribe to such address books. Delegated address books: an owner can delegate his own address books to other users in the same domain. There are some differences between these types of shared address books, the main ones are: Public address books can be seen by everyone, and any user can subscribe to them. Delegated address books represent a privileged access for a given address book to a specific users. Shared address books come with rights: Rights are applied to users who are looking at other users address books. Read: User has access to all the contact information but can not change anything. Write: User has access to all the contact information and can update delete contacts. Administration: User not only has read write rights but also can share (public and delegate) address books. Public address books In order to make an address book public, the user has to change the Public right to Read or Write on the address book settings page as shown below. Once an address book is public, other users can subscribe to it by searching for owners’ name in Shared address book dialog. Public address books are linked to their creator, so in order to find them, the user has to search for the creator to find all his public address books. In order to subscribe to this public address book, the user has to click on the Add toggle button then on Save. The address books is now displayed as a Shared address book. The user can see contacts and create some if Write rights are set on the public address book. Delegated address books A user can delegate his address books to others by adding them to Delegation list. A user who is added called a sharee. In order to add a sharee: Go to address book Setting page, switch to Delegation tab Search for user Set the right level for selected user Click Add to add the user in to delegation list Click Save in sub header to save the delegation list Once the address book is saved, it is “ready to be delegated”: The sharee can not do anything until he subscribes the delegated address book. This is possible by going to the Shared address books page then do a search just like for public address books. In the screenshot below, one delegated address book is displayed. In order to add this delegated address book, the sharee has to click on the Add toggle button then on Save. The address book is now displayed as a Shared address book, the sharee can see contacts as default. He can create, edit or remove contacts if Write or Administration rights are set to him. If Administration rights is set, the sharee can delegate the address book. Technical considerations When a user add a public address book, the backend will create a subscription for this address book. A subscription is an object owned by the user and stored in the backend. This object has a reference towards the public address book along with its own properties. When a user has a delegated address book, a new instance of the given address book is created for him on the backend side."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-group-index": {
+						"id": "modules-group-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /modules/group/index/",
+						"content": "Table of contents Overview Overview OpenPaaS module for group feature"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-group-rest-api": {
+						"id": "modules-group-rest-api",
+						"title": "REST API",
+						"category": "",
+						"url": " /modules/group/rest-api/",
+						"content": "Loading API documentation ..."
 					}
 
 					

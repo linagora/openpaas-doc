@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> Web API |  OpenPaaS documentation</title>
+		<title> Overview |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -80,12 +80,12 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level current">
+						<li class="nav-item top-level ">
 							
 							<a href="/apis/web/">APIs</a>
 							<ul>
 								
-									<li class="nav-item current"><a href="/apis/web/">Web API</a></li>
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
 								
 									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
 								
@@ -240,12 +240,12 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/modules/group/index/">OpenPaaS Modules - Group</a>
 							<ul>
 								
-									<li class="nav-item "><a href="/modules/group/index/">Overview</a></li>
+									<li class="nav-item current"><a href="/modules/group/index/">Overview</a></li>
 								
 									<li class="nav-item "><a href="/modules/group/rest-api/">REST API</a></li>
 								
@@ -294,10 +294,10 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>APIs</h2>
+				<h2>OpenPaaS Modules - Group</h2>
 				<div class="page-title">
-					<h3>Web API</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/apis/web.md" title="Edit this page on Github">
+					<h3>Overview</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/group/index.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
@@ -307,31 +307,11 @@
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-  <li><a href="#basics" id="markdown-toc-basics">Basics</a>    <ul>
-      <li><a href="#authentication" id="markdown-toc-authentication">Authentication</a></li>
-      <li><a href="#pagination" id="markdown-toc-pagination">Pagination</a></li>
-    </ul>
-  </li>
 </ul>
 
 <h2 id="overview">Overview</h2>
 
-<p>The OpenPaaS Web API allows you to build applications that interact with OpenPaaS in more complex ways than the integrations we provide out of the box.</p>
-
-<h2 id="basics">Basics</h2>
-
-<h3 id="authentication">Authentication</h3>
-
-<p>There are several ways to authenticate users through OpenPaaS API as described in the <a href="/apis/auth/index">Auth section</a>.</p>
-
-<h3 id="pagination">Pagination</h3>
-
-<p>Request that return multiple items can be <em>paginated</em>. You can specify an offset with the <code class="highlighter-rouge">offset</code> query parameter and the number of elements can be defined by using the <code class="highlighter-rouge">limit</code> one.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl 'https://HOST:PORT/api/RESOURCE?limit=50&amp;offset=20'
-</code></pre></div></div>
-
-<p>This request will return <code class="highlighter-rouge">50</code> items starting at the <code class="highlighter-rouge">20</code>th one i.e. from <code class="highlighter-rouge">20</code> to <code class="highlighter-rouge">69</code>.</p>
+<p>OpenPaaS module for group feature</p>
 
 			</article>
 		</section>
