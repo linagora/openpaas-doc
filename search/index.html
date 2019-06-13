@@ -197,6 +197,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
+								
 							</ul>
 						</li>
 					
@@ -711,6 +713,23 @@
 						"category": "",
 						"url": " /modules/admin/domains/",
 						"content": "Table of contents Overview Creating a domain Editing a domain Fixing error when creating the corresponding domain in James server Overview Domains page is used to manage domains in OpenPaaS. It supports creating and editing domains. Only platform admin can use this feature. Creating a domain Creating a domain also creates its first administrator and corresponding domain in James server. Here are the steps to create a domain: Click floating adding button to show “New domain” form Fill domain name, company name and administrator email password Click on Create or press Enter If success, the domain is added to the list of domains. Editing a domain After creating a domain, platform admin can change its company name. Here are the steps to edit a domain: Click “more actions” button on the domain item to show contextual menu Click on Edit to show “Edit domain” form Change the company name Click on Save or press Enter If success, the domain is updated in the list of domains. Fixing error when creating the corresponding domain in James server There are maybe error when creating the corresponding domain in James server. In that case, domain item has an error indicator at the right side. Platform admin can open contextual menu to see detail of error and try to fix it. Here are the steps to fix error: Click “more actions” button on the domain item to show contextual menu Click on error line (in red) to show fixing error dialog Click on AUTO FIX to try to re-create the domain in James server or click on SETTINGS to see if James settings is correct If error is fixed, the error indicator will be removed."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-admin-elasticsearch": {
+						"id": "modules-admin-elasticsearch",
+						"title": "Elasticsearch",
+						"category": "",
+						"url": " /modules/admin/elasticsearch/",
+						"content": "Table of contents Overview Setting up Elasticsearch for OpenPaaS Synchronize data in Elasticsearch Upgrade Elasticsearch Overview OpenPaaS integrates Elasticsearch as its search engine. Resources like users, groups, contacts, calendar events, etc, are synchronized between MongoDB database and Elasticsearch so that user can search for resources all around OpenPaaS as fast and accurately as possible. Setting up Elasticsearch for OpenPaaS Make sure you have Elasticsearch up and running on your system under a specific address. On OpenPaaS, naviagate to “Elasticsearch” menu in Platform administration and enter Elasticsearch address, OpenPaaS will then use this address to send search requests to Synchronize data in Elasticsearch To make Elasticsearch works and ensure that the data inside it is always up to date, we need to keep the synchronization between MongoDB database and Elasticsearch. However, sometimes we might lose it due to unexpected reasons such as server running out of storage, Elasticsearch’s outage, etc, or some expected reasons, namely replacing the current Elasticsearch with a higher version. OpenPaaS comes with tools to allow platform administrators to manually update the data mapping to standard mapping and re-synchronize data from OpenPaaS’s MongoDB database to ElasticSearch. These terms are called reindex and re-configure: re-configure: data can be stored incorrectly in Elasticseach which leads to strange search behavior on a resource. This issue is due to a resource having incorrect data mapping configuration. Therefore, platform administrators have the ability to correct the standard data mapping configuration for a resource by using re-configure. reindex: re-synchronize all data from MongoDB to Elasticsearch, this includes re-configure to make sure the standard mapping is used In order to reindex or re-configure data. Under the “Maintenance” page in Platform administration, expanse the “Elasticsearch” section. You can choose to run your desired procedure (“Correct the index configuration (quick)” a.k.a. re-configure or “Correct the index configuration and reindex data (slow)” a.k.a. reindex) on a single type of resource, make sure that your Elasticsearch address is correctly configured. Upgrade Elasticsearch From version 1.5.x, OpenPaaS supports both Elasticsearch 2.x and 6.x. If you’re using OpenPaaS with older Elasticsearch and would like to upgrade to 6.x, you can follow these steps: Make sure Elasticsearch 6.x is up and running on your system under a specific address. On OpenPaaS, navigate to “Elasticsearch” menu in Platform administration and enter Elasticsearch 6.x address. Navigate to “Maintenance” menu, expanse the “Elasticsearch” section and select “Correct the index configuration and reindex data (slow)” on every resource to reindex all data to new Elasticsearch (search result will then be empty until these tasks are done)."
 					}
 
 					

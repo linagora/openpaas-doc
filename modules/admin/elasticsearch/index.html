@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> Change Log |  OpenPaaS documentation</title>
+		<title> Elasticsearch |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -184,7 +184,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
 							<ul>
@@ -197,7 +197,7 @@
 								
 									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
 								
-									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
+									<li class="nav-item current"><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
 							</ul>
 						</li>
@@ -296,71 +296,62 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Documentation</h2>
+				<h2>OpenPaaS Modules - Admin</h2>
 				<div class="page-title">
-					<h3>Change Log</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/changelog.html" title="Edit this page on Github">
+					<h3>Elasticsearch</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/admin/elasticsearch.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<p>Subscribe with <a href="/feed.xml">RSS</a> to keep up with the latest changes.</p>
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
 
-<p class="editor-link"><a href="cloudcannon:collections/_posts" class="btn"><strong>&#9998;</strong> Update Change Log</a></p>
-
-<div class="changelog">
-	
-		<div class="changelog-item">
-			<h3>General fixes and improvements</h3>
-			<p><span class="date">February 05, 2016</span> <span class="badge minor">minor</span></p>
-
-			<p>This release fixes a few minor issues reported by users. We’ve also made a few quality of life improvements.</p>
-
-<p><strong>Features:</strong></p>
-
-<ul>
-  <li>Streamlined access to contact details</li>
-  <li>Better sort order for archived messages</li>
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#setting-up-elasticsearch-for-openpaas" id="markdown-toc-setting-up-elasticsearch-for-openpaas">Setting up Elasticsearch for OpenPaaS</a></li>
+  <li><a href="#synchronize-data-in-elasticsearch" id="markdown-toc-synchronize-data-in-elasticsearch">Synchronize data in Elasticsearch</a></li>
+  <li><a href="#upgrade-elasticsearch" id="markdown-toc-upgrade-elasticsearch">Upgrade Elasticsearch</a></li>
 </ul>
 
-<p><strong>Fixes:</strong></p>
+<h2 id="overview">Overview</h2>
+<p>OpenPaaS integrates Elasticsearch as its search engine. Resources like users, groups, contacts, calendar events, etc, are synchronized between MongoDB database and Elasticsearch so that user can search for resources all around OpenPaaS as fast and accurately as possible.</p>
+
+<h2 id="setting-up-elasticsearch-for-openpaas">Setting up Elasticsearch for OpenPaaS</h2>
+<p>Make sure you have Elasticsearch up and running on your system under a specific address.</p>
+
+<p>On OpenPaaS, naviagate to “Elasticsearch” menu in Platform administration and enter Elasticsearch address, OpenPaaS will then use this address to send search requests to</p>
+
+<p><img src="/images/modules/admin/elasticsearch/elasticsearch_config.png" alt="Elasticsearch configuration" /></p>
+
+<h2 id="synchronize-data-in-elasticsearch">Synchronize data in Elasticsearch</h2>
+<p>To make Elasticsearch works and ensure that the data inside it is always up to date, we need to keep the synchronization between MongoDB database and Elasticsearch. However, sometimes we might lose it due to unexpected reasons such as server running out of storage, Elasticsearch’s outage, etc, or some expected reasons, namely replacing the current Elasticsearch with a higher version.</p>
+
+<p>OpenPaaS comes with tools to allow platform administrators to manually update the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html">data mapping</a> to standard mapping and re-synchronize data from OpenPaaS’s MongoDB database to ElasticSearch. These terms are called <code class="highlighter-rouge">reindex</code> and <code class="highlighter-rouge">re-configure</code>:</p>
 
 <ul>
-  <li>Input sometimes getting stuck</li>
-  <li>One more memory leak obliterated</li>
+  <li><code class="highlighter-rouge">re-configure</code>: data can be stored incorrectly in Elasticseach which leads to strange search behavior on a resource. This issue is due to a resource having incorrect data mapping configuration. Therefore, platform administrators have the ability to correct the standard data mapping configuration for a resource by using <code class="highlighter-rouge">re-configure</code>.</li>
+  <li><code class="highlighter-rouge">reindex</code>: re-synchronize all data from MongoDB to Elasticsearch, this includes <code class="highlighter-rouge">re-configure</code> to make sure the standard mapping is used</li>
 </ul>
 
+<p>In order to <code class="highlighter-rouge">reindex</code> or <code class="highlighter-rouge">re-configure</code> data. Under the “Maintenance” page in Platform administration, expanse the “Elasticsearch” section. You can choose to run your desired procedure (“Correct the index configuration (quick)” a.k.a. <code class="highlighter-rouge">re-configure</code> or “Correct the index configuration and reindex data (slow)” a.k.a. <code class="highlighter-rouge">reindex</code>) on a single type of resource, make sure that your Elasticsearch address is correctly configured.</p>
 
-			<p class="editor-link"><a href="cloudcannon:collections/_posts/2016-02-05-general-fixes-and-improvements.md" class="btn"><strong>&#9998;</strong> Update Entry</a></p>
-		</div>
-	
-		<div class="changelog-item">
-			<h3>Media support</h3>
-			<p><span class="date">January 12, 2016</span> <span class="badge major">major</span></p>
+<p><img src="/images/modules/admin/elasticsearch/maintenance.png" alt="Maintenance" /></p>
 
-			<p>ChatApp introduces media support! Send images, videos and documents to your contacts.</p>
+<h2 id="upgrade-elasticsearch">Upgrade Elasticsearch</h2>
+<p>From version 1.5.x, OpenPaaS supports both Elasticsearch 2.x and 6.x. If you’re using OpenPaaS with older Elasticsearch and would like to upgrade to 6.x, you can follow these steps:</p>
 
-<p><strong>Features:</strong></p>
-
-<ul>
-  <li>Image support</li>
-  <li>Video support</li>
-  <li>Document support</li>
-</ul>
-
-<p><strong>Fixes:</strong></p>
-
-<ul>
-  <li>Edge case contact syncing issue</li>
-  <li>All memory leaks obliterated</li>
-</ul>
-
-
-			<p class="editor-link"><a href="cloudcannon:collections/_posts/2016-01-12-media-support.md" class="btn"><strong>&#9998;</strong> Update Entry</a></p>
-		</div>
-	
-</div>
+<ol>
+  <li>
+    <p>Make sure Elasticsearch 6.x is up and running on your system under a specific address.</p>
+  </li>
+  <li>
+    <p>On OpenPaaS, navigate to “Elasticsearch” menu in Platform administration and enter Elasticsearch 6.x address.</p>
+  </li>
+  <li>
+    <p>Navigate to “Maintenance” menu, expanse the “Elasticsearch” section and select “Correct the index configuration and reindex data (slow)” on every resource to reindex all data to new Elasticsearch (search result will then be empty until these tasks are done).</p>
+  </li>
+</ol>
 
 			</article>
 		</section>
