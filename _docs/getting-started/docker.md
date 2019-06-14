@@ -9,8 +9,12 @@ We assume that you already have Git, and Docker Compose, installed on your machi
 following commands:
 
 ```shell
-# grab the docker-compose file
-wget https://raw.githubusercontent.com/linagora/openpaas-esn/master/docker-compose.yml
+# grab the open-paas github repo
+git clone https://github.com/linagora/openpaas-esn.git
+
+# go to the repo you just cloned
+cd openpaas-esn
+
 # launch it
 PROVISION=true docker-compose up
 ```
