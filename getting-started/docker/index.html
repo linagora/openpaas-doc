@@ -309,8 +309,12 @@
 We assume that you already have Git, and Docker Compose, installed on your machine. Run the
 following commands:</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># grab the docker-compose file</span>
-wget https://raw.githubusercontent.com/linagora/openpaas-esn/master/docker-compose.yml
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># grab the open-paas github repo</span>
+git clone https://github.com/linagora/openpaas-esn.git
+
+<span class="c"># go to the repo you just cloned</span>
+<span class="nb">cd </span>openpaas-esn
+
 <span class="c"># launch it</span>
 <span class="nv">PROVISION</span><span class="o">=</span><span class="nb">true </span>docker-compose up
 </code></pre></div></div>
