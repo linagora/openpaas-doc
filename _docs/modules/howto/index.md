@@ -12,7 +12,7 @@ order: 1
 
 ## Overview
 
-OpenPaaS modules (also called [AwesomeModules](https://ci.open-paas.org/stash/projects/AM/repos/awesome-module-manager/browse)) come on top of classic NPM modules, to provide an enterprise grade module system. The main improvements over the classic Node NPM system are:
+OpenPaaS modules (also called [AwesomeModules](https://github.com/linagora/awesome-module-manager)) come on top of classic NPM modules, to provide an enterprise grade module system. The main improvements over the classic Node NPM system are:
 
 * OpenPaaS modules brings dependencies, either by name, or by ability
 * OpenPaaS modules supports asynchronous loading
