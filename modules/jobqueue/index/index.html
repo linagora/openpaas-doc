@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> Not Found |  OpenPaaS documentation</title>
+		<title> Overview |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -254,12 +254,12 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/modules/jobqueue/index/">OpenPaaS Modules - Job Queue</a>
 							<ul>
 								
-									<li class="nav-item "><a href="/modules/jobqueue/index/">Overview</a></li>
+									<li class="nav-item current"><a href="/modules/jobqueue/index/">Overview</a></li>
 								
 							</ul>
 						</li>
@@ -306,16 +306,98 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Documentation</h2>
+				<h2>OpenPaaS Modules - Job Queue</h2>
 				<div class="page-title">
-					<h3>Not Found</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/404.md" title="Edit this page on Github">
+					<h3>Overview</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/jobqueue/index.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<p>This page doesn’t exist!</p>
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#how-it-works" id="markdown-toc-how-it-works">How it works?</a>    <ul>
+      <li><a href="#register-a-worker" id="markdown-toc-register-a-worker">Register a worker</a></li>
+      <li><a href="#calling-a-worker-to-do-his-job" id="markdown-toc-calling-a-worker-to-do-his-job">Calling a worker to do his job</a></li>
+      <li><a href="#job-object" id="markdown-toc-job-object">Job object</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>In OpenPaaS ESN system, there are scenarios or tasks which consume a lot of system resources such as CPU time, memory, network bandwidth or IO. For example: reindex elasticsearch indices, import contacts and events from files or social accounts, send alarm emails to calendar event attendees, etc.</p>
+
+<p>Processing such tasks in NodeJS becomes even more challenging due to its single threaded and if you try to run them in parallel, system might become laggy or even crash.</p>
+
+<p>Solution to handle such tasks is to build a queue of tasks and process each task one by one so that each task is given good enough system resources.</p>
+
+<p><code class="highlighter-rouge">linagora.esn.jobqueue</code> is a OpenPaaS ESN core module which base on <a href="https://github.com/Automattic/kue">Kue</a>.This module provides APIs to create and manage queue job in OpenPaaS ESN.</p>
+
+<h2 id="how-it-works">How it works?</h2>
+
+<ul>
+  <li>We need to register a worker by the worker name and its handler when starting OpenPaaS system</li>
+  <li>If we want to execute a job, we need add the job to queue. To do that, we need to submit job with two params:
+    <ul>
+      <li>Worker name: job queue gets the corresponding handler from registered workers by name</li>
+      <li>Job data: after having handler, job queue then add a new job to queue with the handler and job data</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="register-a-worker">Register a worker</h3>
+
+<p>The worker object to register is defined as:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">const</span> <span class="nx">jobName</span> <span class="o">=</span> <span class="s1">'contact-import'</span><span class="p">;</span>
+
+<span class="nx">dependencies</span><span class="p">(</span><span class="s1">'jobqueue'</span><span class="p">).</span><span class="nx">lib</span><span class="p">.</span><span class="nx">addWorker</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="nx">jobName</span><span class="p">,</span>
+  <span class="na">handler</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">handle</span>
+    <span class="nx">getTitle</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">job</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">account</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">job</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+
+  <span class="c1">// must return a promise</span>
+  <span class="k">return</span> <span class="nx">importContact</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">account</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getTitle</span><span class="p">(</span><span class="nx">jobData</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">`Import </span><span class="p">${</span><span class="nx">jobData</span><span class="p">.</span><span class="nx">type</span><span class="p">}</span><span class="s2"> contacts for user </span><span class="p">${</span><span class="nx">jobData</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">_id</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="calling-a-worker-to-do-his-job">Calling a worker to do his job</h3>
+
+<p>Once registered, you can call worker job by his name and data:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">const</span> <span class="nx">jobData</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">account</span> <span class="p">};</span>
+
+<span class="nx">dependencies</span><span class="p">(</span><span class="s1">'jobqueue'</span><span class="p">).</span><span class="nx">lib</span><span class="p">.</span><span class="nx">submitJob</span><span class="p">(</span><span class="nx">jobName</span><span class="p">,</span> <span class="nx">jobData</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<p><em>Note that the <code class="highlighter-rouge">jobData</code> must be as lightweight as possible since it is stored in Redis</em></p>
+
+<h3 id="job-object">Job object</h3>
+
+<p>To get job object by his id:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nx">dependencies</span><span class="p">(</span><span class="s1">'jobqueue'</span><span class="p">).</span><span class="nx">lib</span><span class="p">.</span><span class="nx">getJobById</span><span class="p">(</span><span class="nx">jobId</span><span class="p">);</span>
+
+</code></pre></div></div>
 
 			</article>
 		</section>
