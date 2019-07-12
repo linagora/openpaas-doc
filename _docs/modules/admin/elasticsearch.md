@@ -33,7 +33,7 @@ In order to `reindex` or `re-configure` data. Under the "Maintenance" page in Pl
 ![Maintenance](/images/modules/admin/elasticsearch/maintenance.png)
 
 ## Upgrade Elasticsearch
-From version 1.5.x, OpenPaaS supports both Elasticsearch 2.x and 6.x. If you're using OpenPaaS with older Elasticsearch and would like to upgrade to 6.x, you can follow these steps:
+Openpaas ESN 1.5 supports both ElasticSearch version 2.x and 6.x. Starting from OpenPaaS ESN 1.6, it is strictly required to use ElasticSearch 6.x. If you're using an older version of Elasticsearch and would like to upgrade to use ElasticSearch 6.x for your OpenPaaS instance, you can follow these steps:
 
 1. Make sure Elasticsearch 6.x is up and running on your system under a specific address.
 
