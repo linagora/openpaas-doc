@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> Get started with Linux |  OpenPaaS documentation</title>
+		<title> Get started with Linux (deprecated) |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -73,7 +73,7 @@
 								
 									<li class="nav-item "><a href="/getting-started/docker/">Get started with Docker</a></li>
 								
-									<li class="nav-item current"><a href="/getting-started/linux/">Get started with Linux</a></li>
+									<li class="nav-item current"><a href="/getting-started/linux/">Get started with Linux (deprecated)</a></li>
 								
 									<li class="nav-item "><a href="/getting-started/supported-platforms/">Supported platforms</a></li>
 								
@@ -311,16 +311,23 @@
 			<div class="page-header">
 				<h2>Getting started</h2>
 				<div class="page-title">
-					<h3>Get started with Linux</h3>
+					<h3>Get started with Linux (deprecated)</h3>
 					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/getting-started/linux.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+				<h2 id="important-deprecation-note"><span style="color: red"><strong>Important deprecation note</strong></span></h2>
+
+<p><strong>Package installation of the OpenPaaS platform is currently deprecated</strong>. The current page is kept for informational purpose, but note that it will install the version 1.3 (Oct. 18) of the platform.</p>
+
+<hr />
+
+<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
 
 <ul id="markdown-toc">
+  <li><a href="#important-deprecation-note" id="markdown-toc-important-deprecation-note"><span style="color: red"><strong>Important deprecation note</strong></span></a></li>
   <li><a href="#setup-the-target-machine" id="markdown-toc-setup-the-target-machine">Setup the target machine</a>    <ul>
       <li><a href="#hostname" id="markdown-toc-hostname">Hostname</a></li>
       <li><a href="#bootstrap-the-installation" id="markdown-toc-bootstrap-the-installation">Bootstrap the installation</a></li>
@@ -461,7 +468,7 @@ systemctl start <span class="o">{</span>mongod,elasticsearch,cassandra,redis,rab
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opctl init <span class="nt">--email</span> admin@openpaas.local
 </code></pre></div></div>
 
-<p>User is created by default as Domain admin.<br />
+<p>User is created by default as Domain admin.
 If needed, set your user as Platform Admin (see <a target="_blank" href="/modules/admin/index/#platform-mode">Platform mode</a>) with the following command:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opctl platformadmin init <span class="nt">--email</span> admin@openpaas.local
 </code></pre></div></div>
