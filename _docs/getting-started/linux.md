@@ -1,8 +1,16 @@
 ---
-title: Get started with Linux
+title: Get started with Linux (deprecated)
 category: 1. Getting started
 order: 2
 ---
+
+## <span style="color: red">**Important deprecation note**</span>
+
+
+
+**Package installation of the OpenPaaS platform is currently deprecated**. The current page is kept for informational purpose, but note that it will install the version 1.3 (Oct. 18) of the platform.
+
+--------------------------
 
 ## Table of contents
 {:.no_toc}
@@ -130,7 +138,7 @@ To create a domain and your first administrator, run the following command as th
 opctl init --email admin@openpaas.local
 ```
 
-User is created by default as Domain admin.  
+User is created by default as Domain admin.
 If needed, set your user as Platform Admin (see <a target="_blank" href="/modules/admin/index/#platform-mode">Platform mode</a>) with the following command:
 ```bash
 opctl platformadmin init --email admin@openpaas.local
