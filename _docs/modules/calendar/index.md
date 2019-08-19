@@ -50,3 +50,4 @@ and more advanced ones:
 - [Calendar resources](/modules/calendar/resource/)
 - Full text search
 - Realtime synchronization between browsers
+- [VideoConference link](/modules/videoconference/index)
