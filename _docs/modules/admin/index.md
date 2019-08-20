@@ -48,6 +48,7 @@ If you are a domain administrator, you will see the configuration pages at domai
 - **Web**: Configure the address you want people to type in their browser to reach your OpenPaaS instance.
 - **Modules**: Each module in OpenPaaS can have its own configuration form allows domain administrator to configure the configuration of those modules.
 - **Autoconf**: Define the configuration file template used by the autoconfiguration mechanism (for Thunderbird).
+- **Theme**: Define the theme, logo and favicon of OpenPaas.
 
 ### Platform mode
 
