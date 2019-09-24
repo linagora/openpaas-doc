@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> Overview |  OpenPaaS documentation</title>
+		<title> OpenID Connect |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -92,7 +92,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/apis/auth/index/">APIs - Auth</a>
 							<ul>
@@ -105,7 +105,7 @@
 								
 									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
 								
-									<li class="nav-item "><a href="/apis/auth/oidc/">OpenID Connect</a></li>
+									<li class="nav-item current"><a href="/apis/auth/oidc/">OpenID Connect</a></li>
 								
 							</ul>
 						</li>
@@ -232,12 +232,12 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level current">
+						<li class="nav-item top-level ">
 							
 							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
 							<ul>
 								
-									<li class="nav-item current"><a href="/modules/contact/index/">Overview</a></li>
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
 								
 									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
 								
@@ -325,72 +325,150 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Modules - Contact</h2>
+				<h2>APIs - Auth</h2>
 				<div class="page-title">
-					<h3>Overview</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/contact/index.md" title="Edit this page on Github">
+					<h3>OpenID Connect</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/apis/auth/oidc.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<p><img src="/images/modules/contact/contact.png" alt="The contact module" /></p>
-
-<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-  <li><a href="#install" id="markdown-toc-install">Install</a>    <ul>
-      <li><a href="#openpaas-module" id="markdown-toc-openpaas-module">OpenPaaS Module</a></li>
-      <li><a href="#sabre-server" id="markdown-toc-sabre-server">Sabre Server</a></li>
+  <li><a href="#configuration" id="markdown-toc-configuration">Configuration</a></li>
+  <li><a href="#oidc-servers" id="markdown-toc-oidc-servers">OIDC Servers</a>    <ul>
+      <li><a href="#keycloak" id="markdown-toc-keycloak">Keycloak</a></li>
+      <li><a href="#lemonldap" id="markdown-toc-lemonldap">LemonLDAP</a></li>
     </ul>
   </li>
-  <li><a href="#features" id="markdown-toc-features">Features</a></li>
 </ul>
 
 <h2 id="overview">Overview</h2>
 
-<p>The contact module brings powerful and realtime contact support into the OpenPaaS platform.
-It is composed of several components:</p>
+<p>OpenPaaS supports <a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) as Authentication/Authorization module. The current page describes how to configure and use it.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>The <code class="highlighter-rouge">oidc</code> startegy must be added to the list of API strategies in the <code class="highlighter-rouge">config/default.*.json</code> file:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"apiStrategies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"basic-mongo-ldap"</span><span class="p">,</span><span class="w"> </span><span class="s2">"basic-mongo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"oidc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w"> </span><span class="s2">"jwt"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This strategy will:</p>
+
+<ol>
+  <li>Get the <code class="highlighter-rouge">Bearer</code> token from the incoming HTTP request</li>
+  <li>Try to retrieve the user from the token by requesting the OIDC server</li>
+  <li>Mount the OpenPaaS user from retrieved OIDC user email</li>
+  <li>Pass the request to the next handler</li>
+</ol>
+
+<p>In order to retrieve the user from the token by requesting the OIDC server, OpenPaaS needs to be configured to reach the OIDC server with a pair of tokens.</p>
+
+<p>The configuration is platform-wide and so has to be set in the <code class="highlighter-rouge">core</code> module under the <code class="highlighter-rouge">oidc</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oidc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"issuer_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openpaas"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34b398b7-79fe-4ab1-b53c-b68c20743558"</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Where:</p>
 
 <ul>
-  <li>A frontend component. Built using Angular.</li>
-  <li>A backend component which can be split into two parts:
+  <li><code class="highlighter-rouge">issuer_url</code> is the Issuer URL of your OIDC server</li>
+  <li><code class="highlighter-rouge">client_id</code> is the ID of the client you configured in the OIDC server side</li>
+  <li><code class="highlighter-rouge">client_secret</code> is the unique, generated secret provided by the OIDC server</li>
+</ul>
+
+<p>These values are available on distinct locations based on the OIDC server you use. More details are given below.</p>
+
+<h2 id="oidc-servers">OIDC Servers</h2>
+
+<p>The current section will give details on how to use and configure OIDC self-hosted servers as part of a development process. <strong>This is not supposed to be used as-is in production environments</strong>.</p>
+
+<h3 id="keycloak">Keycloak</h3>
+
+<p><a href="https://www.keycloak.org/">Keycloak</a> is an Open Source Identity and Access Management which can be used as OIDC server.</p>
+
+<p>In the following instructions, it is assumed that Keycloak has is running on port 8888 and that we are using the <code class="highlighter-rouge">master</code> realm i.e.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-p</span> 8888:8080 jboss/keycloak
+</code></pre></div></div>
+
+<p>The easiest way to go is to use Docker as described in the <a href="https://hub.docker.com/r/jboss/keycloak/">Docker Hub page</a>.</p>
+
+<p>Once logged in as admin, you should have access to the realm configuration page on <a href="http://localhost:8888/auth/admin/master/console/#/realms/master">http://localhost:8888/auth/admin/master/console/#/realms/master</a>.</p>
+
+<p>In order to use OpenID Connect in OpenPaaS, you will have to create a <code class="highlighter-rouge">Client</code> in keycloak:</p>
+
+<ol>
+  <li>Go to <code class="highlighter-rouge">Clients</code>, then click on <code class="highlighter-rouge">Create</code>.</li>
+  <li>Set <code class="highlighter-rouge">openpaas</code> as <code class="highlighter-rouge">Client ID</code></li>
+  <li>Toggle <code class="highlighter-rouge">Consent Required</code> to <code class="highlighter-rouge">ON</code></li>
+  <li>Toggle <code class="highlighter-rouge">Display client on consent screen</code> to <code class="highlighter-rouge">ON</code></li>
+  <li>Toggle <code class="highlighter-rouge">Implicit Flow Enabled</code> to <code class="highlighter-rouge">ON</code></li>
+  <li>Set <code class="highlighter-rouge">Access</code> Type to <code class="highlighter-rouge">confidential</code>
+  <img src="/images/apis/auth/oidc/keycloak_create_client_1.png" alt="Keycloak Create Client 1" />
+  <img src="/images/apis/auth/oidc/keycloak_create_client_2.png" alt="Keycloak Create Client 2" /></li>
+  <li>Every time an application will have to use this OIDC client, you will have to update the <code class="highlighter-rouge">Valid redirect URIs</code> by adding the application ones. As an example, for OpenPaaS Vue applications, you have to add 2 redirect URLs each time. For example, if the application is running at <a href="http://localhost:8081">http://localhost:8081</a>:
     <ul>
-      <li>A DAV compliant backend built on top of <a href="http://sabre.io/">Sabre</a></li>
-      <li>A specific backend, built using Node.js, which mainly listen to specific technical events and so provides realtime support and data indexing.</li>
+      <li>http://localhost:8081/oidc-callback</li>
+      <li>http://localhost:8081/login</li>
     </ul>
   </li>
-</ul>
+  <li>You also have to add <code class="highlighter-rouge">Web origins</code> to allow CORS based on your application deployment. For development purposes, <code class="highlighter-rouge">*</code> is enough.</li>
+  <li>Click on <code class="highlighter-rouge">Save</code>
+10.You can now get the <code class="highlighter-rouge">client_secret</code> from the <code class="highlighter-rouge">Credentials</code> tab:
+  <img src="/images/apis/auth/oidc/keycloak_client_credentials.png" alt="Keycloak Credentials" /></li>
+</ol>
 
-<h2 id="install">Install</h2>
+<p>You can now configure OpenPaaS by putting the right value in platform configuration. For example, from the screenshots above, and if keycloak is running on port 8888:</p>
 
-<h3 id="openpaas-module">OpenPaaS Module</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oidc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"issuer_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openpaas"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75046a84-7344-45e1-a8f3-4210c973ae74"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
-<p>The contact module is provided in the <a href="https://ci.linagora.com/linagora/lgs/openpaas/esn/modules/linagora.esn.contact">OpenPaaS modules directory</a> and enabled by default.</p>
+<p>In order to get user information from their access token, keycloak needs to be configured to have the same users as the ones available in OpenPaaS. Check the keycloak documentation for more information on this.</p>
 
-<h3 id="sabre-server">Sabre Server</h3>
+<p>For development purposes, you can create users by hand in keycloak and use them in your daily development process:</p>
 
-<p>The calendar module needs a Sabre server to run. Thanks to its plugin system, the default Sabre distribution has been extended to provide more advanced features. Installation instructions can be found in the <a href="https://ci.linagora.com/linagora/lgs/openpaas/esn-sabre/blob/master/README.md">esn-sabre repository</a>.</p>
+<ol>
+  <li>Go to <code class="highlighter-rouge">Users</code></li>
+  <li>Click on <code class="highlighter-rouge">Add user</code></li>
+  <li>Fill the form, be sure to put the same email as the one you have in OpenPaaS user database</li>
+  <li>Click on <code class="highlighter-rouge">Save</code>
+  <img src="/images/apis/auth/oidc/keycloak_add_user.png" alt="Keycloak Add User" /></li>
+  <li>Go in the <code class="highlighter-rouge">Credentials</code> tab, then set a <code class="highlighter-rouge">New password</code> and <code class="highlighter-rouge">Password confirmation</code></li>
+  <li>Toggle <code class="highlighter-rouge">Temporary</code> to <code class="highlighter-rouge">OFF</code></li>
+  <li>Hit <code class="highlighter-rouge">Enter</code> to save
+  <img src="/images/apis/auth/oidc/keycloak_user_credentials.png" alt="Keycloak User Credentials" /></li>
+</ol>
 
-<h2 id="features">Features</h2>
+<h3 id="lemonldap">LemonLDAP</h3>
 
-<p>The contact module provides standard features:</p>
-
-<ul>
-  <li>CardDAV support</li>
-  <li>Contact creation/edition/deletion</li>
-</ul>
-
-<p>and more advanced ones:</p>
-
-<ul>
-  <li>Full text search</li>
-  <li>Realtime synchronization between browsers</li>
-  <li>Social networks contact import and synchronization</li>
-  <li><a href="/modules/contact/collected/">Collected contacts</a></li>
-  <li><a href="/modules/contact/shared/">Shared address books</a></li>
-</ul>
+<p>Tests are ongoing, as documentation.</p>
 
 			</article>
 		</section>
