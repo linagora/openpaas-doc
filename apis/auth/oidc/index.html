@@ -338,21 +338,36 @@
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-  <li><a href="#configuration" id="markdown-toc-configuration">Configuration</a></li>
+  <li><a href="#authenticating-incoming-rest-api-calls" id="markdown-toc-authenticating-incoming-rest-api-calls">Authenticating incoming REST API calls</a>    <ul>
+      <li><a href="#api-configuration" id="markdown-toc-api-configuration">API Configuration</a></li>
+    </ul>
+  </li>
+  <li><a href="#authenticating-users" id="markdown-toc-authenticating-users">Authenticating users</a>    <ul>
+      <li><a href="#configuration" id="markdown-toc-configuration">Configuration</a></li>
+    </ul>
+  </li>
+  <li><a href="#oidc-configuration" id="markdown-toc-oidc-configuration">OIDC Configuration</a></li>
+  <li><a href="#user-provisioning" id="markdown-toc-user-provisioning">User provisioning</a></li>
   <li><a href="#oidc-servers" id="markdown-toc-oidc-servers">OIDC Servers</a>    <ul>
       <li><a href="#keycloak" id="markdown-toc-keycloak">Keycloak</a></li>
-      <li><a href="#lemonldap" id="markdown-toc-lemonldap">LemonLDAP</a></li>
     </ul>
   </li>
 </ul>
 
 <h2 id="overview">Overview</h2>
 
-<p>OpenPaaS supports <a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) as Authentication/Authorization module. The current page describes how to configure and use it.</p>
+<p>OpenPaaS supports <a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) as Authentication/Authorization module.
+OIDC can be used to authenticate users when they reach OpenPaaS ESN and when they launch an OpenPaaS powered application: User is redirected to the OIDC login page, logs in, and is then redirected to the initial application.</p>
 
-<h2 id="configuration">Configuration</h2>
+<p>The current page describes how to configure and use OIDC to provide this Single Sign On support in OpenPaaS.</p>
 
-<p>The <code class="highlighter-rouge">oidc</code> startegy must be added to the list of API strategies in the <code class="highlighter-rouge">config/default.*.json</code> file:</p>
+<h2 id="authenticating-incoming-rest-api-calls">Authenticating incoming REST API calls</h2>
+
+<p>In order to allow applications to call OpenPaaS APIs, the OIDC strategy must be enabled on the OpenPaaS ESN backend. The current section explains how to configure it.</p>
+
+<h3 id="api-configuration">API Configuration</h3>
+
+<p>The <code class="highlighter-rouge">oidc</code> strategy must be added to the list of API strategies in the <code class="highlighter-rouge">config/default.*.json</code> file:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">"apiStrategies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"basic-mongo-ldap"</span><span class="p">,</span><span class="w"> </span><span class="s2">"basic-mongo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"oidc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w"> </span><span class="s2">"jwt"</span><span class="p">]</span><span class="w">
@@ -364,13 +379,26 @@
 <ol>
   <li>Get the <code class="highlighter-rouge">Bearer</code> token from the incoming HTTP request</li>
   <li>Try to retrieve the user from the token by requesting the OIDC server</li>
-  <li>Mount the OpenPaaS user from retrieved OIDC user email</li>
+  <li>“Mount” the OpenPaaS user from retrieved OIDC user email</li>
   <li>Pass the request to the next handler</li>
 </ol>
 
-<p>In order to retrieve the user from the token by requesting the OIDC server, OpenPaaS needs to be configured to reach the OIDC server with a pair of tokens.</p>
+<p>In order to retrieve the user from the token by requesting the OIDC server, OpenPaaS needs to be configured correctly: Configuration is described in the <code class="highlighter-rouge">OIDC Configuration</code> below.</p>
 
-<p>The configuration is platform-wide and so has to be set in the <code class="highlighter-rouge">core</code> module under the <code class="highlighter-rouge">oidc</code>:</p>
+<h2 id="authenticating-users">Authenticating users</h2>
+
+<p>OIDC can also be used for SSO at the OpenPaaS portal level: The user will be redirected to the OIDC login page when required. In order to achieve this, OpenPaaS must be configured and the <code class="highlighter-rouge">linagora.esn.oidc</code> module must be enabled. Once done, the user will be redirected to the OIDC login/logout pages when needed.</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<ol>
+  <li>The <code class="highlighter-rouge">linagora.esn.oidc</code> module must be added and enabled. Check the instructions here https://github.com/linagora/linagora.esn.oidc.</li>
+  <li>The configuration is described in the <code class="highlighter-rouge">OIDC Configuration</code> section below.</li>
+</ol>
+
+<h2 id="oidc-configuration">OIDC Configuration</h2>
+
+<p>The configuration is platform-wide and so has to be set in the <code class="highlighter-rouge">core</code> module in the <code class="highlighter-rouge">oidc</code> settings:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
@@ -381,6 +409,9 @@
         </span><span class="s2">"issuer_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openpaas"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34b398b7-79fe-4ab1-b53c-b68c20743558"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authorization_url: "</span><span class="err">http</span><span class="p">:</span><span class="err">//localhost</span><span class="p">:</span><span class="mi">8888</span><span class="err">/auth/realms/master/protocol/openid-connect/auth</span><span class="s2">",
+        "</span><span class="err">token_url</span><span class="s2">": "</span><span class="err">http</span><span class="p">:</span><span class="err">//localhost</span><span class="p">:</span><span class="mi">8888</span><span class="err">/auth/realms/master/protocol/openid-connect/token</span><span class="s2">",
+        "</span><span class="err">user_info_url</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
@@ -392,11 +423,39 @@
 
 <ul>
   <li><code class="highlighter-rouge">issuer_url</code> is the Issuer URL of your OIDC server</li>
-  <li><code class="highlighter-rouge">client_id</code> is the ID of the client you configured in the OIDC server side</li>
+  <li><code class="highlighter-rouge">client_id</code> is the ID of the client you configured in the OIDC server</li>
   <li><code class="highlighter-rouge">client_secret</code> is the unique, generated secret provided by the OIDC server</li>
+  <li><code class="highlighter-rouge">authorization_url</code> is the authorization endpoint</li>
+  <li><code class="highlighter-rouge">token_url</code> is the token endpoint</li>
+  <li><code class="highlighter-rouge">user_info_url</code> is the token to fetch user information</li>
 </ul>
 
 <p>These values are available on distinct locations based on the OIDC server you use. More details are given below.</p>
+
+<p><strong>IMPORTANT</strong>: For now, all the applications (OpenPaaS ESN and Vue applications) are sharing the same <code class="highlighter-rouge">client_id</code> and MUST BE configured as is.</p>
+
+<h2 id="user-provisioning">User provisioning</h2>
+
+<p>When delegating authentication to OIDC, the users will be provisioned in the OpenPaaS backend when required:</p>
+
+<ul>
+  <li>When OpenPaaS ESN is loading user at login</li>
+  <li>When OpenPaaS application is calling REST APIs</li>
+</ul>
+
+<p>In order to provision the user in the right domain, OpenPaaS will rely on the email address provided by the OIDC UserInfo endpoint and provision following these steps:</p>
+
+<ol>
+  <li>Extracting the email Top-Level Domain (TLD)</li>
+  <li>Searching a domain with the name from email address TLD
+    <ul>
+      <li>If domain found then create a user in this domain</li>
+      <li>Else do not provision user</li>
+    </ul>
+  </li>
+</ol>
+
+<p>For example, if the user email address is <code class="highlighter-rouge">name@open-paas.org</code>, search a domain with name <code class="highlighter-rouge">open-paas.org</code> then create user in this domain if it exists, else fail.</p>
 
 <h2 id="oidc-servers">OIDC Servers</h2>
 
@@ -426,10 +485,12 @@
   <li>Set <code class="highlighter-rouge">Access</code> Type to <code class="highlighter-rouge">confidential</code>
   <img src="/images/apis/auth/oidc/keycloak_create_client_1.png" alt="Keycloak Create Client 1" />
   <img src="/images/apis/auth/oidc/keycloak_create_client_2.png" alt="Keycloak Create Client 2" /></li>
-  <li>Every time an application will have to use this OIDC client, you will have to update the <code class="highlighter-rouge">Valid redirect URIs</code> by adding the application ones. As an example, for OpenPaaS Vue applications, you have to add 2 redirect URLs each time. For example, if the application is running at <a href="http://localhost:8081">http://localhost:8081</a>:
+  <li>Every time an application will have to use this OIDC client, you will have to update the <code class="highlighter-rouge">Valid redirect URIs</code> by adding the application ones. As an example, for OpenPaaS Vue applications, you have to add 2 redirect URLs each time. If the application is running at <a href="http://localhost:8081">http://localhost:8081</a>:
     <ul>
       <li>http://localhost:8081/oidc-callback</li>
       <li>http://localhost:8081/login</li>
+      <li>http://localhost:8080/linagora.esn.oidc/callback</li>
+      <li>Note: For development purposes you can define redirect URLs with wildcards like http://localhost:8080/* and http://localhost:8081/*</li>
     </ul>
   </li>
   <li>You also have to add <code class="highlighter-rouge">Web origins</code> to allow CORS based on your application deployment. For development purposes, <code class="highlighter-rouge">*</code> is enough.</li>
@@ -445,7 +506,10 @@
   </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"issuer_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openpaas"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75046a84-7344-45e1-a8f3-4210c973ae74"</span><span class="w">
+    </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75046a84-7344-45e1-a8f3-4210c973ae74"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authorization_url: "</span><span class="err">http</span><span class="p">:</span><span class="err">//localhost</span><span class="p">:</span><span class="mi">8888</span><span class="err">/auth/realms/master/protocol/openid-connect/auth</span><span class="s2">",
+    "</span><span class="err">token_url</span><span class="s2">": "</span><span class="err">http</span><span class="p">:</span><span class="err">//localhost</span><span class="p">:</span><span class="mi">8888</span><span class="err">/auth/realms/master/protocol/openid-connect/token</span><span class="s2">",
+    "</span><span class="err">user_info_url</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
@@ -466,9 +530,7 @@
   <img src="/images/apis/auth/oidc/keycloak_user_credentials.png" alt="Keycloak User Credentials" /></li>
 </ol>
 
-<h3 id="lemonldap">LemonLDAP</h3>
-
-<p>Tests are ongoing, as documentation.</p>
+<p>If you have a LDAP directory running somewhere in your environment, you can also use the keycloak user federation feature and import your LDAP users. Check the keycloak documentation for more details at https://www.keycloak.org/docs/6.0/server_admin/#_ldap.</p>
 
 			</article>
 		</section>
