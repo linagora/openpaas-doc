@@ -15,6 +15,7 @@ order: 5
 The OpenPaaS Core provides the people API which is used to:
 
 1. Search accross several people-related sources: `members`, `contacts`, `resources`, `groups`, ...
+2. Get a resolved person by finding a matching object from a particular field (e.g email address)
 
 ## API
 
@@ -47,18 +48,18 @@ The people API is used to retrieve `persons`. A `person` is a resource which can
 
 ### Register provider
 
-#### Backend side
+#### Searcher
 
-The people module is available at `backend/core/people`. The people module uses 'resolvers' to lookup to persons and send them back in the right format. Resolvers can be registered like this:
+The people module is available at `backend/core/people`. The people module uses 'searchers' to lookup to persons and send them back in the right format. Searchers can be registered like this:
 
 ```js
-const { service, Model, PeopleResolver } = dependencies('people');
-const userResolver = new PeopleResolver('user', resolver, denormalizer, priority);
+const { service, Model, PeopleSearcher } = dependencies('people');
+const userSearcher = new PeopleSearcher('user', searcher, denormalizer, priority);
 
-service.addResolver(userResolver);
+service.addSearcher(userSearcher);
 ```
 
-Where `resolver` is a function which returns a Promise which resolves with an Array of resources:
+Where `searcher` is a function which returns a Promise which resolves with an Array of resources:
 
 ```js
 function resolver({ term, context, pagination }) {
@@ -100,16 +101,45 @@ function denormalizer({ source }) {
 
 and where `priority` is the resolver priority. Higher priority means sending back these resolver results first in the list.
 
+### Resolver
+
+The people module use `resolver` to find exactly a person that has a property field matched with the given value. Following the searcher format, resolver can be registered like this:
+
+```js
+const { service, Model, PeopleResolver } = dependencies('people');
+const userResolver = new PeopleResolver('user', resolver, denormalizer, defaultPriority);
+
+service.addResolver(userResolver);
+```
+
+Where `resolver` is a function which returns a Promise which resolves with only at most one resource.
+
+```js
+function resolver({ fieldType, value, context }) {
+  if (fieldType === FIELD_TYPES.EMAIL_ADDRESS) {
+    return new Promise((resolve, reject) => {
+      findByEmail(value, { domainId: context.domain._id}, (err, user) => {
+        if (err) return reject(err);
+
+        resolve(user);
+      });
+    });
+  }
+
+  return Promise.resolve();
+}
+```
+
+The priority of each resource type is determined by API users, the `defaultPriority` property will be used when the prioritized order is not provided by API users.
+
 ### REST API
 
-#### Search people
+### POST api/people/search
 
-**URL**
+Search for persons on various types
 
-`POST /api/people/search`
-
-**Request**
-```
+**Request Body**
+```JSON
 {
   "q": "bruce",
   "objectTypes": ["user", "contact", "ldap"]
@@ -123,7 +153,7 @@ and where `priority` is the resolver priority. Higher priority means sending bac
 
 **Response**
 
-```
+```JSON
 [
   {
     "id": "5bf7d8ccb4177e001c8a1efe",
@@ -170,4 +200,46 @@ and where `priority` is the resolver priority. Higher priority means sending bac
     ]
   }
 ]
+```
+
+### GET api/people/resolve/{:fieldType}/{:value}
+
+Retrieve a single resolved object that have a field matching specific value
+
+**Parameters**
+- fieldType: the field to find the resolved object (e.g emailAddress)
+- value: the value to query
+
+**Request Query Parameters**
+
+- objectTypes: A list of object types to find the matching objects and also the priority order for resolving process
+
+Optional, by default resolver will handle all object types by orders: `user, group, contact`. Supported object types for the moment are `user, contact, group`.
+
+
+**Response:**
+
+```JSON
+{
+  "id": "5bf7d8ccb4177e001c8a1efe",
+  "objectType": "user",
+  "emailAddresses": [
+    {
+      "type": "work",
+      "value": "brucewillis@open-paas.org"
+    }
+  ],
+  "names": [
+    {
+      "type": "principal",
+      "displayName": "Bruce Willis"
+    }
+  ],
+  "photos": [
+    {
+      "type": "avatar",
+      "url": "https://open-paas.org/api/users/5bf7d8ccb4177e001c8a1efe/avatar"
+    }
+  ]
+}
 ```
