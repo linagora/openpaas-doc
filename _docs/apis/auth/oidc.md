@@ -13,9 +13,9 @@ order: 4
 ## Overview
 
 OpenPaaS supports [OpenID Connect](https://openid.net/connect/) (OIDC) as Authentication/Authorization module.
-OIDC can be used to authenticate users when they reach OpenPaaS ESN and when they launch an OpenPaaS powered application: User is redirected to the OIDC login page, logs in, and is then redirected to the initial application.
+OIDC can be used to authenticate users when they reach OpenPaaS ESN and when they launch an OpenPaaS powered application: User is redirected to the OIDC login page, authenticates, and is then redirected to the initial application.
 
-The current page describes how to configure and use OIDC to provide this Single Sign On support in OpenPaaS.
+The current page describes how to configure and use OIDC to provide this Single Sign On (SSO) support in OpenPaaS.
 
 ## Authenticating incoming REST API calls
 
@@ -148,10 +148,10 @@ You can now configure OpenPaaS by putting the right value in platform configurat
   "value": {
     "issuer_url": "http://localhost:8888/auth/realms/master",
     "client_id": "openpaas",
-    "client_secret": "75046a84-7344-45e1-a8f3-4210c973ae74",
-    "authorization_url: "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
+    "client_secret": "96a97f8d-2a73-46e2-b602-512e034ea5f0",
+    "authorization_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
     "token_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/token",
-    "user_info_url: "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"
+    "user_info_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"
   }
 }
 ```
