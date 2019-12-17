@@ -46,7 +46,7 @@ OIDC can also be used for SSO at the OpenPaaS portal level: The user will be red
 
 ### Configuration
 
-1. The `linagora.esn.oidc` module must be added and enabled. Check the instructions here https://github.com/linagora/linagora.esn.oidc.
+1. The `linagora.esn.oidc` module must be added and enabled. Check the instructions here [https://github.com/linagora/linagora.esn.oidc](https://github.com/linagora/linagora.esn.oidc).
 2. The configuration is described in the `OIDC Configuration` section below.
 
 ## OIDC Configuration
@@ -170,4 +170,4 @@ For development purposes, you can create users by hand in keycloak and use them 
 7. Hit `Enter` to save
   ![Keycloak User Credentials](/images/apis/auth/oidc/keycloak_user_credentials.png)
 
-If you have a LDAP directory running somewhere in your environment, you can also use the keycloak user federation feature and import your LDAP users. Check the keycloak documentation for more details at https://www.keycloak.org/docs/6.0/server_admin/#_ldap.
+If you have a LDAP directory running somewhere in your environment, you can also use the keycloak user federation feature and import your LDAP users. Check the keycloak documentation for more details at [https://www.keycloak.org/docs/6.0/server_admin/#_ldap](https://www.keycloak.org/docs/6.0/server_admin/#_ldap).
