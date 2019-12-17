@@ -357,9 +357,9 @@
 <h2 id="overview">Overview</h2>
 
 <p>OpenPaaS supports <a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) as Authentication/Authorization module.
-OIDC can be used to authenticate users when they reach OpenPaaS ESN and when they launch an OpenPaaS powered application: User is redirected to the OIDC login page, logs in, and is then redirected to the initial application.</p>
+OIDC can be used to authenticate users when they reach OpenPaaS ESN and when they launch an OpenPaaS powered application: User is redirected to the OIDC login page, authenticates, and is then redirected to the initial application.</p>
 
-<p>The current page describes how to configure and use OIDC to provide this Single Sign On support in OpenPaaS.</p>
+<p>The current page describes how to configure and use OIDC to provide this Single Sign On (SSO) support in OpenPaaS.</p>
 
 <h2 id="authenticating-incoming-rest-api-calls">Authenticating incoming REST API calls</h2>
 
@@ -392,7 +392,7 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
 <h3 id="configuration">Configuration</h3>
 
 <ol>
-  <li>The <code class="highlighter-rouge">linagora.esn.oidc</code> module must be added and enabled. Check the instructions here https://github.com/linagora/linagora.esn.oidc.</li>
+  <li>The <code class="highlighter-rouge">linagora.esn.oidc</code> module must be added and enabled. Check the instructions here <a href="https://github.com/linagora/linagora.esn.oidc">https://github.com/linagora/linagora.esn.oidc</a>.</li>
   <li>The configuration is described in the <code class="highlighter-rouge">OIDC Configuration</code> section below.</li>
 </ol>
 
@@ -506,10 +506,10 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
   </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"issuer_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openpaas"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75046a84-7344-45e1-a8f3-4210c973ae74"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"authorization_url: "</span><span class="err">http</span><span class="p">:</span><span class="err">//localhost</span><span class="p">:</span><span class="mi">8888</span><span class="err">/auth/realms/master/protocol/openid-connect/auth</span><span class="s2">",
-    "</span><span class="err">token_url</span><span class="s2">": "</span><span class="err">http</span><span class="p">:</span><span class="err">//localhost</span><span class="p">:</span><span class="mi">8888</span><span class="err">/auth/realms/master/protocol/openid-connect/token</span><span class="s2">",
-    "</span><span class="err">user_info_url</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="w">
+    </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96a97f8d-2a73-46e2-b602-512e034ea5f0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/auth"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/token"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_info_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
@@ -530,7 +530,7 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
   <img src="/images/apis/auth/oidc/keycloak_user_credentials.png" alt="Keycloak User Credentials" /></li>
 </ol>
 
-<p>If you have a LDAP directory running somewhere in your environment, you can also use the keycloak user federation feature and import your LDAP users. Check the keycloak documentation for more details at https://www.keycloak.org/docs/6.0/server_admin/#_ldap.</p>
+<p>If you have a LDAP directory running somewhere in your environment, you can also use the keycloak user federation feature and import your LDAP users. Check the keycloak documentation for more details at <a href="https://www.keycloak.org/docs/6.0/server_admin/#_ldap">https://www.keycloak.org/docs/6.0/server_admin/#_ldap</a>.</p>
 
 			</article>
 		</section>
