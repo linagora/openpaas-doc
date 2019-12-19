@@ -409,9 +409,10 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
         </span><span class="s2">"issuer_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openpaas"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34b398b7-79fe-4ab1-b53c-b68c20743558"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"authorization_url: "</span><span class="err">http</span><span class="p">:</span><span class="err">//localhost</span><span class="p">:</span><span class="mi">8888</span><span class="err">/auth/realms/master/protocol/openid-connect/auth</span><span class="s2">",
-        "</span><span class="err">token_url</span><span class="s2">": "</span><span class="err">http</span><span class="p">:</span><span class="err">//localhost</span><span class="p">:</span><span class="mi">8888</span><span class="err">/auth/realms/master/protocol/openid-connect/token</span><span class="s2">",
-        "</span><span class="err">user_info_url</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="w">
+        </span><span class="s2">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/auth"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/token"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_info_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end_session_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
@@ -428,6 +429,7 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
   <li><code class="highlighter-rouge">authorization_url</code> is the authorization endpoint</li>
   <li><code class="highlighter-rouge">token_url</code> is the token endpoint</li>
   <li><code class="highlighter-rouge">user_info_url</code> is the token to fetch user information</li>
+  <li><code class="highlighter-rouge">end_session_endpoint</code> is the URL used to end the user session (<a href="https://openid.net/specs/openid-connect-session-1_0.html#RPLogout">Spec</a>)</li>
 </ul>
 
 <p>These values are available on distinct locations based on the OIDC server you use. More details are given below.</p>
@@ -489,6 +491,7 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
     <ul>
       <li>http://localhost:8081/oidc-callback</li>
       <li>http://localhost:8081/login</li>
+      <li>http://localhost:8080</li>
       <li>http://localhost:8080/linagora.esn.oidc/callback</li>
       <li>Note: For development purposes you can define redirect URLs with wildcards like http://localhost:8080/* and http://localhost:8081/*</li>
     </ul>
@@ -509,7 +512,8 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
     </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96a97f8d-2a73-46e2-b602-512e034ea5f0"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/auth"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/token"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user_info_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="w">
+    </span><span class="s2">"user_info_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_session_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
