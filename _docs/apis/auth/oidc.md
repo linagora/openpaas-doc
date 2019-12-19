@@ -63,9 +63,10 @@ The configuration is platform-wide and so has to be set in the `core` module in 
         "issuer_url": "http://localhost:8888/auth/realms/master",
         "client_id": "openpaas",
         "client_secret": "34b398b7-79fe-4ab1-b53c-b68c20743558",
-        "authorization_url: "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
+        "authorization_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
         "token_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/token",
-        "user_info_url: "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"
+        "user_info_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo",
+        "end_session_endpoint": "http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"
       }
     },
     // ...
@@ -81,6 +82,7 @@ Where:
 - `authorization_url` is the authorization endpoint
 - `token_url` is the token endpoint
 - `user_info_url` is the token to fetch user information
+- `end_session_endpoint` is the URL used to end the user session ([Spec](https://openid.net/specs/openid-connect-session-1_0.html#RPLogout))
 
 These values are available on distinct locations based on the OIDC server you use. More details are given below.
 
@@ -133,6 +135,7 @@ In order to use OpenID Connect in OpenPaaS, you will have to create a `Client` i
 7. Every time an application will have to use this OIDC client, you will have to update the `Valid redirect URIs` by adding the application ones. As an example, for OpenPaaS Vue applications, you have to add 2 redirect URLs each time. If the application is running at [http://localhost:8081](http://localhost:8081):
   - http://localhost:8081/oidc-callback
   - http://localhost:8081/login
+  - http://localhost:8080
   - http://localhost:8080/linagora.esn.oidc/callback
   - Note: For development purposes you can define redirect URLs with wildcards like http://localhost:8080/* and http://localhost:8081/*
 8. You also have to add `Web origins` to allow CORS based on your application deployment. For development purposes, `*` is enough.
@@ -151,7 +154,8 @@ You can now configure OpenPaaS by putting the right value in platform configurat
     "client_secret": "96a97f8d-2a73-46e2-b602-512e034ea5f0",
     "authorization_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
     "token_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/token",
-    "user_info_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"
+    "user_info_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo",
+    "end_session_endpoint": "http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"
   }
 }
 ```
