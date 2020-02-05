@@ -243,6 +243,10 @@
 								
 									<li class="nav-item "><a href="/modules/contact/shared/">Shared Address Books</a></li>
 								
+									<li class="nav-item "><a href="/modules/contact/domain-address-book/">Domain address book</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/domain-members-address-book/">Domain members address book</a></li>
+								
 							</ul>
 						</li>
 					
@@ -940,12 +944,46 @@
 					,
 					
 
+					"modules-contact-domain-address-book": {
+						"id": "modules-contact-domain-address-book",
+						"title": "Domain address book",
+						"category": "",
+						"url": " /modules/contact/domain-address-book/",
+						"content": "Table of contents Overview Management Enable Disable Role of members Overview Domain address book contains contacts, which is shared among members of single domain. Domain administrator can enable or disable the address book. By default, domain members can see all the contacts. Domain members can get more access such as: add, edit, delele the contacts or share rights of the address book to other members when they are delegated by an address book’s administrator. Management Enable Only domain administrator can enable domain address book feature on modules admin page. Enabling the address book will make it visible in Contacts page of all domain users, the address book will be put in Domain address book section of sidebar. Disable Only domain administrator can disable domain address book feature on modules admin page. Disabling will hide the address book and its contacts to all domain users. All the contacts and configurations are preserved. Role of members Domain address book is an address book. Therefore, the address book inherit features of a common address book such as: Public right and Deligate. Adminstrator of the domain address book is the domain member has rights to read, write and share (public and delegate) the address book. Read how to use shared address book. Because the contacts in the address book are shared resources. The data should be trusted for using by other domain members. Adminstrators need to consider before sharing rights to a certain user."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-contact-domain-members-address-book": {
+						"id": "modules-contact-domain-members-address-book",
+						"title": "Domain members address book",
+						"category": "",
+						"url": " /modules/contact/domain-members-address-book/",
+						"content": "Table of contents Overview Management Enable Domain scope Platform scope Disable Domain scope Platform scope Synchronize Domain scope Platform scope Overview Domain members address book (DMAB) is an address book of a domain and contains mapping contacts from all active domain members. An active domain members can login and can be searched on OpenPaaS Domain administrators can enable, disable and synchronize the address book. Platform administrators can also manage the address books for all domains which do not configure DMAB yet. One of the most useful cases is when initializing the system, the platform administrator can manage the address book for all domains. Management Enable Domain scope Domain administrators can enable DMAB feature. The following actions will be done: Turn on the feature flag of domain. Create an address book named domain-members if it does not exist. Create mapping contacts from domain members into the DMAB. Result: The address book will be put in Domain members section of sidebar in Contacts page. All active domain member contacts are also displayed. Platform scope Platform administrators can enable DMAB feature for domains of platform that has not configured DMAB yet. Below are steps: Turn on the feature flag of platform. Synchronize each single domain of platform. See synchronize a DMAB. Result: On a domain that has not configured DMAB yet, the address book will be put in Domain members section of sidebar in Contacts page. On a domain has its own DMAB’s configuration, the display of Domain members section depends on DMAB’s domain configuration. Disable Domain scope Domain administrators can disable DMAB feature. The following actions will be done: Turn off the feature flag of domain. Delete the address book. Result: On success, the address book of the domain will be deleted. Domain members can’t see Domain members section of sidebar in Contacts page. Platform scope Platform administrators can disable DMAB feature for domains of platform that do not configured DMAB yet. Below are steps: Turn off the feature flag of platform. Synchronize each single domain of platform. See synchronize a DMAB. Result: On a domain that has not configured DMAB yet, domain members can’t see Domain members section of sidebar in Contacts page. On a domain has its own DMAB’s configuration, the display of Domain members section depends on DMAB’s domain configuration. Synchronize Synchronization allows domain or platform administrators to synchronize DMAB. There are 2 scenarios: The feature is disabled: For some reasons, Sabre service is stopped when disabling the feature at ESN side, so the address book still there in Sabre. Synchronization will remove this address book. The feature is enabled: Domain members can be added, updated and blocked. So we need to refresh mapping contacts in DMAB by adding, updating and removing them. Domain scope Synchronizing DMAB action will get all active users at that time to create new set of domain member contacts Result: On success, domain members contacts in Contacts page will be updated. Platform scope Platform administrators can synchronize DMAB for all domains that do not configure DMAB feature yet. Result: On a domain that has not configured DMAB yet, domain members contacts in Contacts page will be updated. On a domain has its own DMAB’s configuration, the display of Domain members section and contacts depends on DMAB’s domain configuration."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
 					"modules-contact-index": {
 						"id": "modules-contact-index",
 						"title": "Overview",
 						"category": "",
 						"url": " /modules/contact/index/",
-						"content": "Table of contents Overview Install OpenPaaS Module Sabre Server Features Overview The contact module brings powerful and realtime contact support into the OpenPaaS platform. It is composed of several components: A frontend component. Built using Angular. A backend component which can be split into two parts: A DAV compliant backend built on top of Sabre A specific backend, built using Node.js, which mainly listen to specific technical events and so provides realtime support and data indexing. Install OpenPaaS Module The contact module is provided in the OpenPaaS modules directory and enabled by default. Sabre Server The calendar module needs a Sabre server to run. Thanks to its plugin system, the default Sabre distribution has been extended to provide more advanced features. Installation instructions can be found in the esn-sabre repository. Features The contact module provides standard features: CardDAV support Contact creation edition deletion and more advanced ones: Full text search Realtime synchronization between browsers Social networks contact import and synchronization Collected contacts Shared address books"
+						"content": "Table of contents Overview Install OpenPaaS Module Sabre Server Features Overview The contact module brings powerful and realtime contact support into the OpenPaaS platform. It is composed of several components: A frontend component. Built using Angular. A backend component which can be split into two parts: A DAV compliant backend built on top of Sabre A specific backend, built using Node.js, which mainly listen to specific technical events and so provides realtime support and data indexing. Install OpenPaaS Module The contact module is provided in the OpenPaaS modules directory and enabled by default. Sabre Server The calendar module needs a Sabre server to run. Thanks to its plugin system, the default Sabre distribution has been extended to provide more advanced features. Installation instructions can be found in the esn-sabre repository. Features The contact module provides standard features: CardDAV support Contact creation edition deletion and more advanced ones: Full text search Realtime synchronization between browsers Social networks contact import and synchronization Collected contacts Shared address books Domain address book Domain members address book"
 					}
 
 					

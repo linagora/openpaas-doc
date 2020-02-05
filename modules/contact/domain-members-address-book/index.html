@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> I18n |  OpenPaaS documentation</title>
+		<title> Domain members address book |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -132,7 +132,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level current">
+						<li class="nav-item top-level ">
 							
 							<a href="/frontend/vue/">Frontend</a>
 							<ul>
@@ -143,7 +143,7 @@
 								
 									<li class="nav-item "><a href="/frontend/vue-components/">Vue Components</a></li>
 								
-									<li class="nav-item current"><a href="/frontend/i18n/">I18n</a></li>
+									<li class="nav-item "><a href="/frontend/i18n/">I18n</a></li>
 								
 							</ul>
 						</li>
@@ -232,7 +232,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
 							<ul>
@@ -245,7 +245,7 @@
 								
 									<li class="nav-item "><a href="/modules/contact/domain-address-book/">Domain address book</a></li>
 								
-									<li class="nav-item "><a href="/modules/contact/domain-members-address-book/">Domain members address book</a></li>
+									<li class="nav-item current"><a href="/modules/contact/domain-members-address-book/">Domain members address book</a></li>
 								
 							</ul>
 						</li>
@@ -329,10 +329,10 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>Frontend</h2>
+				<h2>OpenPaaS Modules - Contact</h2>
 				<div class="page-title">
-					<h3>I18n</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/frontend/i18n.md" title="Edit this page on Github">
+					<h3>Domain members address book</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/contact/domain-members-address-book.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
@@ -341,66 +341,121 @@
 				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
 
 <ul id="markdown-toc">
-  <li><a href="#where-are-the-locale-files" id="markdown-toc-where-are-the-locale-files">Where are the locale files?</a></li>
-  <li><a href="#how-it-work" id="markdown-toc-how-it-work">How it Work</a>    <ul>
-      <li><a href="#js-files" id="markdown-toc-js-files">Js files</a></li>
-      <li><a href="#vue-files" id="markdown-toc-vue-files">Vue files</a></li>
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#management" id="markdown-toc-management">Management</a>    <ul>
+      <li><a href="#enable" id="markdown-toc-enable">Enable</a>        <ul>
+          <li><a href="#domain-scope" id="markdown-toc-domain-scope">Domain scope</a></li>
+          <li><a href="#platform-scope" id="markdown-toc-platform-scope">Platform scope</a></li>
+        </ul>
+      </li>
+      <li><a href="#disable" id="markdown-toc-disable">Disable</a>        <ul>
+          <li><a href="#domain-scope-1" id="markdown-toc-domain-scope-1">Domain scope</a></li>
+          <li><a href="#platform-scope-1" id="markdown-toc-platform-scope-1">Platform scope</a></li>
+        </ul>
+      </li>
+      <li><a href="#synchronize" id="markdown-toc-synchronize">Synchronize</a>        <ul>
+          <li><a href="#domain-scope-2" id="markdown-toc-domain-scope-2">Domain scope</a></li>
+          <li><a href="#platform-scope-2" id="markdown-toc-platform-scope-2">Platform scope</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
 
-<p>Internationalization (i18n) is the process of developing products in such a way
-that they can be localized for languages and cultures easily.</p>
-
+<h2 id="overview">Overview</h2>
 <ul>
-  <li>We use <a href="https://kazupon.github.io/vue-i18n/">vue-i18n</a></li>
+  <li>Domain members address book (DMAB) is an address book of a domain and contains mapping contacts from <strong>all active domain members</strong>.</li>
 </ul>
 
-<h2 id="where-are-the-locale-files">Where are the locale files?</h2>
+<p style="color:gray; font-size: 80%; text-align: center;"><img src="/images/modules/contact/active-user.png" alt="Active user" />
+An active domain members can login and can be searched on OpenPaaS</p>
 
-<p>Locale files can be found in <code class="highlighter-rouge">src/i18n/lang</code> directory.
-Currently, supported languages are English, French and Vietnamese.</p>
-
-<h2 id="how-it-work">How it Work</h2>
-
-<h3 id="js-files">Js files</h3>
-
-<p>Import your language file into <code class="highlighter-rouge">src/i18n/index.js</code>.</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">en</span> <span class="k">from</span> <span class="s2">"@/i18n/lang/en.json"</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>Add it to the <code class="highlighter-rouge">messages</code> object.</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">i18n</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueI18n</span><span class="p">({</span>
-  <span class="na">locale</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
-  <span class="na">messages</span><span class="p">:</span> <span class="p">{</span> <span class="nx">en</span> <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div></div>
-
-<h3 id="vue-files">Vue files</h3>
-
-<p>It is pretty easy to translate phrases in .vue files:</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-  <span class="nt">&lt;h1&gt;</span>{{ $t('OpenPaaS Login') }}<span class="nt">&lt;/h1&gt;</span>  
-
-</code></pre></div></div>
-
-<p>Atribute syntax:</p>
 <ul>
-  <li>Use <code class="highlighter-rouge">v-bind</code> or the <code class="highlighter-rouge">:</code> shortcut with <code class="highlighter-rouge">$t('some text')</code></li>
+  <li>Domain administrators can enable, disable and synchronize the address book.</li>
+  <li>Platform administrators can also manage the address books for all domains which do not configure DMAB yet. One of the most useful cases is when initializing the system, the platform administrator can manage the address book for all domains.</li>
 </ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;v-text-field</span>
-        <span class="na">name=</span><span class="s">"login"</span>
-        <span class="na">:label=</span><span class="s">"$t('Login')"</span>
-        <span class="na">type=</span><span class="s">"text"</span>
-<span class="nt">&gt;&lt;/v-text-field&gt;</span>
-</code></pre></div></div>
+<h2 id="management">Management</h2>
+<h3 id="enable">Enable</h3>
+<h4 id="domain-scope">Domain scope</h4>
+<p>Domain administrators can enable DMAB feature. The following actions will be done:</p>
+<ul>
+  <li>Turn on the feature flag of domain.</li>
+  <li>Create an address book named <strong><em>domain-members</em></strong> if it does not exist.</li>
+  <li>Create mapping contacts from domain members into the DMAB.</li>
+</ul>
 
-<p>Check the documentation of <a href="https://kazupon.github.io/vue-i18n/guide/started.html">vue-I18n</a> and 
-<a href="https://github.com/dobromir-hristov/vue-i18n-starter">vue-I18n starter</a> for more examples.</p>
+<p><img src="/images/modules/contact/enable-disable-domain-members-address-book-on-a-domain.png" alt="Enable or disable domain members address book on a domain" /></p>
+
+<p><strong>Result:</strong>
+The address book will be put in <strong>Domain members</strong> section of sidebar in <code class="highlighter-rouge">Contacts</code> page. <strong>All active domain member contacts</strong> are also displayed.</p>
+
+<p><img src="/images/modules/contact/domain-members-address-book-section.png" alt="Domain members address book section" /></p>
+
+<h4 id="platform-scope">Platform scope</h4>
+<p>Platform administrators can enable DMAB feature for domains of platform that has not configured DMAB yet. Below are steps:</p>
+<ul>
+  <li>Turn on the feature flag of platform.</li>
+  <li>Synchronize each single domain of platform. See <a href="/modules/contact/domain-members-address-book/#synchronize">synchronize a DMAB</a>.</li>
+</ul>
+
+<p><img src="/images/modules/contact/enable-or-disable-domain-members-address-books-for-entire-platform.png" alt="Enable or disable domain members address books for entire platform" /></p>
+
+<p><strong>Result:</strong></p>
+<ul>
+  <li>On a domain that has not configured DMAB yet, the address book will be put in <strong>Domain members</strong> section of sidebar in <code class="highlighter-rouge">Contacts</code> page.</li>
+  <li>On a domain has its own DMAB’s configuration, the display of <strong>Domain members</strong> section depends on DMAB’s domain configuration.</li>
+</ul>
+
+<h3 id="disable">Disable</h3>
+<h4 id="domain-scope-1">Domain scope</h4>
+<p>Domain administrators can disable DMAB feature. The following actions will be done:</p>
+<ul>
+  <li>Turn off the feature flag of domain.</li>
+  <li>Delete the address book.</li>
+</ul>
+
+<p><strong>Result:</strong>
+On success, the address book of the domain will be deleted. Domain members can’t see <strong>Domain members</strong> section of sidebar in <code class="highlighter-rouge">Contacts</code> page.</p>
+
+<h4 id="platform-scope-1">Platform scope</h4>
+<p>Platform administrators can disable DMAB feature for domains of platform that do not configured DMAB yet. Below are steps:</p>
+<ul>
+  <li>Turn off the feature flag of platform.</li>
+  <li>Synchronize each single domain of platform. See <a href="/modules/contact/domain-members-address-book/#synchronize">synchronize a DMAB</a>.</li>
+</ul>
+
+<p><strong>Result:</strong></p>
+<ul>
+  <li>On a domain that has not configured DMAB yet, domain members can’t see <strong>Domain members</strong> section of sidebar in <code class="highlighter-rouge">Contacts</code> page.</li>
+  <li>On a domain has its own DMAB’s configuration, the display of <strong>Domain members</strong> section depends on DMAB’s domain configuration.</li>
+</ul>
+
+<h3 id="synchronize">Synchronize</h3>
+<p>Synchronization allows domain or platform administrators to synchronize DMAB. There are 2 scenarios:</p>
+<ul>
+  <li><em>The feature is disabled:</em> For some reasons, Sabre service is stopped when disabling the feature at ESN side, so the address book still there in Sabre. Synchronization will remove this address book.</li>
+  <li><em>The feature is enabled:</em> Domain members can be added, updated and blocked. So we need to refresh mapping contacts in DMAB by adding, updating and removing them.</li>
+</ul>
+
+<h4 id="domain-scope-2">Domain scope</h4>
+<p>Synchronizing DMAB action will get all active users at that time to create new set of domain member contacts</p>
+
+<p><img src="/images/modules/contact/synchronize-domain-members-address-books-for-a-domain.png" alt="Synchronize domain members address books for a domain" /></p>
+
+<p><strong>Result:</strong>
+On success, <strong>domain members contacts</strong> in <code class="highlighter-rouge">Contacts</code> page will be updated.</p>
+
+<h4 id="platform-scope-2">Platform scope</h4>
+<p>Platform administrators can synchronize DMAB for all domains that do not configure DMAB feature yet.</p>
+
+<p><img src="/images/modules/contact/synchronize-domain-members-address-books-for-entire-platform.png" alt="Synchronize domain members address books for entire platform" /></p>
+
+<p><strong>Result:</strong></p>
+<ul>
+  <li>On a domain that has not configured DMAB yet, <strong>domain members contacts</strong> in <code class="highlighter-rouge">Contacts</code> page will be updated.</li>
+  <li>On a domain has its own DMAB’s configuration, the display of <strong>Domain members</strong> section and contacts depends on DMAB’s domain configuration.</li>
+</ul>
 
 			</article>
 		</section>
