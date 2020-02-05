@@ -46,3 +46,5 @@ and more advanced ones:
 - Social networks contact import and synchronization
 - [Collected contacts](/modules/contact/collected/)
 - [Shared address books](/modules/contact/shared/)
+- [Domain address book](/modules/contact/domain-address-book)
+- [Domain members address book](/modules/contact/domain-members-address-book)
