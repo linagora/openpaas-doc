@@ -26,11 +26,11 @@ It is composed of several components:
 
 ### OpenPaaS Module
 
-The contact module is provided in the [OpenPaaS modules directory](https://ci.linagora.com/linagora/lgs/openpaas/esn/modules/linagora.esn.contact) and enabled by default.
+The contact module is provided in the [OpenPaaS modules directory](https://github.com/linagora/openpaas-esn/tree/master/modules/linagora.esn.contact) and enabled by default.
 
 ### Sabre Server
 
-The calendar module needs a Sabre server to run. Thanks to its plugin system, the default Sabre distribution has been extended to provide more advanced features. Installation instructions can be found in the [esn-sabre repository](https://ci.linagora.com/linagora/lgs/openpaas/esn-sabre/blob/master/README.md).
+The calendar module needs a Sabre server to run. Thanks to its plugin system, the default Sabre distribution has been extended to provide more advanced features. Installation instructions can be found in the [esn-sabre repository](https://github.com/linagora/esn-sabre/blob/master/README.md).
 
 ## Features
 
