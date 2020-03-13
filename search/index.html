@@ -286,6 +286,20 @@
 					
 						<li class="nav-item top-level ">
 							
+							<a href="/modules/unifiedinbox/index/">OpenPaaS Modules - Unified Inbox</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/unifiedinbox/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/unifiedinbox/identity/">Identity</a></li>
+								
+									<li class="nav-item "><a href="/modules/unifiedinbox/rest-api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
 							<a href="/modules/videoconference/index/">OpenPaaS Modules - VideoConference</a>
 							<ul>
 								
@@ -1171,6 +1185,57 @@
 						"category": "",
 						"url": " /modules/jobqueue/index/",
 						"content": "Table of contents Overview How it works? Register a worker Calling a worker to do his job Job object Overview In OpenPaaS ESN system, there are scenarios or tasks which consume a lot of system resources such as CPU time, memory, network bandwidth or IO. For example: reindex elasticsearch indices, import contacts and events from files or social accounts, send alarm emails to calendar event attendees, etc. Processing such tasks in NodeJS becomes even more challenging due to its single threaded and if you try to run them in parallel, system might become laggy or even crash. Solution to handle such tasks is to build a queue of tasks and process each task one by one so that each task is given good enough system resources. linagora.esn.jobqueue is a OpenPaaS ESN core module which base on Kue.This module provides APIs to create and manage queue job in OpenPaaS ESN. How it works? We need to register a worker by the worker name and its handler when starting OpenPaaS system If we want to execute a job, we need add the job to queue. To do that, we need to submit job with two params: Worker name: job queue gets the corresponding handler from registered workers by name Job data: after having handler, job queue then add a new job to queue with the handler and job data Register a worker The worker object to register is defined as: const jobName = 'contact-import'; dependencies('jobqueue').lib.addWorker({ name: jobName, handler: { handle getTitle } }) function handle(job) { const { user, account } = job.data; must return a promise return importContact(user, account); } function getTitle(jobData) { return `Import ${jobData.type} contacts for user ${jobData.user._id}`; } Calling a worker to do his job Once registered, you can call worker job by his name and data: const jobData = { user, account }; dependencies('jobqueue').lib.submitJob(jobName, jobData); Note that the jobData must be as lightweight as possible since it is stored in Redis Job object To get job object by his id: dependencies('jobqueue').lib.getJobById(jobId);"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-unifiedinbox-identity": {
+						"id": "modules-unifiedinbox-identity",
+						"title": "Identity",
+						"category": "",
+						"url": " /modules/unifiedinbox/identity/",
+						"content": "Table of contents Overview Identity structure Identity types Authorization Manage identities Management actions Overview To send outgoing email from OpenPaaS, you will need to set up at least one email identity. Email identities allow you to choose which address you want to use to send an email. You can set up as many identities as you need once domain administrator allows. Identity structure An identity contains: Required attributes: Description: To describe for an identity Name: The name of an identity Email address: The email to fill the From field when sending an email Optional attributes: Reply to address: Once defined, this email will be filled the To field instead of email address when the recipients reply to sender Mobile signature: The identity signature that is displayed when composing an email on desktop screen Desktop signature: The identity signature that is displayed when composing an email on mobile screen The valid values for Email adress and Reply to address of a specific user are: The user primary email The user email aliases The domain aliases if domain administrators allow by the following steps: Go to Administration module Then Modules page. Expand Unifiedinbox configuration form In the Identities part. Turn on Allow users to choose identity emails from domain aliases Identity types There are two types of identity: Default: The default identity of a user will be fill the From field as default when the user opens an email composer. A user only has one default identity. Additional: A user can have multiple additional identities that he can choose to fill the From field when composing an email Authorization Domain administrators are able to manage identities of their domain members. Domain members can see their identities. To manage their identites, they need the authorization from their domain administrators. A domain administrator can allow his domain members to manage their identities by the following steps: Go to Administration module Then Modules page. Expand Unifiedinbox configuration form In the Identities part. Turn on Allow users to manage their identities Manage identities Identities management interface of a specific user is available in a tab in user profile page Management actions There are 3 management actions: add, edit and remove. Users can set the default identity when adding a new identity or updating an existing identity Users can remove additional identities but cannot remove the default identity"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-unifiedinbox-index": {
+						"id": "modules-unifiedinbox-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /modules/unifiedinbox/index/",
+						"content": "Table of contents Overview Install Overview The unified inbox module brings powerful and realtime emails support into the OpenPaaS platform. It is composed of several components: A frontend component, built using Angularjs. Backend components: A mail server Apache James Project A specific backend, built using Node.js Install Unified inbox is an OpenPaaS awesome module, you can install it by following the installation instructions."
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-unifiedinbox-rest-api": {
+						"id": "modules-unifiedinbox-rest-api",
+						"title": "REST API",
+						"category": "",
+						"url": " /modules/unifiedinbox/rest-api/",
+						"content": "Loading API documentation ..."
 					}
 
 					

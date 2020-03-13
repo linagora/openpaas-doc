@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> Quickstart |  OpenPaaS documentation</title>
+		<title> Overview |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -170,14 +170,14 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level current">
+						<li class="nav-item top-level ">
 							
 							<a href="/modules/howto/index/">OpenPaaS Modules</a>
 							<ul>
 								
 									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
 								
-									<li class="nav-item current"><a href="/modules/howto/quickstart/">Quickstart</a></li>
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
 								
 									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
 								
@@ -284,12 +284,12 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/modules/unifiedinbox/index/">OpenPaaS Modules - Unified Inbox</a>
 							<ul>
 								
-									<li class="nav-item "><a href="/modules/unifiedinbox/index/">Overview</a></li>
+									<li class="nav-item current"><a href="/modules/unifiedinbox/index/">Overview</a></li>
 								
 									<li class="nav-item "><a href="/modules/unifiedinbox/identity/">Identity</a></li>
 								
@@ -343,48 +343,42 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Modules</h2>
+				<h2>OpenPaaS Modules - Unified Inbox</h2>
 				<div class="page-title">
-					<h3>Quickstart</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/howto/quickstart.md" title="Edit this page on Github">
+					<h3>Overview</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/unifiedinbox/index.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+				<p><img src="/images/modules/unifiedinbox/unifiedinbox.png" alt="The unifiedinbox module" /></p>
+
+<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-  <li><a href="#lets-code" id="markdown-toc-lets-code">Let’s code</a></li>
+  <li><a href="#install" id="markdown-toc-install">Install</a></li>
 </ul>
 
 <h2 id="overview">Overview</h2>
 
-<p>The OpenPaaS modules are the most powerfull way to add features into the OpenPaaS Enterprise Social Network. With modules, you can:</p>
+<p>The unified inbox module brings powerful and realtime emails support into the OpenPaaS platform.
+It is composed of several components:</p>
 
 <ul>
-  <li>add pages, or widgets, into the ESN web interface</li>
-  <li>add REST endpoints, that thid party applications will be able to query</li>
-  <li>expose objects and functions to other modules</li>
+  <li>A frontend component, built using Angularjs.</li>
+  <li>Backend components:
+    <ul>
+      <li>A mail server <a href="https://github.com/apache/james-project">Apache James Project</a></li>
+      <li>A specific backend, built using Node.js</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="lets-code">Let’s code</h2>
+<h2 id="install">Install</h2>
 
-<p>In the <em>modules</em> folder of your OpenPaaS ESN installation, create a new folder <strong>com.example.module</strong>. Inside this folder, create a new file index.js, containing:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" />21<br data-jekyll-commonmark-ghpages="" />22<br data-jekyll-commonmark-ghpages="" />23<br data-jekyll-commonmark-ghpages="" />24<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">AwesomeModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'awesome-module'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">Dependency</span> <span class="o">=</span> <span class="nx">AwesomeModule</span><span class="p">.</span><span class="nx">AwesomeModuleDependency</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="kd">const</span> <span class="nx">esnModule</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeModule</span><span class="p">(</span><span class="s1">'com.example.module'</span><span class="p">,</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">dependencies</span><span class="p">:</span> <span class="p">[</span><br data-jekyll-commonmark-ghpages="" />    <span class="k">new</span> <span class="nx">Dependency</span><span class="p">(</span><span class="nx">Dependency</span><span class="p">.</span><span class="nx">TYPE_NAME</span><span class="p">,</span> <span class="s1">'linagora.esn.core.webserver.wrapper'</span><span class="p">,</span> <span class="s1">'webserver-wrapper'</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">],</span><br data-jekyll-commonmark-ghpages="" />  <span class="na">states</span><span class="p">:</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="na">deploy</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dependencies</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />      <span class="kd">const</span> <span class="nx">webserver</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'webserver-wrapper'</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />      <span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />      <span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><br data-jekyll-commonmark-ghpages="" />        <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="na">ok</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span><br data-jekyll-commonmark-ghpages="" />      <span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />      <span class="nx">webserver</span><span class="p">.</span><span class="nx">addApp</span><span class="p">(</span><span class="s1">'example'</span><span class="p">,</span> <span class="nx">router</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />      <span class="nx">callback</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" />    <span class="p">}</span><br data-jekyll-commonmark-ghpages="" />  <span class="p">}</span><br data-jekyll-commonmark-ghpages="" /><span class="p">});</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" /><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">esnModule</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<p>Now, open the configuration file <em>config/default.dev.json</em>, and add the new modules at the end of your modules list:</p>
-
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="err">...</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="err">...</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="s2">"com.example.module"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" /></span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<p>Restart your ESN server, using the <strong>grunt dev</strong> command. You can now query your new endpoint :</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl http://localhost:8080/example/
-<span class="o">{</span><span class="s2">"ok"</span>: <span class="nb">true</span><span class="o">}</span>
-</code></pre></div></div>
-<p>Let’s now dig deeper in the OpenPaaS modules features.</p>
+<p>Unified inbox is an OpenPaaS <a href="/modules/howto/index/">awesome module</a>, you can install it by following the <a href="/modules/howto/install/">installation instructions</a>.</p>
 
 			</article>
 		</section>
