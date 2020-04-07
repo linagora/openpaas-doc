@@ -286,6 +286,16 @@
 					
 						<li class="nav-item top-level ">
 							
+							<a href="/modules/ticketing08000/index/">OpenPaaS Modules - Ticketing 08000</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/ticketing08000/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
 							<a href="/modules/unifiedinbox/index/">OpenPaaS Modules - Unified Inbox</a>
 							<ul>
 								
@@ -1185,6 +1195,23 @@
 						"category": "",
 						"url": " /modules/jobqueue/index/",
 						"content": "Table of contents Overview How it works? Register a worker Calling a worker to do his job Job object Overview In OpenPaaS ESN system, there are scenarios or tasks which consume a lot of system resources such as CPU time, memory, network bandwidth or IO. For example: reindex elasticsearch indices, import contacts and events from files or social accounts, send alarm emails to calendar event attendees, etc. Processing such tasks in NodeJS becomes even more challenging due to its single threaded and if you try to run them in parallel, system might become laggy or even crash. Solution to handle such tasks is to build a queue of tasks and process each task one by one so that each task is given good enough system resources. linagora.esn.jobqueue is a OpenPaaS ESN core module which base on Kue.This module provides APIs to create and manage queue job in OpenPaaS ESN. How it works? We need to register a worker by the worker name and its handler when starting OpenPaaS system If we want to execute a job, we need add the job to queue. To do that, we need to submit job with two params: Worker name: job queue gets the corresponding handler from registered workers by name Job data: after having handler, job queue then add a new job to queue with the handler and job data Register a worker The worker object to register is defined as: const jobName = 'contact-import'; dependencies('jobqueue').lib.addWorker({ name: jobName, handler: { handle getTitle } }) function handle(job) { const { user, account } = job.data; must return a promise return importContact(user, account); } function getTitle(jobData) { return `Import ${jobData.type} contacts for user ${jobData.user._id}`; } Calling a worker to do his job Once registered, you can call worker job by his name and data: const jobData = { user, account }; dependencies('jobqueue').lib.submitJob(jobName, jobData); Note that the jobData must be as lightweight as possible since it is stored in Redis Job object To get job object by his id: dependencies('jobqueue').lib.getJobById(jobId);"
+					}
+
+					
+				
+			
+		
+			
+				
+					,
+					
+
+					"modules-ticketing08000-index": {
+						"id": "modules-ticketing08000-index",
+						"title": "Overview",
+						"category": "",
+						"url": " /modules/ticketing08000/index/",
+						"content": "Table of contents Overview Installation 1. install the backend component 2. install the frontend app configuration: Overview Ticketing 08000Linux adds the ability for clients to create support tickets issues concerning supported software under a scope of a contract and interact with experts and admins. it consists of: frontend app built using VueJS. OpenPaaS component as backend, built using nodeJS. Installation here are the steps required to install the Ticketing 08000Linux after you have installed OpenPaas 1. install the backend component edit your $ESN_PATH config default.json and add ticketing08000linux.backend to the modules list ... \"modules\": [ ..., ticketing08000linux.backend ], ... add the ticketing backend component \"ticketing08000linux.backend\": \"linagora ticketing08000linux.backend\" to esn dependencies in $ESN_PATH packages.json. install the dependencies npm install and run your esn. for development check the component docs 2. install the frontend app clone https: ci.linagora.com linagora lps studio ticketing08000linux install the project using npm install run the development server using npm run server now the application is up and running on localhost:8081 ( if esn is already running ) to build the frontend for production just run npm run build and host the contents of the dist folder to in your web server ( exemple nginx ) configuration: change the environment variables in public end openpaas.js to match your OpenPaaS instance: VUE_APP_OPENPAAS_URL url to the openpaas instance with the ticketing backend component installed. SSP_URL your SSP url to be used to reset user passwords."
 					}
 
 					
