@@ -286,10 +286,10 @@
 					
 						<li class="nav-item top-level current">
 							
-							<a href="/modules/ticketing08000/index/">OpenPaaS Modules - Ticketing 08000</a>
+							<a href="/modules/smartsla/index/">OpenPaaS Modules - SmartSLA</a>
 							<ul>
 								
-									<li class="nav-item current"><a href="/modules/ticketing08000/index/">Overview</a></li>
+									<li class="nav-item current"><a href="/modules/smartsla/index/">Overview</a></li>
 								
 							</ul>
 						</li>
@@ -353,10 +353,10 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Modules - Ticketing 08000</h2>
+				<h2>OpenPaaS Modules - SmartSLA</h2>
 				<div class="page-title">
 					<h3>Overview</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/ticketing08000/index.md" title="Edit this page on Github">
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/smartsla/index.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
@@ -371,12 +371,16 @@
       <li><a href="#2-install-the-frontend-app" id="markdown-toc-2-install-the-frontend-app">2. install the frontend app</a></li>
     </ul>
   </li>
-  <li><a href="#configuration" id="markdown-toc-configuration">configuration:</a></li>
+  <li><a href="#configuration" id="markdown-toc-configuration">configuration:</a>    <ul>
+      <li><a href="#1-frontend" id="markdown-toc-1-frontend">1. frontend</a></li>
+      <li><a href="#2-backend" id="markdown-toc-2-backend">2. backend</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="overview">Overview</h2>
-<p><img src="/images/modules/ticketing08000/ticketing.png" alt="ticketing 08000Linux" />
-Ticketing 08000Linux adds the ability for clients to create support tickets / issues concerning supported software under a scope of a contract and interact with experts and admins.</p>
+<p><img src="/images/modules/smartsla/SmartSLA_en.png" alt="SmartSLA" />
+SmartSLA adds the ability for clients to create support tickets / issues concerning supported software under a scope of a contract and interact with experts and admins.</p>
 
 <p>it consists of:</p>
 
@@ -387,32 +391,58 @@ Ticketing 08000Linux adds the ability for clients to create support tickets / is
 
 <h2 id="installation">Installation</h2>
 
-<p>here are the steps required to install the Ticketing 08000Linux after you have installed OpenPaas</p>
+<p>here are the steps required to install the SmartSLA after you have installed OpenPaas</p>
 
 <h3 id="1-install-the-backend-component">1. install the backend component</h3>
 
+<p><code class="highlighter-rouge">$ESN_PATH</code> is your openpaas installation path</p>
+
+<p><code class="highlighter-rouge">$SMARTSLA_PATH</code> is your SmartSLA installation path</p>
+
 <ul>
-  <li>edit your <code class="highlighter-rouge">$ESN_PATH/config/default.json</code> and add <code class="highlighter-rouge">ticketing08000linux.backend</code> to the modules list
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-"modules": [
-...,
-ticketing08000linux.backend
-],
-...
-</code></pre></div>    </div>
-  </li>
-  <li>add the ticketing backend component <code class="highlighter-rouge">"ticketing08000linux.backend": "linagora/ticketing08000linux.backend"</code> to esn dependencies in <code class="highlighter-rouge">$ESN_PATH/packages.json</code>.</li>
-  <li>
-    <p>install the dependencies <code class="highlighter-rouge">npm install</code> and run your esn.</p>
-  </li>
-  <li>for development check the component <a href="https://ci.linagora.com/linagora/lps/studio/ticketing08000linux.backend/blob/master/README.md">docs</a></li>
+  <li>clone and install the project</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://ci.linagora.com/linagora/lgs/smartsla/smartsla-backend.git
+cd smartsla-backend
+npm i
+export SMARTSLA_PATH=$(pwd)
+```bash
+- link the module to openpaas
+
+```bash
+cd $ESN_PATH/modules
+ln -s $SMARTSLA_PATH smartsla-backend
+</code></pre></div></div>
+
+<ul>
+  <li>add it to the modules list:</li>
+</ul>
+
+<p>edit your <code class="highlighter-rouge">$ESN_PATH/config/default.json</code> and add <code class="highlighter-rouge">smartsla-backend</code> to the modules list</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="err">...</span><span class="w">
+  </span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="err">...</span><span class="p">,</span><span class="w">
+  </span><span class="err">smartsla-backend</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li>for development check the component <a href="https://ci.linagora.com/linagora/lgs/smartsla/smartsla-backend/blob/master/README.md">docs</a></li>
 </ul>
 
 <h3 id="2-install-the-frontend-app">2. install the frontend app</h3>
 
 <ul>
-  <li>clone <a href="https://ci.linagora.com/linagora/lps/studio/ticketing08000linux">https://ci.linagora.com/linagora/lps/studio/ticketing08000linux</a></li>
-  <li>install the project using <code class="highlighter-rouge">npm install</code></li>
+  <li>clone and install the project:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://ci.linagora.com/linagora/lgs/smartsla/smartsla-frontend.git
+<span class="nb">cd </span>smartsla-frontend
+npm i
+</code></pre></div></div>
+<ul>
   <li>run the development server using <code class="highlighter-rouge">npm run server</code></li>
   <li>now the application is up and running on <code class="highlighter-rouge">localhost:8081</code> ( if esn is already running )</li>
 </ul>
@@ -420,12 +450,42 @@ ticketing08000linux.backend
 <p>to build the frontend for production just run <code class="highlighter-rouge">npm run build</code> and host the contents of the <code class="highlighter-rouge">dist</code> folder to in your web server ( exemple <code class="highlighter-rouge">nginx</code> )</p>
 
 <h2 id="configuration">configuration:</h2>
+<h3 id="1-frontend">1. frontend</h3>
 
 <p>change the environment variables in <code class="highlighter-rouge">public/end/openpaas.js</code> to match your OpenPaaS instance:</p>
 <ul>
-  <li><code class="highlighter-rouge">VUE_APP_OPENPAAS_URL</code> url to  the openpaas instance with the ticketing backend component installed.</li>
-  <li><code class="highlighter-rouge">SSP_URL</code> your SSP url to be used to reset user passwords.</li>
+  <li><code class="highlighter-rouge">VUE_APP_OPENPAAS_URL</code> is your openpaas instance url where the SmartSLA backend component is installed.</li>
+  <li><code class="highlighter-rouge">SSP_URL</code> is your SSP url to be used to reset user passwords.</li>
+  <li><code class="highlighter-rouge">LIMESURVEY_URL</code> is your limesurvey instance url.</li>
+  <li><code class="highlighter-rouge">SUPPORT_ACCOUNT</code> customize your SmartSLA information.</li>
 </ul>
+
+<h3 id="2-backend">2. backend</h3>
+
+<ul>
+  <li>Set the limesurvey API in the configuration: http://limesurvey.smartsla.local is our limesurvey instance url</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export</span> <span class="nv">$ESN_URL</span><span class="o">=</span><span class="s2">"http://localhost:8080/"</span>
+<span class="nb">export</span> <span class="nv">$ESN_ADMIN</span><span class="o">=</span><span class="s2">"admin@open-paas.org"</span>
+<span class="nb">export</span> <span class="nv">$ESN_PASS</span><span class="o">=</span><span class="s2">"secret"</span>
+curl <span class="nt">-X</span> PUT <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nv">$ESN_URL</span> <span class="nt">-u</span> <span class="s2">"</span><span class="nv">$ESN_ADMIN</span><span class="s2">:</span><span class="nv">$ESN_PASS</span><span class="s2">"</span>  <span class="nt">-d</span> <span class="s1">'[
+  {
+    "name": "smartsla-backend",
+    "configurations": [
+      {
+        "name": "limesurvey",
+        "value": {
+          "surveyId": 491487,
+          "apiUrl": "http://limesurvey.smartsla.local/index.php/admin/remotecontrol/",
+          "username": "admin",
+          "password": "password"
+        }
+      }
+    ]
+  }
+]'</span>
+</code></pre></div></div>
 
 			</article>
 		</section>
