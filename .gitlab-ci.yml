@@ -1,4 +1,4 @@
-image: jekyll/jekyll
+image: jekyll/jekyll:3
 
 stages:
   - build_only
