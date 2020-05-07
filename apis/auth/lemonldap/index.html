@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -202,6 +202,8 @@
 									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
 								
 							</ul>
 						</li>
@@ -411,18 +413,18 @@ If this is the first time you hear about LemonLDAP, check their <a href="https:/
 
 <p>Go into the module directory and install module dependencies</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">--production</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--production</span>
 </code></pre></div></div>
 
 <p>Next, you need to enable LemonLDAP awesome module for OpenPaaS. To do it, create a symbol
-link of this module in <code class="highlighter-rouge">modules</code> directory of OpenPaaS ESN then enable it in
+link of this module in <code class="language-plaintext highlighter-rouge">modules</code> directory of OpenPaaS ESN then enable it in
 local configuration:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="s2">"linagora.esn.account"</span><span class="p">,</span><span class="w">
   </span><span class="err">...</span><span class="w">
   </span><span class="s2">"linagora.esn.lemonldap"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">add</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">line</span><span class="w">
-</span><span class="p">],</span><span class="w">
+</span><span class="p">]</span><span class="err">,</span><span class="w">
 </span></code></pre></div></div>
 
 <p>Once enabled, this module will be loaded with OpenPaaS and ready to work.
@@ -443,22 +445,22 @@ host is a protected resource, with access rules, headers, POST data and options.
 virtual host in Apache/Nginx</p>
   </li>
   <li>
-    <p>In LemonLDAP <em>Manager</em> page, go to <code class="highlighter-rouge">Virtual Hosts</code>, click on <strong>Add virtualhost</strong>, then
+    <p>In LemonLDAP <em>Manager</em> page, go to <code class="language-plaintext highlighter-rouge">Virtual Hosts</code>, click on <strong>Add virtualhost</strong>, then
 fill your <em>Virtual host hostname</em>.</p>
   </li>
 </ul>
 
 <p><strong>Access Rule</strong></p>
 
-<p>In LemonLDAP <em>Manager</em> page, go to <code class="highlighter-rouge">Virtual Hosts » &lt;your virtualhost&gt; » Access Rule</code>,
+<p>In LemonLDAP <em>Manager</em> page, go to <code class="language-plaintext highlighter-rouge">Virtual Hosts » &lt;your virtualhost&gt; » Access Rule</code>,
 click on <strong>New rule</strong>, then fill:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Commments: Protect home page
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Commments: Protect home page
 Regular expressions: ^/$
 Rules: accept
 </code></pre></div></div>
 
-<p>In the same page, change the <code class="highlighter-rouge">Default rule</code> to <code class="highlighter-rouge">unprotect</code> to allow other resources
+<p>In the same page, change the <code class="language-plaintext highlighter-rouge">Default rule</code> to <code class="language-plaintext highlighter-rouge">unprotect</code> to allow other resources
 of OpenPaaS to be accessible normaly from outside.</p>
 
 <h3 id="user-provision">User provision</h3>
@@ -474,19 +476,19 @@ configuration.</p>
 <p>The configuration is applied for the whole application so it must be platform-wide
 configuration:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"domain_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"domain_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="err">,</span><span class="w">
+</span><span class="nl">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
 </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linagora.esn.lemonldap"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mapping"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"ll-auth-user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-user"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">required</span><span class="p">,</span><span class="w"> </span><span class="err">mapping</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">unique</span><span class="w"> </span><span class="err">username</span><span class="w"> </span><span class="err">(usually</span><span class="w"> </span><span class="err">email)</span><span class="w">
-      </span><span class="s2">"ll-auth-domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-domain"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">required</span><span class="p">,</span><span class="w"> </span><span class="err">mapping</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="err">domain</span><span class="w">
-      </span><span class="s2">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-name"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"main_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-phone"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linagora.esn.lemonldap"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mapping"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ll-auth-user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-user"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">required</span><span class="p">,</span><span class="w"> </span><span class="err">mapping</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">unique</span><span class="w"> </span><span class="err">username</span><span class="w"> </span><span class="err">(usually</span><span class="w"> </span><span class="err">email)</span><span class="w">
+      </span><span class="nl">"ll-auth-domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-domain"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">required</span><span class="p">,</span><span class="w"> </span><span class="err">mapping</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="err">domain</span><span class="w">
+      </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-name"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"main_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth-phone"</span><span class="p">,</span><span class="w">
       </span><span class="err">...</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -508,22 +510,22 @@ after his logout from OpenPaaS, hence the user is fully logged out from both ser
 
 <p>You can configure the logout endpoint in platform-wide configuration, it looks like:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"domain_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"domain_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="err">,</span><span class="w">
+</span><span class="nl">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
 </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linagora.esn.lemonldap"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logoutUrl"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://auth.yoursite.com/?logout=1"</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linagora.esn.lemonldap"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logoutUrl"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://auth.yoursite.com/?logout=1"</span><span class="w">
   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">}]</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div></div>
 
-<p>That logout endpoint is something like <code class="highlighter-rouge">http://auth.yoursite.com/?logout=1</code> depending
+<p>That logout endpoint is something like <code class="language-plaintext highlighter-rouge">http://auth.yoursite.com/?logout=1</code> depending
 on your LemonLDAP setup.</p>
 
 <h3 id="logout-from-lemonldap-then-openpaas">Logout from LemonLDAP then OpenPaaS</h3>
@@ -533,16 +535,16 @@ to close their sessions. LemonLDAP has a logout forward mechanism, that will add
 a step in logout process, to send logout requests (indeed, GET requests
 on application logout URL) inside hidden iframes.</p>
 
-<p>In LemonLDAP <em>Manager</em> page, go to <code class="highlighter-rouge">General parameters » Advanced parameters » Logout forward</code> and
+<p>In LemonLDAP <em>Manager</em> page, go to <code class="language-plaintext highlighter-rouge">General parameters » Advanced parameters » Logout forward</code> and
 click on <strong>Add a key</strong>, then fill:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Key: application name, e.g. OpenPaaS
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Key: application name, e.g. OpenPaaS
 Value: OpenPaaS logout URL, e.g. http://openpaas.yoursite.com/logout
 </code></pre></div></div>
 
 <p>Note that the request on logout URL will be sent after user is disconnected,
-so you should <code class="highlighter-rouge">unprotect</code> this URL if it is protected by a LemonLDAP Handler.
-Forturnately, this is done above by setting the <code class="highlighter-rouge">Default rule</code> to <code class="highlighter-rouge">unprotect</code>.</p>
+so you should <code class="language-plaintext highlighter-rouge">unprotect</code> this URL if it is protected by a LemonLDAP Handler.
+Forturnately, this is done above by setting the <code class="language-plaintext highlighter-rouge">Default rule</code> to <code class="language-plaintext highlighter-rouge">unprotect</code>.</p>
 
 			</article>
 		</section>

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -384,15 +386,15 @@
 <p>The OpenPaaS Core provides the people API which is used to:</p>
 
 <ol>
-  <li>Search accross several people-related sources: <code class="highlighter-rouge">members</code>, <code class="highlighter-rouge">contacts</code>, <code class="highlighter-rouge">resources</code>, <code class="highlighter-rouge">groups</code>, …</li>
+  <li>Search accross several people-related sources: <code class="language-plaintext highlighter-rouge">members</code>, <code class="language-plaintext highlighter-rouge">contacts</code>, <code class="language-plaintext highlighter-rouge">resources</code>, <code class="language-plaintext highlighter-rouge">groups</code>, …</li>
   <li>Get a resolved person by finding a matching object from a particular field (e.g email address)</li>
 </ol>
 
 <h2 id="api">API</h2>
 
-<p>The people API is used to retrieve <code class="highlighter-rouge">persons</code>. A <code class="highlighter-rouge">person</code> is a resource which can be defined like this:</p>
+<p>The people API is used to retrieve <code class="language-plaintext highlighter-rouge">persons</code>. A <code class="language-plaintext highlighter-rouge">person</code> is a resource which can be defined like this:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
   "id": "5bf7d8ccb4177e001c8a1efe",
   "objectType": "user",
   "emailAddresses": [
@@ -420,15 +422,15 @@
 
 <h4 id="searcher">Searcher</h4>
 
-<p>The people module is available at <code class="highlighter-rouge">backend/core/people</code>. The people module uses ‘searchers’ to lookup to persons and send them back in the right format. Searchers can be registered like this:</p>
+<p>The people module is available at <code class="language-plaintext highlighter-rouge">backend/core/people</code>. The people module uses ‘searchers’ to lookup to persons and send them back in the right format. Searchers can be registered like this:</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">Model</span><span class="p">,</span> <span class="nx">PeopleSearcher</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'people'</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">userSearcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PeopleSearcher</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="nx">searcher</span><span class="p">,</span> <span class="nx">denormalizer</span><span class="p">,</span> <span class="nx">priority</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">Model</span><span class="p">,</span> <span class="nx">PeopleSearcher</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">people</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">userSearcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PeopleSearcher</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="nx">searcher</span><span class="p">,</span> <span class="nx">denormalizer</span><span class="p">,</span> <span class="nx">priority</span><span class="p">);</span>
 
 <span class="nx">service</span><span class="p">.</span><span class="nx">addSearcher</span><span class="p">(</span><span class="nx">userSearcher</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Where <code class="highlighter-rouge">searcher</code> is a function which returns a Promise which resolves with an Array of resources:</p>
+<p>Where <code class="language-plaintext highlighter-rouge">searcher</code> is a function which returns a Promise which resolves with an Array of resources:</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">resolver</span><span class="p">({</span> <span class="nx">term</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">pagination</span> <span class="p">})</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">search</span><span class="p">:</span> <span class="nx">term</span><span class="p">,</span> <span class="na">domains</span><span class="p">:</span> <span class="p">[</span><span class="nx">context</span><span class="p">.</span><span class="nx">domain</span><span class="p">],</span> <span class="na">limit</span><span class="p">:</span> <span class="nx">pagination</span><span class="p">.</span><span class="nx">limit</span> <span class="p">};</span>
@@ -445,19 +447,19 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Where <code class="highlighter-rouge">denormalizer</code> is a function which returns a Promise which resolves with a <code class="highlighter-rouge">Model.Person</code> from an element coming from the <code class="highlighter-rouge">resolver</code> result:</p>
+<p>Where <code class="language-plaintext highlighter-rouge">denormalizer</code> is a function which returns a Promise which resolves with a <code class="language-plaintext highlighter-rouge">Model.Person</code> from an element coming from the <code class="language-plaintext highlighter-rouge">resolver</code> result:</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">denormalizer</span><span class="p">({</span> <span class="nx">source</span> <span class="p">})</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">denormalized</span> <span class="o">=</span> <span class="nx">denormalize</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="nx">email</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">EmailAddress</span><span class="p">({</span> <span class="na">value</span><span class="p">:</span> <span class="nx">source</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span> <span class="na">type</span><span class="p">:</span> <span class="s1">'default'</span> <span class="p">});</span>
+  <span class="kd">const</span> <span class="nx">email</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">EmailAddress</span><span class="p">({</span> <span class="na">value</span><span class="p">:</span> <span class="nx">source</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">default</span><span class="dl">'</span> <span class="p">});</span>
   <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">Name</span><span class="p">({</span> <span class="na">displayName</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">source</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">source</span><span class="p">.</span><span class="nx">lastName</span><span class="p">}</span><span class="s2">`</span> <span class="p">});</span>
   <span class="kd">const</span> <span class="nx">photo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">Photo</span><span class="p">({</span> <span class="na">url</span><span class="p">:</span> <span class="s2">`/api/avatars/</span><span class="p">${</span><span class="nx">source</span><span class="p">.</span><span class="nx">_id</span><span class="p">}</span><span class="s2">/avatars`</span> <span class="p">});</span>
 
   <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span>
     <span class="k">new</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">Person</span><span class="p">({</span>
       <span class="na">id</span><span class="p">:</span> <span class="nx">denormalized</span><span class="p">.</span><span class="nx">_id</span><span class="p">,</span>
-      <span class="na">objectType</span><span class="p">:</span> <span class="s1">'user'</span><span class="p">,</span>
+      <span class="na">objectType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">emailAddresses</span><span class="p">:</span> <span class="p">[</span><span class="nx">email</span><span class="p">],</span>
       <span class="na">names</span><span class="p">:</span> <span class="p">[</span><span class="nx">name</span><span class="p">],</span>
       <span class="na">photos</span><span class="p">:</span> <span class="p">[</span><span class="nx">photo</span><span class="p">]</span>
@@ -466,19 +468,19 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>and where <code class="highlighter-rouge">priority</code> is the resolver priority. Higher priority means sending back these resolver results first in the list.</p>
+<p>and where <code class="language-plaintext highlighter-rouge">priority</code> is the resolver priority. Higher priority means sending back these resolver results first in the list.</p>
 
 <h3 id="resolver">Resolver</h3>
 
-<p>The people module use <code class="highlighter-rouge">resolver</code> to find exactly a person that has a property field matched with the given value. Following the searcher format, resolver can be registered like this:</p>
+<p>The people module use <code class="language-plaintext highlighter-rouge">resolver</code> to find exactly a person that has a property field matched with the given value. Following the searcher format, resolver can be registered like this:</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">Model</span><span class="p">,</span> <span class="nx">PeopleResolver</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'people'</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">userResolver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PeopleResolver</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="nx">resolver</span><span class="p">,</span> <span class="nx">denormalizer</span><span class="p">,</span> <span class="nx">defaultPriority</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">Model</span><span class="p">,</span> <span class="nx">PeopleResolver</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">people</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">userResolver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PeopleResolver</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="nx">resolver</span><span class="p">,</span> <span class="nx">denormalizer</span><span class="p">,</span> <span class="nx">defaultPriority</span><span class="p">);</span>
 
 <span class="nx">service</span><span class="p">.</span><span class="nx">addResolver</span><span class="p">(</span><span class="nx">userResolver</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Where <code class="highlighter-rouge">resolver</code> is a function which returns a Promise which resolves with only at most one resource.</p>
+<p>Where <code class="language-plaintext highlighter-rouge">resolver</code> is a function which returns a Promise which resolves with only at most one resource.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">resolver</span><span class="p">({</span> <span class="nx">fieldType</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">context</span> <span class="p">})</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">fieldType</span> <span class="o">===</span> <span class="nx">FIELD_TYPES</span><span class="p">.</span><span class="nx">EMAIL_ADDRESS</span><span class="p">)</span> <span class="p">{</span>
@@ -495,7 +497,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>The priority of each resource type is determined by API users, the <code class="highlighter-rouge">defaultPriority</code> property will be used when the prioritized order is not provided by API users.</p>
+<p>The priority of each resource type is determined by API users, the <code class="language-plaintext highlighter-rouge">defaultPriority</code> property will be used when the prioritized order is not provided by API users.</p>
 
 <h3 id="rest-api">REST API</h3>
 
@@ -512,9 +514,9 @@
 </code></pre>
 
 <ul>
-  <li><code class="highlighter-rouge">q</code> is the text to search in persons</li>
-  <li><code class="highlighter-rouge">objectTypes</code> are the types of person to look for</li>
-  <li><code class="highlighter-rouge">limit</code> is the max number of resources to send back per objectType</li>
+  <li><code class="language-plaintext highlighter-rouge">q</code> is the text to search in persons</li>
+  <li><code class="language-plaintext highlighter-rouge">objectTypes</code> are the types of person to look for</li>
+  <li><code class="language-plaintext highlighter-rouge">limit</code> is the max number of resources to send back per objectType</li>
 </ul>
 
 <p><strong>Response</strong></p>
@@ -583,7 +585,7 @@
   <li>objectTypes: A list of object types to find the matching objects and also the priority order for resolving process</li>
 </ul>
 
-<p>Optional, by default resolver will handle all object types by orders: <code class="highlighter-rouge">user, group, contact</code>. Supported object types for the moment are <code class="highlighter-rouge">user, contact, group</code>.</p>
+<p>Optional, by default resolver will handle all object types by orders: <code class="language-plaintext highlighter-rouge">user, group, contact</code>. Supported object types for the moment are <code class="language-plaintext highlighter-rouge">user, contact, group</code>.</p>
 
 <p><strong>Response:</strong></p>
 

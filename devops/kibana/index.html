@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -377,10 +379,10 @@
 
 <p>The Elasticsearch version used in OpenPaaS does not allow to use the latest Docker image for Kibana. Here are the instruction to run a valid Kibana version with Docker:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -d -e "ELASTICSEARCH_URL=http://HOST:POST" -p 5601:5601 kibana:4.5
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -d -e "ELASTICSEARCH_URL=http://HOST:POST" -p 5601:5601 kibana:4.5
 </code></pre></div></div>
 
-<p>Where <code class="highlighter-rouge">ELASTICSEARCH_URL</code> is the URL of the Elasticsearch instance you want Kibana to connect to (i.e. the URL the Kibana container can reach). Once started, you can open the Kibana Web UI from <a href="http://localhost:5601/">http://localhost:5601/</a>:</p>
+<p>Where <code class="language-plaintext highlighter-rouge">ELASTICSEARCH_URL</code> is the URL of the Elasticsearch instance you want Kibana to connect to (i.e. the URL the Kibana container can reach). Once started, you can open the Kibana Web UI from <a href="http://localhost:5601/">http://localhost:5601/</a>:</p>
 
 <p><img src="/images/devops/kibana.png" alt="The kibana UI" /></p>
 

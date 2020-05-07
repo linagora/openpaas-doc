@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -368,40 +370,58 @@
 
 <h3 id="lets-see-details">Let’s see details:</h3>
 
-<p>Log your user into the application by issuing a <code class="highlighter-rouge">POST</code> request to <code class="highlighter-rouge">/login</code> URL.
+<p>Log your user into the application by issuing a <code class="language-plaintext highlighter-rouge">POST</code> request to <code class="language-plaintext highlighter-rouge">/login</code> URL.
 The response will contain a cookie which you will be able to use in next requests as long as the session is open. <br /></p>
 
 <h4 id="parameters">Parameters:</h4>
 
-<p><code class="highlighter-rouge">Name: credentials (body)</code></p>
+<p><code class="language-plaintext highlighter-rouge">Name: credentials (body)</code></p>
 <blockquote>
 
   <p>The credentials for authentication. For example:</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"rememberme"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"recaptcha"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="s2">"needed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" /></span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rememberme"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recaptcha"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"needed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <h4 id="responses">Responses:</h4>
 
-<p><code class="highlighter-rouge">Code: 200</code></p>
+<p><code class="language-plaintext highlighter-rouge">Code: 200</code></p>
 <blockquote>
 
   <p>We will have as response the user object which contains the user’s domain ids.</p>
 </blockquote>
 
-<p><code class="highlighter-rouge">Code: 400</code></p>
+<p><code class="language-plaintext highlighter-rouge">Code: 400</code></p>
 <blockquote>
 
   <p>Bad request. Invalid request body or parameters.</p>
 </blockquote>
 
-<p><code class="highlighter-rouge">Code: 403</code></p>
+<p><code class="language-plaintext highlighter-rouge">Code: 403</code></p>
 <blockquote>
 
   <p>Forbidden. The user does not have enough rights.</p>
 </blockquote>
 
-<p><code class="highlighter-rouge">Code: 500</code></p>
+<p><code class="language-plaintext highlighter-rouge">Code: 500</code></p>
 <blockquote>
 
   <p>Internal server error - Something went bad on the server side.</p>

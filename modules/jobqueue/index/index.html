@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -382,7 +384,7 @@
 
 <p>Solution to handle such tasks is to build a queue of tasks and process each task one by one so that each task is given good enough system resources.</p>
 
-<p><code class="highlighter-rouge">linagora.esn.jobqueue</code> is a OpenPaaS ESN core module which base on <a href="https://github.com/Automattic/kue">Kue</a>.This module provides APIs to create and manage queue job in OpenPaaS ESN.</p>
+<p><code class="language-plaintext highlighter-rouge">linagora.esn.jobqueue</code> is a OpenPaaS ESN core module which base on <a href="https://github.com/Automattic/kue">Kue</a>.This module provides APIs to create and manage queue job in OpenPaaS ESN.</p>
 
 <h2 id="how-it-works">How it works?</h2>
 
@@ -401,9 +403,9 @@
 <p>The worker object to register is defined as:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kd">const</span> <span class="nx">jobName</span> <span class="o">=</span> <span class="s1">'contact-import'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">jobName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">contact-import</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="nx">dependencies</span><span class="p">(</span><span class="s1">'jobqueue'</span><span class="p">).</span><span class="nx">lib</span><span class="p">.</span><span class="nx">addWorker</span><span class="p">({</span>
+<span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">jobqueue</span><span class="dl">'</span><span class="p">).</span><span class="nx">lib</span><span class="p">.</span><span class="nx">addWorker</span><span class="p">({</span>
   <span class="na">name</span><span class="p">:</span> <span class="nx">jobName</span><span class="p">,</span>
   <span class="na">handler</span><span class="p">:</span> <span class="p">{</span>
     <span class="nx">handle</span>
@@ -431,18 +433,18 @@
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kd">const</span> <span class="nx">jobData</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">account</span> <span class="p">};</span>
 
-<span class="nx">dependencies</span><span class="p">(</span><span class="s1">'jobqueue'</span><span class="p">).</span><span class="nx">lib</span><span class="p">.</span><span class="nx">submitJob</span><span class="p">(</span><span class="nx">jobName</span><span class="p">,</span> <span class="nx">jobData</span><span class="p">);</span>
+<span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">jobqueue</span><span class="dl">'</span><span class="p">).</span><span class="nx">lib</span><span class="p">.</span><span class="nx">submitJob</span><span class="p">(</span><span class="nx">jobName</span><span class="p">,</span> <span class="nx">jobData</span><span class="p">);</span>
 
 </code></pre></div></div>
 
-<p><em>Note that the <code class="highlighter-rouge">jobData</code> must be as lightweight as possible since it is stored in Redis</em></p>
+<p><em>Note that the <code class="language-plaintext highlighter-rouge">jobData</code> must be as lightweight as possible since it is stored in Redis</em></p>
 
 <h3 id="job-object">Job object</h3>
 
 <p>To get job object by his id:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="nx">dependencies</span><span class="p">(</span><span class="s1">'jobqueue'</span><span class="p">).</span><span class="nx">lib</span><span class="p">.</span><span class="nx">getJobById</span><span class="p">(</span><span class="nx">jobId</span><span class="p">);</span>
+<span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">jobqueue</span><span class="dl">'</span><span class="p">).</span><span class="nx">lib</span><span class="p">.</span><span class="nx">getJobById</span><span class="p">(</span><span class="nx">jobId</span><span class="p">);</span>
 
 </code></pre></div></div>
 

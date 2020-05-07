@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -380,45 +382,45 @@
 <p>The OpenPaaS Core provides several publish/subscribe components:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">local</code>: Events published in this pubsub component will only be delivered to the same local OpenPaaS instance listeners</li>
-  <li><code class="highlighter-rouge">global</code>: Events published in this pubsub component will be delivered to <em>all</em> the OpenPaaS instance listeners</li>
+  <li><code class="language-plaintext highlighter-rouge">local</code>: Events published in this pubsub component will only be delivered to the same local OpenPaaS instance listeners</li>
+  <li><code class="language-plaintext highlighter-rouge">global</code>: Events published in this pubsub component will be delivered to <em>all</em> the OpenPaaS instance listeners</li>
 </ul>
 
 <h2 id="api">API</h2>
 
 <p>Both local and global pubsub are providing the same API. Getting a pubsub instance is as easy as getting it from the OpenPaaS dependencies manager:</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span><span class="nx">local</span><span class="p">,</span> <span class="nb">global</span><span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'pubsub'</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span><span class="nx">local</span><span class="p">,</span> <span class="nb">global</span><span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">pubsub</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Once you have the instance, you can subsribe and publish events.</p>
 
 <h3 id="subscribe">Subscribe</h3>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pubsub</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'pubsub'</span><span class="p">).</span><span class="nx">local</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pubsub</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">pubsub</span><span class="dl">'</span><span class="p">).</span><span class="nx">local</span><span class="p">;</span>
 
-<span class="nx">pubsub</span><span class="p">.</span><span class="nx">topic</span><span class="p">(</span><span class="s1">'my:topic'</span><span class="p">).</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'This will be called when event is published in topic'</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+<span class="nx">pubsub</span><span class="p">.</span><span class="nx">topic</span><span class="p">(</span><span class="dl">'</span><span class="s1">my:topic</span><span class="dl">'</span><span class="p">).</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">This will be called when event is published in topic</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
 <h3 id="publish">Publish</h3>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pubsub</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'pubsub'</span><span class="p">).</span><span class="nx">local</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pubsub</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">pubsub</span><span class="dl">'</span><span class="p">).</span><span class="nx">local</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">event</span> <span class="o">=</span> <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">data</span><span class="p">:</span> <span class="p">{}};</span>
 
-<span class="nx">pubsub</span><span class="p">.</span><span class="nx">topic</span><span class="p">(</span><span class="s1">'my:topic'</span><span class="p">).</span><span class="nx">publish</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+<span class="nx">pubsub</span><span class="p">.</span><span class="nx">topic</span><span class="p">(</span><span class="dl">'</span><span class="s1">my:topic</span><span class="dl">'</span><span class="p">).</span><span class="nx">publish</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
 </code></pre></div></div>
 
 <h2 id="local-pubsub">Local pubsub</h2>
 
-<p>The local pubsub is built using the Node.js EventEmitter. This means that any object can be published in this pubsub component but it is highly encouraged to publish <code class="highlighter-rouge">Event</code> instances:</p>
+<p>The local pubsub is built using the Node.js EventEmitter. This means that any object can be published in this pubsub component but it is highly encouraged to publish <code class="language-plaintext highlighter-rouge">Event</code> instances:</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pubsub</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'pubsub'</span><span class="p">).</span><span class="nx">local</span><span class="p">;</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">Event</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="s1">'models'</span><span class="p">);</span> <span class="c1">// https://github.com/linagora/openpaas-esn/blob/master/backend/core/models/event.js</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">pubsub</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">pubsub</span><span class="dl">'</span><span class="p">).</span><span class="nx">local</span><span class="p">;</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">Event</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">models</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// https://github.com/linagora/openpaas-esn/blob/master/backend/core/models/event.js</span>
 <span class="kd">const</span> <span class="nx">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Event</span><span class="p">(</span><span class="cm">/* Check the doc for args */</span><span class="p">)</span>
 
-<span class="nx">pubsub</span><span class="p">.</span><span class="nx">topic</span><span class="p">(</span><span class="s1">'my:topic'</span><span class="p">).</span><span class="nx">publish</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="nx">pubsub</span><span class="p">.</span><span class="nx">topic</span><span class="p">(</span><span class="dl">'</span><span class="s1">my:topic</span><span class="dl">'</span><span class="p">).</span><span class="nx">publish</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
 </code></pre></div></div>
 
 <h2 id="global-pubsub">Global pubsub</h2>

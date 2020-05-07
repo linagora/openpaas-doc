@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item current"><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -384,14 +386,14 @@
 <h2 id="synchronize-data-in-elasticsearch">Synchronize data in Elasticsearch</h2>
 <p>To make Elasticsearch works and ensure that the data inside it is always up to date, we need to keep the synchronization between MongoDB database and Elasticsearch. However, sometimes we might lose it due to unexpected reasons such as server running out of storage, Elasticsearch’s outage, etc, or some expected reasons, namely replacing the current Elasticsearch with a higher version.</p>
 
-<p>OpenPaaS comes with tools to allow platform administrators to manually update the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html">data mapping</a> to standard mapping and re-synchronize data from OpenPaaS’s MongoDB database to ElasticSearch. These terms are called <code class="highlighter-rouge">reindex</code> and <code class="highlighter-rouge">re-configure</code>:</p>
+<p>OpenPaaS comes with tools to allow platform administrators to manually update the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html">data mapping</a> to standard mapping and re-synchronize data from OpenPaaS’s MongoDB database to ElasticSearch. These terms are called <code class="language-plaintext highlighter-rouge">reindex</code> and <code class="language-plaintext highlighter-rouge">re-configure</code>:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">re-configure</code>: data can be stored incorrectly in Elasticseach which leads to strange search behavior on a resource. This issue is due to a resource having incorrect data mapping configuration. Therefore, platform administrators have the ability to correct the standard data mapping configuration for a resource by using <code class="highlighter-rouge">re-configure</code>.</li>
-  <li><code class="highlighter-rouge">reindex</code>: re-synchronize all data from MongoDB to Elasticsearch, this includes <code class="highlighter-rouge">re-configure</code> to make sure the standard mapping is used</li>
+  <li><code class="language-plaintext highlighter-rouge">re-configure</code>: data can be stored incorrectly in Elasticseach which leads to strange search behavior on a resource. This issue is due to a resource having incorrect data mapping configuration. Therefore, platform administrators have the ability to correct the standard data mapping configuration for a resource by using <code class="language-plaintext highlighter-rouge">re-configure</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">reindex</code>: re-synchronize all data from MongoDB to Elasticsearch, this includes <code class="language-plaintext highlighter-rouge">re-configure</code> to make sure the standard mapping is used</li>
 </ul>
 
-<p>In order to <code class="highlighter-rouge">reindex</code> or <code class="highlighter-rouge">re-configure</code> data. Under the “Maintenance” page in Platform administration, expanse the “Elasticsearch” section. You can choose to run your desired procedure (“Correct the index configuration (quick)” a.k.a. <code class="highlighter-rouge">re-configure</code> or “Correct the index configuration and reindex data (slow)” a.k.a. <code class="highlighter-rouge">reindex</code>) on a single type of resource, make sure that your Elasticsearch address is correctly configured.</p>
+<p>In order to <code class="language-plaintext highlighter-rouge">reindex</code> or <code class="language-plaintext highlighter-rouge">re-configure</code> data. Under the “Maintenance” page in Platform administration, expanse the “Elasticsearch” section. You can choose to run your desired procedure (“Correct the index configuration (quick)” a.k.a. <code class="language-plaintext highlighter-rouge">re-configure</code> or “Correct the index configuration and reindex data (slow)” a.k.a. <code class="language-plaintext highlighter-rouge">reindex</code>) on a single type of resource, make sure that your Elasticsearch address is correctly configured.</p>
 
 <p><img src="/images/modules/admin/elasticsearch/maintenance.png" alt="Maintenance" /></p>
 

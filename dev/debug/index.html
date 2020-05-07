@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -370,20 +372,20 @@
 
 <h2 id="esn-backend">ESN Backend</h2>
 
-<p>Thanks to Node.js debugging tools, it is possible to debug the ESN backend by adding the <code class="highlighter-rouge">--inspect</code> flag on start:</p>
+<p>Thanks to Node.js debugging tools, it is possible to debug the ESN backend by adding the <code class="language-plaintext highlighter-rouge">--inspect</code> flag on start:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ENV=dev node --inspect server.js
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ENV=dev node --inspect server.js
 </code></pre></div></div>
 <p>The process will start and will first print debugger information like:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Debugger listening on ws://127.0.0.1:9229/dd36b398-43ce-419b-8c0f-207c07365672
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Debugger listening on ws://127.0.0.1:9229/dd36b398-43ce-419b-8c0f-207c07365672
 For help see https://nodejs.org/en/docs/inspector
 debug: local/SUBSCRIBE to mongodb:connectionAvailable
 </code></pre></div></div>
 
 <p>On recent version of Google Chrome, you will be able to open the Node.js debugger from:</p>
 
-<p><a href="chrome://inspect/#devices">chrome://inspect/#devices</a> then click on <code class="highlighter-rouge">inspect</code> under <code class="highlighter-rouge">server.js</code></p>
+<p><a href="chrome://inspect/#devices">chrome://inspect/#devices</a> then click on <code class="language-plaintext highlighter-rouge">inspect</code> under <code class="language-plaintext highlighter-rouge">server.js</code></p>
 
 <p><img src="/images/dev/debug-inspect.png" alt="Inspect devices" /></p>
 

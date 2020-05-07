@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> I18n |  OpenPaaS documentation</title>
+		<title> Technical users |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -132,7 +132,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level current">
+						<li class="nav-item top-level ">
 							
 							<a href="/frontend/vue/">Frontend</a>
 							<ul>
@@ -143,7 +143,7 @@
 								
 									<li class="nav-item "><a href="/frontend/vue-components/">Vue Components</a></li>
 								
-									<li class="nav-item current"><a href="/frontend/i18n/">I18n</a></li>
+									<li class="nav-item "><a href="/frontend/i18n/">I18n</a></li>
 								
 							</ul>
 						</li>
@@ -188,7 +188,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
 							<ul>
@@ -203,7 +203,7 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
-									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+									<li class="nav-item current"><a href="/modules/admin/technical-users/">Technical users</a></li>
 								
 							</ul>
 						</li>
@@ -355,10 +355,10 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>Frontend</h2>
+				<h2>OpenPaaS Modules - Admin</h2>
 				<div class="page-title">
-					<h3>I18n</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/frontend/i18n.md" title="Edit this page on Github">
+					<h3>Technical users</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/admin/technical-users.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
@@ -367,66 +367,69 @@
 				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
 
 <ul id="markdown-toc">
-  <li><a href="#where-are-the-locale-files" id="markdown-toc-where-are-the-locale-files">Where are the locale files?</a></li>
-  <li><a href="#how-it-work" id="markdown-toc-how-it-work">How it Work</a>    <ul>
-      <li><a href="#js-files" id="markdown-toc-js-files">Js files</a></li>
-      <li><a href="#vue-files" id="markdown-toc-vue-files">Vue files</a></li>
-    </ul>
-  </li>
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#creating-a-technical-user" id="markdown-toc-creating-a-technical-user">Creating a technical user</a></li>
+  <li><a href="#editing-a-technical-user" id="markdown-toc-editing-a-technical-user">Editing a technical user</a></li>
+  <li><a href="#removing-a-technical-user" id="markdown-toc-removing-a-technical-user">Removing a technical user</a></li>
 </ul>
 
-<p>Internationalization (i18n) is the process of developing products in such a way
-that they can be localized for languages and cultures easily.</p>
+<h2 id="overview">Overview</h2>
 
-<ul>
-  <li>We use <a href="https://kazupon.github.io/vue-i18n/">vue-i18n</a></li>
-</ul>
+<p>Technical users are users having accessibility to data of a domain to perform some technical tasks. For instance, reindexing contacts from MongoDB to Elasticsearch. A default technical user is created by executing the init.js file locating at bin/commands when initializing the server.</p>
 
-<h2 id="where-are-the-locale-files">Where are the locale files?</h2>
+<p>Every technical user belongs to a particular domain. Each domain manages multiple technical users belonged to it.</p>
 
-<p>Locale files can be found in <code class="language-plaintext highlighter-rouge">src/i18n/lang</code> directory.
-Currently, supported languages are English, French and Vietnamese.</p>
+<p>Technical users page is used to manage technical users in OpenPaaS. It supports creating, editing and removing technical users.
+Currently, only <strong>domain admin</strong> can use this feature.</p>
 
-<h2 id="how-it-work">How it Work</h2>
+<h2 id="creating-a-technical-user">Creating a technical user</h2>
 
-<h3 id="js-files">Js files</h3>
+<p>A technical user is stored in ESN MongoDB and belongs to a domain where it is created.
+Here are the steps to create a technical user:</p>
 
-<p>Import your language file into <code class="language-plaintext highlighter-rouge">src/i18n/index.js</code>.</p>
+<ol>
+  <li>Click floating adding button to show “Add a technical user” form</li>
+  <li>Fill name, description, type and data. A new data field can be added by clicking “ADD A NEW DATA FIELD” button.</li>
+  <li>Click on <em>Add</em></li>
+</ol>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">en</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/i18n/lang/en.json</span><span class="dl">"</span><span class="p">;</span>
-</code></pre></div></div>
+<p><img src="/images/modules/admin/technical-users/technical-user-creation.png" alt="Creating a technical user" /></p>
 
-<p>Add it to the <code class="language-plaintext highlighter-rouge">messages</code> object.</p>
+<p>If successful, the technical user is added to the list of technical users.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">i18n</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueI18n</span><span class="p">({</span>
-  <span class="na">locale</span><span class="p">:</span> <span class="dl">'</span><span class="s1">en</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">messages</span><span class="p">:</span> <span class="p">{</span> <span class="nx">en</span> <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div></div>
+<h2 id="editing-a-technical-user">Editing a technical user</h2>
 
-<h3 id="vue-files">Vue files</h3>
+<p>After creating a technical user, the domain admin can modify its name, description, type and data fields.
+Here are the steps to edit a technical user:</p>
 
-<p>It is pretty easy to translate phrases in .vue files:</p>
+<ol>
+  <li>Click “more actions” button on the technical user item to show the contextual menu</li>
+  <li>Click on <em>Edit</em> to show “Edit a technical user” form</li>
+  <li>Modify its information</li>
+  <li>Click on <em>Edit</em></li>
+</ol>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-  <span class="nt">&lt;h1&gt;</span>{{ $t('OpenPaaS Login') }}<span class="nt">&lt;/h1&gt;</span>  
+<p><img src="/images/modules/admin/technical-users/technical-user-editing-1.png" alt="Editing a technical user - step 1" /></p>
 
-</code></pre></div></div>
+<p><img src="/images/modules/admin/technical-users/technical-user-editing-2.png" alt="Editing a technical user - step 2" /></p>
 
-<p>Atribute syntax:</p>
-<ul>
-  <li>Use <code class="language-plaintext highlighter-rouge">v-bind</code> or the <code class="language-plaintext highlighter-rouge">:</code> shortcut with <code class="language-plaintext highlighter-rouge">$t('some text')</code></li>
-</ul>
+<p>If successful, the technical user is updated on the list of technical users.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;v-text-field</span>
-        <span class="na">name=</span><span class="s">"login"</span>
-        <span class="na">:label=</span><span class="s">"$t('Login')"</span>
-        <span class="na">type=</span><span class="s">"text"</span>
-<span class="nt">&gt;&lt;/v-text-field&gt;</span>
-</code></pre></div></div>
+<h2 id="removing-a-technical-user">Removing a technical user</h2>
 
-<p>Check the documentation of <a href="https://kazupon.github.io/vue-i18n/guide/started.html">vue-I18n</a> and 
-<a href="https://github.com/dobromir-hristov/vue-i18n-starter">vue-I18n starter</a> for more examples.</p>
+<p>Here are the steps to remove a technical user:</p>
+
+<ol>
+  <li>Click “more actions” button on the technical user item to show the contextual menu</li>
+  <li>Click on <em>Remove</em> to show “Remove technical user” form</li>
+  <li>Click <em>Remove</em> to confirm removing that technical user</li>
+</ol>
+
+<p><img src="/images/modules/admin/technical-users/technical-user-removing.png" alt="Removing a technical user" /></p>
+
+<p>If success, the technical user is removed from the list of technical users.</p>
+
+<p>When all of the technical users in a particular domain are removed, some technical tasks for that domain such as reindexing cannot be executed.</p>
 
 			</article>
 		</section>

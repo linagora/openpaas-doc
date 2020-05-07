@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -202,6 +202,8 @@
 									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
 								
 							</ul>
 						</li>
@@ -413,7 +415,7 @@ This installation method is currently only supported on <em>Debian Jessie</em> a
 </code></pre></div></div>
 
 <p>Make sure the hostname is correctly resolved locally using this command:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"127.0.0.1 openpaas.local openpaas james.openpaas.local dav.openpaas.local"</span> | tee <span class="nt">-a</span> /etc/hosts
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"127.0.0.1 openpaas.local openpaas james.openpaas.local dav.openpaas.local"</span> | <span class="nb">tee</span> <span class="nt">-a</span> /etc/hosts
 </code></pre></div></div>
 <h2 id="bootstrap-the-installation">Bootstrap the installation</h2>
 
@@ -427,7 +429,7 @@ This installation method is currently only supported on <em>Debian Jessie</em> a
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> https://raw.githubusercontent.com/linagora/openpaas-esn/master/packaging/setup-v1.2.sh | bash
 </code></pre></div></div>
 
-<p>depending on the availability of either <code class="highlighter-rouge">wget</code> or <code class="highlighter-rouge">curl</code> on your system.</p>
+<p>depending on the availability of either <code class="language-plaintext highlighter-rouge">wget</code> or <code class="language-plaintext highlighter-rouge">curl</code> on your system.</p>
 
 <h1 id="install-packages">Install packages</h1>
 
@@ -446,12 +448,12 @@ This installation method is currently only supported on <em>Debian Jessie</em> a
     </blockquote>
   </li>
   <li>Install openjdk-8
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install <span class="nt">-t</span> jessie-backports <span class="nt">-y</span> openjdk-8-jdk
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install</span> <span class="nt">-t</span> jessie-backports <span class="nt">-y</span> openjdk-8-jdk
 update-alternatives <span class="nt">--set</span> java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 </code></pre></div>    </div>
   </li>
   <li>Install OpenPaaS packages
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install</span> <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
 </code></pre></div>    </div>
   </li>
   <li>Enable mongodb service, not enable by default on Jessie :
@@ -472,7 +474,7 @@ systemctl start mongod
 
 <ul>
   <li>Install OpenPaaS packages
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install</span> <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -487,7 +489,7 @@ systemctl start mongod
 <p>As <em>root</em>, run:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum erase <span class="nt">-y</span> postfix
-yum install <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
+yum <span class="nb">install</span> <span class="nt">-y</span> openpaas openpaas-davserver openpaas-james
 </code></pre></div></div>
 
 <blockquote>
@@ -525,12 +527,12 @@ James to make these services work properly with the new configurations:</p>
 
 <h1 id="enjoy">Enjoy</h1>
 
-<p>OpenPaaS is installed using the <code class="highlighter-rouge">openpaas.local</code> hostname by default, meaning you must access it using this hostname. To do this, add the following line to your <code class="highlighter-rouge">/etc/hosts</code> file (unless you can make openpaas.local resolve to the machine’s IP address using a DNS server):</p>
+<p>OpenPaaS is installed using the <code class="language-plaintext highlighter-rouge">openpaas.local</code> hostname by default, meaning you must access it using this hostname. To do this, add the following line to your <code class="language-plaintext highlighter-rouge">/etc/hosts</code> file (unless you can make openpaas.local resolve to the machine’s IP address using a DNS server):</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x.x.x.x openpaas.local davserver.openpaas.local james.openpaas.local
 </code></pre></div></div>
 
-<p>You can then open a compatible browser to <code class="highlighter-rouge">http://openpaas.local</code> and login using <em>admin@openpaas.local</em> with password <em>admin</em>.</p>
+<p>You can then open a compatible browser to <code class="language-plaintext highlighter-rouge">http://openpaas.local</code> and login using <em>admin@openpaas.local</em> with password <em>admin</em>.</p>
 
 <h1 id="discover">Discover</h1>
 

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -376,10 +378,10 @@
 
 <p>Here is the code before :</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'great.module'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'greatModuleAPI'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Restangular</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">great.module</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="dl">'</span><span class="s1">greatModuleAPI</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Restangular</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">Restangular</span><span class="p">.</span><span class="nx">withConfig</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">RestangularConfigurer</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">RestangularConfigurer</span><span class="p">.</span><span class="nx">setBaseUrl</span><span class="p">(</span><span class="s1">'/great/api'</span><span class="p">);</span>
+      <span class="nx">RestangularConfigurer</span><span class="p">.</span><span class="nx">setBaseUrl</span><span class="p">(</span><span class="dl">'</span><span class="s1">/great/api</span><span class="dl">'</span><span class="p">);</span>
       <span class="nx">RestangularConfigurer</span><span class="p">.</span><span class="nx">setFullResponse</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
     <span class="p">});</span>
   <span class="p">});</span>
@@ -389,14 +391,14 @@
 
 <p>Here is the Electron compatible code:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'great.module'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'greatModuleAPI'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Restangular</span><span class="p">,</span> <span class="nx">httpConfigurer</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">great.module</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="dl">'</span><span class="s1">greatModuleAPI</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Restangular</span><span class="p">,</span> <span class="nx">httpConfigurer</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">restangularInstance</span> <span class="o">=</span> <span class="nx">Restangular</span><span class="p">.</span><span class="nx">withConfig</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">RestangularConfigurer</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">RestangularConfigurer</span><span class="p">.</span><span class="nx">setFullResponse</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
     <span class="p">});</span>
 
     <span class="c1">// I tell httpConfigurer to manage the base URL of my restangular instance</span>
-    <span class="nx">httpConfigurer</span><span class="p">.</span><span class="nx">manageRestangular</span><span class="p">(</span><span class="nx">restangularInstance</span><span class="p">,</span> <span class="s1">'/great/api'</span><span class="p">);</span>
+    <span class="nx">httpConfigurer</span><span class="p">.</span><span class="nx">manageRestangular</span><span class="p">(</span><span class="nx">restangularInstance</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/great/api</span><span class="dl">'</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="nx">restangularInstance</span><span class="p">;</span>
   <span class="p">});</span>
@@ -415,20 +417,20 @@
 
 <p>Here is the code before:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'great.module'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'generateJwtToken'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">great.module</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="dl">'</span><span class="s1">generateJwtToken</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/jwt/generate'</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/jwt/generate</span><span class="dl">'</span><span class="p">);</span>
     <span class="p">};</span>
   <span class="p">});</span>
 </code></pre></div></div>
 
 <p>and the code after:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'great.module'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'generateJwtToken'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">httpConfigurer</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">great.module</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="dl">'</span><span class="s1">generateJwtToken</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">httpConfigurer</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">httpConfigurer</span><span class="p">.</span><span class="nx">getUrl</span><span class="p">(</span><span class="s1">'/api/jwt/generate'</span><span class="p">));</span>
+      <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">httpConfigurer</span><span class="p">.</span><span class="nx">getUrl</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/jwt/generate</span><span class="dl">'</span><span class="p">));</span>
     <span class="p">};</span>
   <span class="p">});</span>
 </code></pre></div></div>

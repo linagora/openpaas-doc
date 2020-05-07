@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -389,8 +391,8 @@ i18n completely in both backend and frontend sides:</p>
 
 <h2 id="where-are-the-locale-files">Where are the locale files?</h2>
 
-<p>Locale files of the core module can be found in <code class="highlighter-rouge">backend/i18n/locales</code> directory.
-Each module can have its own locale files, usually placed in <code class="highlighter-rouge">backend/lib/i18n/locales</code>
+<p>Locale files of the core module can be found in <code class="language-plaintext highlighter-rouge">backend/i18n/locales</code> directory.
+Each module can have its own locale files, usually placed in <code class="language-plaintext highlighter-rouge">backend/lib/i18n/locales</code>
 directory as in <a href="https://github.com/linagora/linagora.esn.calendar/tree/master/backend/lib/i18n/locales">Calendar</a>
 module for example.</p>
 
@@ -431,10 +433,10 @@ h2 #{__('Hello %s, good morning!', '{{user.name}}')}
 
 <h3 id="translate-string-in-nodejs-files">Translate string in Node.js files</h3>
 
-<p>Simply require the module in <code class="highlighter-rouge">backend/core/i18n</code>:</p>
+<p>Simply require the module in <code class="language-plaintext highlighter-rouge">backend/core/i18n</code>:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">i18n</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'...'</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">subject</span> <span class="o">=</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">__</span><span class="p">(</span><span class="s1">'Your password has been changed!'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">i18n</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">subject</span> <span class="o">=</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">__</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your password has been changed!</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Check the documentation of <a href="https://github.com/linagora/i18n-node">i18n-node</a> for more examples.</p>
@@ -447,7 +449,7 @@ h2 #{__('Hello %s, good morning!', '{{user.name}}')}
   <li>Translate string in Javascript files</li>
 </ul>
 
-<p>You can either use <code class="highlighter-rouge">esnI18n</code> filter or <code class="highlighter-rouge">esnI18nService</code> of <code class="highlighter-rouge">esn.i18n</code> module to
+<p>You can either use <code class="language-plaintext highlighter-rouge">esnI18n</code> filter or <code class="language-plaintext highlighter-rouge">esnI18nService</code> of <code class="language-plaintext highlighter-rouge">esn.i18n</code> module to
 translate your phrases.</p>
 
 <h3 id="translate-angular-variable-in-pug-files">Translate Angular variable in .pug files</h3>
@@ -460,10 +462,10 @@ span {{mailbox.name | esnI18n}}
 <h3 id="translate-string-in-javascript-files">Translate string in Javascript files</h3>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// inject the esnI18nService service</span>
-<span class="kd">var</span> <span class="nx">subject</span> <span class="o">=</span> <span class="nx">esnI18nService</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="s1">'Email sent to %s'</span><span class="p">,</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">recipient</span><span class="p">.</span><span class="nx">email</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">subject</span> <span class="o">=</span> <span class="nx">esnI18nService</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="dl">'</span><span class="s1">Email sent to %s</span><span class="dl">'</span><span class="p">,</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">recipient</span><span class="p">.</span><span class="nx">email</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">esnI18nService.translate</code> function returns an instance of <code class="highlighter-rouge">EsnI18nString</code>, which
+<p>The <code class="language-plaintext highlighter-rouge">esnI18nService.translate</code> function returns an instance of <code class="language-plaintext highlighter-rouge">EsnI18nString</code>, which
 will be useful when you want to know whether the string is translated or not:</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">notify</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
@@ -471,9 +473,9 @@ will be useful when you want to know whether the string is translated or not:</p
   <span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="c1">// Usage</span>
-<span class="nx">notify</span><span class="p">(</span><span class="s1">'Hello world!'</span><span class="p">);</span>
+<span class="nx">notify</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello world!</span><span class="dl">'</span><span class="p">);</span>
 <span class="c1">// OR</span>
-<span class="nx">notify</span><span class="p">(</span><span class="nx">esnI18nService</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="s1">'Hello %s!'</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
+<span class="nx">notify</span><span class="p">(</span><span class="nx">esnI18nService</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello %s!</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
 </code></pre></div></div>
 
 <h2 id="translation-validator">Translation validator</h2>
@@ -481,7 +483,7 @@ will be useful when you want to know whether the string is translated or not:</p
 <p>OpenPaaS uses a built-in validator based on <a href="https://github.com/linagora/i18n-checker">i18n-checker</a> package
 to ensure the quality of internationalization in product.</p>
 
-<p>To use the validator, simply run: <code class="highlighter-rouge">grunt i18n</code></p>
+<p>To use the validator, simply run: <code class="language-plaintext highlighter-rouge">grunt i18n</code></p>
 
 			</article>
 		</section>

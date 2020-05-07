@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -202,6 +202,8 @@
 									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
 								
 							</ul>
 						</li>
@@ -405,7 +407,7 @@
 
 <ul>
   <li>The following samples assumes that you followed the steps to get the cookies used to authenticate user as defined in Authentication documentation</li>
-  <li>In several places in the following REST API samples, parameters will be defined by using <code class="highlighter-rouge">{mustache}</code>. Developers will have to replace values by valid ones</li>
+  <li>In several places in the following REST API samples, parameters will be defined by using <code class="language-plaintext highlighter-rouge">{mustache}</code>. Developers will have to replace values by valid ones</li>
   <li>Standard errors are not listed which does not means that they will not occur (HTTP 4XX and 5XX ones)</li>
 </ul>
 
@@ -415,47 +417,131 @@
 
 <h4 id="request">Request</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET https://HOST:PORT/dav/api/calendars/{userId}.json
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET https://HOST:PORT/dav/api/calendars/{userId}.json
 </code></pre></div></div>
 
 <p><strong>Headers</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>accept: application/calendar+json
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>accept: application/calendar+json
 </code></pre></div></div>
 
 <h4 id="response">Response</h4>
 
-<p>The response is formatted using <a href="https://en.wikipedia.org/wiki/Hypertext_Application_Language">Hypertext application Language</a>. Calendar list is available in the <code class="highlighter-rouge">_embedded</code> element as <code class="highlighter-rouge">dav:calendar</code> array. The <code class="highlighter-rouge">href</code> value is the calendar URL which can be used to do operations on the calendar.</p>
+<p>The response is formatted using <a href="https://en.wikipedia.org/wiki/Hypertext_Application_Language">Hypertext application Language</a>. Calendar list is available in the <code class="language-plaintext highlighter-rouge">_embedded</code> element as <code class="language-plaintext highlighter-rouge">dav:calendar</code> array. The <code class="language-plaintext highlighter-rouge">href</code> value is the calendar URL which can be used to do operations on the calendar.</p>
 
 <p><em>As of 170503 and reported in <a href="https://ci.open-paas.org/jira/browse/CAL-670">CAL-670</a>, the href links are not well formatted.</em></p>
 
 <p><strong>Body</strong></p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" />21<br data-jekyll-commonmark-ghpages="" />22<br data-jekyll-commonmark-ghpages="" />23<br data-jekyll-commonmark-ghpages="" />24<br data-jekyll-commonmark-ghpages="" />25<br data-jekyll-commonmark-ghpages="" />26<br data-jekyll-commonmark-ghpages="" />27<br data-jekyll-commonmark-ghpages="" />28<br data-jekyll-commonmark-ghpages="" />29<br data-jekyll-commonmark-ghpages="" />30<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="s2">"self"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"/sdav/calendars/57fca675a91c8d01a36ac26b.json"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"_embedded"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="s2">"dav:calendar"</span><span class="p">:[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"self"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"/sdav/calendars/57fca675a91c8d01a36ac26b/events.json"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"calendarserver:ctag"</span><span class="p">:</span><span class="s2">"http://sabre.io/ns/sync/101"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"self"</span><span class="p">:{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"/sdav/calendars/57fca675a91c8d01a36ac26b/aee302d8-12dc-4c8d-94cf-991da9b453ab.json"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"dav:name"</span><span class="p">:</span><span class="s2">"My public calendar"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"caldav:description"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"calendarserver:ctag"</span><span class="p">:</span><span class="s2">"http://sabre.io/ns/sync/7"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="s2">"apple:color"</span><span class="p">:</span><span class="s2">"#f7e511"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" /></span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"_links"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="s2">"/sdav/calendars/57fca675a91c8d01a36ac26b.json"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"_embedded"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"dav:calendar"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"_links"</span><span class="p">:{</span><span class="w">
+          </span><span class="nl">"self"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="s2">"/sdav/calendars/57fca675a91c8d01a36ac26b/events.json"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"calendarserver:ctag"</span><span class="p">:</span><span class="s2">"http://sabre.io/ns/sync/101"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"_links"</span><span class="p">:{</span><span class="w">
+          </span><span class="nl">"self"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="s2">"/sdav/calendars/57fca675a91c8d01a36ac26b/aee302d8-12dc-4c8d-94cf-991da9b453ab.json"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"dav:name"</span><span class="p">:</span><span class="s2">"My public calendar"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caldav:description"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"calendarserver:ctag"</span><span class="p">:</span><span class="s2">"http://sabre.io/ns/sync/7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"apple:color"</span><span class="p">:</span><span class="s2">"#f7e511"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="create-a-calendar">Create a calendar</h3>
 
 <h4 id="request-1">Request</h4>
 
-<p>The <code class="highlighter-rouge">{userId}</code> is the id of the authenticated user.</p>
+<p>The <code class="language-plaintext highlighter-rouge">{userId}</code> is the id of the authenticated user.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST https://HOST:PORT/dav/api/calendars/{userId}.json
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST https://HOST:PORT/dav/api/calendars/{userId}.json
 </code></pre></div></div>
 
 <p><strong>Body</strong></p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebdfe2b9-694a-4dc3-98fa-0f7acbfdc739"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"dav:name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My calendar name"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"apple:color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#68c289"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"caldav:description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The calendar description"</span><span class="w"><br data-jekyll-commonmark-ghpages="" /></span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebdfe2b9-694a-4dc3-98fa-0f7acbfdc739"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dav:name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My calendar name"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"apple:color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#68c289"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"caldav:description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The calendar description"</span><span class="w">
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="list-events-in-calendar">List events in calendar</h3>
 
 <h4 id="request-2">Request</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT https://openpaas.linagora.com/dav/api/calendars/57fca675a91c8d01a36ac26b/events.json'
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT https://openpaas.linagora.com/dav/api/calendars/57fca675a91c8d01a36ac26b/events.json'
 </code></pre></div></div>
 
 <p><strong>Body</strong></p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"match"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20170430T000000"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20170613T000000"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">}</span><span class="w"><br data-jekyll-commonmark-ghpages="" /></span><span class="p">}</span><span class="err">'</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"match"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20170430T000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20170613T000000"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="create-an-event-in-a-calendar">Create an event in a calendar</h3>
 
@@ -463,32 +549,216 @@
 
 <h4 id="request-3">Request</h4>
 
-<p>The <code class="highlighter-rouge">{eventId}</code> is defined by the developer. We suggest to use an uuid generator to have unique ids.</p>
+<p>The <code class="language-plaintext highlighter-rouge">{eventId}</code> is defined by the developer. We suggest to use an uuid generator to have unique ids.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT https://HOST:PORT/dav/api/calendars/{userId}/{calendarId}/{eventId}.ics
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT https://HOST:PORT/dav/api/calendars/{userId}/{calendarId}/{eventId}.ics
 </code></pre></div></div>
 
 <p><strong>Body</strong></p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" />21<br data-jekyll-commonmark-ghpages="" />22<br data-jekyll-commonmark-ghpages="" />23<br data-jekyll-commonmark-ghpages="" />24<br data-jekyll-commonmark-ghpages="" />25<br data-jekyll-commonmark-ghpages="" />26<br data-jekyll-commonmark-ghpages="" />27<br data-jekyll-commonmark-ghpages="" />28<br data-jekyll-commonmark-ghpages="" />29<br data-jekyll-commonmark-ghpages="" />30<br data-jekyll-commonmark-ghpages="" />31<br data-jekyll-commonmark-ghpages="" />32<br data-jekyll-commonmark-ghpages="" />33<br data-jekyll-commonmark-ghpages="" />34<br data-jekyll-commonmark-ghpages="" />35<br data-jekyll-commonmark-ghpages="" />36<br data-jekyll-commonmark-ghpages="" />37<br data-jekyll-commonmark-ghpages="" />38<br data-jekyll-commonmark-ghpages="" />39<br data-jekyll-commonmark-ghpages="" />40<br data-jekyll-commonmark-ghpages="" />41<br data-jekyll-commonmark-ghpages="" />42<br data-jekyll-commonmark-ghpages="" />43<br data-jekyll-commonmark-ghpages="" />44<br data-jekyll-commonmark-ghpages="" />45<br data-jekyll-commonmark-ghpages="" />46<br data-jekyll-commonmark-ghpages="" />47<br data-jekyll-commonmark-ghpages="" />48<br data-jekyll-commonmark-ghpages="" />49<br data-jekyll-commonmark-ghpages="" />50<br data-jekyll-commonmark-ghpages="" />51<br data-jekyll-commonmark-ghpages="" />52<br data-jekyll-commonmark-ghpages="" />53<br data-jekyll-commonmark-ghpages="" />54<br data-jekyll-commonmark-ghpages="" />55<br data-jekyll-commonmark-ghpages="" />56<br data-jekyll-commonmark-ghpages="" />57<br data-jekyll-commonmark-ghpages="" />58<br data-jekyll-commonmark-ghpages="" />59<br data-jekyll-commonmark-ghpages="" />60<br data-jekyll-commonmark-ghpages="" />61<br data-jekyll-commonmark-ghpages="" />62<br data-jekyll-commonmark-ghpages="" />63<br data-jekyll-commonmark-ghpages="" />64<br data-jekyll-commonmark-ghpages="" />65<br data-jekyll-commonmark-ghpages="" />66<br data-jekyll-commonmark-ghpages="" />67<br data-jekyll-commonmark-ghpages="" />68<br data-jekyll-commonmark-ghpages="" />69<br data-jekyll-commonmark-ghpages="" />70<br data-jekyll-commonmark-ghpages="" />71<br data-jekyll-commonmark-ghpages="" />72<br data-jekyll-commonmark-ghpages="" />73<br data-jekyll-commonmark-ghpages="" />74<br data-jekyll-commonmark-ghpages="" />75<br data-jekyll-commonmark-ghpages="" />76<br data-jekyll-commonmark-ghpages="" />77<br data-jekyll-commonmark-ghpages="" />78<br data-jekyll-commonmark-ghpages="" />79<br data-jekyll-commonmark-ghpages="" />80<br data-jekyll-commonmark-ghpages="" />81<br data-jekyll-commonmark-ghpages="" />82<br data-jekyll-commonmark-ghpages="" />83<br data-jekyll-commonmark-ghpages="" />84<br data-jekyll-commonmark-ghpages="" />85<br data-jekyll-commonmark-ghpages="" />86<br data-jekyll-commonmark-ghpages="" />87<br data-jekyll-commonmark-ghpages="" />88<br data-jekyll-commonmark-ghpages="" />89<br data-jekyll-commonmark-ghpages="" />90<br data-jekyll-commonmark-ghpages="" />91<br data-jekyll-commonmark-ghpages="" />92<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="s2">"vcalendar"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">[],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="s2">"vevent"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"uid"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"text"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"0d52de98-127c-4625-8583-57ec07e9bfd9"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"transp"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"text"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"OPAQUE"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"dtstart"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"tzid"</span><span class="p">:</span><span class="s2">"Europe/Berlin"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"date-time"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"2017-05-03T16:00:00"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"dtend"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"tzid"</span><span class="p">:</span><span class="s2">"Europe/Berlin"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"date-time"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"2017-05-03T17:00:00"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"organizer"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"cn"</span><span class="p">:</span><span class="s2">"Christophe HAMERLING"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"cal-address"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"mailto:chamerling@linagora.com"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"class"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"text"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"PUBLIC"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"summary"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"text"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"Barcamp doc test"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"location"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"text"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"Paris"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"description"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"text"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"Blahblah"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"attendee"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"partstat"</span><span class="p">:</span><span class="s2">"NEEDS-ACTION"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"rsvp"</span><span class="p">:</span><span class="s2">"TRUE"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"role"</span><span class="p">:</span><span class="s2">"REQ-PARTICIPANT"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"cn"</span><span class="p">:</span><span class="s2">"Michael BAILLY"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"cal-address"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"mailto:mbailly@linagora.com"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">],</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">[</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"attendee"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">{</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"partstat"</span><span class="p">:</span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"rsvp"</span><span class="p">:</span><span class="s2">"FALSE"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />            </span><span class="s2">"role"</span><span class="p">:</span><span class="s2">"CHAIR"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="p">},</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"cal-address"</span><span class="p">,</span><span class="w"><br data-jekyll-commonmark-ghpages="" />          </span><span class="s2">"mailto:chamerling@linagora.com"</span><span class="w"><br data-jekyll-commonmark-ghpages="" />        </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" />      </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" />    </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" />  </span><span class="p">]</span><span class="w"><br data-jekyll-commonmark-ghpages="" /></span><span class="p">]</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+</pre></td><td class="code"><pre><span class="p">[</span><span class="w">
+  </span><span class="s2">"vcalendar"</span><span class="p">,</span><span class="w">
+  </span><span class="p">[],</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"vevent"</span><span class="p">,</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"uid"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"0d52de98-127c-4625-8583-57ec07e9bfd9"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"transp"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"OPAQUE"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"dtstart"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"tzid"</span><span class="p">:</span><span class="s2">"Europe/Berlin"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"date-time"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"2017-05-03T16:00:00"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"dtend"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"tzid"</span><span class="p">:</span><span class="s2">"Europe/Berlin"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"date-time"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"2017-05-03T17:00:00"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"organizer"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"cn"</span><span class="p">:</span><span class="s2">"Christophe HAMERLING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"cal-address"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mailto:chamerling@linagora.com"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"class"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"PUBLIC"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"summary"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Barcamp doc test"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"location"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Paris"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Blahblah"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"attendee"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"partstat"</span><span class="p">:</span><span class="s2">"NEEDS-ACTION"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rsvp"</span><span class="p">:</span><span class="s2">"TRUE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"role"</span><span class="p">:</span><span class="s2">"REQ-PARTICIPANT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cn"</span><span class="p">:</span><span class="s2">"Michael BAILLY"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"cal-address"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mailto:mbailly@linagora.com"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"attendee"</span><span class="p">,</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"partstat"</span><span class="p">:</span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rsvp"</span><span class="p">:</span><span class="s2">"FALSE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"role"</span><span class="p">:</span><span class="s2">"CHAIR"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"cal-address"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mailto:chamerling@linagora.com"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <h4 id="response-1">Response</h4>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"491cd007-3646-4fe2-93a5-7a8281e9e36d"</span><span class="p">}</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"491cd007-3646-4fe2-93a5-7a8281e9e36d"</span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
 <h3 id="delete-an-event">Delete an event</h3>
 
 <h4 id="request-4">Request</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DELETE https://HOST:PORT/dav/api/calendars/{userId}/{calendarId}/{eventId}.ics
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DELETE https://HOST:PORT/dav/api/calendars/{userId}/{calendarId}/{eventId}.ics
 </code></pre></div></div>
 
 <h4 id="response-2">Response</h4>
 
 <p><strong>Body</strong></p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"491cd007-3646-4fe2-93a5-7a8281e9e36d"</span><span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"491cd007-3646-4fe2-93a5-7a8281e9e36d"</span><span class="p">}</span></code></pre></figure>
 
 
 			</article>

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -391,24 +393,24 @@
 
 <h3 id="overview">Overview</h3>
 
-<p>Local configuration of the application is stored in the <code class="highlighter-rouge">config/default.json</code> file.
+<p>Local configuration of the application is stored in the <code class="language-plaintext highlighter-rouge">config/default.json</code> file.
 You should not modify this file directly but instead define the <em>environment-based</em>
-configuration file, e.g. <code class="highlighter-rouge">config/default.dev.json</code> for development and
-<code class="highlighter-rouge">config/default.production.json</code> for production deployment.</p>
+configuration file, e.g. <code class="language-plaintext highlighter-rouge">config/default.dev.json</code> for development and
+<code class="language-plaintext highlighter-rouge">config/default.production.json</code> for production deployment.</p>
 
-<p>The application relies on <code class="highlighter-rouge">NODE_ENV</code> environment variable to know which configuration
-file to be loaded. For example, if <code class="highlighter-rouge">NODE_ENV=test</code>, it will load <code class="highlighter-rouge">config/default.test.json</code> file.</p>
+<p>The application relies on <code class="language-plaintext highlighter-rouge">NODE_ENV</code> environment variable to know which configuration
+file to be loaded. For example, if <code class="language-plaintext highlighter-rouge">NODE_ENV=test</code>, it will load <code class="language-plaintext highlighter-rouge">config/default.test.json</code> file.</p>
 
-<p>Note that the configuration defined in <code class="highlighter-rouge">./config/default.json</code> will not be overridden by the environment-based configuration file but instead inherited from it. The only exception is the array propertices, which will be overridden.</p>
+<p>Note that the configuration defined in <code class="language-plaintext highlighter-rouge">./config/default.json</code> will not be overridden by the environment-based configuration file but instead inherited from it. The only exception is the array propertices, which will be overridden.</p>
 
 <h3 id="usage">Usage</h3>
 
 <p>The local configurations are stored in JSON structure so it is pretty easy to
 read and write this type of configuration.</p>
 
-<p>To read configurations, simply require the module in <code class="highlighter-rouge">backend/core/config</code>:</p>
+<p>To read configurations, simply require the module in <code class="language-plaintext highlighter-rouge">backend/core/config</code>:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'...'</span><span class="p">)(</span><span class="s1">'default'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">)(</span><span class="dl">'</span><span class="s1">default</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">strategies</span><span class="p">);</span>
 </code></pre></div></div>
@@ -419,12 +421,12 @@ read and write this type of configuration.</p>
 
 <h3 id="overview-1">Overview</h3>
 
-<p>The global configuration is stored in MongoDB under the <code class="highlighter-rouge">configurations</code> collection
+<p>The global configuration is stored in MongoDB under the <code class="language-plaintext highlighter-rouge">configurations</code> collection
 in order to be shared over nodes.</p>
 
 <p>A configurations document has the following structure:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
   "domain_id" : ObjectId("domain_id"),
   "user_id" : ObjectId("user_id"),
   "modules" : [
@@ -447,11 +449,11 @@ in order to be shared over nodes.</p>
 
 <h4 id="configuration-scope">Configuration scope</h4>
 
-<p>Each document has its scope, base on the values of <code class="highlighter-rouge">domain_id</code> and <code class="highlighter-rouge">user_id</code>:</p>
+<p>Each document has its scope, base on the values of <code class="language-plaintext highlighter-rouge">domain_id</code> and <code class="language-plaintext highlighter-rouge">user_id</code>:</p>
 <ul>
-  <li><strong>User-wide</strong>: configurations belong to a specific user in a specific domain, the document must contain both <code class="highlighter-rouge">domain_id</code> and <code class="highlighter-rouge">user_id</code></li>
-  <li><strong>Domain-wide</strong>: configurations belong to a specific domain, the document must contain <code class="highlighter-rouge">domain_id</code> and no <code class="highlighter-rouge">user_id</code></li>
-  <li><strong>System-wide</strong> (AKA platform-wide): configurations which will be applied to the whole system, the document must not contain neither <code class="highlighter-rouge">domain_id</code> or <code class="highlighter-rouge">user_id</code></li>
+  <li><strong>User-wide</strong>: configurations belong to a specific user in a specific domain, the document must contain both <code class="language-plaintext highlighter-rouge">domain_id</code> and <code class="language-plaintext highlighter-rouge">user_id</code></li>
+  <li><strong>Domain-wide</strong>: configurations belong to a specific domain, the document must contain <code class="language-plaintext highlighter-rouge">domain_id</code> and no <code class="language-plaintext highlighter-rouge">user_id</code></li>
+  <li><strong>System-wide</strong> (AKA platform-wide): configurations which will be applied to the whole system, the document must not contain neither <code class="language-plaintext highlighter-rouge">domain_id</code> or <code class="language-plaintext highlighter-rouge">user_id</code></li>
 </ul>
 
 <h4 id="configuration-inheritance">Configuration inheritance</h4>
@@ -464,24 +466,24 @@ not specified, the system-wide configuration will be used.</p>
 
 <h3 id="usage-1">Usage</h3>
 
-<p>In both frontend and backend, the global configurations can be read by <code class="highlighter-rouge">esn-config</code>
+<p>In both frontend and backend, the global configurations can be read by <code class="language-plaintext highlighter-rouge">esn-config</code>
 module.</p>
 
-<p>In backend, the code is placed in <code class="highlighter-rouge">backend/core/esn-config</code>:</p>
+<p>In backend, the code is placed in <code class="language-plaintext highlighter-rouge">backend/core/esn-config</code>:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">esnConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'..'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">esnConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">..</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="c1">// get system-wide configuration</span>
-<span class="nx">esnConfig</span><span class="p">(</span><span class="s1">'mail'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">inModule</span><span class="p">(</span><span class="s1">'core'</span><span class="p">)</span>
+<span class="nx">esnConfig</span><span class="p">(</span><span class="dl">'</span><span class="s1">mail</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">inModule</span><span class="p">(</span><span class="dl">'</span><span class="s1">core</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">.</span><span class="kd">get</span><span class="p">()</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">config</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
   <span class="p">});</span>
 
 <span class="c1">// get domain-wide configuration</span>
-<span class="nx">esnConfig</span><span class="p">(</span><span class="s1">'mail'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">inModule</span><span class="p">(</span><span class="s1">'core'</span><span class="p">)</span>
+<span class="nx">esnConfig</span><span class="p">(</span><span class="dl">'</span><span class="s1">mail</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">inModule</span><span class="p">(</span><span class="dl">'</span><span class="s1">core</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">forUser</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
   <span class="p">.</span><span class="kd">get</span><span class="p">()</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">config</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -491,8 +493,8 @@ module.</p>
 <span class="c1">// get user-wide configuration</span>
 <span class="kd">const</span> <span class="nx">userWide</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
-<span class="nx">esnConfig</span><span class="p">(</span><span class="s1">'mail'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">inModule</span><span class="p">(</span><span class="s1">'core'</span><span class="p">)</span>
+<span class="nx">esnConfig</span><span class="p">(</span><span class="dl">'</span><span class="s1">mail</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">inModule</span><span class="p">(</span><span class="dl">'</span><span class="s1">core</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">forUser</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">userWide</span><span class="p">)</span>
   <span class="p">.</span><span class="kd">get</span><span class="p">()</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">config</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -500,10 +502,10 @@ module.</p>
   <span class="p">});</span>
 </code></pre></div></div>
 
-<p>In frontend, you simply inject the <code class="highlighter-rouge">esnConfig</code> service to get the configuration,
+<p>In frontend, you simply inject the <code class="language-plaintext highlighter-rouge">esnConfig</code> service to get the configuration,
 the API is a bit different:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">esnConfig</span><span class="p">(</span><span class="s1">'core.datetime'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">esnConfig</span><span class="p">(</span><span class="dl">'</span><span class="s1">core.datetime</span><span class="dl">'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div></div>

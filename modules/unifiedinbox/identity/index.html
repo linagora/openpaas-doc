@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -388,27 +390,27 @@
     <ul>
       <li>Description: To describe for an identity</li>
       <li>Name: The name of an identity</li>
-      <li>Email address: The email to fill the <code class="highlighter-rouge">From</code> field when sending an email</li>
+      <li>Email address: The email to fill the <code class="language-plaintext highlighter-rouge">From</code> field when sending an email</li>
     </ul>
   </li>
   <li>Optional attributes:
     <ul>
-      <li>Reply to address: Once defined, this email will be filled the <code class="highlighter-rouge">To</code> field instead of <code class="highlighter-rouge">email address</code> when the recipients reply to sender</li>
+      <li>Reply to address: Once defined, this email will be filled the <code class="language-plaintext highlighter-rouge">To</code> field instead of <code class="language-plaintext highlighter-rouge">email address</code> when the recipients reply to sender</li>
       <li>Mobile signature: The identity signature that is displayed when composing an email on desktop screen</li>
       <li>Desktop signature: The identity signature that is displayed when composing an email on mobile screen</li>
     </ul>
   </li>
 </ul>
 
-<p>The valid values for <code class="highlighter-rouge">Email adress</code> and <code class="highlighter-rouge">Reply to address</code> of a specific user are:</p>
+<p>The valid values for <code class="language-plaintext highlighter-rouge">Email adress</code> and <code class="language-plaintext highlighter-rouge">Reply to address</code> of a specific user are:</p>
 <ul>
   <li>The user primary email</li>
   <li>The user email aliases</li>
   <li>The domain aliases if domain administrators allow by the following steps:
     <ul>
-      <li>Go to <code class="highlighter-rouge">Administration</code> module</li>
-      <li>Then <code class="highlighter-rouge">Modules</code> page. Expand <code class="highlighter-rouge">Unifiedinbox</code> configuration form</li>
-      <li>In the <code class="highlighter-rouge">Identities</code> part. Turn on <code class="highlighter-rouge">Allow users to choose identity emails from domain aliases</code></li>
+      <li>Go to <code class="language-plaintext highlighter-rouge">Administration</code> module</li>
+      <li>Then <code class="language-plaintext highlighter-rouge">Modules</code> page. Expand <code class="language-plaintext highlighter-rouge">Unifiedinbox</code> configuration form</li>
+      <li>In the <code class="language-plaintext highlighter-rouge">Identities</code> part. Turn on <code class="language-plaintext highlighter-rouge">Allow users to choose identity emails from domain aliases</code></li>
     </ul>
 
     <p><img src="/images/modules/unifiedinbox/configFormDomainAliases.jpg" alt="unifiedinboxConfigFormDomainAliases" /></p>
@@ -418,8 +420,8 @@
 <h3 id="identity-types">Identity types</h3>
 <p>There are two types of identity:</p>
 <ul>
-  <li>Default: The default identity of a user will be fill the <code class="highlighter-rouge">From</code> field as default when the user opens an email composer. A user only has one default identity.</li>
-  <li>Additional: A user can have multiple additional identities that he can choose to fill the <code class="highlighter-rouge">From</code> field when composing an email
+  <li>Default: The default identity of a user will be fill the <code class="language-plaintext highlighter-rouge">From</code> field as default when the user opens an email composer. A user only has one default identity.</li>
+  <li>Additional: A user can have multiple additional identities that he can choose to fill the <code class="language-plaintext highlighter-rouge">From</code> field when composing an email
 <img src="/images/modules/unifiedinbox/composerChooseIdentity.png" alt="unifiedinboxConfigFormDomainAliases" /></li>
 </ul>
 
@@ -430,9 +432,9 @@
 <p>Domain members can see their identities. To manage their identites, they need the authorization from their domain administrators. A domain administrator can allow his domain members to manage their identities by the following steps:</p>
 
 <ul>
-  <li>Go to <code class="highlighter-rouge">Administration</code> module</li>
-  <li>Then <code class="highlighter-rouge">Modules</code> page. Expand <code class="highlighter-rouge">Unifiedinbox</code> configuration form</li>
-  <li>In the <code class="highlighter-rouge">Identities</code> part. Turn on <code class="highlighter-rouge">Allow users to manage their identities</code></li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">Administration</code> module</li>
+  <li>Then <code class="language-plaintext highlighter-rouge">Modules</code> page. Expand <code class="language-plaintext highlighter-rouge">Unifiedinbox</code> configuration form</li>
+  <li>In the <code class="language-plaintext highlighter-rouge">Identities</code> part. Turn on <code class="language-plaintext highlighter-rouge">Allow users to manage their identities</code></li>
 </ul>
 
 <p><img src="/images/modules/unifiedinbox/configForm.jpg" alt="unifiedinboxConfigForm" /></p>

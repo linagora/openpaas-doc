@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -378,8 +380,8 @@
 <p>In order to be able to do management operations, a platform administrator is needed. A platform administrator can be provisioned from environment variables:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">INIT_PLATFORMADMIN_USERNAME</code>: The email to be used for the platform administrator account</li>
-  <li><code class="highlighter-rouge">INIT_PLATFORMADMIN_PASSWORD</code>: The password to be used for the platform administrator account</li>
+  <li><code class="language-plaintext highlighter-rouge">INIT_PLATFORMADMIN_USERNAME</code>: The email to be used for the platform administrator account</li>
+  <li><code class="language-plaintext highlighter-rouge">INIT_PLATFORMADMIN_PASSWORD</code>: The password to be used for the platform administrator account</li>
 </ul>
 
 <p>If, <strong>and only if</strong>, there are no platform administators defined in OpenPaaS, a new platform administrator will be created at startup from these environment variables.</p>

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -387,8 +389,8 @@
 <h3 id="from-source">From source</h3>
 
 <ol>
-  <li>Get the sources from your SCM client, or download them from the repository manager and put them in the <code class="highlighter-rouge">modules</code> directory in the OpenPaaS one. For example, if your module is <code class="highlighter-rouge">my.awesome.module</code>, it should go in <code class="highlighter-rouge">modules/my.awesome.module</code> (note that if you put the module source somewhere else, you can use symbolic links).</li>
-  <li>In the module folder (<code class="highlighter-rouge">modules/my.awesome.module/</code>), install the dependencies. A simple <code class="highlighter-rouge">npm install</code> should be enough. If not, check the module <code class="highlighter-rouge">README.md</code> to be sure.</li>
+  <li>Get the sources from your SCM client, or download them from the repository manager and put them in the <code class="language-plaintext highlighter-rouge">modules</code> directory in the OpenPaaS one. For example, if your module is <code class="language-plaintext highlighter-rouge">my.awesome.module</code>, it should go in <code class="language-plaintext highlighter-rouge">modules/my.awesome.module</code> (note that if you put the module source somewhere else, you can use symbolic links).</li>
+  <li>In the module folder (<code class="language-plaintext highlighter-rouge">modules/my.awesome.module/</code>), install the dependencies. A simple <code class="language-plaintext highlighter-rouge">npm install</code> should be enough. If not, check the module <code class="language-plaintext highlighter-rouge">README.md</code> to be sure.</li>
 </ol>
 
 <h3 id="from-npm-registry">From npm registry</h3>
@@ -397,14 +399,14 @@
 
 <ol>
   <li>Change working directory to the OpenPaaS one</li>
-  <li>Install the module from npm <code class="highlighter-rouge">npm install my.awesome.module</code></li>
+  <li>Install the module from npm <code class="language-plaintext highlighter-rouge">npm install my.awesome.module</code></li>
 </ol>
 
 <h3 id="configure">Configure</h3>
 
-<p>In all the cases, a manual installation is not enough. You have to configure OpenPaaS to take the module into account by enabling it. This is achieved by modifying the <code class="highlighter-rouge">config/default.json</code> by adding the module in the <code class="highlighter-rouge">modules</code> array:</p>
+<p>In all the cases, a manual installation is not enough. You have to configure OpenPaaS to take the module into account by enabling it. This is achieved by modifying the <code class="language-plaintext highlighter-rouge">config/default.json</code> by adding the module in the <code class="language-plaintext highlighter-rouge">modules</code> array:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nl">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"linagora.esn.account"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"linagora.esn.calendar"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"linagora.esn.contact"</span><span class="p">,</span><span class="w">

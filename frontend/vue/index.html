@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -202,6 +202,8 @@
 									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
 								
 							</ul>
 						</li>
@@ -423,8 +425,8 @@
 
 <ul>
   <li>You will need Node and we recommend using <a href="https://github.com/creationix/nvm">nvm</a> to manage your Node version, so install it first if you do not already use it.</li>
-  <li>Install Node 10 with nvm <code class="highlighter-rouge">nvm install 10</code>, then switch if needed <code class="highlighter-rouge">nvm use 10</code></li>
-  <li>Install Vue CLI <code class="highlighter-rouge">npm install -g @vue/cli</code></li>
+  <li>Install Node 10 with nvm <code class="language-plaintext highlighter-rouge">nvm install 10</code>, then switch if needed <code class="language-plaintext highlighter-rouge">nvm use 10</code></li>
+  <li>Install Vue CLI <code class="language-plaintext highlighter-rouge">npm install -g @vue/cli</code></li>
 </ul>
 
 <h2 id="bootstrap-a-new-application">Bootstrap a new application</h2>
@@ -433,24 +435,24 @@
 
 <h3 id="1-clone-the-seed">1. Clone the seed</h3>
 
-<p>(Replace <code class="highlighter-rouge">my-app</code> by your app name)</p>
+<p>(Replace <code class="language-plaintext highlighter-rouge">my-app</code> by your app name)</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:linagora/vue-openpaas-seed.git my-app
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:linagora/vue-openpaas-seed.git my-app
 </code></pre></div></div>
 
-<p>You will have to change several things in the files, expecially the application name and description in <code class="highlighter-rouge">package.json</code>.</p>
+<p>You will have to change several things in the files, expecially the application name and description in <code class="language-plaintext highlighter-rouge">package.json</code>.</p>
 
 <h3 id="2-install-dependencies">2. Install dependencies</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd my-app
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd my-app
 npm install
 </code></pre></div></div>
 
 <h3 id="3-configure">3. Configure</h3>
 
-<p>The application can be configured by updating the <code class="highlighter-rouge">.env</code> files as described in the <a href="https://cli.vuejs.org/guide/mode-and-env.html#example-staging-mode">Vue CLI documentation</a>. Values defined in the <code class="highlighter-rouge">.env</code> file are used at several places in the app (from the store), and can be adapted to your environment. For example, while in development, you can redefine your OpenPaaS instance URL in a <code class="highlighter-rouge">.env.development.local</code> file which will never be commited (so you can also push secrets in it).</p>
+<p>The application can be configured by updating the <code class="language-plaintext highlighter-rouge">.env</code> files as described in the <a href="https://cli.vuejs.org/guide/mode-and-env.html#example-staging-mode">Vue CLI documentation</a>. Values defined in the <code class="language-plaintext highlighter-rouge">.env</code> file are used at several places in the app (from the store), and can be adapted to your environment. For example, while in development, you can redefine your OpenPaaS instance URL in a <code class="language-plaintext highlighter-rouge">.env.development.local</code> file which will never be commited (so you can also push secrets in it).</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VUE_APP_SUPER_SECRET=A super secret thing
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VUE_APP_SUPER_SECRET=A super secret thing
 VUE_APP_OPENPAAS_URL=http://localhost:8080
 </code></pre></div></div>
 
@@ -459,8 +461,8 @@ VUE_APP_OPENPAAS_URL=http://localhost:8080
 <p>Once done, you can start developping:</p>
 
 <ul>
-  <li>You can start the app in dev mode with <code class="highlighter-rouge">npm run serve</code></li>
-  <li>Or, use the Vue CLI UI <code class="highlighter-rouge">vue ui</code> and browse to your application.</li>
+  <li>You can start the app in dev mode with <code class="language-plaintext highlighter-rouge">npm run serve</code></li>
+  <li>Or, use the Vue CLI UI <code class="language-plaintext highlighter-rouge">vue ui</code> and browse to your application.</li>
 </ul>
 
 <p><img src="/images/frontend/vuejs-cli-ui.png" alt="The Vue CLI UI" /></p>
@@ -473,13 +475,13 @@ VUE_APP_OPENPAAS_URL=http://localhost:8080
 
 <ul>
   <li>All the configuration files are at the root of the repository</li>
-  <li>Application code is under <code class="highlighter-rouge">src</code></li>
-  <li><code class="highlighter-rouge">src/App.vue</code> and <code class="highlighter-rouge">src/main.js</code> are the application entry point</li>
-  <li><code class="highlighter-rouge">src/*.*</code> files are used to configure the application</li>
-  <li><code class="highlighter-rouge">src/components</code> is used for ‘reusable components’</li>
-  <li><code class="highlighter-rouge">src/services</code> are business services: auth, API clients, everything which is not related to Vue</li>
-  <li><code class="highlighter-rouge">src/store</code> is where the vuex store lives in. As defined in the Store section, we use modules in the store, so each module has its own folder like <code class="highlighter-rouge">src/store/moduleA</code> and <code class="highlighter-rouge">src/store/moduleB</code></li>
-  <li><code class="highlighter-rouge">src/views</code> is used for application ‘pages’. These views are the one which are used by the router. The views are using the components from <code class="highlighter-rouge">src/components</code></li>
+  <li>Application code is under <code class="language-plaintext highlighter-rouge">src</code></li>
+  <li><code class="language-plaintext highlighter-rouge">src/App.vue</code> and <code class="language-plaintext highlighter-rouge">src/main.js</code> are the application entry point</li>
+  <li><code class="language-plaintext highlighter-rouge">src/*.*</code> files are used to configure the application</li>
+  <li><code class="language-plaintext highlighter-rouge">src/components</code> is used for ‘reusable components’</li>
+  <li><code class="language-plaintext highlighter-rouge">src/services</code> are business services: auth, API clients, everything which is not related to Vue</li>
+  <li><code class="language-plaintext highlighter-rouge">src/store</code> is where the vuex store lives in. As defined in the Store section, we use modules in the store, so each module has its own folder like <code class="language-plaintext highlighter-rouge">src/store/moduleA</code> and <code class="language-plaintext highlighter-rouge">src/store/moduleB</code></li>
+  <li><code class="language-plaintext highlighter-rouge">src/views</code> is used for application ‘pages’. These views are the one which are used by the router. The views are using the components from <code class="language-plaintext highlighter-rouge">src/components</code></li>
 </ul>
 
 <h3 id="state-management">State Management</h3>
@@ -487,7 +489,7 @@ VUE_APP_OPENPAAS_URL=http://localhost:8080
 <p>There are tons of articles around the Web to understand why managing state the <a href="https://facebook.github.io/flux/">Flux-way</a> is easy and powerful.
 The choice was not hard, just because Vue is simple and provides just the right tools, <a href="https://vuex.vuejs.org/">Vuex</a> is used as state manager, and we rely on the <a href="https://vuex.vuejs.org/guide/modules.html">modular approach</a> so that we can scale our app.</p>
 
-<p>As shown in <code class="highlighter-rouge">src/store/</code>:</p>
+<p>As shown in <code class="language-plaintext highlighter-rouge">src/store/</code>:</p>
 
 <p><img src="/images/frontend/vuejs-store.png" alt="The Vue State" /></p>
 
@@ -497,22 +499,22 @@ The choice was not hard, just because Vue is simple and provides just the right 
 
 <ul>
   <li>We use name-based routing as defined in <a href="https://router.vuejs.org/guide/essentials/named-routes.html">https://router.vuejs.org/guide/essentials/named-routes.html</a></li>
-  <li>By using <code class="highlighter-rouge">vue-auth</code>, routes can be protected and so user will be redirected to the login page until he is authenticated. For example (from <code class="highlighter-rouge">src/router.js</code>):</li>
+  <li>By using <code class="language-plaintext highlighter-rouge">vue-auth</code>, routes can be protected and so user will be redirected to the login page until he is authenticated. For example (from <code class="language-plaintext highlighter-rouge">src/router.js</code>):</li>
 </ul>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">({</span>
   <span class="na">routes</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-      <span class="na">path</span><span class="p">:</span> <span class="s1">'/'</span><span class="p">,</span>
-      <span class="na">name</span><span class="p">:</span> <span class="s1">'Home'</span><span class="p">,</span>
+      <span class="na">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Home</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">component</span><span class="p">:</span> <span class="nx">Home</span><span class="p">,</span>
       <span class="na">meta</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">auth</span><span class="p">:</span> <span class="kc">true</span>
       <span class="p">}</span>
     <span class="p">},</span>
     <span class="p">{</span>
-      <span class="na">path</span><span class="p">:</span> <span class="s1">'/login'</span><span class="p">,</span>
-      <span class="na">name</span><span class="p">:</span> <span class="s1">'Login'</span><span class="p">,</span>
+      <span class="na">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Login</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">component</span><span class="p">:</span> <span class="nx">Login</span><span class="p">,</span>
       <span class="na">meta</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">auth</span><span class="p">:</span> <span class="kc">false</span>
@@ -522,7 +524,7 @@ The choice was not hard, just because Vue is simple and provides just the right 
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p>The user will be redirected to the <code class="highlighter-rouge">Login</code> page if he is not authenticated when opening the <code class="highlighter-rouge">Home</code> page.</p>
+<p>The user will be redirected to the <code class="language-plaintext highlighter-rouge">Login</code> page if he is not authenticated when opening the <code class="language-plaintext highlighter-rouge">Home</code> page.</p>
 
 <h3 id="authentication">Authentication</h3>
 
@@ -538,7 +540,7 @@ The choice was not hard, just because Vue is simple and provides just the right 
 
 <h5 id="jwt">JWT</h5>
 
-<p><a href="https://github.com/websanova/vue-auth">websanova@vue-auth</a> is used to implement JWT based authentication: When a user fills his login/password on the login page, a single <code class="highlighter-rouge">POST /api/jwt/generate</code> request is sent to the OpenPaaS backend, to get a JWT token for the given user. The token is then pushed in the application state and reused in all HTTP calls to OpenPaaS.</p>
+<p><a href="https://github.com/websanova/vue-auth">websanova@vue-auth</a> is used to implement JWT based authentication: When a user fills his login/password on the login page, a single <code class="language-plaintext highlighter-rouge">POST /api/jwt/generate</code> request is sent to the OpenPaaS backend, to get a JWT token for the given user. The token is then pushed in the application state and reused in all HTTP calls to OpenPaaS.</p>
 
 <h5 id="cookies">Cookies</h5>
 
@@ -562,21 +564,21 @@ The choice was not hard, just because Vue is simple and provides just the right 
 
 <h2 id="build">Build</h2>
 
-<p>Building the application can be done from npm <code class="highlighter-rouge">npm run build</code> or from Vue UI. It will generate the application in the <code class="highlighter-rouge">dist</code> folder.</p>
+<p>Building the application can be done from npm <code class="language-plaintext highlighter-rouge">npm run build</code> or from Vue UI. It will generate the application in the <code class="language-plaintext highlighter-rouge">dist</code> folder.</p>
 
 <h2 id="deploy">Deploy</h2>
 
 <p>Vue applications such as <a href="https://github.com/linagora/openpaas-videoconference-app">openpaas-videoconference-app</a> which need to be deployed in Docker environment must follow some rules:</p>
 
 <ol>
-  <li>The Docker image must contain the generated assets (from <code class="highlighter-rouge">npm run build</code>)</li>
-  <li>The application must not be configured at build time but at run time. This means that we can not use <code class="highlighter-rouge">vue-cli</code> resources like <code class="highlighter-rouge">.env</code> files in this case</li>
+  <li>The Docker image must contain the generated assets (from <code class="language-plaintext highlighter-rouge">npm run build</code>)</li>
+  <li>The application must not be configured at build time but at run time. This means that we can not use <code class="language-plaintext highlighter-rouge">vue-cli</code> resources like <code class="language-plaintext highlighter-rouge">.env</code> files in this case</li>
   <li>The Vue application assets must be served by an HTTP server like nginx and exposed correctly by the container</li>
 </ol>
 
 <h3 id="build--run">Build &amp; Run</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Multistage build
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Multistage build
 
 FROM node:10.13.0-alpine as build-stage
 WORKDIR /app
@@ -594,7 +596,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 </code></pre></div></div>
 
-<p>The important point here is the Docker volume used to put files into the container at runtime. The files in <code class="highlighter-rouge">/usr/share/nginx/html/env</code> folder is then used by the application to get all the variables needed to run. For a concrete example, check code in <a href="https://ci.linagora.com/linagora/lgs/openpaas/openpaas-videoconference-app/merge_requests/32">https://ci.linagora.com/linagora/lgs/openpaas/openpaas-videoconference-app/merge_requests/32</a>.</p>
+<p>The important point here is the Docker volume used to put files into the container at runtime. The files in <code class="language-plaintext highlighter-rouge">/usr/share/nginx/html/env</code> folder is then used by the application to get all the variables needed to run. For a concrete example, check code in <a href="https://ci.linagora.com/linagora/lgs/openpaas/openpaas-videoconference-app/merge_requests/32">https://ci.linagora.com/linagora/lgs/openpaas/openpaas-videoconference-app/merge_requests/32</a>.</p>
 
 <p>This is then possible to configure the running app from the Docker run command, or any compatible Docker environment like:</p>
 

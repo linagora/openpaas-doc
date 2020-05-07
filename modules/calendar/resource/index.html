@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -394,7 +396,7 @@ This chapter describes the steps used to implement resource support in the calen
 <p>Until a page is provided to create resources, they can be created from the resource REST API:</p>
 
 <p><strong>Request</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /linagora.esn.resource/api/resources
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /linagora.esn.resource/api/resources
 
 {
   name: 'Meeting Room 1'
@@ -404,7 +406,7 @@ This chapter describes the steps used to implement resource support in the calen
 </code></pre></div></div>
 
 <p><strong>Response</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP 201 - Created
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP 201 - Created
 
 {
     "__v": 0,
@@ -431,9 +433,9 @@ This chapter describes the steps used to implement resource support in the calen
 <p>The calendar module will then create the related resource calendar like this:</p>
 
 <ol>
-  <li>Once a resource is created, it is published on the <code class="highlighter-rouge">resource:created</code> local topic.</li>
-  <li>The calendar module listens to the <code class="highlighter-rouge">resource:created</code> topic. If the resource received has a valid type value (<code class="highlighter-rouge">calendar</code>), it creates a new calendar for the resource by calling the CalDAV server</li>
-  <li>Calendar is available in the CalDAV server under the <code class="highlighter-rouge">/resources/${_id}/calendars/events.json</code> path.</li>
+  <li>Once a resource is created, it is published on the <code class="language-plaintext highlighter-rouge">resource:created</code> local topic.</li>
+  <li>The calendar module listens to the <code class="language-plaintext highlighter-rouge">resource:created</code> topic. If the resource received has a valid type value (<code class="language-plaintext highlighter-rouge">calendar</code>), it creates a new calendar for the resource by calling the CalDAV server</li>
+  <li>Calendar is available in the CalDAV server under the <code class="language-plaintext highlighter-rouge">/resources/${_id}/calendars/events.json</code> path.</li>
 </ol>
 
 <h2 id="booking-a-resource-from-an-event">Booking a resource from an event</h2>
@@ -442,19 +444,19 @@ This chapter describes the steps used to implement resource support in the calen
 
 <p>On the ICS point of view, a resource is translated as an attendee with specific values:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ATTENDEE;CN="Meeting Room 1";CUTYPE=RESOURCE;PARTSTAT=ACCEPTED;MAILTO:id@openpaas-domain.org
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ATTENDEE;CN="Meeting Room 1";CUTYPE=RESOURCE;PARTSTAT=ACCEPTED;MAILTO:id@openpaas-domain.org
 </code></pre></div></div>
 
 <p>Where</p>
 
 <ul>
   <li><strong>CN</strong> (Common Name) is generated from the resource name</li>
-  <li><strong>CUTYPE</strong> (Calendar User Type) is set to <code class="highlighter-rouge">RESOURCE</code></li>
-  <li><strong>PARTSTAT</strong> is automatically set as <code class="highlighter-rouge">ACCEPTED</code></li>
+  <li><strong>CUTYPE</strong> (Calendar User Type) is set to <code class="language-plaintext highlighter-rouge">RESOURCE</code></li>
+  <li><strong>PARTSTAT</strong> is automatically set as <code class="language-plaintext highlighter-rouge">ACCEPTED</code></li>
   <li><strong>MAILTO</strong> is set to a generated email address with the resource._id as email local-part and the domain name the resource belongs to as email domain</li>
 </ul>
 
-<p>When the CalDAV backend will receive the event ICS, it will extract attendees, and for the ones with <code class="highlighter-rouge">CUTYPE=RESOURCE</code>, it will retrieve the resource calendar from the <code class="highlighter-rouge">mailto</code>local-part, then create the event.</p>
+<p>When the CalDAV backend will receive the event ICS, it will extract attendees, and for the ones with <code class="language-plaintext highlighter-rouge">CUTYPE=RESOURCE</code>, it will retrieve the resource calendar from the <code class="language-plaintext highlighter-rouge">mailto</code>local-part, then create the event.</p>
 
 			</article>
 		</section>

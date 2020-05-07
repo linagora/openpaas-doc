@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -395,15 +397,15 @@ SmartSLA adds the ability for clients to create support tickets / issues concern
 
 <h3 id="1-install-the-backend-component">1. install the backend component</h3>
 
-<p><code class="highlighter-rouge">$ESN_PATH</code> is your openpaas installation path</p>
+<p><code class="language-plaintext highlighter-rouge">$ESN_PATH</code> is your openpaas installation path</p>
 
-<p><code class="highlighter-rouge">$SMARTSLA_PATH</code> is your SmartSLA installation path</p>
+<p><code class="language-plaintext highlighter-rouge">$SMARTSLA_PATH</code> is your SmartSLA installation path</p>
 
 <ul>
   <li>clone and install the project</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://ci.linagora.com/linagora/lgs/smartsla/smartsla-backend.git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://ci.linagora.com/linagora/lgs/smartsla/smartsla-backend.git
 cd smartsla-backend
 npm i
 export SMARTSLA_PATH=$(pwd)
@@ -419,12 +421,12 @@ ln -s $SMARTSLA_PATH smartsla-backend
   <li>add it to the modules list:</li>
 </ul>
 
-<p>edit your <code class="highlighter-rouge">$ESN_PATH/config/default.json</code> and add <code class="highlighter-rouge">smartsla-backend</code> to the modules list</p>
+<p>edit your <code class="language-plaintext highlighter-rouge">$ESN_PATH/config/default.json</code> and add <code class="language-plaintext highlighter-rouge">smartsla-backend</code> to the modules list</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="err">...</span><span class="w">
-  </span><span class="s2">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="err">...</span><span class="p">,</span><span class="w">
   </span><span class="err">smartsla-backend</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="p">]</span><span class="err">,</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span></code></pre></div></div>
 
@@ -443,21 +445,21 @@ ln -s $SMARTSLA_PATH smartsla-backend
 npm i
 </code></pre></div></div>
 <ul>
-  <li>run the development server using <code class="highlighter-rouge">npm run server</code></li>
-  <li>now the application is up and running on <code class="highlighter-rouge">localhost:8081</code> ( if esn is already running )</li>
+  <li>run the development server using <code class="language-plaintext highlighter-rouge">npm run server</code></li>
+  <li>now the application is up and running on <code class="language-plaintext highlighter-rouge">localhost:8081</code> ( if esn is already running )</li>
 </ul>
 
-<p>to build the frontend for production just run <code class="highlighter-rouge">npm run build</code> and host the contents of the <code class="highlighter-rouge">dist</code> folder to in your web server ( exemple <code class="highlighter-rouge">nginx</code> )</p>
+<p>to build the frontend for production just run <code class="language-plaintext highlighter-rouge">npm run build</code> and host the contents of the <code class="language-plaintext highlighter-rouge">dist</code> folder to in your web server ( exemple <code class="language-plaintext highlighter-rouge">nginx</code> )</p>
 
 <h2 id="configuration">configuration:</h2>
 <h3 id="1-frontend">1. frontend</h3>
 
-<p>change the environment variables in <code class="highlighter-rouge">public/end/openpaas.js</code> to match your OpenPaaS instance:</p>
+<p>change the environment variables in <code class="language-plaintext highlighter-rouge">public/end/openpaas.js</code> to match your OpenPaaS instance:</p>
 <ul>
-  <li><code class="highlighter-rouge">VUE_APP_OPENPAAS_URL</code> is your openpaas instance url where the SmartSLA backend component is installed.</li>
-  <li><code class="highlighter-rouge">SSP_URL</code> is your SSP url to be used to reset user passwords.</li>
-  <li><code class="highlighter-rouge">LIMESURVEY_URL</code> is your limesurvey instance url.</li>
-  <li><code class="highlighter-rouge">SUPPORT_ACCOUNT</code> customize your SmartSLA information.</li>
+  <li><code class="language-plaintext highlighter-rouge">VUE_APP_OPENPAAS_URL</code> is your openpaas instance url where the SmartSLA backend component is installed.</li>
+  <li><code class="language-plaintext highlighter-rouge">SSP_URL</code> is your SSP url to be used to reset user passwords.</li>
+  <li><code class="language-plaintext highlighter-rouge">LIMESURVEY_URL</code> is your limesurvey instance url.</li>
+  <li><code class="language-plaintext highlighter-rouge">SUPPORT_ACCOUNT</code> customize your SmartSLA information.</li>
 </ul>
 
 <h3 id="2-backend">2. backend</h3>

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -384,7 +386,7 @@
 <h2 id="overview">Overview</h2>
 
 <p>OpenPaaS provides a contact collector feature which goal is to automatically create contacts from several sources without any user interaction.
-These collected contacts are then available in a specific user addressbook called <code class="highlighter-rouge">collected</code> and available in the contact module as other contacts.</p>
+These collected contacts are then available in a specific user addressbook called <code class="language-plaintext highlighter-rouge">collected</code> and available in the contact module as other contacts.</p>
 
 <p>Current collector sources are:</p>
 
@@ -409,11 +411,11 @@ These collected contacts are then available in a specific user addressbook calle
 
 <h2 id="api">API</h2>
 
-<p>The contact collector module listens to events on the <code class="highlighter-rouge">collector:email</code> exchanges on the OpenPaaS AMQP provider (RabbitMQ). Once a message is received, it is processed to add new emails as contacts in a specific CardDAV addressbook (<code class="highlighter-rouge">collected</code> address book) of the current user.</p>
+<p>The contact collector module listens to events on the <code class="language-plaintext highlighter-rouge">collector:email</code> exchanges on the OpenPaaS AMQP provider (RabbitMQ). Once a message is received, it is processed to add new emails as contacts in a specific CardDAV addressbook (<code class="language-plaintext highlighter-rouge">collected</code> address book) of the current user.</p>
 
 <h3 id="messages">Messages</h3>
 
-<p>Message content to be published on <code class="highlighter-rouge">collector:email</code> AMQP exchange must follow the following rules:</p>
+<p>Message content to be published on <code class="language-plaintext highlighter-rouge">collector:email</code> AMQP exchange must follow the following rules:</p>
 
 <ul>
   <li>Message payload is a JSON as String.</li>
@@ -423,21 +425,21 @@ These collected contacts are then available in a specific user addressbook calle
 
 <h4 id="message-with-userid">Message with userId</h4>
 
-<p>OpenPaaS user will be found using the given <code class="highlighter-rouge">userId</code>.</p>
+<p>OpenPaaS user will be found using the given <code class="language-plaintext highlighter-rouge">userId</code>.</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fca675a91c8d01a36ac26b"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user1@open-paas.org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"User2 &lt;user2@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"John Doe &lt;john.doe@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user3@open-paas.org"</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fca675a91c8d01a36ac26b"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user1@open-paas.org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"User2 &lt;user2@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"John Doe &lt;john.doe@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user3@open-paas.org"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
 <h4 id="message-with-useremail">Message with userEmail</h4>
 
-<p>OpenPaaS user will be found using the given <code class="highlighter-rouge">userEmail</code>.</p>
+<p>OpenPaaS user will be found using the given <code class="language-plaintext highlighter-rouge">userEmail</code>.</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"userEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@open-paas.org"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user1@open-paas.org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"User2 &lt;user2@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"John Doe &lt;john.doe@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user3@open-paas.org"</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"userEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@open-paas.org"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user1@open-paas.org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"User2 &lt;user2@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"John Doe &lt;john.doe@open-paas.org&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user3@open-paas.org"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 

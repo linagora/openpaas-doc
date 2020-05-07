@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -396,8 +398,8 @@ It is composed of several components:</p>
 
 <ul>
   <li>Clone <a href="https://ci.linagora.com/linagora/lgs/openpaas/docker-jitsi-meet">https://ci.linagora.com/linagora/lgs/openpaas/docker-jitsi-meet</a></li>
-  <li>Switch to <code class="highlighter-rouge">openpaas-dev</code> branch</li>
-  <li>Start jitsi: <code class="highlighter-rouge">docker-compose up -d</code></li>
+  <li>Switch to <code class="language-plaintext highlighter-rouge">openpaas-dev</code> branch</li>
+  <li>Start jitsi: <code class="language-plaintext highlighter-rouge">docker-compose up -d</code></li>
   <li>Jitsi is now up and running, you can join conference on <a href="http://localhost:8000">http://localhost:8000</a></li>
 </ul>
 
@@ -406,13 +408,13 @@ It is composed of several components:</p>
 <p>The videoconference application comes with 2 core modules:</p>
 
 <ol>
-  <li><code class="highlighter-rouge">linagora.esn.videoconference</code> provides core videoconference integration within OpenPaaS</li>
-  <li><code class="highlighter-rouge">linagora.esn.videoconference.calendar</code> provides calendar module integration</li>
+  <li><code class="language-plaintext highlighter-rouge">linagora.esn.videoconference</code> provides core videoconference integration within OpenPaaS</li>
+  <li><code class="language-plaintext highlighter-rouge">linagora.esn.videoconference.calendar</code> provides calendar module integration</li>
 </ol>
 
-<p>As any other modules, clone them from git and use <code class="highlighter-rouge">npm link</code> to install them in OpenPaaS:</p>
+<p>As any other modules, clone them from git and use <code class="language-plaintext highlighter-rouge">npm link</code> to install them in OpenPaaS:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.videoconference.git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.videoconference.git
 git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.videoconference.calendar.git
 
 cd linagora.esn.videoconference
@@ -429,7 +431,7 @@ npm link linagora.esn.videoconference
 npm link linagora.esn.videoconference.calendar
 </code></pre></div></div>
 
-<p>Finally, add <code class="highlighter-rouge">linagora.esn.videoconference</code> and <code class="highlighter-rouge">linagora.esn.videoconference.calendar</code> in the <code class="highlighter-rouge">modules</code> array of <code class="highlighter-rouge">$ESN_PATH/config/default.json</code>.</p>
+<p>Finally, add <code class="language-plaintext highlighter-rouge">linagora.esn.videoconference</code> and <code class="language-plaintext highlighter-rouge">linagora.esn.videoconference.calendar</code> in the <code class="language-plaintext highlighter-rouge">modules</code> array of <code class="language-plaintext highlighter-rouge">$ESN_PATH/config/default.json</code>.</p>
 
 <h3 id="3-install-the-videoconference-application">3. Install the videoconference application</h3>
 
@@ -444,7 +446,7 @@ npm link linagora.esn.videoconference.calendar
   <li>the Videoconference Web application.</li>
 </ol>
 
-<p>As an administrator, log in into OpenPaaS, go to the <code class="highlighter-rouge">administration/modules/videoconference</code>, then fill URLs:</p>
+<p>As an administrator, log in into OpenPaaS, go to the <code class="language-plaintext highlighter-rouge">administration/modules/videoconference</code>, then fill URLs:</p>
 
 <p><img src="/images/modules/videoconference/configuration.png" alt="Configure module header" /></p>
 

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -374,20 +376,20 @@
 
 <p>A collection of Vue components are available to build Vue applications. Components are available at <a href="https://github.com/linagora/vue-openpaas-components">https://github.com/linagora/vue-openpaas-components</a> and can be used as dependency in any other OpenPaaS Vue projects.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install @linagora/vue-openpaas-components
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install @linagora/vue-openpaas-components
 </code></pre></div></div>
 
 <p>Once installed, you can use them in your application by importing them:</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Vue</span> <span class="k">from</span> <span class="s1">'vue'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">OpenPaaSComponents</span> <span class="k">from</span> <span class="s1">'@linagora/vue-openpaas-components'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Vue</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">OpenPaaSComponents</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@linagora/vue-openpaas-components</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">OpenPaaSComponents</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Components are then available and can be used in any other component. For example, to display an OpenPaaS user avatar with its online status:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
   &lt;op-avatar size="48"&gt;
     &lt;!-- Slots are not yet available, will work on this later --&gt;
     &lt;op-status :status="user.status" slot="bottom-right"&gt;
@@ -397,37 +399,37 @@
 
 <h2 id="develop-new-components">Develop new components</h2>
 
-<p>To add new components, you will have to follow some conventions. For example, to create a <code class="highlighter-rouge">xyz</code> component:</p>
+<p>To add new components, you will have to follow some conventions. For example, to create a <code class="language-plaintext highlighter-rouge">xyz</code> component:</p>
 
 <ol>
-  <li>Always use the <code class="highlighter-rouge">op</code> prefix</li>
-  <li>Create a folder named <code class="highlighter-rouge">opXyz</code> under <code class="highlighter-rouge">src/components</code></li>
-  <li>Create your Vue component in a <code class="highlighter-rouge">src/components/opXyz/opXyz.vue</code> file</li>
+  <li>Always use the <code class="language-plaintext highlighter-rouge">op</code> prefix</li>
+  <li>Create a folder named <code class="language-plaintext highlighter-rouge">opXyz</code> under <code class="language-plaintext highlighter-rouge">src/components</code></li>
+  <li>Create your Vue component in a <code class="language-plaintext highlighter-rouge">src/components/opXyz/opXyz.vue</code> file</li>
   <li>
-    <p>In <code class="highlighter-rouge">src/components/opXyz/index.js</code> file, import your Vue component, then export it like</p>
+    <p>In <code class="language-plaintext highlighter-rouge">src/components/opXyz/index.js</code> file, import your Vue component, then export it like</p>
 
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="nx">opXyz</span> <span class="k">from</span> <span class="s1">'./opXyz.vue'</span><span class="p">;</span>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="nx">opXyz</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./opXyz.vue</span><span class="dl">'</span><span class="p">;</span>
 
  <span class="k">export</span> <span class="p">{</span> <span class="nx">opXyz</span> <span class="p">};</span>
  <span class="k">export</span> <span class="k">default</span> <span class="nx">opXyz</span><span class="p">;</span>
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>In <code class="highlighter-rouge">src/components/index.js</code>, export your component</p>
+    <p>In <code class="language-plaintext highlighter-rouge">src/components/index.js</code>, export your component</p>
 
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">export</span> <span class="o">*</span> <span class="k">from</span> <span class="s1">'./opXyz'</span><span class="p">;</span>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">export</span> <span class="o">*</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./opXyz</span><span class="dl">'</span><span class="p">;</span>
 </code></pre></div>    </div>
   </li>
-  <li>The component will be automatically registered as a global component and you will be able to use it like <code class="highlighter-rouge">&lt;op-xyz/&gt;</code></li>
+  <li>The component will be automatically registered as a global component and you will be able to use it like <code class="language-plaintext highlighter-rouge">&lt;op-xyz/&gt;</code></li>
 </ol>
 
 <h2 id="use-in-development-mode">Use in development mode</h2>
 
-<p>While you are developing new components, you will need to link the current project in your Vue project with <code class="highlighter-rouge">npm link</code>:</p>
+<p>While you are developing new components, you will need to link the current project in your Vue project with <code class="language-plaintext highlighter-rouge">npm link</code>:</p>
 
 <ol>
-  <li>In this project run <code class="highlighter-rouge">npm link</code></li>
-  <li>In your project run <code class="highlighter-rouge">npm link vue-openpaas-components</code></li>
+  <li>In this project run <code class="language-plaintext highlighter-rouge">npm link</code></li>
+  <li>In your project run <code class="language-plaintext highlighter-rouge">npm link vue-openpaas-components</code></li>
 </ol>
 
 			</article>

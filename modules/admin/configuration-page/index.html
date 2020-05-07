@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -383,25 +385,25 @@
 <h2 id="build-configuration-page">Build configuration page</h2>
 
 <h3 id="register-your-page">Register your page</h3>
-<p>First step, you need to define a router state for your page in <code class="highlighter-rouge">frontend\app\app.routes.js</code>.
+<p>First step, you need to define a router state for your page in <code class="language-plaintext highlighter-rouge">frontend\app\app.routes.js</code>.
 For example:</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'admin.domain.configpage'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s1">'/configpage'</span><span class="p">,</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="dl">'</span><span class="s1">admin.domain.configpage</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/configpage</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s1">'root@admin'</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;admin-configpage /&gt;'</span>
+      <span class="dl">'</span><span class="s1">root@admin</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">template</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;admin-configpage /&gt;</span><span class="dl">'</span>
       <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">});</span>
 </code></pre></div></div>
 <p>Note that, the template must match your corresponding angular component of the page.</p>
 
-<p>In order to have an entry of your configuration page displayed in module sidebar, add an object to <code class="highlighter-rouge">ADMIN_PAGES</code> constant in <code class="highlighter-rouge">frontend\app\app.constants.js</code>.
+<p>In order to have an entry of your configuration page displayed in module sidebar, add an object to <code class="language-plaintext highlighter-rouge">ADMIN_PAGES</code> constant in <code class="language-plaintext highlighter-rouge">frontend\app\app.constants.js</code>.
 For example:</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">{</span>
-    <span class="nl">id</span><span class="p">:</span> <span class="s1">'configpage'</span><span class="p">,</span>
-    <span class="nx">name</span><span class="p">:</span> <span class="s1">'Config Page'</span><span class="p">,</span>
-    <span class="nx">icon</span><span class="p">:</span> <span class="s1">'mdi-library-books'</span><span class="p">,</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">configpage</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Config Page</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">icon</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mdi-library-books</span><span class="dl">'</span><span class="p">,</span>
     <span class="nx">displayIn</span><span class="p">:</span> <span class="p">{</span>
       <span class="nl">domain</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
       <span class="nx">platform</span><span class="p">:</span> <span class="kc">true</span>
@@ -417,7 +419,7 @@ For example:</p>
 
 <h3 id="start-building-your-page">Start building your page</h3>
 
-<p>Create a directory for your own configuration in <code class="highlighter-rouge">frontend\app</code>. Here is where you put all front-end files for your page (component, controller, service, template,…).</p>
+<p>Create a directory for your own configuration in <code class="language-plaintext highlighter-rouge">frontend\app</code>. Here is where you put all front-end files for your page (component, controller, service, template,…).</p>
 
 <h3 id="template">Template</h3>
 
@@ -432,7 +434,7 @@ For example:</p>
 
 <h4 id="controller">Controller</h4>
 
-<p>In Admin module, there are already a set of helper services for retrieving and saving configurations. Check <code class="highlighter-rouge">frontend/app/common/config/admin-domain-config.service.js</code> for the source code.</p>
+<p>In Admin module, there are already a set of helper services for retrieving and saving configurations. Check <code class="language-plaintext highlighter-rouge">frontend/app/common/config/admin-domain-config.service.js</code> for the source code.</p>
 
 <p>To get your configuration from back-end side:</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">adminDomainConfigService</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">domainId</span><span class="p">,</span> <span class="nx">configName</span><span class="p">)</span>
@@ -442,7 +444,7 @@ For example:</p>
 </code></pre></div></div>
 <ul>
   <li>
-    <p><strong>domainId</strong> specifies the target domain of your configuration, use as <code class="highlighter-rouge">platform</code> for getting platform configuration.</p>
+    <p><strong>domainId</strong> specifies the target domain of your configuration, use as <code class="language-plaintext highlighter-rouge">platform</code> for getting platform configuration.</p>
   </li>
   <li>
     <p><strong>configName</strong> is the configuration you want to retrieve.</p>
@@ -451,14 +453,14 @@ For example:</p>
 
 <p>To save your configuration:</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">asyncAction</span><span class="p">({</span>
-    <span class="na">progressing</span><span class="p">:</span> <span class="s1">'Saving configuration...'</span><span class="p">,</span>
-    <span class="na">success</span><span class="p">:</span> <span class="s1">'Configuration saved'</span><span class="p">,</span>
-    <span class="na">failure</span><span class="p">:</span> <span class="s1">'Failed to save configuration'</span>
+    <span class="na">progressing</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Saving configuration...</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">success</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Configuration saved</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">failure</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Failed to save configuration</span><span class="dl">'</span>
   <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">adminDomainConfigService</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">domainId</span><span class="p">,</span> <span class="nx">configName</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
   <span class="p">});</span>
 </code></pre></div></div>
-<p>Since <code class="highlighter-rouge">adminDomainConfigService.set</code> returns a promise. You can use a helper function for this process called <code class="highlighter-rouge">asyncAction</code>, where it tracks the status of the promise and pop out a message upon the status, whether the <code class="highlighter-rouge">set</code> function failed, succeeded or still running.</p>
+<p>Since <code class="language-plaintext highlighter-rouge">adminDomainConfigService.set</code> returns a promise. You can use a helper function for this process called <code class="language-plaintext highlighter-rouge">asyncAction</code>, where it tracks the status of the promise and pop out a message upon the status, whether the <code class="language-plaintext highlighter-rouge">set</code> function failed, succeeded or still running.</p>
 
 			</article>
 		</section>

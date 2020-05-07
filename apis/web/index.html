@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -385,12 +387,12 @@
 
 <h3 id="pagination">Pagination</h3>
 
-<p>Request that return multiple items can be <em>paginated</em>. You can specify an offset with the <code class="highlighter-rouge">offset</code> query parameter and the number of elements can be defined by using the <code class="highlighter-rouge">limit</code> one.</p>
+<p>Request that return multiple items can be <em>paginated</em>. You can specify an offset with the <code class="language-plaintext highlighter-rouge">offset</code> query parameter and the number of elements can be defined by using the <code class="language-plaintext highlighter-rouge">limit</code> one.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl 'https://HOST:PORT/api/RESOURCE?limit=50&amp;offset=20'
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl 'https://HOST:PORT/api/RESOURCE?limit=50&amp;offset=20'
 </code></pre></div></div>
 
-<p>This request will return <code class="highlighter-rouge">50</code> items starting at the <code class="highlighter-rouge">20</code>th one i.e. from <code class="highlighter-rouge">20</code> to <code class="highlighter-rouge">69</code>.</p>
+<p>This request will return <code class="language-plaintext highlighter-rouge">50</code> items starting at the <code class="language-plaintext highlighter-rouge">20</code>th one i.e. from <code class="language-plaintext highlighter-rouge">20</code> to <code class="language-plaintext highlighter-rouge">69</code>.</p>
 
 			</article>
 		</section>

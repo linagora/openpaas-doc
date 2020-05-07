@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content="Jekyll v3.6.2">
+		<meta name="generator" content="Jekyll v3.8.5">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/modules/bootstrap.css">
@@ -203,6 +203,8 @@
 								
 									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
 								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
 							</ul>
 						</li>
 					
@@ -396,21 +398,21 @@
 
 <h3 id="variables">Variables</h3>
 
-<p>Switching between authentication methods is possible with the help of the <code class="highlighter-rouge">VUE_APP_AUTH</code> environment variable. Possible values are <code class="highlighter-rouge">basic</code> and <code class="highlighter-rouge">oidc</code>(defaults to <code class="highlighter-rouge">basic</code>).</p>
+<p>Switching between authentication methods is possible with the help of the <code class="language-plaintext highlighter-rouge">VUE_APP_AUTH</code> environment variable. Possible values are <code class="language-plaintext highlighter-rouge">basic</code> and <code class="language-plaintext highlighter-rouge">oidc</code>(defaults to <code class="language-plaintext highlighter-rouge">basic</code>).</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">VUE_APP_AUTH</span><span class="o">=</span>oidc npm run serve
 </code></pre></div></div>
 
 <h3 id="vue-router">Vue router</h3>
 
-<p>Routes are set to public/private using the <code class="highlighter-rouge">auth</code> field in <a href="https://router.vuejs.org/guide/advanced/meta.html">Route Meta Fields</a>:</p>
+<p>Routes are set to public/private using the <code class="language-plaintext highlighter-rouge">auth</code> field in <a href="https://router.vuejs.org/guide/advanced/meta.html">Route Meta Fields</a>:</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">({</span>
   <span class="na">base</span><span class="p">:</span> <span class="nx">ApplicationSettings</span><span class="p">.</span><span class="nx">BASE_URL</span><span class="p">,</span>
-  <span class="na">mode</span><span class="p">:</span> <span class="s2">"history"</span><span class="p">,</span>
+  <span class="na">mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">history</span><span class="dl">"</span><span class="p">,</span>
   <span class="na">routes</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-      <span class="na">path</span><span class="p">:</span> <span class="s2">"/"</span><span class="p">,</span>
+      <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span>
       <span class="na">name</span><span class="p">:</span> <span class="nx">routeNames</span><span class="p">.</span><span class="nx">HOME</span><span class="p">,</span>
       <span class="na">component</span><span class="p">:</span> <span class="nx">Home</span><span class="p">,</span>
       <span class="na">meta</span><span class="p">:</span> <span class="p">{</span>
@@ -442,40 +444,40 @@
 
 <h3 id="configuration-1">Configuration</h3>
 
-<p>In order to use OIDC, the application needs to be configured to reach the OIDC server. This configuration has to be set in the <code class="highlighter-rouge">src/public/env/openpaas.js</code> file.</p>
+<p>In order to use OIDC, the application needs to be configured to reach the OIDC server. This configuration has to be set in the <code class="language-plaintext highlighter-rouge">src/public/env/openpaas.js</code> file.</p>
 
-<p>The <code class="highlighter-rouge">oidc</code> data is required in this mode:</p>
+<p>The <code class="language-plaintext highlighter-rouge">oidc</code> data is required in this mode:</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">openpaas</span> <span class="o">=</span> <span class="p">{</span>
   <span class="c1">// Define the authentication method to use: "oidc" or "basic" (defaults to "basic" when not defined)</span>
-  <span class="na">VUE_APP_AUTH</span><span class="p">:</span> <span class="s2">"oidc"</span><span class="p">,</span>
+  <span class="na">VUE_APP_AUTH</span><span class="p">:</span> <span class="dl">"</span><span class="s2">oidc</span><span class="dl">"</span><span class="p">,</span>
   <span class="c1">//</span>
   <span class="c1">// OpenID Connect configuration</span>
   <span class="na">oidc</span><span class="p">:</span> <span class="p">{</span>
     <span class="c1">// `authority` is the OpenID Connect Authority: lemonLDAP, keycloak, etc...</span>
-    <span class="na">authority</span><span class="p">:</span> <span class="s2">"http://localhost:8888/auth/realms/master"</span><span class="p">,</span>
+    <span class="na">authority</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http://localhost:8888/auth/realms/master</span><span class="dl">"</span><span class="p">,</span>
     <span class="c1">// `clientId` is defined on the authority and needs to match the local one.</span>
     <span class="c1">// A good practice is to have a generated string</span>
-    <span class="na">clientId</span><span class="p">:</span> <span class="s2">"openpaas-seed"</span><span class="p">,</span>
+    <span class="na">clientId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">openpaas-seed</span><span class="dl">"</span><span class="p">,</span>
     <span class="c1">// `redirectUri` is the application URL the user agent is redirected after login on the authority server</span>
     <span class="c1">// "/oidc-callback" is the local Vue application route handling the redirect</span>
     <span class="c1">// This redirect URI must be declared as valid redirect URI on the authority server client definition</span>
-    <span class="na">redirectUri</span><span class="p">:</span> <span class="s2">"http://localhost:8081/oidc-callback"</span><span class="p">,</span>
+    <span class="na">redirectUri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http://localhost:8081/oidc-callback</span><span class="dl">"</span><span class="p">,</span>
     <span class="c1">// `postLogoutUri` is the application URL the user agent is redirected after logout on the authority server</span>
     <span class="c1">// "/login" is the local Vue application route handling the redirect</span>
     <span class="c1">// This redirect URI must be declared as valid redirect URI on the authority server client definition</span>
-    <span class="na">postLogoutRedirectUri</span><span class="p">:</span> <span class="s2">"http://localhost:8081/login"</span><span class="p">,</span>
+    <span class="na">postLogoutRedirectUri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http://localhost:8081/login</span><span class="dl">"</span><span class="p">,</span>
     <span class="c1">// `responseType` is what is response types expected by the client</span>
-    <span class="na">responseType</span><span class="p">:</span> <span class="s2">"id_token token"</span><span class="p">,</span>
+    <span class="na">responseType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">id_token token</span><span class="dl">"</span><span class="p">,</span>
     <span class="c1">// `scope` are used by the application during authentication to authorize access to a user's details</span>
-    <span class="na">scope</span><span class="p">:</span> <span class="s2">"openid email profile"</span>
+    <span class="na">scope</span><span class="p">:</span> <span class="dl">"</span><span class="s2">openid email profile</span><span class="dl">"</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <ol>
-  <li>The configuration above assumes that the application is available on <code class="highlighter-rouge">http://localhost:8081</code>. This value <strong>has to be updated</strong> based on your application URL</li>
-  <li>The <code class="highlighter-rouge">authority</code> URL has to be updated based on your OIDC server settings</li>
+  <li>The configuration above assumes that the application is available on <code class="language-plaintext highlighter-rouge">http://localhost:8081</code>. This value <strong>has to be updated</strong> based on your application URL</li>
+  <li>The <code class="language-plaintext highlighter-rouge">authority</code> URL has to be updated based on your OIDC server settings</li>
 </ol>
 
 <p>More details on how to setup OIDC on the OpenPaaS Platform are available in the <a href="/apis/auth/oidc">OIDC page</a>.</p>
