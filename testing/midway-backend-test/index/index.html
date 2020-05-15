@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.8.5">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title> Midway Backend Test |  OpenPaaS documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/getting-started/docker/">Getting started</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/getting-started/docker/">Get started with Docker</a></li>
+								
+									<li class="nav-item "><a href="/getting-started/linux/">Get started with Linux (deprecated)</a></li>
+								
+									<li class="nav-item "><a href="/getting-started/supported-platforms/">Supported platforms</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/oidc/">OpenID Connect</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/james/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/james/">James</a></li>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/frontend/vue/">Frontend</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/frontend/vue/">Vue.js</a></li>
+								
+									<li class="nav-item "><a href="/frontend/vue-auth/">Vue Authentication</a></li>
+								
+									<li class="nav-item "><a href="/frontend/vue-components/">Vue Components</a></li>
+								
+									<li class="nav-item "><a href="/frontend/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/provisioning/">Provisioning</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+									<li class="nav-item "><a href="/core/people/">People API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/shared/">Shared Address Books</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/domain-address-book/">Domain address book</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/domain-members-address-book/">Domain members address book</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/group/index/">OpenPaaS Modules - Group</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/group/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/group/rest-api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/james/index/">OpenPaaS Modules - James</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/james/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/james/rest-api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/jobqueue/index/">OpenPaaS Modules - Job Queue</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/jobqueue/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/smartsla/index/">OpenPaaS Modules - SmartSLA</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/smartsla/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/unifiedinbox/index/">OpenPaaS Modules - Unified Inbox</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/unifiedinbox/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/unifiedinbox/identity/">Identity</a></li>
+								
+									<li class="nav-item "><a href="/modules/unifiedinbox/rest-api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/videoconference/index/">OpenPaaS Modules - VideoConference</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/videoconference/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/videoconference/screensharing/">Screensharing</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/testing/midway-backend-test/index/">OpenPaaS Test Automation</a>
+							<ul>
+								
+									<li class="nav-item current"><a href="/testing/midway-backend-test/index/">Midway Backend Test</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://forum.open-paas.org/">Forum</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>OpenPaaS Test Automation</h2>
+				<div class="page-title">
+					<h3>Midway Backend Test</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/testing/midway-backend-test/index.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 id="table-of-contents">Table of contents</h2>
+
+<ul class="no_toc" id="markdown-toc">
+  <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of contents</a></li>
+  <li><a href="#i-what-is-it" id="markdown-toc-i-what-is-it">I. What is it</a></li>
+  <li><a href="#ii-why-do-we-need-midway-backend-test" id="markdown-toc-ii-why-do-we-need-midway-backend-test">II. Why do we need midway backend test</a></li>
+  <li><a href="#iii-how-to-work-with-midway-backend-test" id="markdown-toc-iii-how-to-work-with-midway-backend-test">III. How to work with midway backend test</a>    <ul>
+      <li><a href="#how-to-run-tests" id="markdown-toc-how-to-run-tests">How to run tests</a>        <ul>
+          <li><a href="#run-all-tests" id="markdown-toc-run-all-tests">Run all tests</a>            <ul>
+              <li><a href="#1-for-core-esn" id="markdown-toc-1-for-core-esn">1. For core ESN</a></li>
+              <li><a href="#2-for-awesome-modules-inside-of-core-esn-project" id="markdown-toc-2-for-awesome-modules-inside-of-core-esn-project">2. For awesome modules inside of core ESN project</a></li>
+              <li><a href="#3-for-external-awesome-modules-code-is-not-included-in-the-core-esn-project" id="markdown-toc-3-for-external-awesome-modules-code-is-not-included-in-the-core-esn-project">3. For external awesome modules (code is not included in the core ESN project)</a></li>
+            </ul>
+          </li>
+          <li><a href="#run-a-single-test" id="markdown-toc-run-a-single-test">Run a single test</a></li>
+        </ul>
+      </li>
+      <li><a href="#how-to-write-a-new-test" id="markdown-toc-how-to-write-a-new-test">How to write a new test</a></li>
+      <li><a href="#notes" id="markdown-toc-notes">Notes</a>        <ul>
+          <li><a href="#1-out-of-heap-memory-issue" id="markdown-toc-1-out-of-heap-memory-issue">1. Out of heap memory issue</a></li>
+          <li><a href="#2-how-module-midway-tests-load-mongodb-configuration" id="markdown-toc-2-how-module-midway-tests-load-mongodb-configuration">2. How module midway tests load MongoDB configuration</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="i-what-is-it">I. What is it</h2>
+
+<p>Midway backend test is a type of test automation that we are using in our OpenPaaS development.</p>
+
+<p>Other test automation types are:</p>
+
+<ul>
+  <li>Unit frontend test</li>
+  <li>Unit backend test</li>
+  <li>Unit storage test</li>
+</ul>
+
+<p>Midway backend test is created by the developer that worked with a specific feature or API. He needs to make sure that the midway backend test covers as many cases of his API as possible.</p>
+
+<p>It helps reduce QA testing time and gives the developer quick feedback about his code.</p>
+
+<p>We should prioritize write midway backend tests for our APIs.</p>
+
+<h2 id="ii-why-do-we-need-midway-backend-test">II. Why do we need midway backend test</h2>
+
+<p>To make sure that our APIs are working properly with external services such as MongoDB, Redis, RabbitMQ, and ElasticSearch.</p>
+
+<p>This helps us to be confident that nothing breaks after refactoring our code and it integrates tightly with our CI/CD platform Gitlab, which again, helps us to deploy products faster and safer.</p>
+
+<h2 id="iii-how-to-work-with-midway-backend-test">III. How to work with midway backend test</h2>
+
+<h3 id="how-to-run-tests">How to run tests</h3>
+
+<p>OpenPaaS uses Mocha, Chai, and Supertest behind the scenes to run/execute/perform the midway backend tests.</p>
+
+<h4 id="run-all-tests">Run all tests</h4>
+
+<p>You can check the detail of each command in file <code class="language-plaintext highlighter-rouge">Gruntfile.js</code> located in the root folder of project core ESN</p>
+
+<h5 id="1-for-core-esn">1. For core ESN</h5>
+
+<p>You need to run this command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt docker-test-midway-backend
+</code></pre></div></div>
+
+<p>This command will do 3 things:</p>
+
+<ul>
+  <li>Set up environment and necessary service containers (MongoDB, Redis, RabbitMQ, and ElasticSearch) which is needed when running the tests.</li>
+  <li>Run the actual midway backend tests.</li>
+  <li>Kill all service containers and clean the environment after finishing tests.</li>
+</ul>
+
+<h5 id="2-for-awesome-modules-inside-of-core-esn-project">2. For awesome modules inside of core ESN project</h5>
+
+<p>You need to run this command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt docker-test-modules-midway
+</code></pre></div></div>
+
+<p>Similar to the test in core ESN, this command will do 3 things:</p>
+
+<ul>
+  <li>Set up environment and necessary service containers (MongoDB, Redis, RabbitMQ, and ElasticSearch) which is needed when running the tests of awesome modules.</li>
+  <li>Run the actual module midway backend tests.</li>
+  <li>Kill all service containers and clean the environment after finishing tests.</li>
+</ul>
+
+<h5 id="3-for-external-awesome-modules-code-is-not-included-in-the-core-esn-project">3. For external awesome modules (code is not included in the core ESN project)</h5>
+
+<p>In external awesome modules, there is no Grunt task for setting up the environment or creating service containers. So you need to start these services (MongoDB, Redis, RabbitMQ, and ElasticSearch) by yourself before running the module midway backend tests.</p>
+
+<p>You can run these 4 commands manually:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">--name</span> esn-test-mongo <span class="nt">-p</span> 27017:27017 mongo:3.4.13
+
+docker run <span class="nt">-d</span> <span class="nt">--name</span> esn-test-redis <span class="nt">-p</span> 6379:6379 redis:latest
+
+docker run <span class="nt">-d</span> <span class="nt">--name</span> esn-test-rabbit <span class="nt">-p</span> 5672:5672 rabbitmq:3.6.5-management
+
+docker run <span class="nt">-d</span> <span class="nt">--name</span> esn-elas <span class="nt">-p</span> 9200:9200 <span class="nt">-e</span> <span class="s2">"discovery.type=single-node"</span> docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+</code></pre></div></div>
+
+<p>Or you can create a shell file, for example: <code class="language-plaintext highlighter-rouge">setup-test-services.sh</code>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+docker run <span class="nt">-d</span> <span class="nt">--name</span> esn-test-mongo <span class="nt">-p</span> 27017:27017 mongo:3.4.13
+docker run <span class="nt">-d</span> <span class="nt">--name</span> esn-test-redis <span class="nt">-p</span> 6379:6379 redis:latest
+docker run <span class="nt">-d</span> <span class="nt">--name</span> esn-test-rabbit <span class="nt">-p</span> 5672:5672 rabbitmq:3.6.5-management
+docker run <span class="nt">-d</span> <span class="nt">--name</span> esn-elas <span class="nt">-p</span> 9200:9200 <span class="nt">-e</span> <span class="s2">"discovery.type=single-node"</span> docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+</code></pre></div></div>
+
+<p>And run:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x setup-test-services.sh
+./setup-test-services.sh
+</code></pre></div></div>
+
+<p>Using this way, you don’t have to remember each command on the next time you want to start test services.</p>
+
+<p>After that, you need to run this command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt test-midway-backend
+</code></pre></div></div>
+
+<p>This command will do only 1 thing:</p>
+
+<ul>
+  <li>Run the actual midway backend tests of this external module.</li>
+</ul>
+
+<h4 id="run-a-single-test">Run a single test</h4>
+
+<p>Running a single test is very similar to running all tests above, you just need to find the test that you want to run, add <code class="language-plaintext highlighter-rouge">.only</code> and run the corresponding command.</p>
+
+<p>For example:</p>
+
+<p>Update the test that you want to run like this:</p>
+
+<p><img src="https://openpaas.github.io/openpaas-doc/images/testing/midway-backend-test/run-one-test.png" alt="Run one test only" /></p>
+
+<p>Then run:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt docker-test-midway-backend
+</code></pre></div></div>
+
+<p>You can find more information about <code class="language-plaintext highlighter-rouge">.only</code> here: <a href="https://mochajs.org/#exclusive-tests">https://mochajs.org/#exclusive-tests</a></p>
+
+<h3 id="how-to-write-a-new-test">How to write a new test</h3>
+
+<p>A complete guide to write a new midway backend test would be too long for this document, so we will write another detailed document to do it.</p>
+
+<p>In this document, we will just have a glimpse over what needs to be done:</p>
+
+<ul>
+  <li>Check this file first <code class="language-plaintext highlighter-rouge">test/midway-backend/all.js</code>. This file configures everything required to run the tests.</li>
+  <li>Then you need to write your test cases in the corresponding folders. For example <code class="language-plaintext highlighter-rouge">api</code> or <code class="language-plaintext highlighter-rouge">middleware</code>.</li>
+  <li>Normal test cases usually start with a <code class="language-plaintext highlighter-rouge">describe</code> block, and inside of this block, we have some <code class="language-plaintext highlighter-rouge">it</code> blocks.</li>
+</ul>
+
+<p>For example,</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">GET /api/activitystreams/:uuid</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+        <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">should send back 401 when not logged in</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">helpers</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">requireLogin</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="dl">'</span><span class="s1">get</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/api/activitystreams/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">activitystreamId</span><span class="p">,</span> <span class="nx">done</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">should send back 404 when the activity stream does not exist</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">incorrectUUID</span> <span class="o">=</span> <span class="nx">uuidV4</span><span class="p">();</span>
+
+          <span class="nx">helpers</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">loginAsUser</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">loggedInAsUser</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">expect</span><span class="p">(</span><span class="nx">err</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">not</span><span class="p">.</span><span class="nx">exist</span><span class="p">;</span>
+            <span class="nx">loggedInAsUser</span><span class="p">(</span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/activitystreams/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">incorrectUUID</span><span class="p">))</span>
+              <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="nx">done</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+
+        <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">should send back 400 when limit parameter is incorrect</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">helpers</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">loginAsUser</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">loggedInAsUser</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">expect</span><span class="p">(</span><span class="nx">err</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">not</span><span class="p">.</span><span class="nx">exist</span><span class="p">;</span>
+            <span class="nx">loggedInAsUser</span><span class="p">(</span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/activitystreams/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">activitystreamId</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">?limit=-12</span><span class="dl">'</span><span class="p">))</span>
+              <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="nx">done</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+
+        <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>You can find more information on Mocha website: <a href="https://mochajs.org/#getting-started">https://mochajs.org/#getting-started</a> or check some test cases inside of <code class="language-plaintext highlighter-rouge">test/midway-backend</code> folder of core ESN project or any other external awesome modules.</p>
+
+<h3 id="notes">Notes</h3>
+
+<p>This section contains some of the useful notes that newcomers might have when they start working with ESN.</p>
+
+<p>We will update this section regularly.</p>
+
+<h4 id="1-out-of-heap-memory-issue">1. Out of heap memory issue</h4>
+
+<p>Sometimes when running all the midway backend tests of core ESN project, you might see that your computer is not responding and you have to restart it.</p>
+
+<p>The reason is: Mocha loaded all the tests into your computer’s memory and run all at once, which will eat all RAM of your computer.</p>
+
+<p>To prevent Mocha from doing this, you need to add <code class="language-plaintext highlighter-rouge">--chunk=1</code> after every command that runs a large number of tests.</p>
+
+<p>For example:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt docker-test-midway-backend <span class="nt">--chunk</span><span class="o">=</span>1
+</code></pre></div></div>
+
+<p><strong>Note</strong>: Remember, for “Run a single test” case above, do NOT add <code class="language-plaintext highlighter-rouge">--chunk=1</code> at the end of the command. Doing so will cause it to run all the tests.</p>
+
+<h4 id="2-how-module-midway-tests-load-mongodb-configuration">2. How module midway tests load MongoDB configuration</h4>
+
+<p>In an external awesome module (for example, <code class="language-plaintext highlighter-rouge">linagora.esn.chat</code>), if you check the file <code class="language-plaintext highlighter-rouge">test/midway-backend/all.js</code>, you are going to see this line:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_CONFIG</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">test/config</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Now come back to the core ESN project, check the file <code class="language-plaintext highlighter-rouge">backend/core/config/index.js</code>, you will see something like this:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">'</span><span class="s1">use strict</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// We can define the config path from the NODE_CONFIG</span>
+<span class="c1">// This may be useful for tests</span>
+<span class="c1">// Note that it loks that konphyg does not handle undefined and null so we have to be it here this way</span>
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_CONFIG</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">config</span> <span class="o">||</span> <span class="nx">config</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">config</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">||</span> <span class="nx">config</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">||</span> <span class="nx">config</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">null</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">config</span> <span class="o">=</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/../../../config</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">exports</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">konphyg</span><span class="dl">'</span><span class="p">)(</span><span class="nx">config</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This environment variable <code class="language-plaintext highlighter-rouge">process.env.NODE_CONFIG</code> is what decides where the config will be loaded for the midway backend tests of an external awesome module.</p>
+
+<p>And in this case, it loads the config inside of the folder <code class="language-plaintext highlighter-rouge">test/config</code> of module <code class="language-plaintext highlighter-rouge">linagora.esn.chat</code></p>
+
+<p>Now, let’s check this file <code class="language-plaintext highlighter-rouge">backend/core/db/mongo/index.js</code>, you will see this function:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getConnectionStringAndOptions</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">dbConfig</span><span class="p">;</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">dbConfig</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="dl">'</span><span class="s1">db</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">dbConfig</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Note: erasing dbConfig.connectionString here is a dirty hack to avoid presenting the setup wizard to the user.</span>
+  <span class="c1">// See https://ci.linagora.com/linagora/lgs/openpaas/esn/issues/2412</span>
+  <span class="nx">dbConfig</span><span class="p">.</span><span class="nx">connectionString</span> <span class="o">=</span> <span class="nx">dbConfig</span><span class="p">.</span><span class="nx">connectionString</span> <span class="o">||</span> <span class="nx">getConnectionStringFromEnvOrDefaults</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">connectionOptions</span> <span class="o">=</span> <span class="nx">dbConfig</span><span class="p">.</span><span class="nx">connectionOptions</span> <span class="o">||</span> <span class="nx">getDefaultOptions</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="nx">dbConfig</span><span class="p">.</span><span class="nx">connectionString</span><span class="p">,</span>
+    <span class="na">options</span><span class="p">:</span> <span class="nx">connectionOptions</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As you can see, this line <code class="language-plaintext highlighter-rouge">dbConfig = config('db');</code> is what will load the config from <code class="language-plaintext highlighter-rouge">db.json</code> inside <code class="language-plaintext highlighter-rouge">test/config</code> folder, and then send it to <code class="language-plaintext highlighter-rouge">mongoose.connect()</code> function.</p>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>
