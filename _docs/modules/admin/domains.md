@@ -17,7 +17,7 @@ Only **platform admin** can use this feature.
 
 ## Creating a domain
 
-Creating a domain also creates its first administrator and corresponding domain in James server.
+Creating a [domain](https://hosting.review/web-hosting-glossary/#26) also creates its first administrator and corresponding domain in James server.
 Here are the steps to create a domain:
 
 1. Click floating adding button to show "New domain" form
