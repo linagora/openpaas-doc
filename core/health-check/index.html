@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v3.8.5">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/modules/swagger-ui.min.css">
+		<link rel="stylesheet" href="/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/manifest.json">
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<meta name="msapplication-config" content="/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="/js/modules/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+		<script src="/js/modules/viewer.min.js"></script>
+		<script src="/js/modules/swagger-ui/angular-swagger-ui.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger-external-references.min.js"></script>
+		<script src="/js/modules/swagger-ui/swagger1-to-swagger2-converter.min.js"></script>
+		<script src="/js/swagger-authentication.js"></script>
+		<script src="/js/app.js"></script>
+
+		<title> Health Check |  OpenPaaS documentation</title>
+		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
+
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/white-logo.png" width="40" height="40" alt="OpenPaaS Documentation logo"></a>
+				OpenPaaS Documentation
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav class="full-navigation">
+				<ul>
+					<li class="nav-item top-level ">
+						
+						<a href="/">Welcome</a>
+					</li>
+				</ul>
+
+				<ul>
+					
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/getting-started/docker/">Getting started</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/getting-started/docker/">Get started with Docker</a></li>
+								
+									<li class="nav-item "><a href="/getting-started/linux/">Get started with Linux (deprecated)</a></li>
+								
+									<li class="nav-item "><a href="/getting-started/supported-platforms/">Supported platforms</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/web/">APIs</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/web/">Web API</a></li>
+								
+									<li class="nav-item "><a href="/apis/swagger/">Swagger</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/apis/auth/index/">APIs - Auth</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/apis/auth/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/basic/">Basic Access</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/cookies/">Cookies</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/lemonldap/">SSO - LemonLDAP</a></li>
+								
+									<li class="nav-item "><a href="/apis/auth/oidc/">OpenID Connect</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/dev/debug/">Dev</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/dev/debug/">Debug</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/devops/james/">Devops</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/devops/james/">James</a></li>
+								
+									<li class="nav-item "><a href="/devops/kibana/">Kibana</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/frontend/vue/">Frontend</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/frontend/vue/">Vue.js</a></li>
+								
+									<li class="nav-item "><a href="/frontend/vue-auth/">Vue Authentication</a></li>
+								
+									<li class="nav-item "><a href="/frontend/vue-components/">Vue Components</a></li>
+								
+									<li class="nav-item "><a href="/frontend/i18n/">I18n</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level current">
+							
+							<a href="/core/configuration/">OpenPaaS Core</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/core/configuration/">Configuration</a></li>
+								
+									<li class="nav-item "><a href="/core/pubsub/">Pubsub</a></li>
+								
+									<li class="nav-item "><a href="/core/eventsourcing/">EventSourcing</a></li>
+								
+									<li class="nav-item "><a href="/core/provisioning/">Provisioning</a></li>
+								
+									<li class="nav-item "><a href="/core/search/">Search</a></li>
+								
+									<li class="nav-item "><a href="/core/i18n/">I18n</a></li>
+								
+									<li class="nav-item "><a href="/core/people/">People API</a></li>
+								
+									<li class="nav-item current"><a href="/core/health-check/">Health Check</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/howto/index/">OpenPaaS Modules</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/howto/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/quickstart/">Quickstart</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/deep-dive/">Deep dive</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/install/">Install</a></li>
+								
+									<li class="nav-item "><a href="/modules/howto/electron-compatibility/">How to be Electron compatible</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/admin/index/">OpenPaaS Modules - Admin</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/admin/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/domains/">Domains</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/configuration-page/">Add a configuration page</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/rest-api/">REST API</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/elasticsearch/">Elasticsearch</a></li>
+								
+									<li class="nav-item "><a href="/modules/admin/technical-users/">Technical users</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/calendar/index/">OpenPaaS Modules - Calendar</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/calendar/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/shared/">Shared Calendars</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/resource/">Calendar Resources</a></li>
+								
+									<li class="nav-item "><a href="/modules/calendar/api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/community/index/">OpenPaaS Modules - Community</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/community/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/contact/index/">OpenPaaS Modules - Contact</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/contact/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/collected/">Collected contacts</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/shared/">Shared Address Books</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/domain-address-book/">Domain address book</a></li>
+								
+									<li class="nav-item "><a href="/modules/contact/domain-members-address-book/">Domain members address book</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/group/index/">OpenPaaS Modules - Group</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/group/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/group/rest-api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/james/index/">OpenPaaS Modules - James</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/james/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/james/rest-api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/jobqueue/index/">OpenPaaS Modules - Job Queue</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/jobqueue/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/smartsla/index/">OpenPaaS Modules - SmartSLA</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/smartsla/index/">Overview</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/unifiedinbox/index/">OpenPaaS Modules - Unified Inbox</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/unifiedinbox/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/unifiedinbox/identity/">Identity</a></li>
+								
+									<li class="nav-item "><a href="/modules/unifiedinbox/rest-api/">REST API</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/modules/videoconference/index/">OpenPaaS Modules - VideoConference</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/modules/videoconference/index/">Overview</a></li>
+								
+									<li class="nav-item "><a href="/modules/videoconference/screensharing/">Screensharing</a></li>
+								
+							</ul>
+						</li>
+					
+						<li class="nav-item top-level ">
+							
+							<a href="/testing/midway-backend-test/index/">OpenPaaS Test Automation</a>
+							<ul>
+								
+									<li class="nav-item "><a href="/testing/midway-backend-test/index/">Midway Backend Test</a></li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/openpaas-esn/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://forum.open-paas.org/">Forum</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://open-paas.org/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>OpenPaaS Core</h2>
+				<div class="page-title">
+					<h3>Health Check</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/core/health-check.md" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#rest-api" id="markdown-toc-rest-api">REST API</a>    <ul>
+      <li><a href="#get-apihealthcheck" id="markdown-toc-get-apihealthcheck">GET /api/healthcheck:</a>        <ul>
+          <li><a href="#authentication" id="markdown-toc-authentication">Authentication:</a></li>
+          <li><a href="#response" id="markdown-toc-response">Response</a>            <ul>
+              <li><a href="#schema" id="markdown-toc-schema">Schema</a></li>
+              <li><a href="#status" id="markdown-toc-status">Status</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#get-apihealthcheckname" id="markdown-toc-get-apihealthcheckname">GET /api/healthcheck/:name:</a>        <ul>
+          <li><a href="#authentication-1" id="markdown-toc-authentication-1">Authentication:</a></li>
+          <li><a href="#request" id="markdown-toc-request">Request</a></li>
+          <li><a href="#response-1" id="markdown-toc-response-1">Response</a>            <ul>
+              <li><a href="#schema-1" id="markdown-toc-schema-1">Schema</a></li>
+              <li><a href="#status-1" id="markdown-toc-status-1">Status</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#get-apihealthcheckservices" id="markdown-toc-get-apihealthcheckservices">GET /api/healthcheck/services:</a>        <ul>
+          <li><a href="#authentication-2" id="markdown-toc-authentication-2">Authentication:</a></li>
+          <li><a href="#response-2" id="markdown-toc-response-2">Response</a>            <ul>
+              <li><a href="#schema-2" id="markdown-toc-schema-2">Schema</a></li>
+              <li><a href="#status-2" id="markdown-toc-status-2">Status</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#for-developers" id="markdown-toc-for-developers">For developers</a>    <ul>
+      <li><a href="#register-a-new-health-check-provider" id="markdown-toc-register-a-new-health-check-provider">Register a new health check provider</a>        <ul>
+          <li><a href="#healthcheckprovider" id="markdown-toc-healthcheckprovider">HealthCheckProvider</a></li>
+          <li><a href="#checker-function" id="markdown-toc-checker-function">Checker function</a></li>
+          <li><a href="#register-function" id="markdown-toc-register-function">Register function</a></li>
+        </ul>
+      </li>
+      <li><a href="#get-registered-services" id="markdown-toc-get-registered-services">Get registered services</a></li>
+      <li><a href="#retrieve-health-status-of-services" id="markdown-toc-retrieve-health-status-of-services">Retrieve health status of services</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>The Health check API represents your OpenPaaS health status.  You can use it to monitor services in OpenPaaS.</p>
+
+<h2 id="rest-api">REST API</h2>
+
+<p>The health check API is used to retrieve health status of services.</p>
+<h3 id="get-apihealthcheck">GET /api/healthcheck:</h3>
+<p>Query for all services health status.</p>
+
+<h4 id="authentication">Authentication:</h4>
+<p>This API provides two kinds of information:</p>
+<ul>
+  <li>Public: Global status of all services.</li>
+  <li>Private: Advance information of services. User must authenticate as a <code class="language-plaintext highlighter-rouge">platform admin</code> to retrieve this kind of information.</li>
+</ul>
+
+<h4 id="response">Response</h4>
+<h5 id="schema">Schema</h5>
+
+<p><strong>Public Response</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "status": "healthy"
+}
+</code></pre></div></div>
+
+<p><strong>Private Response</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "status": "unhealthy",
+  "checks": [
+    {
+        "componentName": "mongodb",
+        "status": "healthy",
+        "details": null
+    },
+    {
+        "componentName": "redis",
+        "status": "healthy",
+        "details": null
+    },
+    {
+        "componentName": "rabbitmq",
+        "status": "healthy",
+        "details": null
+    },
+    {
+        "componentName": "elasticsearch",
+        "status": "healthy",
+        "details": null
+    },
+    {
+        "componentName": "ldap",
+        "status": "unhealthy",
+        "details": {
+          "cause": "Health check: Something went wrong with LDAP connection.",
+          "info": [
+            {
+              "configuration": {
+                "mapping": {},
+                "url": "dummy",
+                "adminDn": "test",
+                "adminPassword": "test",
+                "searchBase": "test",
+                "searchFilter": "(test=)"
+              },
+              "usage": {
+                "auth": true,
+                "search": true,
+                "autoProvisioning": true
+              },
+              "name": "test",
+              "domainId": "5e9888463662616055f5c3be",
+              "state": "unhealthy",
+              "message": "dummy is an invalid LDAP URL (protocol)"
+            }
+          ]
+        }
+    }
+  ]
+}
+</code></pre></div></div>
+
+<p><strong>status</strong>: Global status of all services, can be <code class="language-plaintext highlighter-rouge">healthy</code> or <code class="language-plaintext highlighter-rouge">unhealthy</code>.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">healthy</code>: All services work normally.</li>
+  <li><code class="language-plaintext highlighter-rouge">unhealthy</code>: One or more service is currently not working or under an unstable condition.</li>
+</ul>
+
+<p><strong>checks</strong>: An array of health statuses.</p>
+
+<p>Child attributes:</p>
+<ul>
+  <li>componentName (string): The name of the service/component.</li>
+  <li>status (string): Current status of the service, can be <code class="language-plaintext highlighter-rouge">healthy</code> or <code class="language-plaintext highlighter-rouge">unhealthy</code>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">healthy</code>: Service works normally.</li>
+      <li><code class="language-plaintext highlighter-rouge">unhealthy</code>: Service is currently not working or under an unstable condition.</li>
+    </ul>
+  </li>
+  <li>details: (object): Contain advance information of the service.</li>
+</ul>
+
+<h5 id="status">Status</h5>
+<ul>
+  <li><strong>200 - OK</strong>: The check has answered with a global <code class="language-plaintext highlighter-rouge">healthy</code> status.</li>
+  <li><strong>503 - Service Unavailable</strong>: The check has answered with a global <code class="language-plaintext highlighter-rouge">unhealthy</code> status.</li>
+</ul>
+
+<h3 id="get-apihealthcheckname">GET /api/healthcheck/:name:</h3>
+<p>Query for a single service health status.</p>
+
+<h4 id="authentication-1">Authentication:</h4>
+<p>This API requires user to authenticate as a <code class="language-plaintext highlighter-rouge">platform admin</code> in order to retrieve information.</p>
+
+<h4 id="request">Request</h4>
+<p>This API accepts one parameter as the name of the service. The <code class="language-plaintext highlighter-rouge">name</code> parameter is case-insensitive.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/api/healthcheck/mongodb
+</code></pre></div></div>
+
+<p>To get a list of available service names for performing health check, please refer to API <a href="#get-apihealthcheckservices">GET /api/healthcheck/services</a> as described below.</p>
+
+<h4 id="response-1">Response</h4>
+<h5 id="schema-1">Schema</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "componentName": "ldap",
+  "status": "unhealthy",
+  "details": {
+    "cause": "Health check: Something went wrong with LDAP connection.",
+    "info": [
+      {
+        "configuration": {
+          "mapping": {},
+          "url": "dummy",
+          "adminDn": "test",
+          "adminPassword": "test",
+          "searchBase": "test",
+          "searchFilter": "(test=)"
+        },
+        "usage": {
+          "auth": true,
+          "search": true,
+          "autoProvisioning": true
+        },
+        "name": "test",
+        "domainId": "5e9888463662616055f5c3be",
+        "state": "unhealthy",
+        "message": "dummy is an invalid LDAP URL (protocol)"
+      }
+    ]
+  }
+}
+</code></pre></div></div>
+
+<p>Where:</p>
+<ul>
+  <li>componentName (string): The name of the service/component.</li>
+  <li>status (string): Current status of the service, can be <code class="language-plaintext highlighter-rouge">healthy</code> or <code class="language-plaintext highlighter-rouge">unhealthy</code>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">healthy</code>: Service works normally.</li>
+      <li><code class="language-plaintext highlighter-rouge">unhealthy</code>: Service is currently not working or in an unstable condition.</li>
+    </ul>
+  </li>
+  <li>details: (object): Contain advance information of the service.</li>
+</ul>
+
+<h5 id="status-1">Status</h5>
+<ul>
+  <li><strong>200 - OK</strong>: The check has answered with a <code class="language-plaintext highlighter-rouge">healthy</code> status.</li>
+  <li><strong>401 - Unauthorized</strong>: User has not logged in.</li>
+  <li><strong>403 - Forbidden</strong>: User has not authenticated as a <code class="language-plaintext highlighter-rouge">platform admin</code>.</li>
+  <li><strong>404 - Not Found</strong>: Service with the provided name cannot be found.</li>
+  <li><strong>503 - Service Unavailable</strong>: The check has answered with a <code class="language-plaintext highlighter-rouge">unhealthy</code> status.</li>
+</ul>
+
+<h3 id="get-apihealthcheckservices">GET /api/healthcheck/services:</h3>
+<p>Query for all available service names.</p>
+
+<h4 id="authentication-2">Authentication:</h4>
+<p>This API requires user to authenticate as a <code class="language-plaintext highlighter-rouge">platform admin</code> in order to retrieve information.</p>
+
+<h4 id="response-2">Response</h4>
+<h5 id="schema-2">Schema</h5>
+<p>A response of this API can be fully defined like this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "services": ["mongodb", "redis", "rabbitmq", "elasticsearch"]
+}
+</code></pre></div></div>
+
+<p><strong>services</strong> : An array of available service names.</p>
+
+<h5 id="status-2">Status</h5>
+<ul>
+  <li><strong>200 - OK</strong>: API is working normally, returns a list of available service names.</li>
+  <li><strong>401 - Unauthorized</strong>: User has not logged in.</li>
+  <li><strong>403 - Forbidden</strong>: User has not authenticated as a <code class="language-plaintext highlighter-rouge">platform admin</code>.</li>
+  <li><strong>500 - Server Errors</strong>: Internal Server Error.</li>
+</ul>
+
+<h2 id="for-developers">For developers</h2>
+<h3 id="register-a-new-health-check-provider">Register a new health check provider</h3>
+<p>The health check module is available at <code class="language-plaintext highlighter-rouge">backend/core/health-check</code>. To register a service as a health check provider, we should separate the logic into a file <code class="language-plaintext highlighter-rouge">health-check.js</code>. For each service we have a separated <code class="language-plaintext highlighter-rouge">heath-check.js</code> file.</p>
+
+<h4 id="healthcheckprovider">HealthCheckProvider</h4>
+<p>HealthCheckProvider is a class used to modelize services. Its constructor requires the name of the service and a function called <code class="language-plaintext highlighter-rouge">checker</code>. The <code class="language-plaintext highlighter-rouge">checker</code> function will be defined in detail next section.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">HealthCheckProvider</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">health-check</span><span class="dl">'</span><span class="p">);</span>
+  <span class="k">new</span> <span class="nx">HealthCheckProvider</span><span class="p">(</span><span class="nx">SERVICE_NAME</span><span class="p">,</span> <span class="nx">checker</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="checker-function">Checker function</h4>
+<p><code class="language-plaintext highlighter-rouge">Checker</code> is an async function. Its main purpose is to call for some APIs / Methods/ Functions to check for status of service, then return a promise contains formatted messages. We created 2 helper functions to build formatted messages for checker: <code class="language-plaintext highlighter-rouge">buildHealthyMessage</code> and <code class="language-plaintext highlighter-rouge">buildUnhealthyMessage</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">checker</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">checkConnection</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">result</span> <span class="p">?</span> <span class="nx">buildHealthyMessage</span><span class="p">(</span><span class="nx">SERVICE_NAME</span><span class="p">)</span> <span class="p">:</span> <span class="nx">buildUnhealthyMessage</span><span class="p">(</span><span class="nx">SERVICE_NAME</span><span class="p">,</span> <span class="nx">message</span><span class="p">)))</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">buildUnhealthyMessage</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>In the example provided above, we call a function to check for the connection of service, then build the formatted message and return it.
+Each service has its own functions / methods or APIs to check for health or connection status.</p>
+
+<h4 id="register-function">Register function</h4>
+
+<p>To make a service available for health check API, call the <code class="language-plaintext highlighter-rouge">register</code> method inside the init function of that service:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">registry</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">health-check</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// Here we declare the register function to call inside the init function of the service we want to register as a Health Check Provider.</span>
+<span class="kd">function</span> <span class="nx">register</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">registry</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="k">new</span> <span class="nx">HealthCheckProvider</span><span class="p">(</span><span class="nx">SERVICE_NAME</span><span class="p">,</span> <span class="nx">checker</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">register</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>After that, import and call the function where the service was initialized.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">healthCheck</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./health-check</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">healthCheck</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>After registered successfully, your service will be available via the Health Check API.</p>
+
+<h3 id="get-registered-services">Get registered services</h3>
+
+<p>In case you want to get all registered services, call the <code class="language-plaintext highlighter-rouge">getRegisteredServiceNames</code> method:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">getRegisteredServiceNames</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependencies</span><span class="p">(</span><span class="dl">'</span><span class="s1">health-check</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">getRegisteredServiceNames</span><span class="p">();</span>
+<span class="c1">// ['mongodb', 'rabbitmq', 'redis', 'elasticsearch']</span>
+</code></pre></div></div>
+
+<h3 id="retrieve-health-status-of-services">Retrieve health status of services</h3>
+
+<p>Health check module provides you 2 methods to get the health status of services, <code class="language-plaintext highlighter-rouge">check</code> and <code class="language-plaintext highlighter-rouge">checkWithDetails</code>.
+These two return a promise which contains the formatted result of services.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="p">{</span> <span class="nx">check</span><span class="p">,</span> <span class="nx">checkWithDetails</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">dependenies</span><span class="p">(</span><span class="dl">'</span><span class="s1">health-check</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">check</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Do something with the result here</span>
+  <span class="p">});</span>
+  <span class="nx">checkWithDetails</span><span class="p">([</span><span class="dl">'</span><span class="s1">mongodb</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">elasticsearch</span><span class="dl">'</span><span class="p">]).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Do something with the result here</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+<p>Those two functions accept a parameter, <code class="language-plaintext highlighter-rouge">serviceNames</code>. The parameter is an array of service names that function will return the result for. If unset, functions will return the status of all services registered.
+The difference between <code class="language-plaintext highlighter-rouge">check</code> and <code class="language-plaintext highlighter-rouge">checkWithDetails</code> is <code class="language-plaintext highlighter-rouge">check</code> does not return data with <code class="language-plaintext highlighter-rouge">details</code> field, while <code class="language-plaintext highlighter-rouge">checkWithDetails</code> does. This provides us the ability to protect the sensitive data, prevent it from exposing to unnecessary client.</p>
+
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>
