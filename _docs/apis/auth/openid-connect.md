@@ -1,5 +1,5 @@
 ---
-title: OpenID Connect - Deprecated
+title: OpenID Connect
 category: APIs - Auth
 order: 4
 ---
@@ -12,8 +12,6 @@ order: 4
 
 ## Overview
 
-**Deprecated: The OIDC implementation described in this page is deprecated and will be removed in a future version of OpenPaaS. Use the new implementation as described in [OpenID Connect](/apis/auth/openid-connect).**
-
 OpenPaaS supports [OpenID Connect](https://openid.net/connect/) (OIDC) as Authentication/Authorization module.
 OIDC can be used to authenticate users when they reach OpenPaaS ESN and when they launch an OpenPaaS powered application: User is redirected to the OIDC login page, authenticates, and is then redirected to the initial application.
 
@@ -25,50 +23,73 @@ In order to allow applications to call OpenPaaS APIs, the OIDC strategy must be 
 
 ### API Configuration
 
-The `oidc` strategy must be added to the list of API strategies in the `config/default.*.json` file:
+The `openid-connect` strategy must be added to the list of API strategies in the `config/default.*.json` file:
 
 ```json
 "auth": {
-  "apiStrategies": ["basic-mongo-ldap", "basic-mongo", "oidc", "bearer", "jwt"]
+  "apiStrategies": ["basic-mongo-ldap", "basic-mongo", "openid-connect", "bearer", "jwt"]
 }
 ```
 
 This strategy will:
 
 1. Get the `Bearer` token from the incoming HTTP request
-2. Try to retrieve the user from the token by requesting the OIDC server
-3. "Mount" the OpenPaaS user from retrieved OIDC user email
-4. Pass the request to the next handler
+2. Try to authenticate user from the token
+3. Try to retrieve the user from the token by requesting the OIDC server
+4. "Mount" the OpenPaaS user from retrieved OIDC user email
+5. Pass the request to the next handler
 
 In order to retrieve the user from the token by requesting the OIDC server, OpenPaaS needs to be configured correctly: Configuration is described in the `OIDC Configuration` below.
 
 ## Authenticating users
 
-OIDC can also be used for SSO at the OpenPaaS portal level: The user will be redirected to the OIDC login page when required. In order to achieve this, OpenPaaS must be configured and the `linagora.esn.oidc` module must be enabled. Once done, the user will be redirected to the OIDC login/logout pages when needed.
+OIDC can also be used for SSO at the OpenPaaS portal level. The OpenPaaS Web application acts as an OIDC Relying Party (commonly called 'client'): The user will be redirected to the OIDC login page when required. In order to achieve this, OpenPaaS must be configured correctly and the `linagora.esn.oidc` module must be enabled. Once done, the user will be redirected to the OIDC login/logout pages when needed.
 
 ### Configuration
 
 1. The `linagora.esn.oidc` module must be added and enabled. Check the instructions here [https://github.com/linagora/linagora.esn.oidc](https://github.com/linagora/linagora.esn.oidc).
-2. The configuration is described in the `OIDC Configuration` section below.
+2. On the OIDC provider side, a client must be created with the `openpaas-esn` value as `client_id`.
+3. The OpenPaaS configuration must be updated to include the `openpaas-esn` client as described in the `OIDC Configuration` section below.
+
+Required fields for the configuration are:
+
+  - `client_id`: **MUST** be `openpaas-esn`
+  - `client_secret` is the unique, generated secret provided by the OIDC server
+  - `issuer_url` is the Issuer URL of your OIDC server. If defined, it overrides the one defined at the top level.
+  - `authorization_url` is the authorization endpoint
+  - `token_url` is the token endpoint
+  - `user_info_url` is the token to fetch user information
+  - `end_session_endpoint` is the URL used to end the user session ([Spec](https://openid.net/specs/openid-connect-session-1_0.html#RPLogout))
+
 
 ## OIDC Configuration
 
-The configuration is platform-wide and so has to be set in the `core` module in the `oidc` settings:
+The configuration is platform-wide and so has to be set in the `core` module in the `openid-connect` settings:
 
 ```json
 {
   "name": "core",
   "configurations": [
     {
-      "name": "oidc",
+      "name": "openid-connect",
       "value": {
         "issuer_url": "http://localhost:8888/auth/realms/master",
-        "client_id": "openpaas",
-        "client_secret": "34b398b7-79fe-4ab1-b53c-b68c20743558",
-        "authorization_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
-        "token_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/token",
-        "user_info_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo",
-        "end_session_endpoint": "http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"
+        "clients": [
+          {
+            "client_id": "an-openpaas-client",
+            "client_secret": "34b398b7-79fe-4ab1-b53c-b68c20743558",
+            "issuer_url": "http://issuer:8888/auth/realms/master"
+          },
+          {
+            "client_id": "openpaas-esn",
+            "client_secret": "34b398b7-79fe-4ab1-b53c-b68c20743559",
+            "issuer_url": "http://issuer:8888/auth/realms/master",
+            "authorization_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
+            "token_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/token",
+            "user_info_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo",
+            "end_session_endpoint": "http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"
+          }
+        ]
       }
     },
     // ...
@@ -78,17 +99,60 @@ The configuration is platform-wide and so has to be set in the `core` module in 
 
 Where:
 
-- `issuer_url` is the Issuer URL of your OIDC server
-- `client_id` is the ID of the client you configured in the OIDC server
-- `client_secret` is the unique, generated secret provided by the OIDC server
-- `authorization_url` is the authorization endpoint
-- `token_url` is the token endpoint
-- `user_info_url` is the token to fetch user information
-- `end_session_endpoint` is the URL used to end the user session ([Spec](https://openid.net/specs/openid-connect-session-1_0.html#RPLogout))
+- `issuer_url` is the Issuer URL of your OIDC server. This value will be used if none is defined in the client item from the `clients` array below.
+- `clients`is an array of OIDC clients (Relying Party) where:
+  - `client_id` is the ID of the client you configured in the OIDC server
+  - `client_secret` is the unique, generated secret provided by the OIDC server
+  - `issuer_url` is the Issuer URL of your OIDC server. If defined, it overrides the one defined at the top level.
+  - `authorization_url` is the authorization endpoint. *Required for `linagora.esn.oidc` module.*
+  - `token_url` is the token endpoint. *Required for `linagora.esn.oidc` module.*
+  - `user_info_url` is the token to fetch user information. *Required for `linagora.esn.oidc` module.*
+  - `end_session_endpoint` is the URL used to end the user session ([Spec](https://openid.net/specs/openid-connect-session-1_0.html#RPLogout)). *Required for `linagora.esn.oidc` module.*
 
 These values are available on distinct locations based on the OIDC server you use. More details are given below.
 
-**IMPORTANT**: For now, all the applications (OpenPaaS ESN and Vue applications) are sharing the same `client_id` and MUST BE configured as is.
+Until there is an UI to configure it, the only ways to set these values are:
+
+1. Update the document in the MOngoDB `configurations` collection
+2. Call the configuration REST API with a platform administrator credentials such as:
+
+    ```sh
+     curl -d "@configuration.json" -H "Content-Type: application/json" --user admin@open-paas.org:secret -X PUT http://localhost:8080/api/configurations\?scope\=platform
+    ```
+
+    Where `configuration.json` is a file which contains the configuration you want to set such as:
+
+    ```json
+    [
+      {
+        "name": "core",
+        "configurations":
+        [
+          {
+            "name": "openid-connect",
+            "value": {
+              "issuer_url": "http://localhost:8888/auth/realms/master",
+              "clients": [
+                {
+                  "client_id": "openpaas",
+                  "client_secret": "2ec1a41d-b008-444c-a867-fa9985f7183b"
+                },
+                {
+                  "client_id": "openpaas-esn",
+                  "client_secret": "34b398b7-79fe-4ab1-b53c-b68c20743559",
+                  "issuer_url": "http://issuer:8888/auth/realms/master",
+                  "authorization_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
+                  "token_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/token",
+                  "user_info_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo",
+                  "end_session_endpoint": "http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+    ```
 
 ## User provisioning
 
@@ -149,15 +213,19 @@ You can now configure OpenPaaS by putting the right value in platform configurat
 
 ```json
 {
-  "name": "oidc",
+  "name": "openid-connect",
   "value": {
     "issuer_url": "http://localhost:8888/auth/realms/master",
-    "client_id": "openpaas",
-    "client_secret": "96a97f8d-2a73-46e2-b602-512e034ea5f0",
-    "authorization_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
-    "token_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/token",
-    "user_info_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo",
-    "end_session_endpoint": "http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"
+    "clients": [
+      {
+        "client_id": "openpaas",
+        "client_secret": "96a97f8d-2a73-46e2-b602-512e034ea5f0",
+        "authorization_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/auth",
+        "token_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/token",
+        "user_info_url": "http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo",
+        "end_session_endpoint": "http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"
+      }
+    ]
   }
 }
 ```
