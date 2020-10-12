@@ -36,7 +36,7 @@
 		<script src="/js/swagger-authentication.js"></script>
 		<script src="/js/app.js"></script>
 
-		<title> REST API |  OpenPaaS documentation</title>
+		<title> Shared Mailboxes |  OpenPaaS documentation</title>
 		<link type="application/atom+xml" rel="alternate" href="https://openpaas.github.io/openpaas-doc/feed.xml" title="OpenPaaS Documentation" />
 
 		
@@ -256,14 +256,14 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level current">
+						<li class="nav-item top-level ">
 							
 							<a href="/modules/group/index/">OpenPaaS Modules - Group</a>
 							<ul>
 								
 									<li class="nav-item "><a href="/modules/group/index/">Overview</a></li>
 								
-									<li class="nav-item current"><a href="/modules/group/rest-api/">REST API</a></li>
+									<li class="nav-item "><a href="/modules/group/rest-api/">REST API</a></li>
 								
 							</ul>
 						</li>
@@ -300,7 +300,7 @@
 							</ul>
 						</li>
 					
-						<li class="nav-item top-level ">
+						<li class="nav-item top-level current">
 							
 							<a href="/modules/unifiedinbox/index/">OpenPaaS Modules - Unified Inbox</a>
 							<ul>
@@ -309,7 +309,7 @@
 								
 									<li class="nav-item "><a href="/modules/unifiedinbox/identity/">Identity</a></li>
 								
-									<li class="nav-item "><a href="/modules/unifiedinbox/shared/">Shared Mailboxes</a></li>
+									<li class="nav-item current"><a href="/modules/unifiedinbox/shared/">Shared Mailboxes</a></li>
 								
 									<li class="nav-item "><a href="/modules/unifiedinbox/rest-api/">REST API</a></li>
 								
@@ -371,19 +371,36 @@
 		</header>
 		<section class="main">
 			<div class="page-header">
-				<h2>OpenPaaS Modules - Group</h2>
+				<h2>OpenPaaS Modules - Unified Inbox</h2>
 				<div class="page-title">
-					<h3>REST API</h3>
-					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/group/rest-api.html" title="Edit this page on Github">
+					<h3>Shared Mailboxes</h3>
+					<a href="https://github.com/linagora/openpaas-doc/edit/master/_docs/modules/unifiedinbox/shared.md" title="Edit this page on Github">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</div>
 			</div>
 			<article class="content">
-				<div class="page" ng-app="openpaas.doc">
-	<h3 ng-show="isLoading">Loading API documentation ...</h3>
-	<div swagger-ui url="'http://api.open-paas.org/group-swagger.json'" loading="isLoading" parser="json" api-explorer="true" permalink="true"></div>
-</div>
+				<h2 class="no_toc" id="table-of-contents">Table of contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>In OpenPaas and James, the notion of a mailbox and a folder is the same.</p>
+
+<p>As a user, I can share my mailbox/folder with other users. When sharing a folder with another user, I have the choice 
+currently between two sets of permissions:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">read and update messages</code> the user can view the folder, read messages and update some flags on it. he can also forward, reply.</li>
+  <li><code class="language-plaintext highlighter-rouge">Consultation and organize folder</code> same as above + delete a message, move a message to another shared folder, move to spam.</li>
+</ul>
+
+<p>A user can see all his shared folders in Shared folders tab in Configuration in OpenPaas.</p>
+
+<p>An admin can decide to enable or disable the folder/mailbox sharing for users from the admin panel.</p>
 
 			</article>
 		</section>
