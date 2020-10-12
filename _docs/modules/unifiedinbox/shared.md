@@ -12,7 +12,7 @@ order: 3
 
 ## Overview
 
-In OpenPaas and James, the notion of a mailbox and a folder is the same.
+In OpenPaas, the notion of a mailbox and a folder is the same.
 
 As a user, I can share my mailbox/folder with other users. When sharing a folder with another user, I have the choice 
 currently between two sets of permissions:
