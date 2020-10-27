@@ -17,7 +17,7 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
 
 The current page describes how to configure and use OIDC to provide this Single Sign On (SSO) support in OpenPaaS.
 
-## authentication flow
+## Authentication flow
 
 We have three parties:
 
