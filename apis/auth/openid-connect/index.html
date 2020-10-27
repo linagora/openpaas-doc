@@ -384,6 +384,7 @@
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#authentication-flow" id="markdown-toc-authentication-flow">Authentication flow</a></li>
   <li><a href="#authenticating-incoming-rest-api-calls" id="markdown-toc-authenticating-incoming-rest-api-calls">Authenticating incoming REST API calls</a>    <ul>
       <li><a href="#api-configuration" id="markdown-toc-api-configuration">API Configuration</a></li>
     </ul>
@@ -406,6 +407,29 @@
 OIDC can be used to authenticate users when they reach OpenPaaS ESN and when they launch an OpenPaaS powered application: User is redirected to the OIDC login page, authenticates, and is then redirected to the initial application.</p>
 
 <p>The current page describes how to configure and use OIDC to provide this Single Sign On (SSO) support in OpenPaaS.</p>
+
+<h2 id="authentication-flow">Authentication flow</h2>
+
+<p>We have three parties:</p>
+
+<ul>
+  <li>the web application, running in the browser</li>
+  <li>the API server</li>
+  <li>the OIDC server</li>
+</ul>
+
+<p>The flow goes as follows:</p>
+
+<ol>
+  <li>the user agent hits the <strong>web application</strong></li>
+  <li>the <strong>web application</strong> checks its connection status, then redirect to the <strong>OIDC server</strong> authorization_endpoint</li>
+  <li>the user logs in</li>
+  <li>the <strong>OIDC server</strong> redirects to the <strong>web application</strong>, using a specific hash in the URL <code class="language-plaintext highlighter-rouge">#/auth/oidc/callback</code></li>
+  <li>the <strong>web application</strong> is now connected and has a bearer token</li>
+  <li>the <strong>web application</strong> issues a request to the <strong>API server</strong>. It adds a header <code class="language-plaintext highlighter-rouge">Authorization: bearer [bearer token provided by the OIDC server]</code></li>
+  <li>the <strong>API server</strong> issues a connection to the <strong>OIDC server</strong>, using the bearer token, to get the user informations</li>
+  <li>the <strong>API server</strong> now knows the identity of the user, and proceeds to the query</li>
+</ol>
 
 <h2 id="authenticating-incoming-rest-api-calls">Authenticating incoming REST API calls</h2>
 
@@ -434,22 +458,21 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
 
 <h2 id="authenticating-users">Authenticating users</h2>
 
-<p>OIDC can also be used for SSO at the OpenPaaS portal level. The OpenPaaS Web application acts as an OIDC Relying Party (commonly called ‘client’): The user will be redirected to the OIDC login page when required. In order to achieve this, OpenPaaS must be configured correctly and the <code class="language-plaintext highlighter-rouge">linagora.esn.oidc</code> module must be enabled. Once done, the user will be redirected to the OIDC login/logout pages when needed.</p>
+<p>OIDC can also be used for SSO at the OpenPaaS portal level. The OpenPaaS Web application acts as an OIDC Relying Party (commonly called ‘client’): The user will be redirected to the OIDC login page when required.</p>
 
 <h3 id="configuration">Configuration</h3>
 
 <ol>
-  <li>The <code class="language-plaintext highlighter-rouge">linagora.esn.oidc</code> module must be added and enabled. Check the instructions here <a href="https://github.com/linagora/linagora.esn.oidc">https://github.com/linagora/linagora.esn.oidc</a>.</li>
-  <li>On the OIDC provider side, a client must be created with the <code class="language-plaintext highlighter-rouge">openpaas-esn</code> value as <code class="language-plaintext highlighter-rouge">client_id</code>.</li>
+  <li>On the OIDC provider side, a client must be created. In this howto we use <code class="language-plaintext highlighter-rouge">openpaas-esn</code> value as <code class="language-plaintext highlighter-rouge">client_id</code>.</li>
   <li>The OpenPaaS configuration must be updated to include the <code class="language-plaintext highlighter-rouge">openpaas-esn</code> client as described in the <code class="language-plaintext highlighter-rouge">OIDC Configuration</code> section below.</li>
 </ol>
 
 <p>Required fields for the configuration are:</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">client_id</code>: <strong>MUST</strong> be <code class="language-plaintext highlighter-rouge">openpaas-esn</code></li>
+  <li><code class="language-plaintext highlighter-rouge">client_id</code>: <code class="language-plaintext highlighter-rouge">openpaas-esn</code> in this example</li>
   <li><code class="language-plaintext highlighter-rouge">client_secret</code> is the unique, generated secret provided by the OIDC server</li>
-  <li><code class="language-plaintext highlighter-rouge">issuer_url</code> is the Issuer URL of your OIDC server. If defined, it overrides the one defined at the top level.</li>
+  <li><code class="language-plaintext highlighter-rouge">issuer_url</code> is the Issuer URL of your OIDC server. If defined, it overrides the one defined at the top level. It is frequently the URL of the auth server, like <code class="language-plaintext highlighter-rouge">https://auth.openpaas.example</code></li>
   <li><code class="language-plaintext highlighter-rouge">authorization_url</code> is the authorization endpoint</li>
   <li><code class="language-plaintext highlighter-rouge">token_url</code> is the token endpoint</li>
   <li><code class="language-plaintext highlighter-rouge">user_info_url</code> is the token to fetch user information</li>
@@ -477,10 +500,10 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
             </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openpaas-esn"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34b398b7-79fe-4ab1-b53c-b68c20743559"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"issuer_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/auth"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"token_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/token"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"user_info_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"end_session_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"</span><span class="w">
+            </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master/protocol/openid-connect/auth"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"token_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master/protocol/openid-connect/token"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"user_info_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end_session_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master/protocol/openid-connect/logout"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -502,10 +525,43 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
       <li><code class="language-plaintext highlighter-rouge">authorization_url</code> is the authorization endpoint. <em>Required for <code class="language-plaintext highlighter-rouge">linagora.esn.oidc</code> module.</em></li>
       <li><code class="language-plaintext highlighter-rouge">token_url</code> is the token endpoint. <em>Required for <code class="language-plaintext highlighter-rouge">linagora.esn.oidc</code> module.</em></li>
       <li><code class="language-plaintext highlighter-rouge">user_info_url</code> is the token to fetch user information. <em>Required for <code class="language-plaintext highlighter-rouge">linagora.esn.oidc</code> module.</em></li>
-      <li><code class="language-plaintext highlighter-rouge">end_session_endpoint</code> is the URL used to end the user session (<a href="https://openid.net/specs/openid-connect-session-1_0.html#RPLogout">Spec</a>). <em>Required for <code class="language-plaintext highlighter-rouge">linagora.esn.oidc</code> module.</em></li>
+      <li><code class="language-plaintext highlighter-rouge">end_session_endpoint</code> is the URL used to end the user session (<a href="https://openid.net/specs/openid-connect-session-1_0.html#RPLogout">Spec</a>).</li>
     </ul>
   </li>
 </ul>
+
+<p>Lots of OIDC servers implement the “Well Known” URL. It’s something like <code class="language-plaintext highlighter-rouge">https://auth.openpaas.example/.well-known/openid-configuration</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>OpenPaaS configuration</th>
+      <th>OIDC server well known JSON key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>issuer_url</td>
+      <td>issuer</td>
+    </tr>
+    <tr>
+      <td>authorization_url</td>
+      <td>authorization_endpoint</td>
+    </tr>
+    <tr>
+      <td>token_url</td>
+      <td>token_endpoint</td>
+    </tr>
+    <tr>
+      <td>user_info_url</td>
+      <td>userinfo_endpoint</td>
+    </tr>
+    <tr>
+      <td>end_session_endpoint</td>
+      <td>end_session_endpoint</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>These values are available on distinct locations based on the OIDC server you use. More details are given below.</p>
 
@@ -539,10 +595,10 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
                </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openpaas-esn"</span><span class="p">,</span><span class="w">
                </span><span class="nl">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34b398b7-79fe-4ab1-b53c-b68c20743559"</span><span class="p">,</span><span class="w">
                </span><span class="nl">"issuer_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master"</span><span class="p">,</span><span class="w">
-               </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/auth"</span><span class="p">,</span><span class="w">
-               </span><span class="nl">"token_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/token"</span><span class="p">,</span><span class="w">
-               </span><span class="nl">"user_info_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="p">,</span><span class="w">
-               </span><span class="nl">"end_session_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/auth/realms/master/protocol/openid-connect/logout"</span><span class="w">
+               </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master/protocol/openid-connect/auth"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"token_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master/protocol/openid-connect/token"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"user_info_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master/protocol/openid-connect/userinfo"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"end_session_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuer:8888/auth/realms/master/protocol/openid-connect/logout"</span><span class="w">
              </span><span class="p">}</span><span class="w">
            </span><span class="p">]</span><span class="w">
          </span><span class="p">}</span><span class="w">
@@ -607,10 +663,7 @@ OIDC can be used to authenticate users when they reach OpenPaaS ESN and when the
   <img src="/images/apis/auth/oidc/keycloak_create_client_2.png" alt="Keycloak Create Client 2" /></li>
   <li>Every time an application will have to use this OIDC client, you will have to update the <code class="language-plaintext highlighter-rouge">Valid redirect URIs</code> by adding the application ones. As an example, for OpenPaaS Vue applications, you have to add 2 redirect URLs each time. If the application is running at <a href="http://localhost:8081">http://localhost:8081</a>:
     <ul>
-      <li>http://localhost:8081/oidc-callback</li>
-      <li>http://localhost:8081/login</li>
-      <li>http://localhost:8080</li>
-      <li>http://localhost:8080/linagora.esn.oidc/callback</li>
+      <li>http://localhost:8080/inbox/#/auth/oidc/callback</li>
       <li>Note: For development purposes you can define redirect URLs with wildcards like http://localhost:8080/* and http://localhost:8081/*</li>
     </ul>
   </li>
