@@ -34,7 +34,7 @@ The flow goes as follow:
 5. the **web application** is now connected and has a bearer token
 6. the **web application** issues a request to the **API server**. It adds a header `Authorization: bearer [bearer token provided by the OIDC server]`
 7. the **API server** issues a connection to the **OIDC server**, using the bearer token, to get the user informations
-8. the **API server** now knows the identity of the user, and proceed to the query
+8. the **API server** now knows the identity of the user, and proceeds to the query
 
 ## Authenticating incoming REST API calls
 
