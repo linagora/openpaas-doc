@@ -25,7 +25,7 @@ We have three parties:
 * the API server
 * the OIDC server
 
-The flow goes as follow:
+The flow goes as follows:
 
 1. the user agent hits the **web application**
 2. the **web application** checks its connection status, then redirect to the **OIDC server** authorization_endpoint
